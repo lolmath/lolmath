@@ -1,0 +1,28 @@
+{
+  "name": "@lolmath/calc",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest --coverage",
+    "coverage": "vitest run --coverage"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "devDependencies": {
+    "@vitest/coverage-istanbul": "^0.25.8",
+    "prettier": "^2.8.1",
+    "turbo": "^1.6.3",
+    "vite": "^4.0.1"
+  }
+}
