@@ -138,7 +138,7 @@ mdPerCategory.forEach(({ category, md }) => {
 });
 
 // Copy the README.md, and add a sidebar position
-const readme = fs.readFileSync("./README.md", "utf8");
+const readme = fs.readFileSync("./readme.md", "utf8");
 const readmeWithSidebar = `---\nsidebar_position: 1\n---\n${readme}`;
 
 fs.writeFileSync(`${dest}/index.md`, readmeWithSidebar);
