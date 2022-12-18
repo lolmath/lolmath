@@ -130,8 +130,8 @@ const mdPerCategory = itemsPerCategory.map(({ category, items }) => ({
 if (fs.existsSync(dest)) {
   fs.rmSync(dest, { recursive: true });
 }
-// Create the new /docs/calc folder
-fs.mkdirSync(dest);
+// Create the new /docs/calc folder, recursively
+fs.mkdirSync(dest, { recursive: true });
 
 mdPerCategory.forEach(({ category, md }) => {
   fs.writeFileSync(`${dest}/${category}.md`, md);

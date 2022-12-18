@@ -16,5 +16,5 @@
     "skipLibCheck": true,
     "types": ["vitest/globals", "vitest/importMeta", "node"]
   },
-  "include": ["src"]
+  "include": ["src", "./docs.ts"]
 }
