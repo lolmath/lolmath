@@ -9,7 +9,7 @@ const path = require("path");
 const config = {
   title: "LoLMath",
   tagline: "League Calculations",
-  url: "https://your-docusaurus-test-site.com",
+  url: "https://docs.lolmath.net",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
