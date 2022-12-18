@@ -52,6 +52,12 @@ const config = {
             label: "Calc",
           },
           {
+            type: "doc",
+            docId: "dev/index",
+            position: "left",
+            label: "Dev",
+          },
+          {
             href: "https://gitlab.com/lol-math",
             label: "GitLab",
             position: "right",
