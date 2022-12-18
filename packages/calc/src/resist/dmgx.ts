@@ -1,10 +1,18 @@
 /**
- * Get a damage multiplier for a value of enemy resist. e.g. 100 armor = 0.5 physical damage dealt.
+ * Converts an amount of resist to a *Damage Multiplier*.
  *
  * @category Resist
  *
- * @param resist the amount of armor or magic resist the enemy has.
- * @returns the damage multiplier
+ * @param resist The amount of armor or magic resist.
+ * @returns The damage multiplier.
+ *
+ * @example
+ *
+ * ```ts
+ * const resist = 100; // 100 armor
+ * const dmg = 100; // 100 damage
+ * const result = dmgx(resist); // 50 damage
+ * ```
  */
 export function dmgx(resist: number) {
   if (resist > 0) {

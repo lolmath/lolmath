@@ -1,3 +1,9 @@
 # Calc
 
-A collection of function for calculating League of Legends stats.
+A collection of functions for calculating League of Legends stats.
+
+## Installation
+
+```bash
+npm install @lolmath/calc
+```
