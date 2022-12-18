@@ -6,7 +6,8 @@ A list of public projects:
 
 - **Item Optimizer**: The main website of lolmath.
 
-  - [Repository](https://gitlab.com/lol-math/item-optimizer)
+  - [Repository](https://gitlab.com/lol-math/item-optimizer): Currently private,
+    you can apply for access on discord (see link in footer).
   - [Website](https://lolmath.net)
 
 - **@lolmath/calc**: A library for calculating the damage of League of Legends
