@@ -7,6 +7,15 @@
  * @param lvl Current champion level
  * @returns The multiplier to be used for converting lethality to flat armor
  * penetration.
+ * 
+ * @example
+ * 
+ * ```ts
+ * const lethality = 100;
+ * const level = 13;
+ * 
+ * const armorPenFlat = lethality * lethalityx(level); // ~88.9
+ * ```
  */
 export function lethalityx(lvl: number): number {
   return 0.6 + 0.4 * (lvl / 18);
@@ -14,7 +23,7 @@ export function lethalityx(lvl: number): number {
 
 if (import.meta.vitest) {
   const { test, expect } = import.meta.vitest;
-  test("lethalityToArmorPen", () => {
+  test("lethalityx", () => {
     expect(lethalityx(1)).toBeCloseTo(0.6222);
     expect(lethalityx(2)).toBeCloseTo(0.6444);
     expect(lethalityx(3)).toBeCloseTo(0.6666);
