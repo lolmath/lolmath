@@ -66,7 +66,7 @@ const config = {
             items: [
               {
                 label: "Calc",
-                to: "/docs/calc",
+                to: "/calc",
               },
             ],
           },

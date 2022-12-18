@@ -6,7 +6,10 @@ import {
 } from "@structured-types/api";
 import fs from "fs";
 
-const docObject = parseFiles(["../../packages/calc/src/index.ts"]);
+const src = "./src/index.ts";
+const dest = "../../apps/docs/docs/calc";
+
+const docObject = parseFiles([src]);
 
 const docItems = Object.values(docObject).sort((a, b) => {
   if (a.name < b.name) {
@@ -124,18 +127,18 @@ const mdPerCategory = itemsPerCategory.map(({ category, items }) => ({
 
 // Clear the current /calc folder
 // check if the folder exists
-if (fs.existsSync("./docs/calc")) {
-  fs.rmSync("./docs/calc", { recursive: true });
+if (fs.existsSync(dest)) {
+  fs.rmSync(dest, { recursive: true });
 }
 // Create the new /docs/calc folder
-fs.mkdirSync("./docs/calc");
+fs.mkdirSync(dest);
 
 mdPerCategory.forEach(({ category, md }) => {
-  fs.writeFileSync(`./docs/calc/${category}.md`, md);
+  fs.writeFileSync(`${dest}/${category}.md`, md);
 });
 
 // Copy the README.md, and add a sidebar position
-const readme = fs.readFileSync("../../packages/calc/README.md", "utf8");
+const readme = fs.readFileSync("./README.md", "utf8");
 const readmeWithSidebar = `---\nsidebar_position: 1\n---\n${readme}`;
 
-fs.writeFileSync("./docs/calc/index.md", readmeWithSidebar);
+fs.writeFileSync(`${dest}/index.md`, readmeWithSidebar);
