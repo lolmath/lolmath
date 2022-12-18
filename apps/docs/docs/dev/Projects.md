@@ -27,3 +27,7 @@ A list of public projects:
 
   - [Repository](https://gitlab.com/lol-math/ddragon-webp-images)
   - [npm](https://www.npmjs.com/package/ddragon-webp-images)
+
+- **riot-proxy-cfw**: A Cloudflare Worker that proxies requests to the Riot API.
+
+  - [Repository](https://gitlab.com/lol-math/riot-proxy-cfw)
