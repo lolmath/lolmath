@@ -1,6 +1,8 @@
 /**
  * Stats in League of Legends do not increase linearly with champion level. Use
  * this function to calculate the stat multiplier.
+ * 
+ * @category Scaling
  *
  * @param lvl The current champion level
  * @returns the stat multiplier

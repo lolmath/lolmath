@@ -2,6 +2,8 @@
  * Linear scaling function. Returns a multiplier that is 0 at level 1 and 1 at
  * maxLevel.
  *
+ * @category Scaling
+ *
  * @param maxLvl The level at which the scaling is 1
  * @param lvl The current level of the ability
  * @returns the scaling multiplier
@@ -20,6 +22,8 @@ if (import.meta.vitest) {
 
 /**
  * The scaling for abilities that max out at level 3.
+ *
+ * @category Scaling
  *
  * @param lvl The current level of the ability
  * @returns the scaling multiplier
@@ -40,6 +44,8 @@ if (import.meta.vitest) {
 
 /**
  * The scaling for abilities that max out at level 5.
+ *
+ * @category Scaling
  *
  * @param lvl The current level of the ability
  * @returns the scaling multiplier
@@ -62,6 +68,8 @@ if (import.meta.vitest) {
 
 /**
  * The scaling for abilities that max out at level 18.
+ *
+ * @category Scaling
  *
  * @param lvl The current level of the ability
  * @returns the scaling multiplier

@@ -1,6 +1,8 @@
 /**
  * Applies movement speed caps to a raw movement speed value.
  *
+ * @category Movement Speed
+ *
  * @param msRaw Raw movement speed
  * @returns Movement speed after caps
  */

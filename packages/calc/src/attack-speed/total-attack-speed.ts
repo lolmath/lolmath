@@ -1,6 +1,8 @@
 /**
  * Calculates the total attack speed of a champion
  *
+ * @category Attack Speed
+ *
  * @param base Base attack speed
  * @param ratio Attack speed ratio
  * @param bonus Bonus attack speed

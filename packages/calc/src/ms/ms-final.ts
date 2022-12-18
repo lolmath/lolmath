@@ -1,11 +1,14 @@
 /**
  * Calculates the final movement speed of a champion.
  *
+ * @category Movement Speed
+ *
  * @param base The champion their base movement speed
  * @param flat From shoes and other flat movement bonuses
  * @param percent e.g. percentBonus1 + percentBonus2
  * @param percentMultiplicative e.g. (1 + percentBonus1) * (1 + percentBonus2)
  * @param bonusMultiplier unique for celerity
+ * @returns The final movement speed of a champion
  */
 export function msFinal(
   base: number,
