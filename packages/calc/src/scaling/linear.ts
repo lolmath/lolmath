@@ -49,6 +49,14 @@ if (import.meta.vitest) {
  *
  * @param lvl The current level of the ability
  * @returns the scaling multiplier
+ * 
+ * @example
+ * ```ts
+ * const base = 65;
+ * const perLevel = 80;
+ * const lvl = 3;
+ * const damage = base + linear5(lvl) * perLevel; // 105
+ * ```
  */
 export function linear5(lvl: number): number {
   return linear(5, lvl);

@@ -1,4 +1,8 @@
 /**
+ * Calculates the resist after all reductions and penetrations have been
+ * applied.
+ *
+ * @remarks
  * Magic penetration and magic resist reduction work exactly like armor
  * penetration and armor reduction. penetration and reduction are considered on
  * the target champion in the following order:

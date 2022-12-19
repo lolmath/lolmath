@@ -1,5 +1,5 @@
 /**
- * Calculates the total attack speed of a champion
+ * Calculates the total attack speed of a champion.
  *
  * @category Attack Speed
  *
@@ -10,7 +10,7 @@
  * @param isMelee Is the champion melee? (This is only used in URF mode)
  * @returns Total attack speed
  */
-export function totalAttackSpeed(
+export function asTotal(
   base: number,
   ratio: number,
   bonus: number,

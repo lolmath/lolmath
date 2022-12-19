@@ -84,13 +84,31 @@ function itemToMd(item: PropType) {
 
 ${item.description}
 
-\`\`\`ts
+${remarks(item)}
+
+${generalExample(item)}
+
+${parameters(item)}
+
+${returns(item)}
+
+${examples(item)}`;
+}
+
+function generalExample(item: PropType) {
+  return `\`\`\`ts
 import { ${item.name} } from "@lolmath/calc";
 
 ${item.name}(${item["parameters"].map((param) => param.name).join(", ")})
-\`\`\`
+\`\`\``;
+}
 
-### Arguments
+function parameters(item: PropType) {
+  const params = item["parameters"];
+  if (!params.length) {
+    return "";
+  }
+  return `### Arguments
 
 ${item["parameters"]
   .map(
@@ -98,12 +116,33 @@ ${item["parameters"]
       `- \`${param.name}\` (*${PropKind[param.kind]}*): ${param.description}`,
   )
   .join("\n")}
+`;
+}
 
-### Returns
+function returns(item: PropType) {
+  const returns = item["returns"];
+  if (!returns) {
+    return "";
+  }
+  return `### Returns
 
-(*${PropKind[item["returns"].kind]}*) ${item["returns"].description}
+(*${PropKind[returns.kind]}*) ${returns.description}`;
+}
 
-${examples(item)}`;
+function remarks(item: PropType) {
+  console.log(item);
+  const remarkTags = item.tags?.filter((tag) => tag.tag === "remarks") ?? [];
+  if (!remarkTags.length) {
+    return "";
+  }
+  return `<details><summary>More Info</summary>
+<p>
+
+${remarkTags.map((tag) => tag.content).join("\n\n")}
+
+</p>
+</details>
+`;
 }
 
 function examples(item: PropType) {

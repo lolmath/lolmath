@@ -1,2 +1,2 @@
 export * from "./ms-cap";
-export * from "./ms-final";
+export * from "./ms-total";

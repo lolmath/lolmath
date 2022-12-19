@@ -1,5 +1,5 @@
 /**
- * Calculates the final movement speed of a champion.
+ * Calculates the total movement speed of a champion.
  *
  * @category Movement Speed
  *
@@ -10,7 +10,7 @@
  * @param bonusMultiplier unique for celerity
  * @returns The final movement speed of a champion
  */
-export function msFinal(
+export function msTotal(
   base: number,
   flat: number,
   percent: number,

@@ -1,4 +1,4 @@
-export * from "./attack-speed";
+export * from "./as";
 export * from "./haste";
 export * from "./ms";
 export * from "./resist";
