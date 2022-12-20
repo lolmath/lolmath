@@ -18,6 +18,8 @@ release:
   stage: release
   only:
     - main
-  script: npx changesets-gitlab
+  script:
+    - pnpm run build
+    - npx changesets-gitlab
   variables:
     INPUT_PUBLISH: pnpm publish -r --no-git-checks
