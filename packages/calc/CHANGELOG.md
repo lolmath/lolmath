@@ -1,5 +1,11 @@
 # @lolmath/calc
 
+## 0.0.2
+
+### Patch Changes
+
+- 901bff0: Now includes build artifacts
+
 ## 0.0.1
 
 ### Patch Changes
