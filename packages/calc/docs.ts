@@ -7,7 +7,7 @@ import {
 import fs from "fs";
 
 const src = "./src/index.ts";
-const dest = "../../apps/docs/docs/calc";
+const dest = "./docs";
 
 const docObject = parseFiles([src]);
 
@@ -130,7 +130,6 @@ function returns(item: PropType) {
 }
 
 function remarks(item: PropType) {
-  console.log(item);
   const remarkTags = item.tags?.filter((tag) => tag.tag === "remarks") ?? [];
   if (!remarkTags.length) {
     return "";

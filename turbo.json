@@ -2,7 +2,7 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^docs"],
+      "dependsOn": ["docs"],
       "outputs": ["dist/**", "build/**"]
     },
     "lint": {
@@ -21,8 +21,9 @@
       "inputs": ["src/**/*.tsx", "src/**/*.ts"]
     },
     "docs": {
+      "dependsOn": ["^docs"],
       "inputs": ["src/**/*.tsx", "src/**/*.ts"],
-      "cache": false
+      "outputs": ["docs/**"]
     }
   }
 }

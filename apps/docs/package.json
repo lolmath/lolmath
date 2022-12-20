@@ -12,7 +12,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "docs": "vite-node copy-docs.ts"
   },
   "dependencies": {
     "@docusaurus/core": "2.2.0",
@@ -26,9 +27,12 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.2.0",
     "@docusaurus/types": "^2.2.0",
+    "@lolmath/calc": "*",
     "@structured-types/api": "^3.46.12",
     "@tsconfig/docusaurus": "^1.0.5",
-    "@lolmath/calc": "*"
+    "@types/fs-extra": "^9.0.13",
+    "fs-extra": "^11.1.0",
+    "vite-node": "^0.25.8"
   },
   "browserslist": {
     "production": [
