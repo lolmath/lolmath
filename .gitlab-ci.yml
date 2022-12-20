@@ -7,17 +7,17 @@ before_script:
   - pnpm i --frozen-lockfile
 
 comment:
-  image: node:lts-alpine
+  image: node:lts
   stage: comment
   only:
     - merge_requests
-  script: npm run changesets-gitlab comment
+  script: pnpm run changesets-gitlab comment
 
 release:
-  image: node:lts-alpine
+  image: node:lts
   stage: release
   only:
     - main
-  script: npm run changesets-gitlab
+  script: pnpm run changesets-gitlab
   variables:
-    INPUT_PUBLISH: npm run release
+    INPUT_PUBLISH: pnpm run release
