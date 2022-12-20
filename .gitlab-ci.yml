@@ -11,13 +11,13 @@ comment:
   stage: comment
   only:
     - merge_requests
-  script: pnpm run changesets-gitlab comment
+  script: npx changesets-gitlab comment
 
 release:
   image: node:lts
   stage: release
   only:
     - main
-  script: pnpm run changesets-gitlab
+  script: npx changesets-gitlab
   variables:
     INPUT_PUBLISH: pnpm run release
