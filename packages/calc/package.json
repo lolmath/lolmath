@@ -15,6 +15,10 @@
     "coverage": "vitest run --coverage",
     "docs": "vite-node ./docs.ts"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.js",
