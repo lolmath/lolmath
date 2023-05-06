@@ -1,4 +1,5 @@
 ---
+title: Projects
 sidebar_position: 3
 ---
 
