@@ -31,3 +31,7 @@ A list of public projects:
 - **riot-proxy-cfw**: A Cloudflare Worker that proxies requests to the Riot API.
 
   - [Repository](https://gitlab.com/lol-math/riot-proxy-cfw)
+
+- **bug-reports-cfw**: A Cloudflare Worker that proxies bug reports to GitLab.
+
+  - [Repository](https://gitlab.com/lol-math/bug-reports-cfw)
