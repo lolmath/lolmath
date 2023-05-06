@@ -6,12 +6,8 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "vite build",
-    "preview": "vite preview",
+    "build": "tsup",
     "test": "vitest --coverage",
     "coverage": "vitest run --coverage",
     "docs": "vite-node ./docs.ts"
@@ -22,19 +18,17 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
     }
   },
   "devDependencies": {
     "@structured-types/api": "^3.46.12",
     "@types/node": "^18.11.17",
     "@vitest/coverage-c8": "^0.25.8",
+    "tsup": "^6.7.0",
     "turbo": "^1.6.3",
-    "typescript": "^4.9.4",
-    "vite": "^4.0.1",
+    "typescript": "^5.0.4",
     "vite-node": "^0.25.8",
-    "vite-plugin-dts": "^1.7.1",
     "vitest": "^0.25.8"
   }
 }
