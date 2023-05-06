@@ -1,5 +1,11 @@
 # @lolmath/calc
 
+## 0.0.4
+
+### Patch Changes
+
+- 584a5b4: Changed from vite to tsup. Only include esm.
+
 ## 0.0.3
 
 ### Patch Changes
