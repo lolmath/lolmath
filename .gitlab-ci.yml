@@ -1,6 +1,6 @@
 stages:
   - comment
-  - release
+  - main
 
 before_script:
   - npm install -g pnpm
@@ -13,13 +13,15 @@ comment:
     - merge_requests
   script: npx changesets-gitlab comment
 
-release:
+main:
   image: node:lts
-  stage: release
-  only:
-    - main
+  stage: main
   script:
     - pnpm run build
-    - npx changesets-gitlab
+    - pnpm run test
+    - |
+      if [ "$CI_COMMIT_BRANCH" = "main" ]; then
+        npx changesets-gitlab
+      fi
   variables:
     INPUT_PUBLISH: pnpm publish -r --no-git-checks
