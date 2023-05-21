@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "tsup",
+    "dev": "tsup --watch",
     "test": "vitest --coverage",
     "coverage": "vitest run --coverage",
     "docs": "vite-node ./docs.ts"

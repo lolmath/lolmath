@@ -1,0 +1,46 @@
+{
+  "name": "@lolmath/ui",
+  "version": "1.0.1",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "public": "shx cp -r ./public/. ./dist/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "class-variance-authority": "^0.6.0",
+    "kurasu": "^3.0.0",
+    "react-aria-components": "^1.0.0-nightly.3906",
+    "tailwind-merge": "^1.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "shx": "^0.3.4",
+    "tailwindcss": "^3.3.2",
+    "tsup": "^6.7.0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./font/beaufort": {
+      "import": "./dist/font/beaufort/beaufort.css"
+    },
+    "./font/spiegel": {
+      "import": "./dist/font/spiegel/spiegel.css"
+    }
+  }
+}

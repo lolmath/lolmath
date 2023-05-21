@@ -2,26 +2,24 @@ stages:
   - comment
   - main
 
-before_script:
-  - npm install -g pnpm
-  - pnpm i --frozen-lockfile
-
 comment:
   image: node:lts
   stage: comment
   only:
     - merge_requests
-  script: npx changesets-gitlab comment
+  script: npx -y changesets-gitlab comment
 
 main:
   image: node:lts
   stage: main
   script:
+    - npm install -g pnpm
+    - pnpm i --frozen-lockfile
     - pnpm run build
     - pnpm run test
     - |
       if [ "$CI_COMMIT_BRANCH" = "main" ]; then
-        npx changesets-gitlab
+      npx changesets-gitlab
       fi
   variables:
     INPUT_PUBLISH: pnpm publish -r --no-git-checks

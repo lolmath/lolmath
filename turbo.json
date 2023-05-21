@@ -3,7 +3,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["docs"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["dist/**", "build/**", "storybook-static/**"]
     },
     "lint": {
       "outputs": []
