@@ -46,7 +46,7 @@ export function Select<T extends object>({
                 "inline-block outline-none",
                 borderClassName,
                 buttonValues.isHovered && borderHoverClassName,
-                (buttonValues.isPressed || borderPressedClassName) &&
+                (buttonValues.isPressed || values.isOpen) &&
                   borderPressedClassName,
                 buttonValues.isDisabled && borderDisabledClassName,
                 buttonValues.isFocused && "",
@@ -72,7 +72,7 @@ export function Select<T extends object>({
           {errorMessage && (
             <AriaText slot="errorMessage">{errorMessage}</AriaText>
           )}
-          <AriaPopover>
+          <AriaPopover offset={4}>
             <AriaListBox
               className={(listbox) =>
                 twMerge(
