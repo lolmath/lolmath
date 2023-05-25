@@ -1,0 +1,116 @@
+:host {
+  --slider-base-before-top: 14px;
+  --slider-btn-cursor: default;
+  --slider-btn-width: 30px;
+  --slider-btn-height: 30px;
+  --slider-btn-hover-background-position: 0 -30px;
+  --slider-btn-active-background-position: 0 -60px;
+  --slider-fill-top: 13px;
+}
+:host {
+  display: flex;
+  align-items: center;
+}
+:host .lol-uikit-slider-wrapper {
+  position: relative;
+  height: inherit;
+  width: inherit;
+}
+:host .lol-uikit-slider-wrapper .lol-uikit-slider-base {
+  height: inherit;
+  width: inherit;
+  position: absolute;
+}
+:host .lol-uikit-slider-wrapper .lol-uikit-slider-base:before {
+  content: "";
+  position: absolute;
+  top: var(--slider-base-before-top);
+  left: 0;
+  width: calc(100% - 2.5px);
+  height: 2px;
+  background: #1e2328;
+}
+:host .lol-uikit-slider-wrapper .lol-uikit-slider-fill {
+  background: linear-gradient(to left, #695625, #463714);
+  position: absolute;
+  height: 2px;
+  width: 0;
+  top: var(--slider-fill-top);
+  border: thin solid #010a13;
+}
+:host .lol-uikit-slider-wrapper .lol-uikit-slider-button {
+  cursor: var(--slider-btn-cursor);
+  width: var(--slider-btn-width);
+  height: var(--slider-btn-height);
+  background: url("/fe/lol-uikit/images/slider-btn.png") no-repeat top left;
+  background-size: 100%;
+  position: absolute;
+  top: 0px;
+}
+:host
+  .lol-uikit-slider-wrapper
+  .lol-uikit-slider-button:hover
+  + .lol-uikit-slider-fill {
+  background: linear-gradient(to right, #785a28 0%, #c89b3c 56%, #c8aa6e 100%);
+}
+:host
+  .lol-uikit-slider-wrapper
+  .lol-uikit-slider-button:active
+  + .lol-uikit-slider-fill {
+  background: linear-gradient(to right, #695625, #463714);
+}
+:host .lol-uikit-slider-wrapper .lol-uikit-slider-button:hover {
+  background-position: var(--slider-btn-hover-background-position);
+}
+:host .lol-uikit-slider-wrapper .lol-uikit-slider-button:active {
+  background-position: var(--slider-btn-active-background-position);
+}
+:host .lol-uikit-slider-wrapper.disabled .lol-uikit-slider-fill {
+  background: rgba(1, 10, 19, 0.15);
+}
+:host .lol-uikit-slider-wrapper.disabled .lol-uikit-slider-button {
+  background-position: 0 -90px;
+}
+:host
+  .lol-uikit-slider-wrapper.disabled
+  .lol-uikit-slider-button:hover
+  + .lol-uikit-slider-fill {
+  background: rgba(1, 10, 19, 0.15);
+}
+:host
+  .lol-uikit-slider-wrapper.disabled
+  .lol-uikit-slider-button:active
+  + .lol-uikit-slider-fill {
+  background: rgba(1, 10, 19, 0.15);
+}
+:host .lol-uikit-slider-wrapper.disabled .lol-uikit-slider-button:hover {
+  background-position: 0 -90px;
+}
+:host .lol-uikit-slider-wrapper.disabled .lol-uikit-slider-button:active {
+  background-position: 0 -90px;
+}
+:host .lol-uikit-slider-wrapper.vertical .lol-uikit-slider-base:before {
+  top: 0px;
+  left: 15px;
+  bottom: 15px;
+  width: 2px;
+  height: calc(100% - 2.5px);
+  background: #1e2328;
+}
+:host .lol-uikit-slider-wrapper.vertical .lol-uikit-slider-fill {
+  background: linear-gradient(to top, #695625, #463714);
+  width: 2px;
+  height: 0;
+  bottom: 0px;
+  top: auto;
+  left: 14px;
+}
+:host .lol-uikit-slider-wrapper.vertical .lol-uikit-slider-button {
+  transform: rotate(90deg);
+  left: 0px;
+  bottom: 0px;
+  top: auto;
+}
+:host(:lang(ar-ae)) {
+  direction: ltr /*rtl:ignore*/;
+}
