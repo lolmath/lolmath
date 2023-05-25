@@ -25,5 +25,6 @@ export const Primary: Story = {
 export const Disabled: Story = {
   args: {
     isDisabled: true,
+    value: 20,
   },
 };

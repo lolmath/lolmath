@@ -50,8 +50,12 @@ export function Slider({
                   <div
                     className={twMerge(
                       "absolute h-0.5 top-[50%] transform translate-y-[-50%] from-[#463714] to-[#695625] bg-gradient-to-r",
-                      "group-hover:from-[#785a28] group-hover:via-[#c89b3c] group-hover:to-[#c8aa6e]",
-                      "group-active:from-[#695625] group-active:via-[#463714] group-active:to-[#463714]",
+                      sliderValues.isDisabled
+                        ? "from-transparent via-transparent to-transparent bg-[#5C5B57]"
+                        : [
+                            "group-hover:from-[#785a28] group-hover:via-[#c89b3c] group-hover:to-[#c8aa6e]",
+                            "group-active:from-[#695625] group-active:via-[#463714] group-active:to-[#463714]",
+                          ],
                     )}
                     style={{ left: `${left}%`, width: `${width}%` }}
                   />
@@ -73,12 +77,15 @@ export function Slider({
                           className={twMerge(
                             "bg-contain h-7 w-7 top-[50%] outline-none",
                             "[background-image:var(--normal)]",
-                            sliderValues.isThumbDragging(i)
-                              ? "[background-image:var(--active)]"
-                              : "group-disabled:[background-image:var(--disabled)]",
-                            !sliderValues.isThumbDragging(0) &&
-                              !sliderValues.isThumbDragging(1) &&
-                              "group-hover:[background-image:var(--hover)]",
+                            sliderValues.isDisabled
+                              ? "[background-image:var(--disabled)]"
+                              : [
+                                  sliderValues.isThumbDragging(i) &&
+                                    "[background-image:var(--active)]",
+                                  !sliderValues.isThumbDragging(0) &&
+                                    !sliderValues.isThumbDragging(1) &&
+                                    "group-hover:[background-image:var(--hover)]",
+                                ],
                           )}
                           style={
                             {
