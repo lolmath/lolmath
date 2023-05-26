@@ -23,18 +23,20 @@ export function Slider({
   placeholder?: string;
 }) {
   return (
-    <AriaSlider {...props} className="group">
+    <AriaSlider {...props} className="">
       {(sliderValues) => (
         <>
-          <Label>{label}</Label>
-          <AriaSliderOutput>
-            {(state) =>
-              state.values
-                .map((_, i) => state.getThumbValueLabel(i))
-                .join(" – ")
-            }
-          </AriaSliderOutput>
-          <AriaSliderTrack className="relative w-full h-7">
+          <div className="flex items-center justify-between font-[spiegel] text-xs text-[#a09b8c] font-normal tracking-wide">
+            <Label className="">{label}</Label>
+            <AriaSliderOutput className="">
+              {(state) =>
+                state.values
+                  .map((_, i) => state.getThumbValueLabel(i))
+                  .join(" – ")
+              }
+            </AriaSliderOutput>
+          </div>
+          <AriaSliderTrack className="relative w-full h-7 group">
             {(state) => {
               const left =
                 state.values.length === 1 ? 0 : state.getThumbPercent(0) * 100;
@@ -59,9 +61,6 @@ export function Slider({
                     )}
                     style={{ left: `${left}%`, width: `${width}%` }}
                   />
-                  {state.values.map((_, i) => (
-                    <></>
-                  ))}
                   {state.values.map((_, i) => {
                     let zIndex =
                       state.getThumbPercent(i === 1 ? 0 : 1) ===

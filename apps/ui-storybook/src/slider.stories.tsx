@@ -9,7 +9,7 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {},
   args: {
-    label: "Slider",
+    label: "Overall Volume",
   },
 } satisfies Meta<typeof Slider>;
 
@@ -19,6 +19,12 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     defaultValue: [20, 80],
+  },
+};
+
+export const SingleSlider: Story = {
+  args: {
+    defaultValue: 50,
   },
 };
 
