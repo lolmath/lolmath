@@ -24,7 +24,7 @@ export function Switch({
         <>
           <div
             className={twMerge(
-              "rounded-full h-6 w-12 p-0.5 shrink-0 cursor-default",
+              "rounded-full h-6 w-14 p-0.5 shrink-0 cursor-default",
               borderClassName,
               values.isHovered && borderHoverClassName,
               values.isPressed && borderPressedClassName,
@@ -36,7 +36,7 @@ export function Switch({
           >
             <div
               className={twMerge(
-                "flex w-full h-full rounded-full transition-colors duration-200 ease-in-out bg-[#1e2328]",
+                "grid w-full h-full rounded-full transition-colors duration-200 ease-in-out bg-[#1e2328] relative",
                 values.isPressed && "",
                 values.isSelected && "bg-green-800",
                 values.isSelected && values.isPressed && "bg-green-900",
@@ -46,8 +46,9 @@ export function Switch({
             >
               <span
                 className={twMerge(
-                  "h-8 transform rounded-full shadow-md ring-0 transition duration-200 ease-in-out -translate-x-1.5 overflow-hidden p-0.5 -top-1.5 relative aspect-square",
-                  values.isSelected && "translate-x-[calc(100%-0.875rem)]",
+                  "h-8 w-8 rounded-full shadow-md ring-0 duration-200 ease-in-out -left-2 p-0.5 -top-1.5 absolute transition-[left]",
+                  values.isSelected &&
+                    "left-[calc(100%-1.75rem)]",
                   borderClassName,
                   values.isHovered && borderHoverClassName,
                   values.isPressed && borderPressedClassName,
