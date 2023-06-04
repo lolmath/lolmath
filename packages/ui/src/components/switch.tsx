@@ -17,26 +17,26 @@ export function Switch({
 }) {
   return (
     <AriaSwitch
-      className="group inline-flex gap-2 items-center text-black font-semibold text-sm p-1"
+      className="group inline-flex items-center gap-2 p-1 text-sm font-semibold text-black"
       {...props}
     >
       {(values) => (
         <>
           <div
             className={twMerge(
-              "rounded-full h-6 w-14 p-0.5 shrink-0 cursor-default",
+              "h-6 w-14 shrink-0 cursor-default rounded-full p-0.5",
               borderClassName,
               values.isHovered && borderHoverClassName,
               values.isPressed && borderPressedClassName,
               values.isDisabled && borderDisabledClassName,
               values.isFocused && "",
               values.isFocusVisible &&
-                "outline outline-yellow-50 outline-offset-2 outline-1",
+                "outline outline-1 outline-offset-2 outline-yellow-50",
             )}
           >
             <div
               className={twMerge(
-                "grid w-full h-full rounded-full transition-colors duration-200 ease-in-out bg-[#1e2328] relative",
+                "relative grid h-full w-full rounded-full bg-[#1e2328] transition-colors duration-200 ease-in-out",
                 values.isPressed && "",
                 values.isSelected && "bg-green-800",
                 values.isSelected && values.isPressed && "bg-green-900",
@@ -46,16 +46,15 @@ export function Switch({
             >
               <span
                 className={twMerge(
-                  "h-8 w-8 rounded-full shadow-md ring-0 duration-200 ease-in-out -left-2 p-0.5 -top-1.5 absolute transition-[left]",
-                  values.isSelected &&
-                    "left-[calc(100%-1.75rem)]",
+                  "absolute -left-2 -top-1.5 h-8 w-8 rounded-full p-0.5 shadow-md ring-0 transition-[left] duration-200 ease-in-out",
+                  values.isSelected && "left-[calc(100%-1.75rem)]",
                   borderClassName,
                   values.isHovered && borderHoverClassName,
                   values.isPressed && borderPressedClassName,
                   values.isDisabled && borderDisabledClassName,
                 )}
               >
-                <span className="bg-[#1e2328] block w-full h-full rounded-full"></span>
+                <span className="block h-full w-full rounded-full bg-[#1e2328]"></span>
               </span>
             </div>
           </div>
