@@ -24,20 +24,18 @@ export function Slider({
 }) {
   return (
     <AriaSlider {...props} className="">
-      {(sliderValues) => (
+      {({ state }) => (
         <>
           <div className="flex items-center justify-between font-[spiegel] text-xs text-[#a09b8c] font-normal tracking-wide">
             <Label className="">{label}</Label>
             <AriaSliderOutput className="">
-              {(state) =>
-                state.values
-                  .map((_, i) => state.getThumbValueLabel(i))
-                  .join(" – ")
-              }
+              {state.values
+                .map((_, i) => state.getThumbValueLabel(i))
+                .join(" – ")}
             </AriaSliderOutput>
           </div>
           <AriaSliderTrack className="relative w-full h-7 group">
-            {(state) => {
+            {({ state }) => {
               const left =
                 state.values.length === 1 ? 0 : state.getThumbPercent(0) * 100;
 
@@ -52,7 +50,7 @@ export function Slider({
                   <div
                     className={twMerge(
                       "absolute h-0.5 top-[50%] transform translate-y-[-50%] from-[#463714] to-[#695625] bg-gradient-to-r",
-                      sliderValues.isDisabled
+                      state.isDisabled
                         ? "from-transparent via-transparent to-transparent bg-[#5C5B57]"
                         : [
                             "group-hover:from-[#785a28] group-hover:via-[#c89b3c] group-hover:to-[#c8aa6e]",
@@ -76,13 +74,13 @@ export function Slider({
                           className={twMerge(
                             "bg-contain h-7 w-7 top-[50%] outline-none",
                             "[background-image:var(--normal)]",
-                            sliderValues.isDisabled
+                            state.isDisabled
                               ? "[background-image:var(--disabled)]"
                               : [
-                                  sliderValues.isThumbDragging(i) &&
+                                  state.isThumbDragging(i) &&
                                     "[background-image:var(--active)]",
-                                  !sliderValues.isThumbDragging(0) &&
-                                    !sliderValues.isThumbDragging(1) &&
+                                  !state.isThumbDragging(0) &&
+                                    !state.isThumbDragging(1) &&
                                     "group-hover:[background-image:var(--hover)]",
                                 ],
                           )}

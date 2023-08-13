@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactNode } from "react";
 import type {
   ItemProps as AriaItemProps,
   SelectProps as AriaSelectProps,
@@ -27,7 +28,7 @@ interface SelectProps<T extends object>
   label?: string;
   description?: string;
   errorMessage?: string;
-  children?: React.ReactNode | ((item: T) => React.ReactElement);
+  children?: ReactNode | ((item: T) => ReactNode);
 }
 
 export function Select<T extends object>({
@@ -81,7 +82,7 @@ export function Select<T extends object>({
                 )
               }
             >
-              {children}
+              {children as any}
             </AriaListBox>
           </AriaPopover>
         </>

@@ -26,7 +26,7 @@ export function SearchField({
       }
       {...props}
     >
-      {(values) => (
+      {({ state }) => (
         <div
           className={twMerge(
             "m-px bg-[#000000] flex flex-row focus-within:from-[#071019] focus-within:to-[#20272c] focus-within:bg-gradient-to-b",
@@ -45,7 +45,7 @@ export function SearchField({
             }}
             placeholder={placeholder}
           />
-          {values.value.length > 0 && (
+          {state.value.length > 0 && (
             <AriaButton
               className={(buttonValues) =>
                 twMerge(
