@@ -6,26 +6,25 @@
   "main": "index.js",
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "public": "shx cp -r ./public/. ./dist/"
+    "dev": "tsup --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "class-variance-authority": "^0.6.0",
-    "kurasu": "^3.0.0",
-    "react-aria-components": "^1.0.0-nightly.3906",
-    "tailwind-merge": "^1.12.0"
+    "class-variance-authority": "^0.7.0",
+    "kurasu": "^3.0.2",
+    "react-aria-components": "1.0.0-alpha.6",
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "shx": "^0.3.4",
-    "tailwindcss": "^3.3.2",
-    "tsup": "^6.7.0"
+    "tailwindcss": "^3.3.3",
+    "tsup": "^7.2.0"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -34,13 +33,21 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs"
     },
     "./font/beaufort": {
-      "import": "./dist/font/beaufort/beaufort.css"
+      "import": "./dist/font/beaufort/beaufort.css",
+      "require": "./dist/font/beaufort/beaufort.css"
     },
     "./font/spiegel": {
-      "import": "./dist/font/spiegel/spiegel.css"
+      "import": "./dist/font/spiegel/spiegel.css",
+      "require": "./dist/font/spiegel/spiegel.css"
+    },
+    "./plugin": {
+      "import": "./dist/plugin.js",
+      "types": "./dist/plugin.d.ts",
+      "require": "./dist/plugin.cjs"
     }
   }
 }

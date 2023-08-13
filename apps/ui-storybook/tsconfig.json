@@ -17,7 +17,12 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@lolmath/ui": ["../../packages/ui/src/index"],
+      "@lolmath/ui/font": ["../../packages/ui/public/*"]
+    },
+    "baseUrl": "."
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
