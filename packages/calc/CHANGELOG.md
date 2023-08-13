@@ -1,5 +1,11 @@
 # @lolmath/calc
 
+## 0.0.6
+
+### Patch Changes
+
+- 8cf8309: Adjust package json publish config
+
 ## 0.0.5
 
 ### Patch Changes
