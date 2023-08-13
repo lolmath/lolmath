@@ -1,21 +1,27 @@
 {
   "name": "@lolmath/ui",
   "version": "1.0.1",
-  "description": "",
+  "private": false,
+  "description": "lolmath.net UI",
   "type": "module",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "lolmath.net",
   "license": "ISC",
   "dependencies": {
     "class-variance-authority": "^0.7.0",
     "kurasu": "^3.0.2",
     "react-aria-components": "1.0.0-alpha.6",
     "tailwind-merge": "^1.14.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@types/react": "^18.2.20",
