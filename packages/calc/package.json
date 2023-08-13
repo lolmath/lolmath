@@ -3,6 +3,8 @@
   "version": "0.0.5",
   "private": false,
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "files": [
     "dist"
   ],
@@ -11,7 +13,8 @@
     "dev": "tsup --watch",
     "test": "vitest --coverage",
     "coverage": "vitest run --coverage",
-    "docs": "vite-node ./docs.ts"
+    "docs": "vite-node ./docs.ts",
+    "lint": "publint"
   },
   "publishConfig": {
     "access": "public",
@@ -19,8 +22,9 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     }
   },
   "devDependencies": {
@@ -33,5 +37,8 @@
     "typescript": "^5.1.6",
     "vite-node": "^0.34.1",
     "vitest": "^0.34.1"
+  },
+  "dependencies": {
+    "publint": "^0.2.0"
   }
 }

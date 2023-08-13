@@ -6,9 +6,13 @@
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "lint": "publint"
   },
   "keywords": [],
   "author": "lolmath.net",
@@ -26,6 +30,7 @@
   "devDependencies": {
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "publint": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "shx": "^0.3.4",
@@ -39,8 +44,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
       "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
     "./font/beaufort": {
@@ -52,8 +57,8 @@
       "require": "./dist/font/spiegel/spiegel.css"
     },
     "./plugin": {
-      "import": "./dist/plugin.js",
       "types": "./dist/plugin.d.ts",
+      "import": "./dist/plugin.js",
       "require": "./dist/plugin.cjs"
     }
   }

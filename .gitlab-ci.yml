@@ -16,6 +16,7 @@ main:
     - npm install -g pnpm
     - pnpm i --frozen-lockfile
     - pnpm run build
+    - pnpm run lint
     - pnpm run test
     - |
       if [ "$CI_COMMIT_BRANCH" = "main" ]; then
