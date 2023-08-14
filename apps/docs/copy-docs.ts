@@ -1,15 +1,20 @@
 import fs from "fs-extra";
+import path from "path";
+import resolvePackagePath from "resolve-package-path";
 
 const directories = [
   {
     name: "calc",
-    path: "@lolmath/calc/docs",
+    docsFolder: "./docs",
+    packageName: "@lolmath/calc",
   },
 ];
 
-directories.forEach(({ name, path }) => {
-  const dest = `./docs/${name}`;
-  const src = `./node_modules/${path}`;
+directories.forEach(({ name, packageName, docsFolder }) => {
+  const dest = `./pages/${name}`;
+  const packagePath = path.dirname(resolvePackagePath(packageName, "."));
+
+  const src = path.join(packagePath, docsFolder);
 
   // copy the directory from the src to the dest
   fs.copySync(src, dest);

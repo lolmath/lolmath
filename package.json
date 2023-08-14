@@ -1,5 +1,5 @@
 {
-  "name": "calc",
+  "name": "@lolmath/monorepo",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -7,11 +7,12 @@
     "packages/*"
   ],
   "scripts": {
+    "docs": "turbo run docs",
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
+    "deploy": "turbo run deploy",
     "dev": "turbo run dev",
-    "docs": "turbo run docs",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish-packages": "turbo run build lint test && changeset version && changeset publish",
     "changeset": "changeset"

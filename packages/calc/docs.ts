@@ -158,8 +158,13 @@ function combineItems(items: PropType[]) {
   return items.map(itemToMd).join("\n\n---\n");
 }
 
+function slugify(category: string) {
+  return category.toLowerCase().replace(/ /g, "-");
+}
+
 const mdPerCategory = itemsPerCategory.map(({ category, items }) => ({
   category: category,
+  slug: slugify(category),
   md: combineItems(items, category),
 }));
 
@@ -171,8 +176,8 @@ if (fs.existsSync(dest)) {
 // Create the new /docs/calc folder, recursively
 fs.mkdirSync(dest, { recursive: true });
 
-mdPerCategory.forEach(({ category, md }) => {
-  fs.writeFileSync(`${dest}/${category}.md`, md);
+mdPerCategory.forEach(({ slug, md }) => {
+  fs.writeFileSync(`${dest}/${slug}.md`, md);
 });
 
 // Copy the README.md, and add a sidebar position

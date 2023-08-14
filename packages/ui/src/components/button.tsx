@@ -18,7 +18,7 @@ interface ButtonProps extends AriaButtonProps {
 }
 
 function _Button(
-  { children, className, priority, ...props }: ButtonProps,
+  { children, className, priority = "secondary", ...props }: ButtonProps,
   ref: Ref<HTMLButtonElement>,
 ) {
   return (
