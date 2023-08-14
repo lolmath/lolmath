@@ -58,6 +58,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.15
         version: 10.4.15(postcss@8.4.27)
+      fs-extra:
+        specifier: ^11.1.1
+        version: 11.1.1
       postcss:
         specifier: ^8.4.27
         version: 8.4.27
