@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 We use [Git](https://git-scm.com/) as version control system. Installation
 instructions can be found on the [Git website](https://git-scm.com/downloads).
 

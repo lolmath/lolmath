@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 We use [Node.js](https://nodejs.org/en/) as runtime environment. In principle,
 it should be possible to use any version of Node.js >= 16. However, we recommend
 using the latest LTS version.

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "docs": "vite-node copy-docs.ts",
     "deploy": "wrangler pages deploy ./out --project-name lolmath-docs --branch $CI_COMMIT_REF_NAME"
   },

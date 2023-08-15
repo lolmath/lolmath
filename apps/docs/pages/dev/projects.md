@@ -1,6 +1,5 @@
 ---
 title: Projects
-sidebar_position: 3
 ---
 
 A list of public projects:

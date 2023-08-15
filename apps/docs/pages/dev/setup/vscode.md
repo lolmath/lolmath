@@ -1,6 +1,5 @@
 ---
 title: VS Code
-sidebar_position: 4
 ---
 
 The recommended IDE for developing lolmath is [Visual Studio

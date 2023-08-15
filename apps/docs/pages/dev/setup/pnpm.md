@@ -1,7 +1,3 @@
----
-sidebar_position: 3
----
-
 We use [pnpm](https://pnpm.io/) as package manager.
 
 It can be installed via `npm`:

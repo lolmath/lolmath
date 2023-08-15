@@ -1,8 +1,10 @@
 {
   "calc": {
+    "title": "Calc",
     "type": "page"
   },
   "dev": {
+    "title": "Dev",
     "type": "page"
   },
   "index": {
