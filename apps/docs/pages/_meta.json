@@ -2,6 +2,9 @@
   "calc": {
     "type": "page"
   },
+  "dev": {
+    "type": "page"
+  },
   "index": {
     "display": "hidden",
     "theme": {
