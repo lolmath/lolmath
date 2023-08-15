@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "docs": "vite-node copy-docs.ts",
-    "deploy": "wrangler pages deploy ./out --project-name lolmath-docs"
+    "deploy": "wrangler pages deploy ./out --project-name lolmath-docs --branch $CI_COMMIT_REF_NAME"
   },
   "dependencies": {
     "@lolmath/ui": "workspace:*",
