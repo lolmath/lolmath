@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 1.1.1
+
+### Patch Changes
+
+- 1e3e06f: make inputProps optional for both search field and text field
+
 ## 1.1.0
 
 ### Minor Changes
