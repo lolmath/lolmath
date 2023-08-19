@@ -4,7 +4,7 @@ import { ProgressBar } from "@lolmath/ui";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Example/ProgressBar",
+  title: "ProgressBar",
   component: ProgressBar,
   tags: ["autodocs"],
   argTypes: {},

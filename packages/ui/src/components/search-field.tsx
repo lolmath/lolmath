@@ -9,10 +9,10 @@ import { borderClassName } from "../utilities/border";
 import { ComponentProps } from "react";
 
 export function SearchField({
-  inputProps,
+  inputProps = {},
   ...props
 }: AriaSearchFieldProps & {
-  inputProps: ComponentProps<typeof AriaInput>;
+  inputProps?: ComponentProps<typeof AriaInput>;
 }) {
   return (
     <AriaSearchField

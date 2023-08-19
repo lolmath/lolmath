@@ -8,10 +8,10 @@ import { borderClassName } from "../utilities/border";
 import { ComponentProps } from "react";
 
 export function TextField({
-  inputProps,
+  inputProps = {},
   ...props
 }: AriaTextFieldProps & {
-  inputProps: ComponentProps<typeof AriaInput>;
+  inputProps?: ComponentProps<typeof AriaInput>;
 }) {
   return (
     <AriaTextField
