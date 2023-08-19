@@ -2,7 +2,6 @@ import type { TextFieldProps as AriaTextFieldProps } from "react-aria-components
 import {
   TextField as AriaTextField,
   Input as AriaInput,
-  Button as AriaButton,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { borderClassName } from "../utilities/border";
