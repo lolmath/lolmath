@@ -26,7 +26,7 @@ export function Slider({
     <AriaSlider {...props} className="">
       {({ state }) => (
         <>
-          <div className="flex items-center justify-between font-[spiegel] text-xs text-[#a09b8c] font-normal tracking-wide">
+          <div className="flex items-center justify-between font-spiegel text-xs text-[#a09b8c] font-normal tracking-wide">
             <Label className="">{label}</Label>
             <AriaSliderOutput className="">
               {state.values

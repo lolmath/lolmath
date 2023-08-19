@@ -6,24 +6,31 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { borderClassName } from "../utilities/border";
+import { ComponentProps } from "react";
 
 export function SearchField({
-  className,
-  placeholder,
+  inputProps,
   ...props
 }: AriaSearchFieldProps & {
-  placeholder?: string;
+  inputProps: ComponentProps<typeof AriaInput>;
 }) {
   return (
     <AriaSearchField
-      className={() =>
-        twMerge(
+      className={(values) => {
+        const finalClassName =
+          typeof props.className === "function"
+            ? props.className(values)
+            : props.className;
+
+        return twMerge(
           "flex flex-col outline-none [webkit-search-cancel-button]:hidden",
           borderClassName,
-          "focus-within:from-[#c89c3c] focus-within:via-[#dcc188] focus-within:to-[#f0e6d8]",
-          props.isDisabled && "from-[#3c3c41] via-[#3c3c41] to-[#3c3c41]",
-        )
-      }
+          "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
+          props.isDisabled &&
+            "from-lol-gray-700 via-lol-gray-700 to-lol-gray-700",
+          finalClassName,
+        );
+      }}
       {...props}
     >
       {({ state }) => (
@@ -34,7 +41,18 @@ export function SearchField({
           )}
         >
           <AriaInput
-            className="bg-transparent grow py-2 pl-6 text-[#f0e6d2] text-xs outline-none font-[spiegel] tracking-wide"
+            {...inputProps}
+            className={(values) => {
+              const finalClassName =
+                typeof inputProps.className === "function"
+                  ? inputProps.className(values)
+                  : inputProps.className;
+
+              return twMerge(
+                "bg-transparent grow py-2 px-3 text-lol-gold-50 text-xs outline-none font-spiegel tracking-wide",
+                finalClassName,
+              );
+            }}
             type="text"
             style={{
               backgroundImage:
@@ -43,7 +61,6 @@ export function SearchField({
               backgroundPosition: "5px center",
               backgroundSize: "16px",
             }}
-            placeholder={placeholder}
           />
           {state.value.length > 0 && (
             <AriaButton

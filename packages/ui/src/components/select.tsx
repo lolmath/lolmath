@@ -38,7 +38,7 @@ export function Select<T extends object>({
   ...props
 }: SelectProps<T>) {
   return (
-    <AriaSelect {...props} className="font-[spiegel]">
+    <AriaSelect {...props} className="font-spiegel">
       {(values) => (
         <>
           <AriaButton
@@ -100,7 +100,7 @@ export function Item({ className, ...props }: AriaItemProps) {
           typeof className === "function" ? className(values) : className;
 
         return twMerge(
-          "px-2 py-0.5 border-b border-[#1f2123] text-[#cdbe91] text-sm font-[spiegel] font-bold outline-none",
+          "px-2 py-0.5 border-b border-[#1f2123] text-[#cdbe91] text-sm font-spiegel font-bold outline-none",
           values.isHovered && "bg-[#1e2328] text-[#f0e6d2]",
           values.isPressed && "bg-[#1e232880] text-[#463714]",
           values.isFocusVisible && outlineClassName,

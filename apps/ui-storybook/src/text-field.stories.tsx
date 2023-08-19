@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SearchField } from "@lolmath/ui";
+import { TextField } from "@lolmath/ui";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Example/SearchField",
-  component: SearchField,
+  title: "Example/TextField",
+  component: TextField,
   tags: ["autodocs"],
   argTypes: {},
   args: {
     inputProps: {
-      placeholder: "Search",
+      placeholder: "The quick brown fox jumps over the lazy dog.",
     },
   },
-} satisfies Meta<typeof SearchField>;
+} satisfies Meta<typeof TextField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
