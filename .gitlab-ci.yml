@@ -25,4 +25,4 @@ main:
     - pnpm run deploy
   variables:
     INPUT_PUBLISH: pnpm publish -r --no-git-checks
-    REMOVE_SOURCE_BRANCH: true
+    REMOVE_SOURCE_BRANCH: "true"
