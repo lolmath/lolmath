@@ -1,12 +1,13 @@
-import type { SearchFieldProps as AriaSearchFieldProps } from "react-aria-components";
 import {
   SearchField as AriaSearchField,
   Input as AriaInput,
   Button as AriaButton,
+  type SearchFieldProps as AriaSearchFieldProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { borderClassName } from "../utilities/border";
 import { ComponentProps } from "react";
+import { resolveClassname } from "../utilities/resolve-classname";
 
 export function SearchField({
   inputProps = {},
@@ -43,10 +44,7 @@ export function SearchField({
           <AriaInput
             {...inputProps}
             className={(values) => {
-              const finalClassName =
-                typeof inputProps.className === "function"
-                  ? inputProps.className(values)
-                  : inputProps.className;
+              const finalClassName = resolveClassname(inputProps, values);
 
               return twMerge(
                 "bg-transparent grow py-2 px-3 text-lol-gold-50 text-xs outline-none font-spiegel tracking-wide",

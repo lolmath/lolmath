@@ -13,6 +13,7 @@
     "lint": "turbo run lint",
     "deploy": "turbo run deploy",
     "dev": "turbo run dev",
+    "dev:ui:storybook": "turbo run dev --filter ui-storybook",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish-packages": "turbo run build lint test && changeset version && changeset publish",
     "changeset": "changeset"
