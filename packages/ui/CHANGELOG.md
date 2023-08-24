@@ -1,5 +1,16 @@
 # @lolmath/ui
 
+## 1.2.0
+
+### Minor Changes
+
+- 215447d: Add Radio Group
+- 215447d: Add Label
+
+### Patch Changes
+
+- 215447d: Add utility to merge classes from userland
+
 ## 1.1.1
 
 ### Patch Changes
