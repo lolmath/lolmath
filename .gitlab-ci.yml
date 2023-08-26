@@ -24,5 +24,5 @@ main:
       fi
     - pnpm run deploy
   variables:
-    INPUT_PUBLISH: pnpm publish -r --no-git-checks
+    INPUT_PUBLISH: pnpm run changeset publish
     INPUT_REMOVE_SOURCE_BRANCH: "true"
