@@ -2,6 +2,7 @@ import {
   SliderProps as AriaSliderProps,
   SliderThumbProps,
   SliderTrackProps,
+  SliderTrackRenderProps,
 } from "react-aria-components";
 import {
   Slider as AriaSlider,
@@ -23,16 +24,24 @@ export function Slider({
   children,
   sliderThumbProps = {},
   sliderTrackProps = {},
+  sliderTrackBackgroundClassName,
+  sliderTrackForegroundClassName,
   ...props
 }: AriaSliderProps & {
   sliderTrackProps?: SliderTrackProps;
   sliderThumbProps?: SliderThumbProps;
+  sliderTrackBackgroundClassName?:
+    | string
+    | ((values: SliderTrackRenderProps) => string);
+  sliderTrackForegroundClassName?:
+    | string
+    | ((values: SliderTrackRenderProps) => string);
 }) {
   return (
     <AriaSlider
       {...props}
       className={(values) => {
-        const resolvedClassName = resolveClassname(props, values);
+        const resolvedClassName = resolveClassname(props.className, values);
         return twMerge("", resolvedClassName);
       }}
     >
@@ -43,39 +52,49 @@ export function Slider({
             {...sliderTrackProps}
             className={(sliderTrackRenderProps) => {
               const resolvedClassName = resolveClassname(
-                sliderTrackProps,
+                sliderTrackProps.className,
                 sliderTrackRenderProps,
               );
               return twMerge("relative w-full h-7 group", resolvedClassName);
             }}
           >
-            {({ state }) => {
+            {(values) => {
               const left =
-                state.values.length === 1 ? 0 : state.getThumbPercent(0) * 100;
+                values.state.values.length === 1
+                  ? 0
+                  : values.state.getThumbPercent(0) * 100;
 
               const width =
-                state.values.length === 1
-                  ? state.getThumbPercent(0) * 100
-                  : (state.getThumbPercent(1) - state.getThumbPercent(0)) * 100;
+                values.state.values.length === 1
+                  ? values.state.getThumbPercent(0) * 100
+                  : (values.state.getThumbPercent(1) -
+                      values.state.getThumbPercent(0)) *
+                    100;
 
               return (
                 <>
-                  <div className="absolute h-0.5 top-[50%] transform translate-y-[-50%] w-full rounded-full bg-lol-gray-950" />
+                  <div
+                    className={twMerge(
+                      "absolute h-0.5 top-[50%] transform translate-y-[-50%] w-full rounded-full bg-lol-gray-950",
+                      resolveClassname(sliderTrackBackgroundClassName, values),
+                    )}
+                  />
                   <div
                     className={twMerge(
                       "absolute h-0.5 top-[50%] transform translate-y-[-50%] from-[#463714] to-[#695625] bg-gradient-to-r",
-                      state.isDisabled
+                      values.state.isDisabled
                         ? "from-transparent via-transparent to-transparent bg-[#5C5B57]"
                         : [
                             "group-hover:from-[#785a28] group-hover:via-[#c89b3c] group-hover:to-[#c8aa6e]",
                             "group-active:from-[#695625] group-active:via-[#463714] group-active:to-[#463714]",
                           ],
+                      resolveClassname(sliderTrackForegroundClassName, values),
                     )}
                     style={{ left: `${left}%`, width: `${width}%` }}
                   />
-                  {state.values.map((_, i) => {
+                  {values.state.values.map((_, i) => {
                     let zIndex =
-                      state.getThumbPercent(i === 1 ? 0 : 1) ===
+                      values.state.getThumbPercent(i === 1 ? 0 : 1) ===
                       (i === 1 ? 0 : 1)
                         ? 2
                         : undefined;
@@ -88,19 +107,24 @@ export function Slider({
                           {...sliderThumbProps}
                           className={(sliderThumbRenderProps) => {
                             const resolvedClassName = resolveClassname(
-                              sliderThumbProps,
+                              sliderThumbProps.className,
                               sliderThumbRenderProps,
                             );
                             return twMerge(
                               "bg-contain h-7 w-7 top-[50%] outline-none",
                               "[background-image:var(--normal)]",
-                              state.isDisabled
+                              sliderThumbRenderProps.isDisabled
                                 ? "[background-image:var(--disabled)]"
                                 : [
-                                    state.isThumbDragging(i) &&
-                                      "[background-image:var(--active)]",
-                                    !state.isThumbDragging(0) &&
-                                      !state.isThumbDragging(1) &&
+                                    sliderThumbRenderProps.state.isThumbDragging(
+                                      i,
+                                    ) && "[background-image:var(--active)]",
+                                    !sliderThumbRenderProps.state.isThumbDragging(
+                                      0,
+                                    ) &&
+                                      !sliderThumbRenderProps.state.isThumbDragging(
+                                        1,
+                                      ) &&
                                       "group-hover:[background-image:var(--hover)]",
                                   ],
                               resolvedClassName,

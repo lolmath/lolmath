@@ -12,7 +12,7 @@ export function RadioGroup({ ...props }: AriaRadiogroupProps) {
     <AriaRadioGroup
       {...props}
       className={(values) => {
-        const finalClassName = resolveClassname(props, values);
+        const finalClassName = resolveClassname(props.className, values);
         return twMerge("flex flex-col items-start", finalClassName);
       }}
     />
@@ -24,7 +24,7 @@ export function Radio({ ...props }: AriaRadioProps) {
     <AriaRadio
       {...props}
       className={(values) => {
-        const finalClassName = resolveClassname(props, values);
+        const finalClassName = resolveClassname(props.className, values);
         return twMerge(
           "text-lol-gold-300 font-spiegel text-xs font-normal py-2 bg-no-repeat bg-[length:18px] bg-left pl-6 pr-4",
           values.isDisabled

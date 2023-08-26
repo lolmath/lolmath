@@ -18,7 +18,7 @@ export function SearchField({
   return (
     <AriaSearchField
       className={(values) => {
-        const finalClassName = resolveClassname(props, values);
+        const finalClassName = resolveClassname(props.className, values);
 
         return twMerge(
           "flex flex-col outline-none",
@@ -41,7 +41,10 @@ export function SearchField({
           <AriaInput
             {...inputProps}
             className={(values) => {
-              const finalClassName = resolveClassname(inputProps, values);
+              const finalClassName = resolveClassname(
+                inputProps.className,
+                values,
+              );
 
               return twMerge(
                 "bg-transparent grow py-2 px-3 text-lol-gold-50 text-xs outline-none font-spiegel tracking-wide pl-6",

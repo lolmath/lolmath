@@ -23,7 +23,7 @@ export function NumberField({
       <Group
         {...groupProps}
         className={(values) => {
-          const finalClassName = resolveClassname(groupProps, values);
+          const finalClassName = resolveClassname(groupProps.className, values);
           return twMerge(
             "grid grid-cols-[auto_1fr_auto] outline-none gap-px p-px",
             borderClassName,
@@ -40,7 +40,10 @@ export function NumberField({
         <AriaInput
           {...inputProps}
           className={(values) => {
-            const finalClassName = resolveClassname(inputProps, values);
+            const finalClassName = resolveClassname(
+              inputProps.className,
+              values,
+            );
 
             return twMerge(
               "bg-black w-full py-2 px-3 text-lol-gold-50 text-xs outline-none font-spiegel",

@@ -1,7 +1,6 @@
-export function resolveClassname<
-  T extends { className?: ((values: any) => string) | string | undefined },
->(props: T, values: any) {
-  return typeof props.className === "function"
-    ? props.className(values)
-    : props.className;
+export function resolveClassname(
+  className: ((values: any) => string) | string | undefined,
+  values: any,
+) {
+  return typeof className === "function" ? className(values) : className;
 }
