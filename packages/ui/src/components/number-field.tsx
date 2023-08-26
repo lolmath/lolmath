@@ -16,7 +16,7 @@ export function NumberField({
   ...props
 }: AriaNumberFieldProps & {
   inputProps?: ComponentProps<typeof AriaInput>;
-  groupProps: ComponentProps<typeof Group>;
+  groupProps?: ComponentProps<typeof Group>;
 }) {
   return (
     <AriaNumberField {...props}>
