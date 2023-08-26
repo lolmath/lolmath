@@ -57,7 +57,7 @@ export function Select<T extends object>({
           >
             <span
               className={twMerge(
-                "block m-px bg-[#1e2328] px-2 py-1 text-[#a09b8c] text-xs font-normal tracking-wide pr-6 bg-no-repeat",
+                "block m-px bg-lol-gray-950 px-2 py-1 text-[#a09b8c] text-xs font-normal tracking-wide pr-6 bg-no-repeat",
               )}
               style={{
                 backgroundPosition: "right 0.5rem center",
@@ -101,7 +101,7 @@ export function Item({ className, ...props }: AriaItemProps) {
 
         return twMerge(
           "px-2 py-0.5 border-b border-[#1f2123] text-[#cdbe91] text-sm font-spiegel font-bold outline-none",
-          values.isHovered && "bg-[#1e2328] text-[#f0e6d2]",
+          values.isHovered && "bg-lol-gray-950 text-lol-gold-100",
           values.isPressed && "bg-[#1e232880] text-[#463714]",
           values.isFocusVisible && outlineClassName,
           values.isFocused && "",

@@ -36,7 +36,7 @@ export function Switch({
           >
             <div
               className={twMerge(
-                "relative grid h-full w-full rounded-full bg-[#1e2328] transition-colors duration-200 ease-in-out",
+                "relative grid h-full w-full rounded-full bg-lol-gray-950 transition-colors duration-200 ease-in-out",
                 values.isPressed && "",
                 values.isSelected && "bg-green-800",
                 values.isSelected && values.isPressed && "bg-green-900",
@@ -54,7 +54,7 @@ export function Switch({
                   values.isDisabled && borderDisabledClassName,
                 )}
               >
-                <span className="block h-full w-full rounded-full bg-[#1e2328]"></span>
+                <span className="block h-full w-full rounded-full bg-lol-gray-950"></span>
               </span>
             </div>
           </div>

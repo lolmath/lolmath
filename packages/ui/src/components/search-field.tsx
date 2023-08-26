@@ -18,13 +18,10 @@ export function SearchField({
   return (
     <AriaSearchField
       className={(values) => {
-        const finalClassName =
-          typeof props.className === "function"
-            ? props.className(values)
-            : props.className;
+        const finalClassName = resolveClassname(props, values);
 
         return twMerge(
-          "flex flex-col outline-none [webkit-search-cancel-button]:hidden",
+          "flex flex-col outline-none",
           borderClassName,
           "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
           props.isDisabled &&
@@ -34,11 +31,11 @@ export function SearchField({
       }}
       {...props}
     >
-      {({ state }) => (
+      {({ state, isDisabled }) => (
         <div
           className={twMerge(
-            "m-px bg-[#000000] flex flex-row focus-within:from-[#071019] focus-within:to-[#20272c] focus-within:bg-gradient-to-b",
-            props.isDisabled && "text-[#5c5b57] bg-[#1e2328]",
+            "m-px bg-black flex flex-row focus-within:from-lol-gray-950 focus-within:to-lol-gray-900 focus-within:bg-gradient-to-b",
+            props.isDisabled && "bg-lol-gray-950",
           )}
         >
           <AriaInput
@@ -47,7 +44,8 @@ export function SearchField({
               const finalClassName = resolveClassname(inputProps, values);
 
               return twMerge(
-                "bg-transparent grow py-2 px-3 text-lol-gold-50 text-xs outline-none font-spiegel tracking-wide",
+                "bg-transparent grow py-2 px-3 text-lol-gold-50 text-xs outline-none font-spiegel tracking-wide pl-6",
+                props.isDisabled && "text-lol-gray-500",
                 finalClassName,
               );
             }}
@@ -60,12 +58,12 @@ export function SearchField({
               backgroundSize: "16px",
             }}
           />
-          {state.value.length > 0 && (
+          {state.value.length > 0 && !isDisabled && (
             <AriaButton
               className={(buttonValues) =>
                 twMerge(
                   "font-black text-[#cdbe91] text-xs px-4",
-                  buttonValues.isHovered && "text-[#f0e6d2]",
+                  buttonValues.isHovered && "text-lol-gold-100",
                   buttonValues.isPressed && "text-[#463714]",
                 )
               }

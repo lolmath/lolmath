@@ -51,17 +51,17 @@ function _Button(
         return (
           <span
             className={twMerge(
-              "block m-0.5 px-4 py-2 bg-[#1e2328] transition-colors duration-200",
+              "block m-0.5 px-4 py-2 bg-lol-gray-950 transition-colors duration-200",
               priority === "primary" && "bg-gradient-to-b",
               "text-[#cdbe91] tracking-wide",
-              values.isHovered && "text-[#f0e6d2]",
-              values.isPressed && "text-[#5c5b57]",
-              values.isDisabled && "text-[#5c5b57]",
+              values.isHovered && "text-lol-gold-100",
+              values.isPressed && "text-lol-gray-500",
+              values.isDisabled && "text-lol-gray-500",
               values.isFocused && "",
               values.isFocusVisible && "",
 
               priority === "primary" &&
-                "from-[#5a401f] via-[#47341B] to-[#332717]",
+                "from-lol-gold-700 via-lol-gold-800 to-lol-gold-900",
               priority === "primary" &&
                 values.isHovered &&
                 "from-[#604522] via-[#846745] to-[#725634]",

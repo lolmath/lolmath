@@ -14,14 +14,7 @@ import {
   sliderNormal,
 } from "../utilities/constants";
 
-export function Slider({
-  className,
-  placeholder,
-  label,
-  ...props
-}: AriaSliderProps & {
-  placeholder?: string;
-}) {
+export function Slider({ className, label, ...props }: AriaSliderProps & {}) {
   return (
     <AriaSlider {...props} className="">
       {({ state }) => (
@@ -46,7 +39,7 @@ export function Slider({
 
               return (
                 <>
-                  <div className="absolute h-0.5 top-[50%] transform translate-y-[-50%] w-full rounded-full bg-[#1e2328]" />
+                  <div className="absolute h-0.5 top-[50%] transform translate-y-[-50%] w-full rounded-full bg-lol-gray-950" />
                   <div
                     className={twMerge(
                       "absolute h-0.5 top-[50%] transform translate-y-[-50%] from-[#463714] to-[#695625] bg-gradient-to-r",

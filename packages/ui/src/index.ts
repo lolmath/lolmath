@@ -8,3 +8,4 @@ export * from "./components/accordion";
 export * from "./components/text-field";
 export * from "./components/radio-group";
 export * from "./components/label";
+export * from "./components/number-field";

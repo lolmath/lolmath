@@ -9,6 +9,7 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {},
   args: {
+    defaultValue: "The quick brown fox jumps over the lazy dog.",
     inputProps: {
       placeholder: "The quick brown fox jumps over the lazy dog.",
     },
