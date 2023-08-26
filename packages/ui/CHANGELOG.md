@@ -1,5 +1,15 @@
 # @lolmath/ui
 
+## 2.0.0
+
+### Major Changes
+
+- edff669: SliderLabel is now a separate component; removed from the main Slider component
+
+### Minor Changes
+
+- 5c864ab: Expose sliderTrackBackgroundClassName and sliderTrackForegroundClassName on Slider
+
 ## 1.3.0
 
 ### Minor Changes
