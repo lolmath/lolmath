@@ -21,12 +21,12 @@ import { resolveClassname } from "../utilities/resolve-classname";
 
 export function Slider({
   children,
-  sliderThumbProps,
-  sliderTrackProps,
+  sliderThumbProps = {},
+  sliderTrackProps = {},
   ...props
 }: AriaSliderProps & {
-  sliderTrackProps: SliderTrackProps;
-  sliderThumbProps: SliderThumbProps;
+  sliderTrackProps?: SliderTrackProps;
+  sliderThumbProps?: SliderThumbProps;
 }) {
   return (
     <AriaSlider
