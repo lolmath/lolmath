@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.0.1
+
+### Patch Changes
+
+- f0550c0: infer type of slider (number or number array)
+
 ## 2.0.0
 
 ### Major Changes
