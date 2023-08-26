@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.0.2
+
+### Patch Changes
+
+- b074d13: make sure groupProps is optional on number field
+
 ## 2.0.1
 
 ### Patch Changes
