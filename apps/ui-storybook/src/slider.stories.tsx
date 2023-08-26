@@ -35,6 +35,17 @@ export const Disabled: Story = {
   },
 };
 
+export const OnChange: Story = {
+  render: () => (
+    <Slider
+      defaultValue={20}
+      onChange={(v) => {
+        console.log(v);
+      }}
+    />
+  ),
+};
+
 export const WithLabel: Story = {
   args: {
     value: 20,

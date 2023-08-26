@@ -20,14 +20,14 @@ import {
 } from "../utilities/constants";
 import { resolveClassname } from "../utilities/resolve-classname";
 
-export function Slider({
+export function Slider<T extends number | number[]>({
   children,
   sliderThumbProps = {},
   sliderTrackProps = {},
   sliderTrackBackgroundClassName,
   sliderTrackForegroundClassName,
   ...props
-}: AriaSliderProps & {
+}: AriaSliderProps<T> & {
   sliderTrackProps?: SliderTrackProps;
   sliderThumbProps?: SliderThumbProps;
   sliderTrackBackgroundClassName?:
@@ -38,7 +38,7 @@ export function Slider({
     | ((values: SliderTrackRenderProps) => string);
 }) {
   return (
-    <AriaSlider
+    <AriaSlider<T>
       {...props}
       className={(values) => {
         const resolvedClassName = resolveClassname(props.className, values);
