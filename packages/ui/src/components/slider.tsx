@@ -1,4 +1,8 @@
-import { SliderProps as AriaSliderProps } from "react-aria-components";
+import {
+  SliderProps as AriaSliderProps,
+  SliderThumbProps,
+  SliderTrackProps,
+} from "react-aria-components";
 import {
   Slider as AriaSlider,
   SliderThumb as AriaSliderThumb,
@@ -13,21 +17,38 @@ import {
   sliderHover,
   sliderNormal,
 } from "../utilities/constants";
+import { resolveClassname } from "../utilities/resolve-classname";
 
-export function Slider({ className, label, ...props }: AriaSliderProps & {}) {
+export function Slider({
+  children,
+  sliderThumbProps,
+  sliderTrackProps,
+  ...props
+}: AriaSliderProps & {
+  sliderTrackProps: SliderTrackProps;
+  sliderThumbProps: SliderThumbProps;
+}) {
   return (
-    <AriaSlider {...props} className="">
-      {({ state }) => (
+    <AriaSlider
+      {...props}
+      className={(values) => {
+        const resolvedClassName = resolveClassname(props, values);
+        return twMerge("", resolvedClassName);
+      }}
+    >
+      {(values) => (
         <>
-          <div className="flex items-center justify-between font-spiegel text-xs text-[#a09b8c] font-normal tracking-wide">
-            <Label className="">{label}</Label>
-            <AriaSliderOutput className="">
-              {state.values
-                .map((_, i) => state.getThumbValueLabel(i))
-                .join(" – ")}
-            </AriaSliderOutput>
-          </div>
-          <AriaSliderTrack className="relative w-full h-7 group">
+          {typeof children === "function" ? children(values) : children}
+          <AriaSliderTrack
+            {...sliderTrackProps}
+            className={(sliderTrackRenderProps) => {
+              const resolvedClassName = resolveClassname(
+                sliderTrackProps,
+                sliderTrackRenderProps,
+              );
+              return twMerge("relative w-full h-7 group", resolvedClassName);
+            }}
+          >
             {({ state }) => {
               const left =
                 state.values.length === 1 ? 0 : state.getThumbPercent(0) * 100;
@@ -64,19 +85,27 @@ export function Slider({ className, label, ...props }: AriaSliderProps & {}) {
                         <AriaSliderThumb
                           key={i}
                           index={i}
-                          className={twMerge(
-                            "bg-contain h-7 w-7 top-[50%] outline-none",
-                            "[background-image:var(--normal)]",
-                            state.isDisabled
-                              ? "[background-image:var(--disabled)]"
-                              : [
-                                  state.isThumbDragging(i) &&
-                                    "[background-image:var(--active)]",
-                                  !state.isThumbDragging(0) &&
-                                    !state.isThumbDragging(1) &&
-                                    "group-hover:[background-image:var(--hover)]",
-                                ],
-                          )}
+                          {...sliderThumbProps}
+                          className={(sliderThumbRenderProps) => {
+                            const resolvedClassName = resolveClassname(
+                              sliderThumbProps,
+                              sliderThumbRenderProps,
+                            );
+                            return twMerge(
+                              "bg-contain h-7 w-7 top-[50%] outline-none",
+                              "[background-image:var(--normal)]",
+                              state.isDisabled
+                                ? "[background-image:var(--disabled)]"
+                                : [
+                                    state.isThumbDragging(i) &&
+                                      "[background-image:var(--active)]",
+                                    !state.isThumbDragging(0) &&
+                                      !state.isThumbDragging(1) &&
+                                      "group-hover:[background-image:var(--hover)]",
+                                  ],
+                              resolvedClassName,
+                            );
+                          }}
                           style={
                             {
                               "--normal": sliderNormal,
@@ -97,5 +126,23 @@ export function Slider({ className, label, ...props }: AriaSliderProps & {}) {
         </>
       )}
     </AriaSlider>
+  );
+}
+
+interface SliderLabelProps {
+  children?: React.ReactNode;
+}
+export function SliderLabel({ children }: SliderLabelProps) {
+  return (
+    <div className="flex items-center justify-between font-spiegel text-xs text-lol-gray-300 font-normal tracking-wide">
+      <Label className="">{children}</Label>
+      <AriaSliderOutput className="">
+        {(sliderRenderProps) =>
+          sliderRenderProps.state.values
+            .map((_, i) => sliderRenderProps.state.getThumbValueLabel(i))
+            .join(" – ")
+        }
+      </AriaSliderOutput>
+    </div>
   );
 }

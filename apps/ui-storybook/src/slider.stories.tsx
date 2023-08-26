@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Slider } from "@lolmath/ui";
+import { Slider, SliderLabel } from "@lolmath/ui";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
@@ -33,4 +33,15 @@ export const Disabled: Story = {
     isDisabled: true,
     value: 20,
   },
+};
+
+export const WithLabel: Story = {
+  args: {
+    value: 20,
+  },
+  render: () => (
+    <Slider>
+      <SliderLabel>Label</SliderLabel>
+    </Slider>
+  ),
 };
