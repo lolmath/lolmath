@@ -9,7 +9,7 @@ export function Label({ ...props }: AriaLabelProps) {
     <AriaLabel
       {...props}
       className={twMerge(
-        "font-spiegel text-xs text-lol-gray-400 font-normal tracking-wide mb-1",
+        "font-spiegel text-xs text-lol-gray-300 font-normal tracking-wide mb-1",
         props.className,
       )}
     />
