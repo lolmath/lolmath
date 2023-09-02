@@ -17,8 +17,8 @@ import {
   sliderDisabled,
   sliderHover,
   sliderNormal,
-} from "../utilities/constants";
-import { resolveClassname } from "../utilities/resolve-classname";
+} from "./images";
+import { resolveClassname } from "../../utilities/resolve-classname";
 
 export function Slider<T extends number | number[]>({
   children,

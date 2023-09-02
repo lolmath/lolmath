@@ -1,7 +1,7 @@
 export * from "./components/button";
 export * from "./components/select";
 export * from "./components/search-field";
-export * from "./components/slider";
+export * from "./components/slider/slider";
 export * from "./components/switch";
 export * from "./components/progress-bar";
 export * from "./components/accordion";
@@ -9,3 +9,4 @@ export * from "./components/text-field";
 export * from "./components/radio-group";
 export * from "./components/label";
 export * from "./components/number-field";
+export * from "./components/spinner/spinner";
