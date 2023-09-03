@@ -1,5 +1,15 @@
 # @lolmath/ui
 
+## 2.1.0
+
+### Minor Changes
+
+- 5b516bb: Add Spinner component
+
+### Patch Changes
+
+- e55dc68: Make label brighter
+
 ## 2.0.2
 
 ### Patch Changes
