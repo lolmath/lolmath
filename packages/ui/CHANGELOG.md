@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.2.0
+
+### Minor Changes
+
+- 43095eb: Add Modal
+
 ## 2.1.0
 
 ### Minor Changes
