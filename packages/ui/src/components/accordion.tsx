@@ -24,9 +24,12 @@ export function Accordion({ children, className }: AccordionProps) {
     >
       <div
         className={twMerge(
-          "bg-lol-blue-950 border-lol-gold-500 overflow-hidden rounded border",
+          "bg-lol-blue-950 border-lol-gold-500 rounded border",
           className,
         )}
+        style={{
+          viewTransitionName: `${id}`,
+        }}
       >
         {children}
       </div>
