@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.3.0
+
+### Minor Changes
+
+- 963ce0f: Add view transitions to accordion component
+
 ## 2.2.0
 
 ### Minor Changes
