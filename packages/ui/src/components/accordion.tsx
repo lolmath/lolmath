@@ -24,7 +24,7 @@ export function Accordion({ children, className }: AccordionProps) {
     >
       <div
         className={twMerge(
-          "bg-lol-blue-950 border-lol-gold-500 rounded border",
+          "bg-lol-blue-950 border-lol-gold-500 rounded border overflow-hidden",
           className,
         )}
         style={{
