@@ -11,22 +11,22 @@
   },
   "dependencies": {
     "@lolmath/ui": "workspace:*",
-    "next": "^13.4.15",
-    "nextra": "^2.11.0",
-    "nextra-theme-docs": "^2.11.0",
+    "next": "^13.4.19",
+    "nextra": "^2.12.3",
+    "nextra-theme-docs": "^2.12.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@lolmath/calc": "workspace:*",
-    "@types/react": "^18.2.20",
+    "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.15",
     "fs-extra": "^11.1.1",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.29",
     "resolve-package-path": "^4.0.3",
     "tailwindcss": "^3.3.3",
-    "vite-node": "^0.34.1",
-    "wrangler": "^3.5.0"
+    "vite-node": "^0.34.4",
+    "wrangler": "^3.8.0"
   }
 }
