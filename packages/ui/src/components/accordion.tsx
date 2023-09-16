@@ -2,6 +2,8 @@
 
 import { createContext, useState, useContext } from "react";
 import { twMerge } from "tailwind-merge";
+import { useCssId } from "../utilities/css-id";
+import { startViewTransition } from "../utilities/view-transition";
 
 interface AccordionProps {
   children: React.ReactNode;
@@ -10,11 +12,14 @@ interface AccordionProps {
 
 export function Accordion({ children, className }: AccordionProps) {
   const [activeItem, setActiveItem] = useState<string>("");
+  const id = useCssId();
+
   return (
     <AccordionContext.Provider
       value={{
         activeItem,
         setActiveItem,
+        id,
       }}
     >
       <div
@@ -37,7 +42,7 @@ export function AccordionTrigger({
   children,
   className,
 }: AccordionTriggerProps) {
-  const { setActiveItem, activeItem } = useContext(AccordionContext);
+  const { setActiveItem, activeItem, id } = useContext(AccordionContext);
   const { item } = useContext(AccordionItemContext);
 
   return (
@@ -47,7 +52,12 @@ export function AccordionTrigger({
         className,
       )}
       onClick={() => {
-        setActiveItem((currentItem) => (currentItem === item ? "" : item));
+        startViewTransition(() => {
+          setActiveItem((currentItem) => (currentItem === item ? "" : item));
+        });
+      }}
+      style={{
+        viewTransitionName: `${id}-${item}`,
       }}
     >
       <span
@@ -102,6 +112,7 @@ export function AccordionContent({ children }: AccordionContentProps) {
 const AccordionContext = createContext<{
   activeItem: string;
   setActiveItem: React.Dispatch<React.SetStateAction<string>>;
+  id: string;
 }>(undefined as any);
 
 const AccordionItemContext = createContext<{
