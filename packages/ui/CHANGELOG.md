@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.3.1
+
+### Patch Changes
+
+- 8d47fa4: re-add overflow to hide borders
+
 ## 2.3.0
 
 ### Minor Changes
