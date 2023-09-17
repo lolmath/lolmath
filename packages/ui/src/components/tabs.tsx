@@ -55,6 +55,7 @@ export function Tab({ children, className, ...rest }: TabProps) {
           (values.isSelected || values.isHovered) && "text-lol-gold-50",
           values.isPressed && "text-lol-gold-500",
           values.isDisabled && "text-lol-gray-500 cursor-default",
+          "focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-lol-gold-100",
           resolveClassname(className, values),
         )
       }
