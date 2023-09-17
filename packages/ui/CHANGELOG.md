@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.4.1
+
+### Patch Changes
+
+- ba30c6f: forward class names
+
 ## 2.4.0
 
 ### Minor Changes
