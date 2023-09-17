@@ -30,9 +30,7 @@ export function Tabs({ onSelectionChange, ...rest }: TabsProps) {
 }
 
 export function TabList<T extends object>({ ...rest }: TabListProps<T>) {
-  return (
-    <AriaTabList<T> {...rest} className={(values) => "flex gap-0 -ml-4"} />
-  );
+  return <AriaTabList<T> {...rest} className={() => "flex gap-0 -ml-4"} />;
 }
 
 export function Tab({ children, ...rest }: TabProps) {
