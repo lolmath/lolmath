@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.5.1
+
+### Patch Changes
+
+- 3cc0914: update package json and readme
+
 ## 2.5.0
 
 ### Minor Changes
