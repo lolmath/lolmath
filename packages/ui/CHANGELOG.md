@@ -1,5 +1,15 @@
 # @lolmath/ui
 
+## 2.5.0
+
+### Minor Changes
+
+- 1339caa: Add checkbox
+
+### Patch Changes
+
+- 6e90c02: Changed outline of tabs to not be visible by default, only when focus-visible.
+
 ## 2.4.1
 
 ### Patch Changes
