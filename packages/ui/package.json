@@ -27,6 +27,16 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "homepage": "https://ui.lolmath.net",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/lol-math/lolmath.git",
+    "directory": "packages/ui"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/lol-math/lolmath/-/issues",
+    "email": "incoming+lol-math-lolmath-41959739-1qbix14106nxnde3k5iusimi8-issue@incoming.gitlab.com"
+  },
   "devDependencies": {
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
