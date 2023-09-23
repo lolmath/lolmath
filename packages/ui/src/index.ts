@@ -12,3 +12,4 @@ export * from "./components/number-field";
 export * from "./components/spinner/spinner";
 export * from "./components/modal";
 export * from "./components/tabs";
+export * from "./components/checkbox";
