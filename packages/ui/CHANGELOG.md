@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.6.0
+
+### Minor Changes
+
+- ec2a721: Add TextArea component
+
 ## 2.5.2
 
 ### Patch Changes
