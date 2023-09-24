@@ -22,6 +22,7 @@ import {
   borderPressedClassName,
 } from "../utilities/border";
 import { outlineClassName } from "../utilities/outline";
+import { resolveClassname } from "../utilities/resolve-classname";
 
 interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
@@ -38,7 +39,12 @@ export function Select<T extends object>({
   ...props
 }: SelectProps<T>) {
   return (
-    <AriaSelect {...props} className="font-spiegel">
+    <AriaSelect
+      {...props}
+      className={(values) =>
+        twMerge("font-spiegel", resolveClassname(props.className, values))
+      }
+    >
       {(values) => (
         <>
           <AriaButton

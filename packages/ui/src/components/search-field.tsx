@@ -17,19 +17,17 @@ export function SearchField({
 }) {
   return (
     <AriaSearchField
+      {...props}
       className={(values) => {
-        const finalClassName = resolveClassname(props.className, values);
-
         return twMerge(
           "flex flex-col outline-none",
           borderClassName,
           "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
           props.isDisabled &&
             "from-lol-gray-700 via-lol-gray-700 to-lol-gray-700",
-          finalClassName,
+          resolveClassname(props.className, values),
         );
       }}
-      {...props}
     >
       {({ state, isDisabled }) => (
         <div

@@ -12,6 +12,7 @@ import {
   borderHoverClassName,
   borderPressedClassName,
 } from "../utilities/border";
+import { resolveClassname } from "../utilities/resolve-classname";
 
 interface ButtonProps extends AriaButtonProps {
   priority?: "primary" | "secondary";
@@ -24,16 +25,8 @@ function _Button(
   return (
     <AriaButton
       ref={ref}
+      {...props}
       className={(values) => {
-        const overrideClassname =
-          typeof className === "undefined"
-            ? ""
-            : typeof className === "string"
-            ? className
-            : className(values);
-
-        // #5a401f 0%, #47341B #332717 100% primary background gradient.
-
         return twMerge(
           "font-[beaufort] font-black uppercase transition-colors duration-200 outline-none bg-gradient-to-t",
           borderClassName,
@@ -42,10 +35,9 @@ function _Button(
           values.isDisabled && borderDisabledClassName,
           values.isFocused && "",
           values.isFocusVisible && "outline outline-yellow-50 outline-offset-2",
-          overrideClassname,
+          resolveClassname(className, values),
         );
       }}
-      {...props}
     >
       {(values) => {
         return (

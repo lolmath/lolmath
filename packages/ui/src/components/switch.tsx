@@ -17,8 +17,8 @@ export function Switch({
 }) {
   return (
     <AriaSwitch
-      className="group inline-flex items-center gap-2 p-1 text-sm font-semibold text-black"
       {...props}
+      className="group inline-flex items-center gap-2 p-1 text-sm font-semibold text-black"
     >
       {(values) => (
         <>
