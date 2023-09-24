@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.5.2
+
+### Patch Changes
+
+- 5c23331: forward classname of text field, search field, button
+
 ## 2.5.1
 
 ### Patch Changes
