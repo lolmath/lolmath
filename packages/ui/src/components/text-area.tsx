@@ -1,20 +1,20 @@
 import type {
   TextFieldProps as AriaTextFieldProps,
-  InputProps,
+  TextAreaProps,
 } from "react-aria-components";
 import {
   TextField as AriaTextField,
-  Input as AriaInput,
+  TextArea as AriaTextArea,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { borderClassName } from "../utilities/border";
 import { resolveClassname } from "../utilities/resolve-classname";
 
-export function TextField({
-  inputProps = {},
+export function TextArea({
+  textAreaProps = {},
   ...props
 }: AriaTextFieldProps & {
-  inputProps?: InputProps;
+  textAreaProps?: TextAreaProps;
 }) {
   return (
     <AriaTextField
@@ -36,16 +36,15 @@ export function TextField({
           props.isDisabled && "bg-lol-gray-950",
         )}
       >
-        <AriaInput
-          {...inputProps}
+        <AriaTextArea
+          {...textAreaProps}
           className={(values) => {
             return twMerge(
               "bg-transparent grow py-2 px-3 text-lol-gold-50 text-xs outline-none font-spiegel tracking-wide",
               values.isDisabled && "text-lol-gray-500",
-              resolveClassname(inputProps.className, values),
+              resolveClassname(textAreaProps.className, values),
             );
           }}
-          type="text"
         />
       </div>
     </AriaTextField>

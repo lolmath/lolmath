@@ -13,3 +13,4 @@ export * from "./components/spinner/spinner";
 export * from "./components/modal";
 export * from "./components/tabs";
 export * from "./components/checkbox";
+export * from "./components/text-area";
