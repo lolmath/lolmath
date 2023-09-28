@@ -10,7 +10,7 @@ const meta = {
   argTypes: {},
   args: {
     defaultValue: "The quick brown fox jumps over the lazy dog.",
-    inputProps: {
+    textAreaProps: {
       placeholder: "The quick brown fox jumps over the lazy dog.",
     },
   },
