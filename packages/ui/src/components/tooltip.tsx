@@ -37,9 +37,9 @@ export function Tooltip({ children, ...props }: TooltipProps) {
                     values.placement === "bottom" &&
                       "-translate-y-[3px] rotate-180 -left-0.5 fill-lol-gold-400",
                     values.placement === "left" &&
-                      "-translate-x-px -rotate-90 -top-0.5",
+                      "-translate-x-px -rotate-90 -top-0.5 fill-lol-gold-500",
                     values.placement === "right" &&
-                      "-translate-x-[3px] rotate-90 -top-0.5",
+                      "-translate-x-[3px] rotate-90 -top-0.5 fill-lol-gold-500",
                   )}
                 >
                   <path d="M0 0,L6 6,L12 0" />
