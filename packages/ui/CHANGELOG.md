@@ -1,5 +1,15 @@
 # @lolmath/ui
 
+## 2.7.0
+
+### Minor Changes
+
+- c9c5882: Initial version of Tooltip added
+
+### Patch Changes
+
+- 86914ce: slight change of colors of tooltips
+
 ## 2.6.0
 
 ### Minor Changes
