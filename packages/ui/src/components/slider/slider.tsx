@@ -1,5 +1,6 @@
 import {
   SliderProps as AriaSliderProps,
+  SliderOutputProps,
   SliderThumbProps,
   SliderTrackProps,
   SliderTrackRenderProps,
@@ -9,7 +10,6 @@ import {
   SliderThumb as AriaSliderThumb,
   SliderTrack as AriaSliderTrack,
   SliderOutput as AriaSliderOutput,
-  Label,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import {
@@ -153,20 +153,21 @@ export function Slider<T extends number | number[]>({
   );
 }
 
-interface SliderLabelProps {
-  children?: React.ReactNode;
-}
-export function SliderLabel({ children }: SliderLabelProps) {
+export function SliderOutput(props: SliderOutputProps) {
   return (
-    <div className="flex items-center justify-between font-spiegel text-xs text-lol-gray-300 font-normal tracking-wide">
-      <Label className="">{children}</Label>
-      <AriaSliderOutput className="">
-        {(sliderRenderProps) =>
-          sliderRenderProps.state.values
-            .map((_, i) => sliderRenderProps.state.getThumbValueLabel(i))
-            .join(" – ")
-        }
-      </AriaSliderOutput>
-    </div>
+    <AriaSliderOutput
+      className={(values) =>
+        twMerge(
+          "font-spiegel text-xs text-lol-gray-300 font-normal tracking-wide",
+          resolveClassname(props.className, values),
+        )
+      }
+      children={(sliderRenderProps) =>
+        sliderRenderProps.state.values
+          .map((_, i) => sliderRenderProps.state.getThumbValueLabel(i))
+          .join(" – ")
+      }
+      {...props}
+    />
   );
 }

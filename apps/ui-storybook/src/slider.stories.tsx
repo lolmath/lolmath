@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Slider, SliderLabel } from "@lolmath/ui";
+import { Label, Slider, SliderOutput } from "@lolmath/ui";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
@@ -8,15 +8,12 @@ const meta = {
   component: Slider,
   tags: ["autodocs"],
   argTypes: {},
-  args: {
-    label: "Overall Volume",
-  },
 } satisfies Meta<typeof Slider>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const DoubleSlider: Story = {
   args: {
     defaultValue: [20, 80],
   },
@@ -49,10 +46,30 @@ export const OnChange: Story = {
 export const WithLabel: Story = {
   args: {
     value: 20,
+    children: <Label>Some label</Label>,
   },
-  render: () => (
-    <Slider>
-      <SliderLabel>Label</SliderLabel>
-    </Slider>
-  ),
+};
+
+export const WithOutput: Story = {
+  args: {
+    defaultValue: 20,
+    children: (
+      <div className="flex justify-between">
+        <Label>Some label</Label>
+        <SliderOutput />
+      </div>
+    ),
+  },
+};
+
+export const DoubleSliderWithOutput: Story = {
+  args: {
+    defaultValue: [20, 80],
+    children: (
+      <div className="flex justify-between">
+        <Label>Some label</Label>
+        <SliderOutput />
+      </div>
+    ),
+  },
 };
