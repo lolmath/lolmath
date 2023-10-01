@@ -6,7 +6,7 @@ import {
   ProgressBarProps as AriaProgressBarProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { borderClassName } from "../utilities/border";
+import { borderGradient } from "../utilities/border";
 
 interface ProgressBarProps extends Omit<AriaProgressBarProps, "children"> {
   label?: string;
@@ -21,13 +21,13 @@ export function ProgressBar({
     <AriaProgressBar className={"flex w-56 flex-col gap-1 text-sm"} {...props}>
       {({ percentage, valueText }) => (
         <>
-          <div className="flex font-[beaufort] font-bold uppercase text-lol-gold-100">
+          <div className="flex font-beaufort font-bold uppercase text-lol-gold-100">
             <Label className="flex-1 ">{label ?? "Loading"}</Label>
             <span>{valueText}</span>
           </div>
           <div
             className={twMerge(
-              borderClassName,
+              borderGradient,
               "-ml-0.5 -mr-1 h-3 rounded-full p-px",
             )}
           >

@@ -7,19 +7,28 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import {
-  borderClassName,
-  borderDisabledClassName,
-  borderHoverClassName,
-  borderPressedClassName,
+  borderGradient,
+  borderGradientDisabled,
+  borderGradientHover,
+  borderGradientPressed,
 } from "../utilities/border";
 import { resolveClassname } from "../utilities/resolve-classname";
 
 interface ButtonProps extends AriaButtonProps {
-  priority?: "primary" | "secondary";
+  priority?: "primary" | "secondary" | "tertiary";
+  isRounded?: boolean;
+  isSquared?: boolean;
 }
 
 function _Button(
-  { children, className, priority = "secondary", ...props }: ButtonProps,
+  {
+    children,
+    className,
+    priority = "secondary",
+    isRounded = false,
+    isSquared = false,
+    ...props
+  }: ButtonProps,
   ref: Ref<HTMLButtonElement>,
 ) {
   return (
@@ -28,13 +37,19 @@ function _Button(
       {...props}
       className={(values) => {
         return twMerge(
-          "font-[beaufort] font-black uppercase transition-colors duration-200 outline-none bg-gradient-to-t",
-          borderClassName,
-          values.isHovered && borderHoverClassName,
-          values.isPressed && borderPressedClassName,
-          values.isDisabled && borderDisabledClassName,
-          values.isFocused && "",
-          values.isFocusVisible && "outline outline-yellow-50 outline-offset-2",
+          "transition-colors duration-200 outline-none",
+          (priority === "primary" || priority === "secondary") && [
+            "bg-gradient-to-t",
+            borderGradient,
+            values.isHovered && borderGradientHover,
+            values.isPressed && borderGradientPressed,
+            values.isDisabled && borderGradientDisabled,
+            values.isFocused && "",
+            values.isFocusVisible &&
+              "outline outline-yellow-50 outline-offset-2",
+          ],
+          isRounded && "rounded-full aspect-square",
+          isSquared && "aspect-square",
           resolveClassname(className, values),
         );
       }}
@@ -43,23 +58,36 @@ function _Button(
         return (
           <span
             className={twMerge(
-              "block m-0.5 px-4 py-2 bg-lol-gray-950 transition-colors duration-200",
-              priority === "primary" && "bg-gradient-to-b",
-              "text-[#cdbe91] tracking-wide",
-              values.isHovered && "text-lol-gold-100",
-              values.isPressed && "text-lol-gray-500",
+              "block transition-colors duration-200 text-lol-gold-300 tracking-wide font-beaufort font-black uppercase",
+              (priority === "primary" || priority === "secondary") && [
+                "m-0.5 px-4 py-2 bg-lol-gray-950",
+              ],
+              priority === "primary" &&
+                "from-lol-gold-700 via-lol-gold-800 to-lol-gold-900 bg-gradient-to-b",
+
+              priority === "tertiary" &&
+                !isRounded &&
+                'relative after:content-[""] after:absolute after:-top-2 after:-bottom-2 after:-left-2 after:-right-2',
+
+              (isSquared || isRounded) && "aspect-square p-1.5",
+              isRounded && "rounded-full",
+
+              values.isHovered && [
+                "text-lol-gold-100",
+                priority === "primary" &&
+                  "from-lol-gold-700 via-lol-gold-600 to-lol-gold-600",
+                priority === "tertiary" &&
+                  (isRounded || isSquared) &&
+                  "bg-lol-gray-900",
+              ],
+              values.isPressed && [
+                "text-lol-gray-500",
+                priority === "primary" &&
+                  "text-lol-gold-600 from-lol-gold-900 via-lol-gold-900 to-lol-gold-900",
+              ],
               values.isDisabled && "text-lol-gray-500",
               values.isFocused && "",
               values.isFocusVisible && "",
-
-              priority === "primary" &&
-                "from-lol-gold-700 via-lol-gold-800 to-lol-gold-900",
-              priority === "primary" &&
-                values.isHovered &&
-                "from-[#604522] via-[#846745] to-[#725634]",
-              priority === "primary" &&
-                values.isPressed &&
-                "from-[#261b0d] via-[#261b0d] to-[#261b0d]  text-[#67604c]",
             )}
           >
             {typeof children === "function" ? children(values) : children}

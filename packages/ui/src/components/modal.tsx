@@ -10,7 +10,7 @@ import {
   DialogProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { borderPressedClassName } from "../utilities/border";
+import { borderGradientPressed } from "../utilities/border";
 import { resolveClassname } from "../utilities/resolve-classname";
 
 interface ModalProps extends Omit<ModalOverlayProps, "children"> {
@@ -58,7 +58,7 @@ export function Modal({
               <div
                 className={twMerge(
                   "text-left align-middle shadow-xl p-0.5 bg-gradient-to-t",
-                  borderPressedClassName,
+                  borderGradientPressed,
                 )}
               >
                 <div className="bg-black">

@@ -16,10 +16,10 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import {
-  borderClassName,
-  borderDisabledClassName,
-  borderHoverClassName,
-  borderPressedClassName,
+  borderGradient,
+  borderGradientDisabled,
+  borderGradientHover,
+  borderGradientPressed,
 } from "../utilities/border";
 import { outlineClassName } from "../utilities/outline";
 import { resolveClassname } from "../utilities/resolve-classname";
@@ -51,11 +51,11 @@ export function Select<T extends object>({
             className={(buttonValues) =>
               twMerge(
                 "inline-block outline-none",
-                borderClassName,
-                buttonValues.isHovered && borderHoverClassName,
+                borderGradient,
+                buttonValues.isHovered && borderGradientHover,
                 (buttonValues.isPressed || values.isOpen) &&
-                  borderPressedClassName,
-                buttonValues.isDisabled && borderDisabledClassName,
+                  borderGradientPressed,
+                buttonValues.isDisabled && borderGradientDisabled,
                 buttonValues.isFocused && "",
                 buttonValues.isFocusVisible && outlineClassName,
               )

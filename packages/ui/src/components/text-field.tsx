@@ -7,7 +7,7 @@ import {
   Input as AriaInput,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { borderClassName } from "../utilities/border";
+import { borderGradient } from "../utilities/border";
 import { resolveClassname } from "../utilities/resolve-classname";
 
 export function TextField({
@@ -22,7 +22,7 @@ export function TextField({
       className={(values) =>
         twMerge(
           "flex flex-col outline-none",
-          borderClassName,
+          borderGradient,
           "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
           props.isDisabled &&
             "from-lol-gray-700 via-lol-gray-700 to-lol-gray-700",

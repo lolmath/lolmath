@@ -7,9 +7,10 @@ const meta = {
   title: "NumberField",
   component: NumberField,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    onChange: { action: "onChange" },
+  },
   args: {
-    inputProps: {},
     defaultValue: 0,
   },
 } satisfies Meta<typeof NumberField>;

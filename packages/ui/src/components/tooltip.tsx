@@ -1,7 +1,7 @@
 import type { TooltipProps } from "react-aria-components";
 import { Tooltip as AriaTooltip, OverlayArrow } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { borderClassName } from "../utilities/border";
+import { borderGradient } from "../utilities/border";
 import { resolveClassname } from "../utilities/resolve-classname";
 
 export function Tooltip({ children, ...props }: TooltipProps) {
@@ -11,7 +11,7 @@ export function Tooltip({ children, ...props }: TooltipProps) {
       className={(values) =>
         twMerge(
           `p-0.5 drop-shadow-lg bg-black`,
-          borderClassName,
+          borderGradient,
           "w-[280px]",
           values.isEntering &&
             "animate-in fade-in data-[placement=bottom]:slide-in-from-top-1 data-[placement=top]:slide-in-from-bottom-1 ease-out duration-200 fill-mode-forwards",
