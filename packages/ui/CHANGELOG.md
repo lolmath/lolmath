@@ -1,5 +1,13 @@
 # @lolmath/ui
 
+## 2.8.0
+
+### Minor Changes
+
+- c54f762: Add squared, rounded button shapes
+- c54f762: Add Card component
+- c54f762: Add Tertiary button priority
+
 ## 2.7.0
 
 ### Minor Changes
