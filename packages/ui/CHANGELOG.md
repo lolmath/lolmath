@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 2.8.1
+
+### Patch Changes
+
+- e272d45: change number field, search input, slider, text area, text field so that they may receive children (labels)
+
 ## 2.8.0
 
 ### Minor Changes
