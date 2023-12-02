@@ -22,7 +22,7 @@ import {
   borderGradientPressed,
 } from "../utilities/border";
 import { outlineClassName } from "../utilities/outline";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
 
 interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
@@ -42,7 +42,7 @@ export function Select<T extends object>({
     <AriaSelect
       {...props}
       className={(values) =>
-        twMerge("font-spiegel", resolveClassname(props.className, values))
+        twMerge("font-spiegel", resolveClassName(props.className, values))
       }
     >
       {(values) => (

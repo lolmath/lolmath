@@ -18,7 +18,7 @@ import {
   sliderHover,
   sliderNormal,
 } from "./images";
-import { resolveClassname } from "../../utilities/resolve-classname";
+import { resolveClassName } from "../../utilities/resolve-class-name";
 
 export function Slider<T extends number | number[]>({
   children,
@@ -41,7 +41,7 @@ export function Slider<T extends number | number[]>({
     <AriaSlider<T>
       {...props}
       className={(values) => {
-        const resolvedClassName = resolveClassname(props.className, values);
+        const resolvedClassName = resolveClassName(props.className, values);
         return twMerge("", resolvedClassName);
       }}
     >
@@ -51,7 +51,7 @@ export function Slider<T extends number | number[]>({
           <AriaSliderTrack
             {...sliderTrackProps}
             className={(sliderTrackRenderProps) => {
-              const resolvedClassName = resolveClassname(
+              const resolvedClassName = resolveClassName(
                 sliderTrackProps.className,
                 sliderTrackRenderProps,
               );
@@ -76,7 +76,7 @@ export function Slider<T extends number | number[]>({
                   <div
                     className={twMerge(
                       "bg-lol-grey-950 absolute top-[50%] h-0.5 w-full translate-y-[-50%] transform rounded-full",
-                      resolveClassname(sliderTrackBackgroundClassName, values),
+                      resolveClassName(sliderTrackBackgroundClassName, values),
                     )}
                   />
                   <div
@@ -88,7 +88,7 @@ export function Slider<T extends number | number[]>({
                             "group-hover:from-[#785a28] group-hover:via-[#c89b3c] group-hover:to-[#c8aa6e]",
                             "group-active:from-[#695625] group-active:via-[#463714] group-active:to-[#463714]",
                           ],
-                      resolveClassname(sliderTrackForegroundClassName, values),
+                      resolveClassName(sliderTrackForegroundClassName, values),
                     )}
                     style={{ left: `${left}%`, width: `${width}%` }}
                   />
@@ -106,7 +106,7 @@ export function Slider<T extends number | number[]>({
                           index={i}
                           {...sliderThumbProps}
                           className={(sliderThumbRenderProps) => {
-                            const resolvedClassName = resolveClassname(
+                            const resolvedClassName = resolveClassName(
                               sliderThumbProps.className,
                               sliderThumbRenderProps,
                             );
@@ -159,7 +159,7 @@ export function SliderOutput(props: SliderOutputProps) {
       className={(values) =>
         twMerge(
           "font-spiegel text-lol-grey-300 text-xs font-normal tracking-wide",
-          resolveClassname(props.className, values),
+          resolveClassName(props.className, values),
         )
       }
       children={(sliderRenderProps) =>

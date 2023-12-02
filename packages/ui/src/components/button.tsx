@@ -12,13 +12,72 @@ import {
   borderGradientHover,
   borderGradientPressed,
 } from "../utilities/border";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName as resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv";
 
 interface ButtonProps extends AriaButtonProps {
   priority?: "primary" | "secondary" | "tertiary";
   isRounded?: boolean;
   isSquared?: boolean;
 }
+
+const buttonBorder = tv({
+  base: "outline-none transition-colors duration-200",
+  variants: {
+    priority: {
+      primary: "",
+      secondary: "",
+      tertiary: "",
+    },
+    isRounded: {
+      true: "aspect-square rounded-full",
+    },
+    isSquared: {
+      true: "aspect-square",
+    },
+    isHovered: {
+      true: "",
+    },
+    isPressed: {
+      true: "",
+    },
+    isDisabled: {
+      true: "",
+    },
+    isFocused: {
+      true: "",
+    },
+    isFocusVisible: {
+      true: "",
+    },
+  },
+  compoundVariants: [
+    {
+      priority: ["primary", "secondary"],
+      class: `bg-gradient-to-t ${borderGradient}`,
+    },
+    {
+      priority: ["primary", "secondary"],
+      isHovered: true,
+      class: borderGradientHover,
+    },
+    {
+      priority: ["primary", "secondary"],
+      isPressed: true,
+      class: borderGradientPressed,
+    },
+    {
+      priority: ["primary", "secondary"],
+      isDisabled: true,
+      class: borderGradientDisabled,
+    },
+    {
+      priority: ["primary", "secondary"],
+      isFocusVisible: true,
+      class: "outline outline-offset-2 outline-yellow-50",
+    },
+  ],
+});
 
 function _Button(
   {
@@ -36,22 +95,12 @@ function _Button(
       ref={ref}
       {...props}
       className={(values) => {
-        return twMerge(
-          "outline-none transition-colors duration-200",
-          (priority === "primary" || priority === "secondary") && [
-            "bg-gradient-to-t",
-            borderGradient,
-            values.isHovered && borderGradientHover,
-            values.isPressed && borderGradientPressed,
-            values.isDisabled && borderGradientDisabled,
-            values.isFocused && "",
-            values.isFocusVisible &&
-              "outline outline-offset-2 outline-yellow-50",
-          ],
-          isRounded && "aspect-square rounded-full",
-          isSquared && "aspect-square",
-          resolveClassname(className, values),
-        );
+        return buttonBorder({
+          className: resolveClassName(className, values),
+          priority,
+          isRounded,
+          isSquared,
+        });
       }}
     >
       {(values) => {

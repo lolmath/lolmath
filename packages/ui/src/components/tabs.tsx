@@ -12,7 +12,7 @@ import { twMerge } from "tailwind-merge";
 import { useCssId } from "../utilities/css-id";
 import { createContext, useContext } from "react";
 import { startViewTransition } from "../utilities/view-transition";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
 
 export function Tabs({ onSelectionChange, ...rest }: TabsProps) {
   const id = useCssId();
@@ -38,7 +38,7 @@ export function TabList<T extends object>({
     <AriaTabList<T>
       {...rest}
       className={(values) =>
-        twMerge("-ml-4 flex gap-0", resolveClassname(className, values))
+        twMerge("-ml-4 flex gap-0", resolveClassName(className, values))
       }
     />
   );
@@ -56,7 +56,7 @@ export function Tab({ children, className, ...rest }: TabProps) {
           values.isPressed && "text-lol-gold-500",
           values.isDisabled && "text-lol-grey-500 cursor-default",
           "focus-visible:outline-lol-gold-100 focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-4",
-          resolveClassname(className, values),
+          resolveClassName(className, values),
         )
       }
     >

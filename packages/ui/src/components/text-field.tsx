@@ -8,7 +8,7 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { borderGradient } from "../utilities/border";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
 import { ComponentProps } from "react";
 
 export function TextField({
@@ -33,7 +33,7 @@ export function TextField({
               "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
               values.isDisabled &&
                 "from-lol-grey-700 via-lol-grey-700 to-lol-grey-700",
-              resolveClassname(borderProps?.className, values),
+              resolveClassName(borderProps?.className, values),
               values.isDisabled && "bg-lol-grey-950",
             )}
           >
@@ -46,7 +46,7 @@ export function TextField({
                   "text-lol-gold-50 font-spiegel text-xs tracking-wide",
                   "focus-within:from-lol-grey-950 focus-within:to-lol-grey-900 focus-within:bg-gradient-to-b",
                   values.isDisabled && "text-lol-grey-500",
-                  resolveClassname(inputProps.className, values),
+                  resolveClassName(inputProps.className, values),
                 );
               }}
             />

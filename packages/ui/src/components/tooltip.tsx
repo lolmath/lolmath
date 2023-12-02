@@ -2,7 +2,7 @@ import type { TooltipProps } from "react-aria-components";
 import { Tooltip as AriaTooltip, OverlayArrow } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { borderGradient } from "../utilities/border";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
 
 export function Tooltip({ children, ...props }: TooltipProps) {
   return (
@@ -19,7 +19,7 @@ export function Tooltip({ children, ...props }: TooltipProps) {
             "animate-out fade-out data-[placement=bottom]:slide-out-to-top-1 data-[placement=top]:slide-out-to-bottom-1 fill-mode-forwards duration-150 ease-in",
           values.placement === "bottom" && "mt-2",
           values.placement === "top" && "mb-2",
-          resolveClassname(props.className, values),
+          resolveClassName(props.className, values),
         )
       }
     >

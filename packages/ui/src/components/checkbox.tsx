@@ -2,7 +2,7 @@
 
 import { Checkbox as AriaCheckbox, CheckboxProps } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
 
 export function Checkbox({ children, className, ...props }: CheckboxProps) {
   return (
@@ -20,7 +20,7 @@ export function Checkbox({ children, className, ...props }: CheckboxProps) {
           values.isDisabled && "cursor-default brightness-50",
           values.isFocused && "",
           values.isFocusVisible && "",
-          resolveClassname(className, values),
+          resolveClassName(className, values),
         );
       }}
       {...props}

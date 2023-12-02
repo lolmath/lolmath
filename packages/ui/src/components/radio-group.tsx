@@ -5,14 +5,14 @@ import {
   Radio as AriaRadio,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
 
 export function RadioGroup({ ...props }: AriaRadiogroupProps) {
   return (
     <AriaRadioGroup
       {...props}
       className={(values) => {
-        const finalClassName = resolveClassname(props.className, values);
+        const finalClassName = resolveClassName(props.className, values);
         return twMerge("flex flex-col items-start", finalClassName);
       }}
     />
@@ -24,7 +24,7 @@ export function Radio({ ...props }: AriaRadioProps) {
     <AriaRadio
       {...props}
       className={(values) => {
-        const finalClassName = resolveClassname(props.className, values);
+        const finalClassName = resolveClassName(props.className, values);
         return twMerge(
           "text-lol-gold-300 font-spiegel bg-[length:18px] bg-left bg-no-repeat py-2 pl-6 pr-4 text-xs font-normal",
           values.isDisabled

@@ -11,7 +11,7 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { borderGradientPressed } from "../utilities/border";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
 
 interface ModalProps extends Omit<ModalOverlayProps, "children"> {
   modalOverlayClassName?: ModalOverlayProps["className"];
@@ -32,14 +32,14 @@ export function Modal({
       className={(values) => {
         return twMerge(
           "fixed inset-0 z-10 flex min-h-full flex-col items-center justify-center overflow-y-auto bg-black bg-opacity-25 px-4 text-center backdrop-blur",
-          resolveClassname(modalOverlayClassName, values),
+          resolveClassName(modalOverlayClassName, values),
         );
       }}
     >
       <AriaModal
         {...modalProps}
         className={(values) =>
-          twMerge("w-full max-w-md", resolveClassname(className, values))
+          twMerge("w-full max-w-md", resolveClassName(className, values))
         }
       >
         <Dialog
