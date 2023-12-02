@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import type {
-  ItemProps as AriaItemProps,
+  ListBoxItemProps,
   SelectProps as AriaSelectProps,
 } from "react-aria-components";
 import {
@@ -12,7 +12,7 @@ import {
   Popover as AriaPopover,
   ListBox as AriaListBox,
   SelectValue as AriaSelectValue,
-  Item as AriaItem,
+  ListBoxItem,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import {
@@ -63,7 +63,7 @@ export function Select<T extends object>({
           >
             <span
               className={twMerge(
-                "block m-px bg-lol-gray-950 px-2 py-1 text-[#a09b8c] text-xs font-normal tracking-wide pr-6 bg-no-repeat",
+                "bg-lol-grey-950 m-px block bg-no-repeat px-2 py-1 pr-6 text-xs font-normal tracking-wide text-[#a09b8c]",
               )}
               style={{
                 backgroundPosition: "right 0.5rem center",
@@ -83,12 +83,12 @@ export function Select<T extends object>({
             <AriaListBox
               className={(listbox) =>
                 twMerge(
-                  "bg-[#010a13] border border-[#463714] outline-none",
+                  "border border-[#463714] bg-[#010a13] outline-none",
                   listbox.isFocused && "",
                 )
               }
             >
-              {children as any}
+              {children}
             </AriaListBox>
           </AriaPopover>
         </>
@@ -97,17 +97,17 @@ export function Select<T extends object>({
   );
 }
 
-export function Item({ className, ...props }: AriaItemProps) {
+export function Item({ className, ...props }: ListBoxItemProps) {
   return (
-    <AriaItem
+    <ListBoxItem
       {...props}
       className={(values) => {
         const finalClassName =
           typeof className === "function" ? className(values) : className;
 
         return twMerge(
-          "px-2 py-0.5 border-b border-[#1f2123] text-[#cdbe91] text-sm font-spiegel font-bold outline-none",
-          values.isHovered && "bg-lol-gray-950 text-lol-gold-100",
+          "font-spiegel border-b border-[#1f2123] px-2 py-0.5 text-sm font-bold text-[#cdbe91] outline-none",
+          values.isHovered && "bg-lol-grey-950 text-lol-gold-100",
           values.isPressed && "bg-[#1e232880] text-[#463714]",
           values.isFocusVisible && outlineClassName,
           values.isFocused && "",

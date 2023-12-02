@@ -4,7 +4,7 @@ import {
   Button,
   DialogButtons,
   DialogTrigger,
-  Heading,
+  DialogHeading,
   Modal,
 } from "@lolmath/ui";
 
@@ -23,9 +23,9 @@ const meta = {
       <Modal {...args}>
         {({ close }) => (
           <>
-            <div className="p-6 flex flex-col gap-2">
-              <Heading className="text-center">Exit Now?</Heading>
-              <p className="text-lol-gray-300 text-xs text-center font-spiegel">
+            <div className="flex flex-col gap-2 p-6">
+              <DialogHeading className="text-center">Exit Now?</DialogHeading>
+              <p className="text-lol-grey-300 font-spiegel text-center text-xs">
                 Do you want to exit League of Legends or sign out?
               </p>
             </div>
@@ -58,7 +58,7 @@ export const ALotOfText: Story = {
     <DialogTrigger>
       <Button>Open dialog</Button>
       <Modal>
-        <p className="text-lol-gray-300">
+        <p className="text-lol-grey-300">
           Pari general intelligence action natural language processing quis
           transformers quis AI in education irure veniam AI in agriculture
           occaecat culpa ipsum. Dolor est sit semantic web amet deserunt

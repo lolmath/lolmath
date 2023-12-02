@@ -10,13 +10,13 @@ export function Tooltip({ children, ...props }: TooltipProps) {
       {...props}
       className={(values) =>
         twMerge(
-          `p-0.5 drop-shadow-lg bg-black`,
+          `bg-black p-0.5 drop-shadow-lg`,
           borderGradient,
           "w-[280px]",
           values.isEntering &&
-            "animate-in fade-in data-[placement=bottom]:slide-in-from-top-1 data-[placement=top]:slide-in-from-bottom-1 ease-out duration-200 fill-mode-forwards",
+            "animate-in fade-in data-[placement=bottom]:slide-in-from-top-1 data-[placement=top]:slide-in-from-bottom-1 fill-mode-forwards duration-200 ease-out",
           values.isExiting &&
-            "animate-out fade-out data-[placement=bottom]:slide-out-to-top-1 data-[placement=top]:slide-out-to-bottom-1 ease-in duration-150 fill-mode-forwards",
+            "animate-out fade-out data-[placement=bottom]:slide-out-to-top-1 data-[placement=top]:slide-out-to-bottom-1 fill-mode-forwards duration-150 ease-in",
           values.placement === "bottom" && "mt-2",
           values.placement === "top" && "mb-2",
           resolveClassname(props.className, values),
@@ -25,21 +25,21 @@ export function Tooltip({ children, ...props }: TooltipProps) {
     >
       {(values) => (
         <>
-          <OverlayArrow className="transform translate-y-1">
+          <OverlayArrow className="translate-y-1 transform">
             {(values) => (
               <>
                 <svg
                   viewBox="0 0 12 12"
                   className={twMerge(
-                    "block fill-lol-gold-600 w-5 h-5 absolute",
+                    "fill-lol-gold-600 absolute block h-5 w-5",
                     values.placement === "top" &&
-                      "-translate-y-[1px] -left-0.5 ",
+                      "-left-0.5 -translate-y-[1px] ",
                     values.placement === "bottom" &&
-                      "-translate-y-[3px] rotate-180 -left-0.5 fill-lol-gold-400",
+                      "fill-lol-gold-400 -left-0.5 -translate-y-[3px] rotate-180",
                     values.placement === "left" &&
-                      "-translate-x-px -rotate-90 -top-0.5 fill-lol-gold-500",
+                      "fill-lol-gold-500 -top-0.5 -translate-x-px -rotate-90",
                     values.placement === "right" &&
-                      "-translate-x-[3px] rotate-90 -top-0.5 fill-lol-gold-500",
+                      "fill-lol-gold-500 -top-0.5 -translate-x-[3px] rotate-90",
                   )}
                 >
                   <path d="M0 0,L6 6,L12 0" />
@@ -47,7 +47,7 @@ export function Tooltip({ children, ...props }: TooltipProps) {
                 <svg
                   viewBox="0 0 12 12"
                   className={twMerge(
-                    "block fill-lol-gray-900 w-4 h-4",
+                    "fill-lol-grey-900 block h-4 w-4",
                     values.placement === "top" && "-translate-y-0.5",
                     values.placement === "bottom" &&
                       "translate-y-0.5 rotate-180",
@@ -61,7 +61,7 @@ export function Tooltip({ children, ...props }: TooltipProps) {
               </>
             )}
           </OverlayArrow>
-          <div className="bg-lol-gray-900">
+          <div className="bg-lol-grey-900">
             {typeof children === "function" ? children(values) : children}
           </div>
         </>

@@ -26,23 +26,23 @@ export function SearchField({
           <div
             {...borderProps}
             className={twMerge(
-              "outline-none p-px flex",
+              "flex p-px outline-none",
               borderGradient,
               "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
               values.isDisabled &&
-                "from-lol-gray-700 via-lol-gray-700 to-lol-gray-700",
+                "from-lol-grey-700 via-lol-grey-700 to-lol-grey-700",
               resolveClassname(borderProps?.className, values),
-              values.isDisabled && "bg-lol-gray-950",
+              values.isDisabled && "bg-lol-grey-950",
             )}
           >
             <AriaInput
               {...inputProps}
               className={(values) =>
                 twMerge(
-                  "bg-black w-full min-h-full py-2 px-3 outline-none pl-6",
-                  "text-lol-gold-50 text-xs font-spiegel tracking-wide",
-                  "focus-within:from-lol-gray-950 focus-within:to-lol-gray-900 focus-within:bg-gradient-to-b",
-                  values.isDisabled && "text-lol-gray-500",
+                  "min-h-full w-full bg-black px-3 py-2 pl-6 outline-none",
+                  "text-lol-gold-50 font-spiegel text-xs tracking-wide",
+                  "focus-within:from-lol-grey-950 focus-within:to-lol-grey-900 focus-within:bg-gradient-to-b",
+                  values.isDisabled && "text-lol-grey-500",
                   resolveClassname(inputProps.className, values),
                 )
               }
@@ -59,7 +59,7 @@ export function SearchField({
               <AriaButton
                 className={(buttonValues) =>
                   twMerge(
-                    "font-black text-[#cdbe91] text-xs px-4 bg-black",
+                    "bg-black px-4 text-xs font-black text-[#cdbe91]",
                     buttonValues.isHovered && "text-lol-gold-100",
                     buttonValues.isPressed && "text-[#463714]",
                   )

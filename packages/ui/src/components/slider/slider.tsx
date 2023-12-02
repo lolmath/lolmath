@@ -55,7 +55,7 @@ export function Slider<T extends number | number[]>({
                 sliderTrackProps.className,
                 sliderTrackRenderProps,
               );
-              return twMerge("relative w-full h-7 group", resolvedClassName);
+              return twMerge("group relative h-7 w-full", resolvedClassName);
             }}
           >
             {(values) => {
@@ -75,15 +75,15 @@ export function Slider<T extends number | number[]>({
                 <>
                   <div
                     className={twMerge(
-                      "absolute h-0.5 top-[50%] transform translate-y-[-50%] w-full rounded-full bg-lol-gray-950",
+                      "bg-lol-grey-950 absolute top-[50%] h-0.5 w-full translate-y-[-50%] transform rounded-full",
                       resolveClassname(sliderTrackBackgroundClassName, values),
                     )}
                   />
                   <div
                     className={twMerge(
-                      "absolute h-0.5 top-[50%] transform translate-y-[-50%] from-[#463714] to-[#695625] bg-gradient-to-r",
+                      "absolute top-[50%] h-0.5 translate-y-[-50%] transform bg-gradient-to-r from-[#463714] to-[#695625]",
                       values.state.isDisabled
-                        ? "from-transparent via-transparent to-transparent bg-[#5C5B57]"
+                        ? "bg-[#5C5B57] from-transparent via-transparent to-transparent"
                         : [
                             "group-hover:from-[#785a28] group-hover:via-[#c89b3c] group-hover:to-[#c8aa6e]",
                             "group-active:from-[#695625] group-active:via-[#463714] group-active:to-[#463714]",
@@ -111,7 +111,7 @@ export function Slider<T extends number | number[]>({
                               sliderThumbRenderProps,
                             );
                             return twMerge(
-                              "bg-contain h-7 w-7 top-[50%] outline-none",
+                              "top-[50%] h-7 w-7 bg-contain outline-none",
                               "[background-image:var(--normal)]",
                               sliderThumbRenderProps.isDisabled
                                 ? "[background-image:var(--disabled)]"
@@ -158,7 +158,7 @@ export function SliderOutput(props: SliderOutputProps) {
     <AriaSliderOutput
       className={(values) =>
         twMerge(
-          "font-spiegel text-xs text-lol-gray-300 font-normal tracking-wide",
+          "font-spiegel text-lol-grey-300 text-xs font-normal tracking-wide",
           resolveClassname(props.className, values),
         )
       }

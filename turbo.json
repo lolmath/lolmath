@@ -25,6 +25,10 @@
     "dev": {
       "outputs": [],
       "inputs": ["src/**/*.tsx", "src/**/*.ts"]
+    },
+    "typecheck": {
+      "outputs": [],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts"]
     }
   }
 }

@@ -51,7 +51,7 @@ export function AccordionTrigger({
   return (
     <button
       className={twMerge(
-        "text-lol-gray-300 font-beaufort hover:bg-lol-blue-800 active:bg-lol-blue-700 active:text-lol-gold-200 hover:text-lol-gray-100 flex w-full items-center px-5 py-2 text-left font-bold uppercase",
+        "text-lol-grey-300 font-beaufort hover:bg-lol-blue-800 active:bg-lol-blue-700 active:text-lol-gold-200 hover:text-lol-grey-100 flex w-full items-center px-5 py-2 text-left font-bold uppercase",
         className,
       )}
       onClick={() => {

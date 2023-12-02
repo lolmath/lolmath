@@ -21,7 +21,7 @@ export function ProgressBar({
     <AriaProgressBar className={"flex w-56 flex-col gap-1 text-sm"} {...props}>
       {({ percentage, valueText }) => (
         <>
-          <div className="flex font-beaufort font-bold uppercase text-lol-gold-100">
+          <div className="font-beaufort text-lol-gold-100 flex font-bold uppercase">
             <Label className="flex-1 ">{label ?? "Loading"}</Label>
             <span>{valueText}</span>
           </div>
@@ -32,7 +32,7 @@ export function ProgressBar({
             )}
           >
             <div
-              className={twMerge("h-full w-full rounded-full bg-lol-gray-950")}
+              className={twMerge("bg-lol-grey-950 h-full w-full rounded-full")}
             >
               <div
                 className={twMerge(

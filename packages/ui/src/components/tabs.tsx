@@ -38,7 +38,7 @@ export function TabList<T extends object>({
     <AriaTabList<T>
       {...rest}
       className={(values) =>
-        twMerge("flex gap-0 -ml-4", resolveClassname(className, values))
+        twMerge("-ml-4 flex gap-0", resolveClassname(className, values))
       }
     />
   );
@@ -51,11 +51,11 @@ export function Tab({ children, className, ...rest }: TabProps) {
       {...rest}
       className={(values) =>
         twMerge(
-          "font-beaufort text-lol-gold-300 uppercase font-medium text-xs tracking-widest px-4 relative py-1 cursor-pointer select-none",
+          "font-beaufort text-lol-gold-300 relative cursor-pointer select-none px-4 py-1 text-xs font-medium uppercase tracking-widest",
           (values.isSelected || values.isHovered) && "text-lol-gold-50",
           values.isPressed && "text-lol-gold-500",
-          values.isDisabled && "text-lol-gray-500 cursor-default",
-          "focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-lol-gold-100",
+          values.isDisabled && "text-lol-grey-500 cursor-default",
+          "focus-visible:outline-lol-gold-100 focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-4",
           resolveClassname(className, values),
         )
       }
@@ -69,7 +69,7 @@ export function Tab({ children, className, ...rest }: TabProps) {
                 viewTransitionName: `tab-indicator-${id}`,
               }}
               className={twMerge(
-                "h-px bg-gradient-to-r from-transparent via-lol-gold-200 to-transparent absolute bottom-0 w-full left-0",
+                "via-lol-gold-200 absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent to-transparent",
               )}
             ></div>
           )}

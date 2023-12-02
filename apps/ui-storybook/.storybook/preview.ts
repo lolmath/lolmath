@@ -6,6 +6,19 @@ import "@lolmath/ui/font/spiegel";
 
 const preview: Preview = {
   parameters: {
+    backgrounds: {
+      default: "hextech-black",
+      values: [
+        {
+          name: "hextech-black",
+          value: "#010A13",
+        },
+        {
+          name: "dark-blue-gradient",
+          value: "linear-gradient(180deg, #091428 0%, #0A1428 100%)",
+        },
+      ],
+    },
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {

@@ -37,7 +37,7 @@ function _Button(
       {...props}
       className={(values) => {
         return twMerge(
-          "transition-colors duration-200 outline-none",
+          "outline-none transition-colors duration-200",
           (priority === "primary" || priority === "secondary") && [
             "bg-gradient-to-t",
             borderGradient,
@@ -46,9 +46,9 @@ function _Button(
             values.isDisabled && borderGradientDisabled,
             values.isFocused && "",
             values.isFocusVisible &&
-              "outline outline-yellow-50 outline-offset-2",
+              "outline outline-offset-2 outline-yellow-50",
           ],
-          isRounded && "rounded-full aspect-square",
+          isRounded && "aspect-square rounded-full",
           isSquared && "aspect-square",
           resolveClassname(className, values),
         );
@@ -58,16 +58,16 @@ function _Button(
         return (
           <span
             className={twMerge(
-              "block transition-colors duration-200 text-lol-gold-300 tracking-wide font-beaufort font-black uppercase",
+              "text-lol-gold-300 font-beaufort block font-black uppercase tracking-wide transition-colors duration-200",
               (priority === "primary" || priority === "secondary") && [
-                "m-0.5 px-4 py-2 bg-lol-gray-950",
+                "bg-lol-grey-950 m-0.5 px-4 py-2",
               ],
               priority === "primary" &&
                 "from-lol-gold-700 via-lol-gold-800 to-lol-gold-900 bg-gradient-to-b",
 
               priority === "tertiary" &&
                 !isRounded &&
-                'relative after:content-[""] after:absolute after:-top-2 after:-bottom-2 after:-left-2 after:-right-2',
+                'relative after:absolute after:-bottom-2 after:-left-2 after:-right-2 after:-top-2 after:content-[""]',
 
               (isSquared || isRounded) && "aspect-square p-1.5",
               isRounded && "rounded-full",
@@ -78,14 +78,14 @@ function _Button(
                   "from-lol-gold-700 via-lol-gold-600 to-lol-gold-600",
                 priority === "tertiary" &&
                   (isRounded || isSquared) &&
-                  "bg-lol-gray-900",
+                  "bg-lol-grey-900",
               ],
               values.isPressed && [
-                "text-lol-gray-500",
+                "text-lol-grey-500",
                 priority === "primary" &&
                   "text-lol-gold-600 from-lol-gold-900 via-lol-gold-900 to-lol-gold-900",
               ],
-              values.isDisabled && "text-lol-gray-500",
+              values.isDisabled && "text-lol-grey-500",
               values.isFocused && "",
               values.isFocusVisible && "",
             )}
