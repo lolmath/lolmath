@@ -15,6 +15,7 @@ import {
   hextechBorderGradientDisabled,
   hextechBorderGradientHover,
   hextechBorderGradientPressed,
+  dimmedBorderGradient,
 } from "../utilities/border";
 import { resolveClassName as resolveClassName } from "../utilities/resolve-class-name";
 import { tv } from "../utilities/tv";
@@ -42,7 +43,7 @@ const buttonBorder = tv({
       secondary: "",
       text: "",
       hextech: "",
-      dimmed: "from-lol-grey-300 via-lol-grey-300 to-lol-grey-300",
+      dimmed: dimmedBorderGradient,
     },
     shape: {
       round: "aspect-square rounded-full",

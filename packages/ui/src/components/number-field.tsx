@@ -9,17 +9,21 @@ import {
   borderGradient,
   borderGradientDisabled,
   borderGradientHover,
+  dimmedBorderGradient,
 } from "../utilities/border";
 import { ComponentProps } from "react";
 import { resolveClassName } from "../utilities/resolve-class-name";
 import { tv } from "tailwind-variants";
 
+type NumberFieldPreset = "normal" | "dimmed";
+
 const numberFieldBorder = tv({
-  base: [
-    "grid grid-cols-[auto_1fr_auto] gap-px bg-gradient-to-t p-px outline-none",
-    borderGradient,
-  ],
+  base: "grid grid-cols-[auto_1fr_auto] gap-px bg-gradient-to-t p-px outline-none",
   variants: {
+    preset: {
+      normal: borderGradient,
+      dimmed: dimmedBorderGradient,
+    },
     isDisabled: {
       true: borderGradientDisabled,
     },
@@ -56,10 +60,12 @@ export function NumberField({
   inputProps = {},
   groupProps = {},
   children,
+  preset = "normal",
   ...props
 }: AriaNumberFieldProps & {
   inputProps?: ComponentProps<typeof AriaInput>;
   groupProps?: ComponentProps<typeof Group>;
+  preset?: NumberFieldPreset;
 }) {
   return (
     <AriaNumberField {...props}>
@@ -71,6 +77,7 @@ export function NumberField({
             className={(values) => {
               return numberFieldBorder({
                 className: resolveClassName(groupProps.className, values),
+                preset,
                 ...values,
               });
             }}

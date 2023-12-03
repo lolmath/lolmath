@@ -13,3 +13,6 @@ export const hextechBorderGradientHover =
 export const hextechBorderGradientPressed =
   "from-lol-blue-500 to-lol-blue-400";
 export const hextechBorderGradientDisabled = "from-lol-grey-150 via-lol-grey-150 to-lol-grey-150";
+
+export const dimmedBorderGradient =
+  "from-lol-grey-300 via-lol-grey-300 to-lol-grey-300";
