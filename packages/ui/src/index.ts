@@ -7,7 +7,6 @@ export * from "./components/progress-bar";
 export * from "./components/accordion";
 export * from "./components/text-field";
 export * from "./components/radio-group";
-export * from "./components/label";
 export * from "./components/number-field";
 export * from "./components/spinner/spinner";
 export * from "./components/modal";
