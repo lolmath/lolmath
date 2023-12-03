@@ -5,10 +5,52 @@ import {
   Group,
   Button,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
-import { borderGradient } from "../utilities/border";
+import {
+  borderGradient,
+  borderGradientDisabled,
+  borderGradientHover,
+} from "../utilities/border";
 import { ComponentProps } from "react";
 import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "tailwind-variants";
+
+const numberFieldBorder = tv({
+  base: [
+    "grid grid-cols-[auto_1fr_auto] gap-px bg-gradient-to-t p-px outline-none",
+    borderGradient,
+  ],
+  variants: {
+    isDisabled: {
+      true: borderGradientDisabled,
+    },
+    isFocusWithin: {
+      true: borderGradientHover,
+    },
+  },
+});
+
+const numberFieldInput = tv({
+  base: [
+    "text-lol-gold-100 font-spiegel bg-lol-grey-hextech-black w-full px-3 py-2 text-xs outline-none",
+  ],
+  variants: {
+    isDisabled: {
+      true: "text-lol-grey-150 bg-lol-grey-300",
+    },
+    isFocused: {
+      true: "from-lol-grey-200 via-lol-grey-300 to-lol-grey-300 bg-gradient-to-t",
+    },
+  },
+});
+
+const numberFieldButton = tv({
+  base: ["text-lol-gold-100 bg-lol-grey-hextech-black px-2.5"],
+  variants: {
+    isDisabled: {
+      true: "text-lol-grey-150 bg-lol-grey-300",
+    },
+  },
+});
 
 export function NumberField({
   inputProps = {},
@@ -27,18 +69,14 @@ export function NumberField({
           <Group
             {...groupProps}
             className={(values) => {
-              return twMerge(
-                "grid grid-cols-[auto_1fr_auto] gap-px p-px outline-none",
-                borderGradient,
-                "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
-                props.isDisabled &&
-                  "from-lol-grey-700 via-lol-grey-700 to-lol-grey-700",
-                resolveClassName(groupProps.className, values),
-              );
+              return numberFieldBorder({
+                className: resolveClassName(groupProps.className, values),
+                ...values,
+              });
             }}
           >
             <Button
-              className="text-lol-grey-50 bg-black px-2.5"
+              className={(values) => numberFieldButton(values)}
               slot="decrement"
             >
               -
@@ -46,17 +84,14 @@ export function NumberField({
             <AriaInput
               {...inputProps}
               className={(values) => {
-                return twMerge(
-                  "text-lol-gold-50 font-spiegel w-full bg-black px-3 py-2 text-xs outline-none",
-                  values.isDisabled && "text-lol-grey-500 bg-lol-grey-950",
-                  values.isFocused &&
-                    "from-lol-grey-950 to-lol-grey-900 bg-gradient-to-b",
-                  resolveClassName(inputProps.className, values),
-                );
+                return numberFieldInput({
+                  className: resolveClassName(inputProps.className, values),
+                  ...values,
+                });
               }}
             />
             <Button
-              className="text-lol-grey-50 bg-black px-2.5"
+              className={(values) => numberFieldButton(values)}
               slot="increment"
             >
               +
