@@ -1,15 +1,18 @@
 "use client";
 
 import { createContext, useState, useContext } from "react";
-import { twMerge } from "tailwind-merge";
 import { useCssId } from "../utilities/css-id";
 import { startViewTransition } from "../utilities/view-transition";
+import { tv } from "../utilities/tv";
+
+const accordion = tv({
+  base: "bg-lol-blue-950",
+});
 
 interface AccordionProps {
   children: React.ReactNode;
   className?: string;
 }
-
 export function Accordion({ children, className }: AccordionProps) {
   const [activeItem, setActiveItem] = useState<string>("");
   const id = useCssId();
@@ -23,10 +26,9 @@ export function Accordion({ children, className }: AccordionProps) {
       }}
     >
       <div
-        className={twMerge(
-          "bg-lol-blue-950 border-lol-gold-500 border",
+        className={accordion({
           className,
-        )}
+        })}
         style={{
           viewTransitionName: `${id}`,
         }}
@@ -36,6 +38,19 @@ export function Accordion({ children, className }: AccordionProps) {
     </AccordionContext.Provider>
   );
 }
+
+export const accordionTrigger = tv({
+  base: "text-lol-grey-100 font-beaufort active:text-lol-gold-100 hover:text-lol-gold-100 flex w-full items-center py-2 text-left font-bold uppercase",
+});
+
+export const accordionTriggerInner = tv({
+  base: "mr-2 inline-block transform text-sm transition-transform",
+  variants: {
+    isActive: {
+      true: "rotate-90",
+    },
+  },
+});
 
 interface AccordionTriggerProps {
   children: React.ReactNode;
@@ -50,10 +65,9 @@ export function AccordionTrigger({
 
   return (
     <button
-      className={twMerge(
-        "text-lol-grey-300 font-beaufort hover:bg-lol-blue-800 active:bg-lol-blue-700 active:text-lol-gold-200 hover:text-lol-grey-100 flex w-full items-center px-5 py-2 text-left font-bold uppercase",
+      className={accordionTrigger({
         className,
-      )}
+      })}
       onClick={() => {
         startViewTransition(() => {
           setActiveItem((currentItem) => (currentItem === item ? "" : item));
@@ -64,10 +78,9 @@ export function AccordionTrigger({
       }}
     >
       <span
-        className={twMerge(
-          "mr-2 inline-block transform text-sm transition-transform",
-          item === activeItem && "rotate-90",
-        )}
+        className={accordionTriggerInner({
+          isActive: item === activeItem,
+        })}
       >
         ▶
       </span>
@@ -87,7 +100,7 @@ export function AccordionItem({ children, value }: AccordionItemProps) {
         item: value,
       }}
     >
-      <div className="border-lol-gold-500 border-b last-of-type:border-none">
+      <div className="border-lol-gold-600 border-b last-of-type:border-none">
         {children}
       </div>
     </AccordionItemContext.Provider>
@@ -106,7 +119,7 @@ export function AccordionContent({ children }: AccordionContentProps) {
   }
 
   return (
-    <div className="bg-lol-blue-900 border-lol-gold-500 font-spiegel text-lol-blue-100 border-t px-5 py-2">
+    <div className="font-spiegel text-lol-grey-100 py-2">
       {children}
     </div>
   );
