@@ -1,10 +1,20 @@
 import { ComponentProps } from "react";
-import { twMerge } from "tailwind-merge";
 import { borderGradient } from "../utilities/border";
+import { tv } from "../utilities/tv";
 
 export interface CardProps extends ComponentProps<"div"> {
   borderProps?: ComponentProps<"div">;
 }
+
+const cardBorder = tv({
+  base: ["bg-gradient-to-t p-[2px]", borderGradient],
+  variants: {},
+});
+
+const inner = tv({
+  base: "bg-lol-grey-hextech-black w-full",
+  variants: {},
+});
 
 export function Card({ children, className, style, borderProps }: CardProps) {
   const r = `1rem`;
@@ -12,7 +22,9 @@ export function Card({ children, className, style, borderProps }: CardProps) {
   return (
     <div
       {...(borderProps ?? {})}
-      className={twMerge("p-[3px]", borderGradient, borderProps?.className)}
+      className={cardBorder({
+        className: borderProps?.className,
+      })}
       style={{
         WebkitMask: borderInverted(r),
         mask: borderInverted(r),
@@ -20,7 +32,9 @@ export function Card({ children, className, style, borderProps }: CardProps) {
       }}
     >
       <div
-        className={twMerge("bg-black w-full", className)}
+        className={inner({
+          className,
+        })}
         style={{
           WebkitMask: borderInverted(r),
           mask: borderInverted(r),
