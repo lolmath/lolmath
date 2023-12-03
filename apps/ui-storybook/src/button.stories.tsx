@@ -14,17 +14,16 @@ const meta = {
       description: "Is the button disabled?",
       type: { name: "boolean" },
     },
-    priority: {
+    preset: {
       defaultValue: undefined,
     },
-    isSquared: {
-      defaultValue: false,
-      description: "Is the button squared?",
-      type: { name: "boolean" },
+    shape: {
+      defaultValue: "normal",
+      description: "The Shape of the button",
     },
-    isRounded: {
+    thin: {
       defaultValue: false,
-      description: "Is the button rounded?",
+      description: "Is the button thin?",
       type: { name: "boolean" },
     },
   },
@@ -39,13 +38,25 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    priority: "primary",
+    preset: "primary",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    priority: "secondary",
+    preset: "secondary",
+  },
+};
+
+export const Hextech: Story = {
+  args: {
+    preset: "hextech",
+  },
+};
+
+export const Dimmed: Story = {
+  args: {
+    preset: "dimmed",
   },
 };
 
@@ -55,22 +66,22 @@ export const Disabled: Story = {
   },
 };
 
-export const Tertiary: Story = {
+export const Text: Story = {
   args: {
-    priority: "tertiary",
+    preset: "text",
   },
 };
 
-export const TertiaryDisabled: Story = {
+export const TextDisabled: Story = {
   args: {
     isDisabled: true,
-    priority: "tertiary",
+    preset: "text",
   },
 };
 
-export const TertiaryInline: Story = {
+export const TextInline: Story = {
   args: {
-    priority: "tertiary",
+    preset: "text",
   },
   render: (args) => (
     <div className="bg-black p-4 text-white">
@@ -84,16 +95,32 @@ export const TertiaryInline: Story = {
 
 export const RoundedPrimary: Story = {
   args: {
-    priority: "primary",
-    isRounded: true,
+    preset: "primary",
+    shape: "round",
     children: <FaGear />,
   },
 };
 
 export const RoundedSecondary: Story = {
   args: {
-    priority: "secondary",
-    isRounded: true,
+    preset: "secondary",
+    shape: "round",
+    children: <FaGear />,
+  },
+};
+
+export const RoundedHextech: Story = {
+  args: {
+    preset: "hextech",
+    shape: "round",
+    children: <FaGear />,
+  },
+};
+
+export const RoundedDimmed: Story = {
+  args: {
+    preset: "dimmed",
+    shape: "round",
     children: <FaGear />,
   },
 };
@@ -101,40 +128,56 @@ export const RoundedSecondary: Story = {
 export const RoundedDisabled: Story = {
   args: {
     isDisabled: true,
-    isRounded: true,
+    shape: "round",
     children: <FaGear />,
   },
 };
 
-export const RoundedTertiary: Story = {
+export const RoundedText: Story = {
   args: {
-    priority: "tertiary",
-    isRounded: true,
+    preset: "text",
+    shape: "round",
     children: <FaGear />,
   },
 };
 
-export const RoundedTeritaryDisabled: Story = {
+export const RoundedTextDisabled: Story = {
   args: {
     isDisabled: true,
-    isRounded: true,
-    priority: "tertiary",
+    shape: "round",
+    preset: "text",
     children: <FaGear />,
   },
 };
 
 export const SquaredPrimary: Story = {
   args: {
-    priority: "primary",
-    isSquared: true,
+    preset: "primary",
+    shape: "square",
     children: <FaGear />,
   },
 };
 
 export const SquaredSecondary: Story = {
   args: {
-    priority: "secondary",
-    isSquared: true,
+    preset: "secondary",
+    shape: "square",
+    children: <FaGear />,
+  },
+};
+
+export const SquaredHextech: Story = {
+  args: {
+    preset: "hextech",
+    shape: "square",
+    children: <FaGear />,
+  },
+};
+
+export const SquaredDimmed: Story = {
+  args: {
+    preset: "dimmed",
+    shape: "square",
     children: <FaGear />,
   },
 };
@@ -142,24 +185,24 @@ export const SquaredSecondary: Story = {
 export const SquaredDisabled: Story = {
   args: {
     isDisabled: true,
-    isSquared: true,
+    shape: "square",
     children: <FaGear />,
   },
 };
 
-export const SquaredTertiary: Story = {
+export const SquaredText: Story = {
   args: {
-    priority: "tertiary",
-    isSquared: true,
+    preset: "text",
+    shape: "square",
     children: <FaGear />,
   },
 };
 
-export const SquaredTeritaryDisabled: Story = {
+export const SquaredTextDisabled: Story = {
   args: {
     isDisabled: true,
-    isSquared: true,
-    priority: "tertiary",
+    shape: "square",
+    preset: "text",
     children: <FaGear />,
   },
 };
