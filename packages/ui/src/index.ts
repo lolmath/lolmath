@@ -15,6 +15,6 @@ export * from "./components/checkbox";
 export * from "./components/text-area";
 export * from "./components/tooltip";
 export * from "./components/card";
-export * from "./components/heading";
-export * from "./components/text";
+export * from "./components/typography/heading";
+export * from "./components/typography/text";
 export * from "./utilities/tv";

@@ -42,12 +42,6 @@ export const LargeText: Story = {
   },
 };
 
-export const LabelText: Story = {
-  args: {
-    preset: "label",
-  },
-};
-
 export const LargeNumberText: Story = {
   args: {
     preset: "large-number",

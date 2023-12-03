@@ -18,31 +18,31 @@ type Story = StoryObj<typeof meta>;
 
 export const H1Heading: Story = {
   args: {
-    size: "h1",
+    preset: "h1",
   },
 };
 
 export const H2Heading: Story = {
   args: {
-    size: "h2",
+    preset: "h2",
   },
 };
 
 export const H3Heading: Story = {
   args: {
-    size: "h3",
+    preset: "h3",
   },
 };
 
 export const H4Heading: Story = {
   args: {
-    size: "h4",
+    preset: "h4",
   },
 };
 
 export const H5Heading: Story = {
   args: {
-    size: "h5",
+    preset: "h5",
   },
 };
 

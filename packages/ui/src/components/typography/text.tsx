@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import { tv } from "../utilities/tv";
+import { tv } from "../../utilities/tv";
 import {
   type LabelProps as AriaLabelProps,
   Label as AriaLabel,
