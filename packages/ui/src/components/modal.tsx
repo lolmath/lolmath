@@ -31,7 +31,7 @@ export function Modal({
       {...modalProps}
       className={(values) => {
         return twMerge(
-          "fixed inset-0 z-10 flex min-h-full flex-col items-center justify-center overflow-y-auto bg-black bg-opacity-25 px-4 text-center backdrop-blur",
+          "bg-lol-grey-hextech-black fixed inset-0 z-10 flex min-h-full flex-col items-center justify-center overflow-y-auto bg-opacity-25 px-4 text-center backdrop-blur",
           resolveClassName(modalOverlayClassName, values),
         );
       }}
@@ -53,22 +53,22 @@ export function Modal({
           {(dialogRenderProps) => (
             <>
               <div className="relative h-1">
-                <div className="border-lol-gold-700 absolute left-5 right-5 h-full rounded-full border border-b-0 bg-black"></div>
+                <div className="border-lol-gold-600 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-b-0"></div>
               </div>
               <div
                 className={twMerge(
-                  "bg-gradient-to-t p-0.5 text-left align-middle shadow-xl",
+                  "bg-gradient-to-b p-0.5 text-left align-middle shadow-xl",
                   borderGradientPressed,
                 )}
               >
-                <div className="bg-black">
+                <div className="bg-lol-grey-hextech-black">
                   {typeof children === "function"
                     ? children(dialogRenderProps)
                     : children}
-                </div>
+              </div>
               </div>
               <div className="relative h-1">
-                <div className="border-lol-gold-600 absolute left-5 right-5 h-full rounded-full border border-t-0 bg-black"></div>
+                <div className="border-lol-gold-500 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-t-0"></div>
               </div>
             </>
           )}
@@ -86,14 +86,16 @@ export function DialogHeading(props: AriaHeadingProps) {
         "text-lol-gold-100 font-beaufort text-lg font-bold uppercase",
         props.className,
       )}
-    ></AriaHeading>
+    />
   );
 }
 
 export function DialogButtons({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex translate-y-0.5 justify-center">
-      <div className="flex gap-1 bg-black px-1">{children}</div>
+      <div className="bg-lol-grey-hextech-black flex gap-1 px-1">
+        {children}
+      </div>
     </div>
   );
 }
