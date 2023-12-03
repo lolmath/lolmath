@@ -9,9 +9,27 @@ import {
   DialogTriggerProps as AriaDialogTriggerProps,
   DialogProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
 import { borderGradientPressed } from "../utilities/border";
 import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv";
+
+const modalOverlay = tv({
+  base: "bg-lol-grey-hextech-black fixed inset-0 z-10 flex min-h-full flex-col items-center justify-center overflow-y-auto bg-opacity-25 px-4 text-center backdrop-blur",
+});
+
+const modal = tv({
+  base: "w-full max-w-md",
+});
+
+const dialog = tv({
+  base: "relative max-h-screen py-4 outline-none",
+});
+const dialogBorder = tv({
+  base: [
+    "bg-gradient-to-b p-0.5 text-left align-middle shadow-xl",
+    borderGradientPressed,
+  ],
+});
 
 interface ModalProps extends Omit<ModalOverlayProps, "children"> {
   modalOverlayClassName?: ModalOverlayProps["className"];
@@ -30,42 +48,37 @@ export function Modal({
     <ModalOverlay
       {...modalProps}
       className={(values) => {
-        return twMerge(
-          "bg-lol-grey-hextech-black fixed inset-0 z-10 flex min-h-full flex-col items-center justify-center overflow-y-auto bg-opacity-25 px-4 text-center backdrop-blur",
-          resolveClassName(modalOverlayClassName, values),
-        );
+        return modalOverlay({
+          className: resolveClassName(modalOverlayClassName, values),
+        });
       }}
     >
       <AriaModal
         {...modalProps}
         className={(values) =>
-          twMerge("w-full max-w-md", resolveClassName(className, values))
+          modal({
+            className: resolveClassName(className, values),
+          })
         }
       >
         <Dialog
           role="alertdialog"
           {...dialogProps}
-          className={twMerge(
-            "relative max-h-screen py-4 outline-none",
-            dialogProps.className,
-          )}
+          className={dialog({
+            className: dialogProps.className,
+          })}
         >
           {(dialogRenderProps) => (
             <>
               <div className="relative h-1">
                 <div className="border-lol-gold-600 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-b-0"></div>
               </div>
-              <div
-                className={twMerge(
-                  "bg-gradient-to-b p-0.5 text-left align-middle shadow-xl",
-                  borderGradientPressed,
-                )}
-              >
+              <div className={dialogBorder()}>
                 <div className="bg-lol-grey-hextech-black">
                   {typeof children === "function"
                     ? children(dialogRenderProps)
                     : children}
-              </div>
+                </div>
               </div>
               <div className="relative h-1">
                 <div className="border-lol-gold-500 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-t-0"></div>
@@ -78,14 +91,17 @@ export function Modal({
   );
 }
 
-export function DialogHeading(props: AriaHeadingProps) {
+const dialogHeading = tv({
+  base: "text-lol-gold-100 font-beaufort text-lol-h5 uppercase",
+});
+
+export function DialogHeading({ className, ...props }: AriaHeadingProps) {
   return (
     <AriaHeading
       {...props}
-      className={twMerge(
-        "text-lol-gold-100 font-beaufort text-lg font-bold uppercase",
-        props.className,
-      )}
+      className={dialogHeading({
+        className,
+      })}
     />
   );
 }
