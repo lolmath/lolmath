@@ -1,27 +1,29 @@
 "use client";
 
 import { Checkbox as AriaCheckbox, CheckboxProps } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
 import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv";
+
+const checkbox = tv({
+  base: "text-lol-grey-100 font-spiegel flex cursor-pointer items-center gap-1 text-xs tracking-widest",
+  variants: {
+    isHovered: {
+      true: "text-lol-gold-100",
+    },
+    isDisabled: {
+      true: "cursor-default brightness-50",
+    },
+  },
+});
 
 export function Checkbox({ children, className, ...props }: CheckboxProps) {
   return (
     <AriaCheckbox
       className={(values) => {
-        return twMerge(
-          "text-lol-grey-300 font-spiegel flex cursor-pointer items-center gap-1 text-xs tracking-widest",
-          "",
-          values.isSelected && "",
-          values.isIndeterminate && "",
-          values.isReadOnly && "",
-          values.isRequired && "",
-          values.isHovered && "text-lol-gold-50",
-          values.isPressed && "",
-          values.isDisabled && "cursor-default brightness-50",
-          values.isFocused && "",
-          values.isFocusVisible && "",
-          resolveClassName(className, values),
-        );
+        return checkbox({
+          className: resolveClassName(className, values),
+          ...values,
+        });
       }}
       {...props}
     >
