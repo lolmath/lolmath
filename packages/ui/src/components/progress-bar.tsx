@@ -5,8 +5,23 @@ import {
   Label,
   ProgressBarProps as AriaProgressBarProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
 import { borderGradient } from "../utilities/border";
+import { tv } from "../utilities/tv";
+
+const progressBarBorder = tv({
+  base: [
+    "-ml-0.5 -mr-1 h-3 rounded-full bg-gradient-to-t p-px",
+    borderGradient,
+  ],
+});
+
+const progressBarBackground = tv({
+  base: ["bg-lol-grey-300 h-full w-full rounded-full"],
+});
+
+const progressBarFill = tv({
+  base: "from-lol-blue-400 to-lol-blue-200 h-full rounded-full bg-gradient-to-r",
+});
 
 interface ProgressBarProps extends Omit<AriaProgressBarProps, "children"> {
   label?: string;
@@ -22,22 +37,13 @@ export function ProgressBar({
       {({ percentage, valueText }) => (
         <>
           <div className="font-beaufort text-lol-gold-100 flex font-bold uppercase">
-            <Label className="flex-1 ">{label ?? "Loading"}</Label>
+            <Label className="flex-1">{label ?? "Loading"}</Label>
             <span>{valueText}</span>
           </div>
-          <div
-            className={twMerge(
-              borderGradient,
-              "-ml-0.5 -mr-1 h-3 rounded-full p-px",
-            )}
-          >
-            <div
-              className={twMerge("bg-lol-grey-950 h-full w-full rounded-full")}
-            >
+          <div className={progressBarBorder()}>
+            <div className={progressBarBackground()}>
               <div
-                className={twMerge(
-                  "h-full rounded-full bg-gradient-to-r from-[#005A82] via-[#067F9B] to-[#73CCD5]",
-                )}
+                className={progressBarFill()}
                 style={{ width: `${percentage}%` }}
               />
             </div>
