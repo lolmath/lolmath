@@ -11,7 +11,6 @@ import {
   SliderTrack as AriaSliderTrack,
   SliderOutput as AriaSliderOutput,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
 import {
   sliderActive,
   sliderDisabled,
@@ -19,9 +18,54 @@ import {
   sliderNormal,
 } from "./images";
 import { resolveClassName } from "../../utilities/resolve-class-name";
+import { tv } from "../../utilities/tv";
+
+const sliderTrack = tv({
+  base: "group relative h-7 w-full",
+});
+
+const sliderTrackBackground = tv({
+  base: "bg-lol-grey-300 absolute top-[50%] h-0.5 w-full translate-y-[-50%] transform rounded-full",
+});
+
+const sliderTrackForeground = tv({
+  base: "from-lol-gold-600 to-lol-gold-500 absolute top-[50%] h-0.5 translate-y-[-50%] transform bg-gradient-to-r",
+  variants: {
+    isDisabled: {
+      true: "bg-[#5C5B57] from-transparent via-transparent to-transparent",
+      false: [
+        "group-hover:from-lol-gold-500 group-hover:via-lol-gold-400 group-hover:to-lol-gold-200",
+        "group-active:from-lol-gold-500 group-active:via-lol-gold-600 group-active:to-lol-gold-600",
+      ],
+    },
+  },
+});
+
+const sliderThumb = tv({
+  base: "top-[50%] h-7 w-7 bg-contain outline-none [background-image:var(--normal)]",
+  variants: {
+    isDisabled: {
+      true: "[background-image:var(--disabled)]",
+    },
+    isThumbDragging: {
+      true: "[background-image:var(--active)]",
+    },
+    isOtherThumbDragging: {
+      true: "",
+    },
+  },
+  compoundVariants: [
+    {
+      isThumbDragging: false,
+      isOtherThumbDragging: false,
+      className: "group-hover:[background-image:var(--hover)]",
+    },
+  ],
+});
 
 export function Slider<T extends number | number[]>({
   children,
+  className,
   sliderThumbProps = {},
   sliderTrackProps = {},
   sliderTrackBackgroundClassName,
@@ -40,23 +84,22 @@ export function Slider<T extends number | number[]>({
   return (
     <AriaSlider<T>
       {...props}
-      className={(values) => {
-        const resolvedClassName = resolveClassName(props.className, values);
-        return twMerge("", resolvedClassName);
-      }}
+      className={(values) => resolveClassName(className, values)}
     >
       {(values) => (
         <>
           {typeof children === "function" ? children(values) : children}
           <AriaSliderTrack
             {...sliderTrackProps}
-            className={(sliderTrackRenderProps) => {
-              const resolvedClassName = resolveClassName(
-                sliderTrackProps.className,
-                sliderTrackRenderProps,
-              );
-              return twMerge("group relative h-7 w-full", resolvedClassName);
-            }}
+            className={(sliderTrackRenderProps) =>
+              sliderTrack({
+                ...sliderTrackRenderProps,
+                className: resolveClassName(
+                  sliderTrackProps.className,
+                  sliderTrackRenderProps,
+                ),
+              })
+            }
           >
             {(values) => {
               const left =
@@ -74,22 +117,21 @@ export function Slider<T extends number | number[]>({
               return (
                 <>
                   <div
-                    className={twMerge(
-                      "bg-lol-grey-950 absolute top-[50%] h-0.5 w-full translate-y-[-50%] transform rounded-full",
-                      resolveClassName(sliderTrackBackgroundClassName, values),
-                    )}
+                    className={sliderTrackBackground({
+                      className: resolveClassName(
+                        sliderTrackBackgroundClassName,
+                        values,
+                      ),
+                    })}
                   />
                   <div
-                    className={twMerge(
-                      "absolute top-[50%] h-0.5 translate-y-[-50%] transform bg-gradient-to-r from-[#463714] to-[#695625]",
-                      values.state.isDisabled
-                        ? "bg-[#5C5B57] from-transparent via-transparent to-transparent"
-                        : [
-                            "group-hover:from-[#785a28] group-hover:via-[#c89b3c] group-hover:to-[#c8aa6e]",
-                            "group-active:from-[#695625] group-active:via-[#463714] group-active:to-[#463714]",
-                          ],
-                      resolveClassName(sliderTrackForegroundClassName, values),
-                    )}
+                    className={sliderTrackForeground({
+                      ...values.state,
+                      className: resolveClassName(
+                        sliderTrackForegroundClassName,
+                        values,
+                      ),
+                    })}
                     style={{ left: `${left}%`, width: `${width}%` }}
                   />
                   {values.state.values.map((_, i) => {
@@ -106,29 +148,19 @@ export function Slider<T extends number | number[]>({
                           index={i}
                           {...sliderThumbProps}
                           className={(sliderThumbRenderProps) => {
-                            const resolvedClassName = resolveClassName(
-                              sliderThumbProps.className,
-                              sliderThumbRenderProps,
-                            );
-                            return twMerge(
-                              "top-[50%] h-7 w-7 bg-contain outline-none",
-                              "[background-image:var(--normal)]",
-                              sliderThumbRenderProps.isDisabled
-                                ? "[background-image:var(--disabled)]"
-                                : [
-                                    sliderThumbRenderProps.state.isThumbDragging(
-                                      i,
-                                    ) && "[background-image:var(--active)]",
-                                    !sliderThumbRenderProps.state.isThumbDragging(
-                                      0,
-                                    ) &&
-                                      !sliderThumbRenderProps.state.isThumbDragging(
-                                        1,
-                                      ) &&
-                                      "group-hover:[background-image:var(--hover)]",
-                                  ],
-                              resolvedClassName,
-                            );
+                            return sliderThumb({
+                              isDisabled: sliderThumbRenderProps.isDisabled,
+                              isThumbDragging:
+                                sliderThumbRenderProps.state.isThumbDragging(i),
+                              isOtherThumbDragging:
+                                sliderThumbRenderProps.state.isThumbDragging(
+                                  i === 1 ? 0 : 1,
+                                ),
+                              className: resolveClassName(
+                                sliderThumbProps.className,
+                                sliderThumbRenderProps,
+                              ),
+                            });
                           }}
                           style={
                             {
@@ -153,14 +185,16 @@ export function Slider<T extends number | number[]>({
   );
 }
 
+const sliderOutput = tv({
+  base: "font-spiegel text-lol-grey-100 text-lol-sm",
+});
 export function SliderOutput(props: SliderOutputProps) {
   return (
     <AriaSliderOutput
       className={(values) =>
-        twMerge(
-          "font-spiegel text-lol-grey-300 text-xs font-normal tracking-wide",
-          resolveClassName(props.className, values),
-        )
+        sliderOutput({
+          className: resolveClassName(props.className, values),
+        })
       }
       children={(sliderRenderProps) =>
         sliderRenderProps.state.values
