@@ -44,12 +44,7 @@ export const accordionTrigger = tv({
 });
 
 export const accordionTriggerInner = tv({
-  base: "mr-2 inline-block transform text-sm transition-transform",
-  variants: {
-    isActive: {
-      true: "rotate-90",
-    },
-  },
+  base: "ml-0.5 mr-2 inline-block rotate-90 transform text-xs",
 });
 
 interface AccordionTriggerProps {
@@ -73,17 +68,8 @@ export function AccordionTrigger({
           setActiveItem((currentItem) => (currentItem === item ? "" : item));
         });
       }}
-      style={{
-        viewTransitionName: `${id}-${item}`,
-      }}
     >
-      <span
-        className={accordionTriggerInner({
-          isActive: item === activeItem,
-        })}
-      >
-        ▶
-      </span>
+      <span className={accordionTriggerInner()}>❯</span>
       {children}
     </button>
   );
@@ -94,13 +80,20 @@ interface AccordionItemProps {
   value: string;
 }
 export function AccordionItem({ children, value }: AccordionItemProps) {
+  const { id } = useContext(AccordionContext);
+
   return (
     <AccordionItemContext.Provider
       value={{
         item: value,
       }}
     >
-      <div className="border-lol-gold-600 border-b last-of-type:border-none">
+      <div
+        className="border-lol-gold-600 border-b last-of-type:border-none"
+        style={{
+          viewTransitionName: `${id}-${value}`,
+        }}
+      >
         {children}
       </div>
     </AccordionItemContext.Provider>
@@ -118,11 +111,7 @@ export function AccordionContent({ children }: AccordionContentProps) {
     return null;
   }
 
-  return (
-    <div className="font-spiegel text-lol-grey-100 py-2">
-      {children}
-    </div>
-  );
+  return <div className="font-spiegel text-lol-grey-100 py-2">{children}</div>;
 }
 
 const AccordionContext = createContext<{

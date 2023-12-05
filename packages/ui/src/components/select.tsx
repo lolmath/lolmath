@@ -14,7 +14,6 @@ import {
   SelectValue as AriaSelectValue,
   ListBoxItem,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
 import {
   borderGradient,
   borderGradientDisabled,
@@ -23,6 +22,41 @@ import {
 } from "../utilities/border";
 import { outlineClassName } from "../utilities/outline";
 import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv";
+
+const select = tv({
+  base: "font-spiegel",
+});
+
+const selectButtonBorder = tv({
+  base: [
+    "inline-block w-[200px] bg-gradient-to-t outline-none",
+    borderGradient,
+  ],
+  variants: {
+    isHovered: { true: borderGradientHover },
+    isPressed: { true: borderGradientPressed },
+    isOpen: { true: borderGradientPressed },
+    isDisabled: { true: borderGradientDisabled },
+    isFocused: { true: "" },
+    isFocusVisible: { true: outlineClassName },
+  },
+});
+
+const selectButton = tv({
+  base: "bg-lol-grey-hextech-black text-lol-grey-100 m-px block bg-no-repeat px-2 py-1.5 pr-6 text-left text-xs font-normal tracking-wide",
+  variants: {
+    isHovered: { true: "text-lol-gold-100" },
+    isOpen: { true: "text-lol-gold-600 bg-lol-grey-300" },
+  },
+});
+
+const listBox = tv({
+  base: "bg-lol-grey-hextech-black border-lol-gold-600 border outline-none",
+  variants: {
+    isFocused: { true: "" },
+  },
+});
 
 interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
@@ -36,35 +70,28 @@ export function Select<T extends object>({
   description,
   errorMessage,
   children,
+  className,
   ...props
 }: SelectProps<T>) {
   return (
     <AriaSelect
       {...props}
       className={(values) =>
-        twMerge("font-spiegel", resolveClassName(props.className, values))
+        select({
+          ...values,
+          className: resolveClassName(className, values),
+        })
       }
     >
       {(values) => (
         <>
           <AriaButton
             className={(buttonValues) =>
-              twMerge(
-                "inline-block outline-none",
-                borderGradient,
-                buttonValues.isHovered && borderGradientHover,
-                (buttonValues.isPressed || values.isOpen) &&
-                  borderGradientPressed,
-                buttonValues.isDisabled && borderGradientDisabled,
-                buttonValues.isFocused && "",
-                buttonValues.isFocusVisible && outlineClassName,
-              )
+              selectButtonBorder({ ...buttonValues, isOpen: values.isOpen })
             }
           >
             <span
-              className={twMerge(
-                "bg-lol-grey-950 m-px block bg-no-repeat px-2 py-1 pr-6 text-xs font-normal tracking-wide text-[#a09b8c]",
-              )}
+              className={selectButton(values)}
               style={{
                 backgroundPosition: "right 0.5rem center",
                 backgroundImage: values.isOpen
@@ -79,17 +106,8 @@ export function Select<T extends object>({
           {errorMessage && (
             <AriaText slot="errorMessage">{errorMessage}</AriaText>
           )}
-          <AriaPopover offset={4}>
-            <AriaListBox
-              className={(listbox) =>
-                twMerge(
-                  "border border-[#463714] bg-[#010a13] outline-none",
-                  listbox.isFocused && "",
-                )
-              }
-            >
-              {children}
-            </AriaListBox>
+          <AriaPopover offset={4} className="w-[--trigger-width]">
+            <AriaListBox className={() => listBox()}>{children}</AriaListBox>
           </AriaPopover>
         </>
       )}
@@ -97,22 +115,26 @@ export function Select<T extends object>({
   );
 }
 
+const item = tv({
+  base: "font-spiegel border-lol-grey-300 text-lol-gold-300 text-lol-sm border-b px-2 py-1.5 text-sm outline-none",
+  variants: {
+    isHovered: { true: "bg-lol-grey-300 text-lol-gold-100" },
+    isFocusVisible: { true: outlineClassName },
+    isFocused: { true: "" },
+    isSelected: { true: "" },
+    isPressed: { true: "text-lol-gold-600 bg-lol-grey-300/50" },
+  },
+});
+
 export function Item({ className, ...props }: ListBoxItemProps) {
   return (
     <ListBoxItem
       {...props}
       className={(values) => {
-        const finalClassName =
-          typeof className === "function" ? className(values) : className;
-
-        return twMerge(
-          "font-spiegel border-b border-[#1f2123] px-2 py-0.5 text-sm font-bold text-[#cdbe91] outline-none",
-          values.isHovered && "bg-lol-grey-950 text-lol-gold-100",
-          values.isPressed && "bg-[#1e232880] text-[#463714]",
-          values.isFocusVisible && outlineClassName,
-          values.isFocused && "",
-          finalClassName,
-        );
+        return item({
+          ...values,
+          className: resolveClassName(className, values),
+        });
       }}
     />
   );
