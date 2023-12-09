@@ -1,5 +1,5 @@
 import { ComponentProps } from "react";
-import { borderGradient } from "../utilities/border";
+import { goldGradient } from "../utilities/gradient";
 import { tv } from "../utilities/tv";
 
 export interface CardProps extends ComponentProps<"div"> {
@@ -7,7 +7,7 @@ export interface CardProps extends ComponentProps<"div"> {
 }
 
 const cardBorder = tv({
-  base: ["bg-gradient-to-t p-[2px]", borderGradient],
+  base: ["bg-gradient-to-t p-[2px]", goldGradient],
   variants: {},
 });
 

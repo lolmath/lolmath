@@ -4,7 +4,7 @@ import {
   Button as AriaButton,
   type SearchFieldProps as AriaSearchFieldProps,
 } from "react-aria-components";
-import { borderGradient, borderGradientDisabled } from "../utilities/border";
+import { goldGradient, goldGradientDisabled } from "../utilities/gradient";
 import { ComponentProps } from "react";
 import { resolveClassName } from "../utilities/resolve-class-name";
 import { tv } from "../utilities/tv";
@@ -12,12 +12,12 @@ import { tv } from "../utilities/tv";
 const searchFieldBorder = tv({
   base: [
     "flex bg-gradient-to-t p-px outline-none",
-    borderGradient,
+    goldGradient,
     "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-100",
   ],
   variants: {
     isDisabled: {
-      true: borderGradientDisabled,
+      true: goldGradientDisabled,
     },
   },
 });

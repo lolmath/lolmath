@@ -7,16 +7,16 @@ import {
   ButtonRenderProps,
 } from "react-aria-components";
 import {
-  borderGradient,
-  borderGradientDisabled,
-  borderGradientHover,
-  borderGradientPressed,
-  hextechBorderGradient,
-  hextechBorderGradientDisabled,
-  hextechBorderGradientHover,
-  hextechBorderGradientPressed,
-  dimmedBorderGradient,
-} from "../utilities/border";
+  goldGradient,
+  goldGradientDisabled,
+  goldGradientHover,
+  goldGradientPressed,
+  hextechGradient,
+  hextechGradientDisabled,
+  hextechGradientHover,
+  hextechGradientPressed,
+  dimmedGradient,
+} from "../utilities/gradient";
 import { resolveClassName as resolveClassName } from "../utilities/resolve-class-name";
 import { tv } from "../utilities/tv";
 
@@ -43,7 +43,7 @@ const buttonBorder = tv({
       secondary: "",
       text: "",
       hextech: "",
-      dimmed: dimmedBorderGradient,
+      dimmed: dimmedGradient,
     },
     shape: {
       round: "aspect-square rounded-full",
@@ -69,22 +69,22 @@ const buttonBorder = tv({
   compoundVariants: [
     {
       preset: ["primary", "secondary"],
-      class: borderGradient,
+      class: goldGradient,
     },
     {
       preset: ["primary", "secondary", "dimmed"],
       isHovered: true,
-      class: borderGradientHover,
+      class: goldGradientHover,
     },
     {
       preset: ["primary", "secondary", "dimmed"],
       isPressed: true,
-      class: borderGradientPressed,
+      class: goldGradientPressed,
     },
     {
       preset: ["primary", "secondary", "dimmed"],
       isDisabled: true,
-      class: borderGradientDisabled,
+      class: goldGradientDisabled,
     },
     {
       preset: ["primary", "secondary"],
@@ -93,22 +93,22 @@ const buttonBorder = tv({
     },
     {
       preset: ["hextech"],
-      class: hextechBorderGradient,
+      class: hextechGradient,
     },
     {
       preset: ["hextech"],
       isHovered: true,
-      class: hextechBorderGradientHover,
+      class: hextechGradientHover,
     },
     {
       preset: ["hextech"],
       isPressed: true,
-      class: hextechBorderGradientPressed,
+      class: hextechGradientPressed,
     },
     {
       preset: ["hextech"],
       isDisabled: true,
-      class: hextechBorderGradientDisabled,
+      class: hextechGradientDisabled,
     },
   ],
 });

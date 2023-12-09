@@ -5,14 +5,11 @@ import {
   Label,
   ProgressBarProps as AriaProgressBarProps,
 } from "react-aria-components";
-import { borderGradient } from "../utilities/border";
+import { goldGradient } from "../utilities/gradient";
 import { tv } from "../utilities/tv";
 
 const progressBarBorder = tv({
-  base: [
-    "-ml-0.5 -mr-1 h-3 rounded-full bg-gradient-to-t p-px",
-    borderGradient,
-  ],
+  base: ["-ml-0.5 -mr-1 h-3 rounded-full bg-gradient-to-t p-px", goldGradient],
 });
 
 const progressBarBackground = tv({

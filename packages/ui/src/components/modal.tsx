@@ -9,7 +9,7 @@ import {
   DialogTriggerProps as AriaDialogTriggerProps,
   DialogProps,
 } from "react-aria-components";
-import { borderGradientPressed } from "../utilities/border";
+import { goldGradientPressed } from "../utilities/gradient";
 import { resolveClassName } from "../utilities/resolve-class-name";
 import { tv } from "../utilities/tv";
 
@@ -27,7 +27,7 @@ const dialog = tv({
 const dialogBorder = tv({
   base: [
     "bg-gradient-to-b p-0.5 text-left align-middle shadow-xl",
-    borderGradientPressed,
+    goldGradientPressed,
   ],
 });
 

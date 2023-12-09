@@ -6,11 +6,11 @@ import {
   Button,
 } from "react-aria-components";
 import {
-  borderGradient,
-  borderGradientDisabled,
-  borderGradientHover,
-  dimmedBorderGradient,
-} from "../utilities/border";
+  goldGradient,
+  goldGradientDisabled,
+  goldGradientHover,
+  dimmedGradient,
+} from "../utilities/gradient";
 import { ComponentProps } from "react";
 import { resolveClassName } from "../utilities/resolve-class-name";
 import { tv } from "tailwind-variants";
@@ -21,14 +21,14 @@ const numberFieldBorder = tv({
   base: "grid grid-cols-[auto_1fr_auto] gap-px bg-gradient-to-t p-px outline-none",
   variants: {
     preset: {
-      normal: borderGradient,
-      dimmed: dimmedBorderGradient,
+      normal: goldGradient,
+      dimmed: dimmedGradient,
     },
     isDisabled: {
-      true: borderGradientDisabled,
+      true: goldGradientDisabled,
     },
     isFocusWithin: {
-      true: borderGradientHover,
+      true: goldGradientHover,
     },
   },
 });

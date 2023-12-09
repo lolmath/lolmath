@@ -7,7 +7,7 @@ import {
   TextArea as AriaTextArea,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { borderGradient } from "../utilities/border";
+import { goldGradient } from "../utilities/gradient";
 import { resolveClassName } from "../utilities/resolve-class-name";
 import { ComponentProps } from "react";
 
@@ -29,7 +29,7 @@ export function TextArea({
             {...borderProps}
             className={twMerge(
               "flex p-px outline-none",
-              borderGradient,
+              goldGradient,
               "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
               values.isDisabled &&
                 "from-lol-grey-700 via-lol-grey-700 to-lol-grey-700",

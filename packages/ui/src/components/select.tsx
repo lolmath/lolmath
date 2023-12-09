@@ -15,11 +15,11 @@ import {
   ListBoxItem,
 } from "react-aria-components";
 import {
-  borderGradient,
-  borderGradientDisabled,
-  borderGradientHover,
-  borderGradientPressed,
-} from "../utilities/border";
+  goldGradient,
+  goldGradientDisabled,
+  goldGradientHover,
+  goldGradientPressed,
+} from "../utilities/gradient";
 import { outlineClassName } from "../utilities/outline";
 import { resolveClassName } from "../utilities/resolve-class-name";
 import { tv } from "../utilities/tv";
@@ -29,15 +29,12 @@ const select = tv({
 });
 
 const selectButtonBorder = tv({
-  base: [
-    "inline-block w-[200px] bg-gradient-to-t outline-none",
-    borderGradient,
-  ],
+  base: ["inline-block w-[200px] bg-gradient-to-t outline-none", goldGradient],
   variants: {
-    isHovered: { true: borderGradientHover },
-    isPressed: { true: borderGradientPressed },
-    isOpen: { true: borderGradientPressed },
-    isDisabled: { true: borderGradientDisabled },
+    isHovered: { true: goldGradientHover },
+    isPressed: { true: goldGradientPressed },
+    isOpen: { true: goldGradientPressed },
+    isDisabled: { true: goldGradientDisabled },
     isFocused: { true: "" },
     isFocusVisible: { true: outlineClassName },
   },
