@@ -8,11 +8,13 @@ import {
   TabProps,
   TabPanelProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
 import { useCssId } from "../utilities/css-id";
 import { createContext, useContext } from "react";
 import { startViewTransition } from "../utilities/view-transition";
 import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv";
+
+export type { Key } from "react-aria-components";
 
 export function Tabs({ onSelectionChange, ...rest }: TabsProps) {
   const id = useCssId();
@@ -30,6 +32,10 @@ export function Tabs({ onSelectionChange, ...rest }: TabsProps) {
   );
 }
 
+const tabList = tv({
+  base: "-ml-4 flex gap-0",
+});
+
 export function TabList<T extends object>({
   className,
   ...rest
@@ -38,11 +44,34 @@ export function TabList<T extends object>({
     <AriaTabList<T>
       {...rest}
       className={(values) =>
-        twMerge("-ml-4 flex gap-0", resolveClassName(className, values))
+        tabList({
+          className: resolveClassName(className, values),
+        })
       }
     />
   );
 }
+
+const tab = tv({
+  base: [
+    "font-beaufort text-lol-gold-300 relative cursor-pointer select-none px-4 py-1 text-xs font-medium uppercase tracking-widest",
+    "focus-visible:outline-lol-gold-100 focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-4",
+  ],
+  variants: {
+    isSelected: {
+      true: "text-lol-gold-100",
+    },
+    isHovered: {
+      true: "text-lol-gold-100",
+    },
+    isPressed: {
+      true: "text-lol-gold-500",
+    },
+    isDisabled: {
+      true: "text-lol-grey-150 cursor-default",
+    },
+  },
+});
 
 export function Tab({ children, className, ...rest }: TabProps) {
   const { id } = useTabsContext();
@@ -50,14 +79,10 @@ export function Tab({ children, className, ...rest }: TabProps) {
     <AriaTab
       {...rest}
       className={(values) =>
-        twMerge(
-          "font-beaufort text-lol-gold-300 relative cursor-pointer select-none px-4 py-1 text-xs font-medium uppercase tracking-widest",
-          (values.isSelected || values.isHovered) && "text-lol-gold-50",
-          values.isPressed && "text-lol-gold-500",
-          values.isDisabled && "text-lol-grey-500 cursor-default",
-          "focus-visible:outline-lol-gold-100 focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-4",
-          resolveClassName(className, values),
-        )
+        tab({
+          ...values,
+          className: resolveClassName(className, values),
+        })
       }
     >
       {(values) => (
@@ -68,9 +93,9 @@ export function Tab({ children, className, ...rest }: TabProps) {
               style={{
                 viewTransitionName: `tab-indicator-${id}`,
               }}
-              className={twMerge(
-                "via-lol-gold-200 absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent to-transparent",
-              )}
+              className={
+                "via-lol-gold-200 absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent to-transparent"
+              }
             ></div>
           )}
         </>
