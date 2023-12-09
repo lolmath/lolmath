@@ -1,14 +1,80 @@
 import { Switch as AriaSwitch } from "react-aria-components";
 import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
 import {
   goldGradient,
   goldGradientHover,
   goldGradientPressed,
   goldGradientDisabled,
-  hextechGradient,
-  hextechGradientPressed,
 } from "../utilities/gradient";
+import { tv } from "../utilities/tv";
+
+const switchTrackBorder = tv({
+  base: [
+    "h-6 w-14 shrink-0 cursor-default rounded-full bg-gradient-to-t p-0.5",
+    goldGradient,
+  ],
+  variants: {
+    isHovered: {
+      true: goldGradientHover,
+    },
+    isPressed: {
+      true: goldGradientPressed,
+    },
+    isDisabled: {
+      true: goldGradientDisabled,
+    },
+    isFocusVisible: {
+      true: "outline outline-1 outline-offset-2 outline-yellow-50",
+    },
+  },
+});
+
+const switchTrack = tv({
+  base: "bg-lol-grey-300 relative grid h-full w-full rounded-full transition-colors duration-200 ease-in-out",
+  variants: {
+    isPressed: {
+      true: "",
+    },
+    isSelected: {
+      true: "bg-green-900",
+    },
+    isFocused: {
+      true: "outline-none",
+    },
+    isFocusVisible: {
+      true: "",
+    },
+  },
+  compoundVariants: [
+    {
+      isPressed: true,
+      isSelected: true,
+      className: "bg-green-950",
+    },
+  ],
+});
+
+const switchKnobBorder = tv({
+  base: [
+    "absolute -left-2 -top-1.5 h-8 w-8 rounded-full bg-gradient-to-t p-0.5 shadow-md ring-0 transition-[left] duration-200 ease-in-out",
+    goldGradient,
+  ],
+  variants: {
+    isSelected: {
+      true: "left-[calc(100%-1.5rem)]",
+    },
+    isHovered: {
+      true: goldGradientHover,
+    },
+    isPressed: {
+      true: goldGradientPressed,
+    },
+    isDisabled: {
+      true: goldGradientDisabled,
+    },
+  },
+});
+
 export function Switch({
   className,
   placeholder,
@@ -24,38 +90,9 @@ export function Switch({
     >
       {(values) => (
         <>
-          <div
-            className={twMerge(
-              "h-6 w-14 shrink-0 cursor-default rounded-full bg-gradient-to-t p-0.5",
-              goldGradient,
-              values.isHovered && goldGradientHover,
-              values.isPressed && goldGradientPressed,
-              values.isDisabled && goldGradientDisabled,
-              values.isFocused && "",
-              values.isFocusVisible &&
-                "outline outline-1 outline-offset-2 outline-yellow-50",
-            )}
-          >
-            <div
-              className={twMerge(
-                "bg-lol-grey-300 relative grid h-full w-full rounded-full transition-colors duration-200 ease-in-out",
-                values.isPressed && "",
-                values.isSelected && "bg-green-900",
-                values.isSelected && values.isPressed && "bg-green-950",
-                values.isFocused && "outline-none",
-                values.isFocusVisible && "",
-              )}
-            >
-              <span
-                className={twMerge(
-                  "absolute -left-2 -top-1.5 h-8 w-8 rounded-full bg-gradient-to-t p-0.5 shadow-md ring-0 transition-[left] duration-200 ease-in-out",
-                  values.isSelected && "left-[calc(100%-1.5rem)]",
-                  goldGradient,
-                  values.isHovered && goldGradientHover,
-                  values.isPressed && goldGradientPressed,
-                  values.isDisabled && goldGradientDisabled,
-                )}
-              >
+          <div className={switchTrackBorder(values)}>
+            <div className={switchTrack(values)}>
+              <span className={switchKnobBorder(values)}>
                 <span className="bg-lol-grey-300 block h-full w-full rounded-full"></span>
               </span>
             </div>

@@ -4,7 +4,5 @@
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.spec.ts"
   },
-  "tailwindCSS.experimental.classRegex": [
-    ["tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ]
+  "tailwindCSS.experimental.classRegex": []
 }
