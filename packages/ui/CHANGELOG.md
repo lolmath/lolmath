@@ -1,5 +1,15 @@
 # @lolmath/ui
 
+## 3.0.0
+
+### Major Changes
+
+- 0b16e14: Adjust theme to be inline with https://brand.riotgames.com/en-us/league-of-legends/color/
+
+### Minor Changes
+
+- 0b16e14: Add typography components similar to branding guide
+
 ## 2.8.1
 
 ### Patch Changes
