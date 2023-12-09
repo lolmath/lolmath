@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 3.0.1
+
+### Patch Changes
+
+- 7b65269: remove background from accordion
+
 ## 3.0.0
 
 ### Major Changes
