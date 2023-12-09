@@ -55,7 +55,7 @@ export function AccordionTrigger({
   children,
   className,
 }: AccordionTriggerProps) {
-  const { setActiveItem, activeItem, id } = useContext(AccordionContext);
+  const { setActiveItem } = useContext(AccordionContext);
   const { item } = useContext(AccordionItemContext);
 
   return (
