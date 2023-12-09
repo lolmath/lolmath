@@ -26,13 +26,13 @@ const textAreaBorder = tv({
 
 const textArea = tv({
   base: [
-    "min-h-full w-full bg-lol-grey-hextech-black px-3 py-2 outline-none",
+    "bg-lol-grey-hextech-black min-h-full w-full px-3 py-2 outline-none",
     "text-lol-gold-100 font-spiegel text-xs tracking-wide",
     "focus-within:from-lol-grey-200 focus-within:via-lol-grey-300 focus-within:to-lol-grey-300 focus-within:bg-gradient-to-t",
   ],
   variants: {
     isDisabled: {
-      true: ["text-lol-grey-500"],
+      true: ["text-lol-grey-150"],
     },
   },
 });
@@ -60,12 +60,12 @@ export function TextArea({
           >
             <AriaTextArea
               {...textAreaProps}
-              className={(values) => {
-                return textArea({
+              className={(values) =>
+                textArea({
                   ...values,
                   className: resolveClassName(textAreaProps?.className, values),
-                });
-              }}
+                })
+              }
             />
           </div>
         </>

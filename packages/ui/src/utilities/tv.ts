@@ -18,9 +18,9 @@ import { theme } from "./theme";
 
 export const tv = createTV({
   twMergeConfig: {
-    theme: {
-      // colors: formatColors(),
-    },
+    // theme: {
+    // colors: formatColors(),
+    // },
     classGroups: {
       "font-size": [
         {

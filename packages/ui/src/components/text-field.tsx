@@ -6,10 +6,36 @@ import {
   TextField as AriaTextField,
   Input as AriaInput,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
-import { goldGradient } from "../utilities/gradient";
+import { goldGradient, goldGradientDisabled } from "../utilities/gradient";
 import { resolveClassName } from "../utilities/resolve-class-name";
 import { ComponentProps } from "react";
+import { tv } from "../utilities/tv";
+
+const textFieldBorder = tv({
+  base: [
+    "flex bg-gradient-to-t p-px outline-none",
+    goldGradient,
+    "focus-within:from-lol-gold-400 focus-within:via-lol-gold-200 focus-within:to-lol-gold-100",
+  ],
+  variants: {
+    isDisabled: {
+      true: [goldGradientDisabled],
+    },
+  },
+});
+
+const textField = tv({
+  base: [
+    "bg-lol-grey-hextech-black min-h-full w-full px-3 py-2 outline-none",
+    "text-lol-gold-100 font-spiegel text-xs tracking-wide",
+    "focus-within:from-lol-grey-200 focus-within:via-lol-grey-300 focus-within:to-lol-grey-300 focus-within:bg-gradient-to-t",
+  ],
+  variants: {
+    isDisabled: {
+      true: ["text-lol-grey-150"],
+    },
+  },
+});
 
 export function TextField({
   inputProps = {},
@@ -27,28 +53,20 @@ export function TextField({
           {typeof children === "function" ? children(values) : children}
           <div
             {...borderProps}
-            className={twMerge(
-              "p-px outline-none",
-              goldGradient,
-              "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
-              values.isDisabled &&
-                "from-lol-grey-700 via-lol-grey-700 to-lol-grey-700",
-              resolveClassName(borderProps?.className, values),
-              values.isDisabled && "bg-lol-grey-950",
-            )}
+            className={textFieldBorder({
+              ...values,
+              className: resolveClassName(borderProps?.className, values),
+            })}
           >
             <AriaInput
               type="text"
               {...inputProps}
-              className={(values) => {
-                return twMerge(
-                  "min-h-full w-full bg-black px-3 py-2 outline-none",
-                  "text-lol-gold-50 font-spiegel text-xs tracking-wide",
-                  "focus-within:from-lol-grey-950 focus-within:to-lol-grey-900 focus-within:bg-gradient-to-b",
-                  values.isDisabled && "text-lol-grey-500",
-                  resolveClassName(inputProps.className, values),
-                );
-              }}
+              className={(values) =>
+                textField({
+                  ...values,
+                  className: resolveClassName(inputProps?.className, values),
+                })
+              }
             />
           </div>
         </>
