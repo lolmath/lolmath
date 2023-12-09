@@ -4,10 +4,49 @@ import {
   Button as AriaButton,
   type SearchFieldProps as AriaSearchFieldProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
-import { borderGradient } from "../utilities/border";
+import { goldGradient, goldGradientDisabled } from "../utilities/gradient";
 import { ComponentProps } from "react";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv";
+
+const searchFieldBorder = tv({
+  base: [
+    "flex bg-gradient-to-t p-px outline-none",
+    goldGradient,
+    "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-100",
+  ],
+  variants: {
+    isDisabled: {
+      true: goldGradientDisabled,
+    },
+  },
+});
+
+const searchFieldInput = tv({
+  base: [
+    "bg-lol-grey-hextech-black min-h-full w-full px-3 py-2 pl-6 outline-none",
+    "text-lol-gold-100 font-spiegel text-xs font-medium tracking-wide",
+  ],
+  variants: {
+    isDisabled: {
+      true: "text-lol-grey-150",
+    },
+
+    // TODO: make sure both the background image of the gradient and the search
+    // icon are displayed
+    // isFocused: {
+    //   true: "from-lol-grey-200 via-lol-grey-300 to-lol-grey-300 bg-gradient-to-t",
+    // },
+  },
+});
+
+const searchFieldButton = tv({
+  base: "bg-lol-grey-hextech-black text-lol-gold-300 px-4 text-xs font-black",
+  variants: {
+    isHovered: { true: "text-lol-gold-100" },
+    isPressed: { true: "text-lol-gold-600" },
+  },
+});
 
 export function SearchField({
   inputProps = {},
@@ -25,26 +64,18 @@ export function SearchField({
           {typeof children === "function" ? children(values) : children}
           <div
             {...borderProps}
-            className={twMerge(
-              "outline-none p-px flex",
-              borderGradient,
-              "focus-within:from-lol-gold-300 focus-within:via-lol-gold-200 focus-within:to-lol-gold-50",
-              values.isDisabled &&
-                "from-lol-gray-700 via-lol-gray-700 to-lol-gray-700",
-              resolveClassname(borderProps?.className, values),
-              values.isDisabled && "bg-lol-gray-950",
-            )}
+            className={searchFieldBorder({
+              ...values,
+              className: resolveClassName(borderProps.className, values),
+            })}
           >
             <AriaInput
               {...inputProps}
               className={(values) =>
-                twMerge(
-                  "bg-black w-full min-h-full py-2 px-3 outline-none pl-6",
-                  "text-lol-gold-50 text-xs font-spiegel tracking-wide",
-                  "focus-within:from-lol-gray-950 focus-within:to-lol-gray-900 focus-within:bg-gradient-to-b",
-                  values.isDisabled && "text-lol-gray-500",
-                  resolveClassname(inputProps.className, values),
-                )
+                searchFieldInput({
+                  ...values,
+                  className: resolveClassName(inputProps.className, values),
+                })
               }
               type="text"
               style={{
@@ -57,13 +88,7 @@ export function SearchField({
             />
             {values.state.value.length > 0 && !values.isDisabled && (
               <AriaButton
-                className={(buttonValues) =>
-                  twMerge(
-                    "font-black text-[#cdbe91] text-xs px-4 bg-black",
-                    buttonValues.isHovered && "text-lol-gold-100",
-                    buttonValues.isPressed && "text-[#463714]",
-                  )
-                }
+                className={(buttonValues) => searchFieldButton(buttonValues)}
               >
                 ✕
               </AriaButton>

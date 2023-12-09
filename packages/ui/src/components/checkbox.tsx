@@ -1,27 +1,29 @@
 "use client";
 
 import { Checkbox as AriaCheckbox, CheckboxProps } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv";
+
+const checkbox = tv({
+  base: "text-lol-grey-100 font-spiegel flex cursor-pointer items-center gap-1 text-xs tracking-widest",
+  variants: {
+    isHovered: {
+      true: "text-lol-gold-100",
+    },
+    isDisabled: {
+      true: "cursor-default brightness-50",
+    },
+  },
+});
 
 export function Checkbox({ children, className, ...props }: CheckboxProps) {
   return (
     <AriaCheckbox
       className={(values) => {
-        return twMerge(
-          "cursor-pointer flex text-lol-gray-300 text-xs gap-1 items-center font-spiegel tracking-widest",
-          "",
-          values.isSelected && "",
-          values.isIndeterminate && "",
-          values.isReadOnly && "",
-          values.isRequired && "",
-          values.isHovered && "text-lol-gold-50",
-          values.isPressed && "",
-          values.isDisabled && "brightness-50 cursor-default",
-          values.isFocused && "",
-          values.isFocusVisible && "",
-          resolveClassname(className, values),
-        );
+        return checkbox({
+          className: resolveClassName(className, values),
+          ...values,
+        });
       }}
       {...props}
     >
@@ -33,15 +35,15 @@ export function Checkbox({ children, className, ...props }: CheckboxProps) {
                 ? values.isIndeterminate
                   ? indeterminateHover
                   : values.isSelected
-                  ? checkedHover
-                  : uncheckedHover
+                    ? checkedHover
+                    : uncheckedHover
                 : values.isIndeterminate
-                ? indeterminate
-                : values.isSelected
-                ? checked
-                : unchecked,
+                  ? indeterminate
+                  : values.isSelected
+                    ? checked
+                    : unchecked,
             }}
-            className="w-3.5 h-3.5"
+            className="h-3.5 w-3.5"
           />
           {typeof children === "function" ? children(values) : children}
         </>

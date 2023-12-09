@@ -4,13 +4,13 @@ import Link from "next/link";
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <div className="p-4 flex flex-col md:h-screen items-center justify-center bg-black gap-16 bg-gradient-to-tr from-black to-lol-gray-900">
-      <div className="font-beaufort uppercase font-bold text-3xl text-lol-gold-100">
+    <div className="to-lol-grey-900 flex flex-col items-center justify-center gap-16 bg-black bg-gradient-to-tr from-black p-4 md:h-screen">
+      <div className="font-beaufort text-lol-gold-100 text-3xl font-bold uppercase">
         League of Legends Math Docs
       </div>
-      <div className="grid gap-4 max-w-3xl md:grid-cols-2 grid-cols-1">
-        <div className="flex flex-col p-8 pt-7 border border-lol-gold-700 hover:border-lol-gold-500 bg-black items-start gap-8 hover:bg-lol-blue-950">
-          <h1 className="font-beaufort uppercase font-bold text-2xl text-lol-gold-200">
+      <div className="grid max-w-3xl grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="border-lol-gold-700 hover:border-lol-gold-500 hover:bg-lol-blue-950 flex flex-col items-start gap-8 border bg-black p-8 pt-7">
+          <h1 className="font-beaufort text-lol-gold-200 text-2xl font-bold uppercase">
             Calc
           </h1>
           <p className="font-spiegel text-lol-gold-50">
@@ -20,8 +20,8 @@ export default function HomepageFeatures(): JSX.Element {
             <Button>Docs</Button>
           </Link>
         </div>
-        <div className="flex flex-col p-8 pt-7 border border-lol-gold-700 hover:border-lol-gold-500 bg-black items-start gap-8 hover:bg-lol-blue-950">
-          <h1 className="font-beaufort uppercase font-bold text-2xl text-lol-gold-200">
+        <div className="border-lol-gold-700 hover:border-lol-gold-500 hover:bg-lol-blue-950 flex flex-col items-start gap-8 border bg-black p-8 pt-7">
+          <h1 className="font-beaufort text-lol-gold-200 text-2xl font-bold uppercase">
             UI
           </h1>
           <p className="font-spiegel text-lol-gold-50">

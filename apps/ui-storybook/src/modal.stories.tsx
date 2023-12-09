@@ -4,8 +4,9 @@ import {
   Button,
   DialogButtons,
   DialogTrigger,
-  Heading,
+  DialogHeading,
   Modal,
+  Text,
 } from "@lolmath/ui";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -23,11 +24,11 @@ const meta = {
       <Modal {...args}>
         {({ close }) => (
           <>
-            <div className="p-6 flex flex-col gap-2">
-              <Heading className="text-center">Exit Now?</Heading>
-              <p className="text-lol-gray-300 text-xs text-center font-spiegel">
+            <div className="flex flex-col gap-2 p-6">
+              <DialogHeading className="text-center">Exit Now?</DialogHeading>
+              <Text preset="sm" className="text-center">
                 Do you want to exit League of Legends or sign out?
-              </p>
+              </Text>
             </div>
             <DialogButtons>
               <Button onPress={close}>Exit</Button>
@@ -54,11 +55,11 @@ export const ClassName: Story = {
 };
 
 export const ALotOfText: Story = {
-  render: () => (
+  render: (args) => (
     <DialogTrigger>
       <Button>Open dialog</Button>
-      <Modal>
-        <p className="text-lol-gray-300">
+      <Modal {...args}>
+        <Text>
           Pari general intelligence action natural language processing quis
           transformers quis AI in education irure veniam AI in agriculture
           occaecat culpa ipsum. Dolor est sit semantic web amet deserunt
@@ -215,7 +216,7 @@ export const ALotOfText: Story = {
           multi-task learning nulla quis planning nisi et cupidatat commodo.
           <br />
           <br />
-        </p>
+        </Text>
       </Modal>
     </DialogTrigger>
   ),

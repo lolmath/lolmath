@@ -9,9 +9,27 @@ import {
   DialogTriggerProps as AriaDialogTriggerProps,
   DialogProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
-import { borderGradientPressed } from "../utilities/border";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { goldGradientPressed } from "../utilities/gradient";
+import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv";
+
+const modalOverlay = tv({
+  base: "bg-lol-grey-hextech-black fixed inset-0 z-10 flex min-h-full flex-col items-center justify-center overflow-y-auto bg-opacity-25 px-4 text-center backdrop-blur",
+});
+
+const modal = tv({
+  base: "w-full max-w-md",
+});
+
+const dialog = tv({
+  base: "relative max-h-screen py-4 outline-none",
+});
+const dialogBorder = tv({
+  base: [
+    "bg-gradient-to-b p-0.5 text-left align-middle shadow-xl",
+    goldGradientPressed,
+  ],
+});
 
 interface ModalProps extends Omit<ModalOverlayProps, "children"> {
   modalOverlayClassName?: ModalOverlayProps["className"];
@@ -30,45 +48,40 @@ export function Modal({
     <ModalOverlay
       {...modalProps}
       className={(values) => {
-        return twMerge(
-          "fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-25 flex min-h-full items-center justify-center text-center backdrop-blur flex-col px-4",
-          resolveClassname(modalOverlayClassName, values),
-        );
+        return modalOverlay({
+          className: resolveClassName(modalOverlayClassName, values),
+        });
       }}
     >
       <AriaModal
         {...modalProps}
         className={(values) =>
-          twMerge("w-full max-w-md", resolveClassname(className, values))
+          modal({
+            className: resolveClassName(className, values),
+          })
         }
       >
         <Dialog
           role="alertdialog"
           {...dialogProps}
-          className={twMerge(
-            "outline-none relative max-h-screen py-4",
-            dialogProps.className,
-          )}
+          className={dialog({
+            className: dialogProps.className,
+          })}
         >
           {(dialogRenderProps) => (
             <>
               <div className="relative h-1">
-                <div className="border-lol-gold-700 border bg-black absolute border-b-0 rounded-full h-full left-5 right-5"></div>
+                <div className="border-lol-gold-600 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-b-0"></div>
               </div>
-              <div
-                className={twMerge(
-                  "text-left align-middle shadow-xl p-0.5 bg-gradient-to-t",
-                  borderGradientPressed,
-                )}
-              >
-                <div className="bg-black">
+              <div className={dialogBorder()}>
+                <div className="bg-lol-grey-hextech-black">
                   {typeof children === "function"
                     ? children(dialogRenderProps)
                     : children}
                 </div>
               </div>
               <div className="relative h-1">
-                <div className="border-lol-gold-600 border bg-black absolute border-t-0 rounded-full h-full left-5 right-5"></div>
+                <div className="border-lol-gold-500 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-t-0"></div>
               </div>
             </>
           )}
@@ -78,22 +91,27 @@ export function Modal({
   );
 }
 
-export function Heading(props: AriaHeadingProps) {
+const dialogHeading = tv({
+  base: "text-lol-gold-100 font-beaufort text-lol-h5 uppercase",
+});
+
+export function DialogHeading({ className, ...props }: AriaHeadingProps) {
   return (
     <AriaHeading
       {...props}
-      className={twMerge(
-        "text-lol-gold-100 uppercase font-beaufort font-bold text-lg",
-        props.className,
-      )}
-    ></AriaHeading>
+      className={dialogHeading({
+        className,
+      })}
+    />
   );
 }
 
 export function DialogButtons({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex justify-center translate-y-0.5">
-      <div className="flex gap-1 bg-black px-1">{children}</div>
+    <div className="flex translate-y-0.5 justify-center">
+      <div className="bg-lol-grey-hextech-black flex gap-1 px-1">
+        {children}
+      </div>
     </div>
   );
 }

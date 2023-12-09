@@ -33,3 +33,9 @@ export const WithLabel: Story = {
     children: <Label>Some label</Label>,
   },
 };
+
+export const Dimmed: Story = {
+  args: {
+    preset: "dimmed",
+  },
+};

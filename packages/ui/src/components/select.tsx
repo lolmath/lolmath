@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import type {
-  ItemProps as AriaItemProps,
+  ListBoxItemProps,
   SelectProps as AriaSelectProps,
 } from "react-aria-components";
 import {
@@ -12,17 +12,48 @@ import {
   Popover as AriaPopover,
   ListBox as AriaListBox,
   SelectValue as AriaSelectValue,
-  Item as AriaItem,
+  ListBoxItem,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
 import {
-  borderGradient,
-  borderGradientDisabled,
-  borderGradientHover,
-  borderGradientPressed,
-} from "../utilities/border";
+  goldGradient,
+  goldGradientDisabled,
+  goldGradientHover,
+  goldGradientPressed,
+} from "../utilities/gradient";
 import { outlineClassName } from "../utilities/outline";
-import { resolveClassname } from "../utilities/resolve-classname";
+import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv";
+
+const select = tv({
+  base: "font-spiegel",
+});
+
+const selectButtonBorder = tv({
+  base: ["inline-block w-[200px] bg-gradient-to-t outline-none", goldGradient],
+  variants: {
+    isHovered: { true: goldGradientHover },
+    isPressed: { true: goldGradientPressed },
+    isOpen: { true: goldGradientPressed },
+    isDisabled: { true: goldGradientDisabled },
+    isFocused: { true: "" },
+    isFocusVisible: { true: outlineClassName },
+  },
+});
+
+const selectButton = tv({
+  base: "bg-lol-grey-hextech-black text-lol-grey-100 m-px block bg-no-repeat px-2 py-1.5 pr-6 text-left text-xs font-normal tracking-wide",
+  variants: {
+    isHovered: { true: "text-lol-gold-100" },
+    isOpen: { true: "text-lol-gold-600 bg-lol-grey-300" },
+  },
+});
+
+const listBox = tv({
+  base: "bg-lol-grey-hextech-black border-lol-gold-600 border outline-none",
+  variants: {
+    isFocused: { true: "" },
+  },
+});
 
 interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
@@ -36,35 +67,28 @@ export function Select<T extends object>({
   description,
   errorMessage,
   children,
+  className,
   ...props
 }: SelectProps<T>) {
   return (
     <AriaSelect
       {...props}
       className={(values) =>
-        twMerge("font-spiegel", resolveClassname(props.className, values))
+        select({
+          ...values,
+          className: resolveClassName(className, values),
+        })
       }
     >
       {(values) => (
         <>
           <AriaButton
             className={(buttonValues) =>
-              twMerge(
-                "inline-block outline-none",
-                borderGradient,
-                buttonValues.isHovered && borderGradientHover,
-                (buttonValues.isPressed || values.isOpen) &&
-                  borderGradientPressed,
-                buttonValues.isDisabled && borderGradientDisabled,
-                buttonValues.isFocused && "",
-                buttonValues.isFocusVisible && outlineClassName,
-              )
+              selectButtonBorder({ ...buttonValues, isOpen: values.isOpen })
             }
           >
             <span
-              className={twMerge(
-                "block m-px bg-lol-gray-950 px-2 py-1 text-[#a09b8c] text-xs font-normal tracking-wide pr-6 bg-no-repeat",
-              )}
+              className={selectButton(values)}
               style={{
                 backgroundPosition: "right 0.5rem center",
                 backgroundImage: values.isOpen
@@ -79,17 +103,8 @@ export function Select<T extends object>({
           {errorMessage && (
             <AriaText slot="errorMessage">{errorMessage}</AriaText>
           )}
-          <AriaPopover offset={4}>
-            <AriaListBox
-              className={(listbox) =>
-                twMerge(
-                  "bg-[#010a13] border border-[#463714] outline-none",
-                  listbox.isFocused && "",
-                )
-              }
-            >
-              {children as any}
-            </AriaListBox>
+          <AriaPopover offset={4} className="w-[--trigger-width]">
+            <AriaListBox className={() => listBox()}>{children}</AriaListBox>
           </AriaPopover>
         </>
       )}
@@ -97,22 +112,26 @@ export function Select<T extends object>({
   );
 }
 
-export function Item({ className, ...props }: AriaItemProps) {
+const item = tv({
+  base: "font-spiegel border-lol-grey-300 text-lol-gold-300 text-lol-sm border-b px-2 py-1.5 text-sm outline-none",
+  variants: {
+    isHovered: { true: "bg-lol-grey-300 text-lol-gold-100" },
+    isFocusVisible: { true: outlineClassName },
+    isFocused: { true: "" },
+    isSelected: { true: "" },
+    isPressed: { true: "text-lol-gold-600 bg-lol-grey-300/50" },
+  },
+});
+
+export function Item({ className, ...props }: ListBoxItemProps) {
   return (
-    <AriaItem
+    <ListBoxItem
       {...props}
       className={(values) => {
-        const finalClassName =
-          typeof className === "function" ? className(values) : className;
-
-        return twMerge(
-          "px-2 py-0.5 border-b border-[#1f2123] text-[#cdbe91] text-sm font-spiegel font-bold outline-none",
-          values.isHovered && "bg-lol-gray-950 text-lol-gold-100",
-          values.isPressed && "bg-[#1e232880] text-[#463714]",
-          values.isFocusVisible && outlineClassName,
-          values.isFocused && "",
-          finalClassName,
-        );
+        return item({
+          ...values,
+          className: resolveClassName(className, values),
+        });
       }}
     />
   );

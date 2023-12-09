@@ -1,5 +1,9 @@
-import { twMerge } from "tailwind-merge";
-import { spinner } from "./images";
+import { tv } from "../..";
+import { spinnerImage } from "./images";
+
+const spinner = tv({
+  base: "aspect-square w-12 animate-spin",
+});
 
 interface SpinnerProps {
   className?: string;
@@ -10,8 +14,8 @@ export function Spinner({ className }: SpinnerProps) {
       role="status"
       aria-live="polite"
       aria-label="loading"
-      src={spinner}
-      className={twMerge("animate-spin aspect-square w-12", className)}
+      src={spinnerImage}
+      className={spinner({ className })}
     />
   );
 }

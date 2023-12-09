@@ -8,7 +8,7 @@ const meta = {
   component: Select,
   render: (args) => (
     <Select {...args}>
-      <Item>Chocolate</Item>
+      <Item>Purchase date</Item>
       <Item>Mint</Item>
       <Item>Strawberry</Item>
       <Item>Vanilla</Item>

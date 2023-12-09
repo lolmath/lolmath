@@ -65,7 +65,7 @@ export const Bottom: Story = {
 export const LongText: Story = {
   args: {
     children: (
-      <div className="prose p-2 text-lol-gray-300 font-spiegel font-normal">
+      <div className="prose text-lol-grey-300 font-spiegel p-2 font-normal">
         <h1>Lorum Ipsum</h1>
         <p>
           There are many variations of passages of Lorem Ipsum available, but
@@ -90,7 +90,7 @@ export const LongText: Story = {
 export const Instant: Story = {
   args: {
     children: (
-      <div className="prose p-2 text-lol-gray-300 font-spiegel font-normal">
+      <div className="prose text-lol-grey-300 font-spiegel p-2 font-normal">
         This tooltip should appear instantly
       </div>
     ),

@@ -12,6 +12,7 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "deploy": "turbo run deploy",
+    "typecheck": "turbo run typecheck",
     "dev": "turbo run dev",
     "dev:ui:storybook": "turbo run dev --filter ui-storybook",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -20,15 +21,15 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.4",
-    "turbo": "^1.10.14"
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "turbo": "^1.10.16"
   },
   "engines": {
     "node": ">=14.0.0"
   },
   "packageManager": "pnpm@7.18.2",
   "dependencies": {
-    "changesets-gitlab": "^0.10.3"
+    "changesets-gitlab": "^0.11.1"
   }
 }

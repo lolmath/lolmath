@@ -4,8 +4,5 @@
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.spec.ts"
   },
-  "tailwindCSS.experimental.classRegex": [
-    ["(?:twMerge|twJoin)\\(([^\\);]*)[\\);]", "[`'\"`]([^'\"`,;]*)[`'\"`]"],
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ]
+  "tailwindCSS.experimental.classRegex": []
 }
