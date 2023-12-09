@@ -5,10 +5,6 @@ import { useCssId } from "../utilities/css-id";
 import { startViewTransition } from "../utilities/view-transition";
 import { tv } from "../utilities/tv";
 
-const accordion = tv({
-  base: "bg-lol-blue-950",
-});
-
 interface AccordionProps {
   children: React.ReactNode;
   className?: string;
@@ -26,9 +22,7 @@ export function Accordion({ children, className }: AccordionProps) {
       }}
     >
       <div
-        className={accordion({
-          className,
-        })}
+        className={className}
         style={{
           viewTransitionName: `${id}`,
         }}
