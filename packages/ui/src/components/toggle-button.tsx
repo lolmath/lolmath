@@ -1,0 +1,233 @@
+import { ComponentProps } from "react";
+import {
+  ToggleButton as AriaToggleButton,
+  type ToggleButtonProps as AriaToggleButtonProps,
+} from "react-aria-components";
+import { tv } from "../utilities/tv";
+import { resolveClassName } from "../utilities/resolve-class-name";
+import {
+  dimmedGradient,
+  goldGradient,
+  goldGradientHover,
+  goldGradientPressed,
+  goldGradientDisabled,
+  hextechGradient,
+  hextechGradientHover,
+  hextechGradientPressed,
+  hextechGradientDisabled,
+} from "../utilities/gradient";
+
+export type ToggleButtonShape = "round" | "square" | "normal";
+export type ToggleButtonPreset = "gold" | "hextech" | "dimmed";
+
+const toggleButtonBorder = tv({
+  base: "bg-gradient-to-t outline-none transition-colors duration-200",
+  variants: {
+    preset: {
+      gold: "",
+      hextech: "",
+      dimmed: dimmedGradient,
+    },
+    shape: {
+      round: "aspect-square rounded-full",
+      square: "aspect-square",
+      normal: "",
+    },
+    isHovered: {
+      true: "",
+    },
+    isPressed: {
+      true: "",
+    },
+    isDisabled: {
+      true: "",
+    },
+    isFocused: {
+      true: "",
+    },
+    isFocusVisible: {
+      true: "",
+    },
+    isSelected: {
+      true: "",
+    },
+  },
+  compoundVariants: [
+    {
+      preset: ["dimmed"],
+      isSelected: true,
+      class: [goldGradient],
+    },
+    {
+      preset: ["gold"],
+      class: goldGradient,
+    },
+    {
+      preset: ["gold", "dimmed"],
+      isHovered: true,
+      class: goldGradientHover,
+    },
+    {
+      preset: ["gold", "dimmed"],
+      isPressed: true,
+      class: goldGradientPressed,
+    },
+    {
+      preset: ["gold", "dimmed"],
+      isDisabled: true,
+      class: goldGradientDisabled,
+    },
+    {
+      preset: ["gold"],
+      isFocusVisible: true,
+      class: "outline outline-offset-2 outline-yellow-50",
+    },
+    {
+      preset: ["hextech"],
+      class: hextechGradient,
+    },
+    {
+      preset: ["hextech"],
+      isHovered: true,
+      class: hextechGradientHover,
+    },
+    {
+      preset: ["hextech"],
+      isPressed: true,
+      class: hextechGradientPressed,
+    },
+    {
+      preset: ["hextech"],
+      isDisabled: true,
+      class: hextechGradientDisabled,
+    },
+  ],
+});
+const toggleButton = tv({
+  base: "text-lol-gold-300 font-beaufort block font-bold uppercase tracking-wide transition-colors duration-200",
+  variants: {
+    preset: {
+      gold: "bg-lol-grey-300",
+      hextech: "text-lol-blue-100 bg-lol-grey-300",
+      dimmed: "bg-lol-grey-hextech-black",
+    },
+    isHovered: {
+      true: "text-lol-gold-100",
+    },
+    isPressed: {
+      true: "text-lol-grey-150",
+    },
+    isDisabled: {
+      true: "text-lol-grey-150",
+    },
+    isFocused: {
+      true: "",
+    },
+    isSelected: {
+      true: [
+        hextechGradient,
+        "text-lol-blue-100 shadow-lol-grey-300 bg-gradient-to-t shadow shadow-inner",
+      ],
+    },
+    isFocusVisible: {
+      true: "",
+    },
+    shape: {
+      round: "rounded-full",
+      square: "",
+      normal: "",
+    },
+    thin: {
+      true: "",
+    },
+  },
+  compoundVariants: [
+    {
+      preset: ["gold", "hextech", "dimmed"],
+      class: "px-4 py-2",
+    },
+    {
+      preset: ["gold", "hextech", "dimmed"],
+      thin: true,
+      class: "m-px",
+    },
+    {
+      preset: ["gold", "hextech", "dimmed"],
+      thin: false,
+      class: "m-0.5",
+    },
+    {
+      preset: ["hextech"],
+      isHovered: true,
+      class: "text-lol-blue-100",
+    },
+    {
+      preset: ["hextech"],
+      isPressed: true,
+      class: "text-lol-blue-400",
+    },
+    {
+      preset: ["hextech"],
+      isSelected: true,
+      class: "",
+    },
+
+    {
+      shape: ["round", "square"],
+      class:
+        "flex aspect-square h-7 items-center justify-center p-0 font-black leading-none",
+    },
+  ],
+});
+
+interface ToggleButtonProps extends AriaToggleButtonProps {
+  innerProps?: ComponentProps<"span">;
+  preset?: ToggleButtonPreset;
+  thin?: boolean;
+  shape?: ToggleButtonShape;
+}
+
+export function ToggleButton({
+  children,
+  className,
+  innerProps = {},
+  preset = "gold",
+  shape = "normal",
+  thin = preset === "dimmed" ? true : false,
+  ...props
+}: ToggleButtonProps) {
+  return (
+    <AriaToggleButton
+      {...props}
+      className={(values) =>
+        toggleButtonBorder({
+          ...values,
+          preset,
+          shape,
+          className: resolveClassName(className, values),
+        })
+      }
+    >
+      {(values) => (
+        <span
+          {...innerProps}
+          className={toggleButton({
+            ...values,
+            preset,
+            shape,
+            thin,
+            className: resolveClassName(innerProps.className, values),
+          })}
+          style={
+            {
+              // backgroundImage: hextechMagic,
+              // backgroundPosition: "center",
+            }
+          }
+        >
+          {typeof children === "function" ? children(values) : children}
+        </span>
+      )}
+    </AriaToggleButton>
+  );
+}
