@@ -26,6 +26,9 @@ const meta = {
       description: "Is the button thin?",
       type: { name: "boolean" },
     },
+    onPress: {
+      action: "onPress",
+    },
   },
   args: {
     children: "League of Legends",
@@ -212,4 +215,34 @@ export const SquaredTextDisabled: Story = {
     preset: "text",
     children: <FaGear />,
   },
+};
+
+export const SquaredImage: Story = {
+  args: {
+    shape: "square",
+    children: (
+      <img
+        src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
+        className="w-full"
+      />
+    ),
+  },
+};
+
+export const SquaredInsideFlex: Story = {
+  args: {
+    shape: "square",
+    className: "h-full",
+    children: (
+      <img
+        src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
+        className="w-full"
+      />
+    ),
+  },
+  render: (args) => (
+    <div className="flex h-24 w-36">
+      <Button {...args} />
+    </div>
+  ),
 };

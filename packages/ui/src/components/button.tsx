@@ -36,7 +36,7 @@ interface ButtonProps extends AriaButtonProps {
 }
 
 const buttonBorder = tv({
-  base: "bg-gradient-to-t outline-none transition-colors duration-200",
+  base: "bg-gradient-to-t p-0.5 outline-none transition-colors duration-200",
   variants: {
     preset: {
       primary: "",
@@ -64,6 +64,9 @@ const buttonBorder = tv({
     },
     isFocusVisible: {
       true: "",
+    },
+    thin: {
+      true: "p-px",
     },
   },
   compoundVariants: [
@@ -114,7 +117,7 @@ const buttonBorder = tv({
 });
 
 const button = tv({
-  base: "text-lol-gold-300 font-beaufort block font-bold uppercase tracking-wide transition-colors duration-200",
+  base: "text-lol-gold-300 font-beaufort block h-full w-full font-bold uppercase tracking-wide transition-colors duration-200",
   variants: {
     preset: {
       primary:
@@ -144,9 +147,6 @@ const button = tv({
       square: "",
       normal: "",
     },
-    thin: {
-      true: "",
-    },
   },
   compoundVariants: [
     {
@@ -156,16 +156,6 @@ const button = tv({
     {
       preset: ["primary", "secondary", "hextech"],
       class: "bg-lol-grey-300",
-    },
-    {
-      preset: ["primary", "secondary", "hextech", "dimmed"],
-      thin: true,
-      class: "m-px",
-    },
-    {
-      preset: ["primary", "secondary", "hextech", "dimmed"],
-      thin: false,
-      class: "m-0.5",
     },
     {
       preset: ["hextech"],
@@ -229,6 +219,7 @@ function _Button(
           className: resolveClassName(className, values),
           preset,
           shape,
+          thin,
           ...values,
         });
       }}
@@ -240,7 +231,6 @@ function _Button(
               className: resolveClassName(innerClassName, values),
               preset,
               shape,
-              thin,
               ...values,
             })}
           >

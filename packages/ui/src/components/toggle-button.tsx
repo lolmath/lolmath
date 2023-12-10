@@ -21,7 +21,7 @@ export type ToggleButtonShape = "round" | "square" | "normal";
 export type ToggleButtonPreset = "gold" | "hextech" | "dimmed";
 
 const toggleButtonBorder = tv({
-  base: "bg-gradient-to-t outline-none transition-colors duration-200",
+  base: "bg-gradient-to-t p-0.5 outline-none transition-colors duration-200",
   variants: {
     preset: {
       gold: "",
@@ -50,6 +50,9 @@ const toggleButtonBorder = tv({
     },
     isSelected: {
       true: "",
+    },
+    thin: {
+      true: "p-px",
     },
   },
   compoundVariants: [
@@ -137,24 +140,11 @@ const toggleButton = tv({
       square: "",
       normal: "",
     },
-    thin: {
-      true: "",
-    },
   },
   compoundVariants: [
     {
       preset: ["gold", "hextech", "dimmed"],
       class: "px-4 py-2",
-    },
-    {
-      preset: ["gold", "hextech", "dimmed"],
-      thin: true,
-      class: "m-px",
-    },
-    {
-      preset: ["gold", "hextech", "dimmed"],
-      thin: false,
-      class: "m-0.5",
     },
     {
       preset: ["hextech"],
@@ -204,6 +194,7 @@ export function ToggleButton({
           ...values,
           preset,
           shape,
+          thin,
           className: resolveClassName(className, values),
         })
       }
@@ -215,7 +206,6 @@ export function ToggleButton({
             ...values,
             preset,
             shape,
-            thin,
             className: resolveClassName(innerProps.className, values),
           })}
           style={
