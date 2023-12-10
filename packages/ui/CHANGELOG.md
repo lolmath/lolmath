@@ -1,5 +1,15 @@
 # @lolmath/ui
 
+## 3.1.0
+
+### Minor Changes
+
+- 41ba8a2: Add toggle button component
+
+### Patch Changes
+
+- cc316da: Make sure aspect ratio of square and round buttons is set properly for text based icons (icons with width smaller than height)
+
 ## 3.0.1
 
 ### Patch Changes
