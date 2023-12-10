@@ -196,7 +196,8 @@ const button = tv({
     },
     {
       shape: ["round", "square"],
-      class: "aspect-square p-1.5",
+      class:
+        "flex h-7 w-7 items-center justify-center p-0 font-black leading-none",
     },
     {
       isHovered: true,

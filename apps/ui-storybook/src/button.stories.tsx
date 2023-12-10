@@ -150,6 +150,14 @@ export const RoundedTextDisabled: Story = {
   },
 };
 
+export const RoundedPrimaryWithText: Story = {
+  args: {
+    preset: "primary",
+    shape: "round",
+    children: "A",
+  },
+};
+
 export const SquaredPrimary: Story = {
   args: {
     preset: "primary",
