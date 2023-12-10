@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 3.1.1
+
+### Patch Changes
+
+- abe5adb: Change way border width is applied so that it works better with flex
+
 ## 3.1.0
 
 ### Minor Changes
