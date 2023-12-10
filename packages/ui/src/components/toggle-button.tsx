@@ -10,11 +10,10 @@ import {
   goldGradient,
   goldGradientHover,
   goldGradientPressed,
-  goldGradientDisabled,
   hextechGradient,
   hextechGradientHover,
   hextechGradientPressed,
-  hextechGradientDisabled,
+  disabledGradient,
 } from "../utilities/gradient";
 
 export type ToggleButtonShape = "round" | "square" | "normal";
@@ -78,7 +77,7 @@ const toggleButtonBorder = tv({
     {
       preset: ["gold", "dimmed"],
       isDisabled: true,
-      class: goldGradientDisabled,
+      class: disabledGradient,
     },
     {
       preset: ["gold"],
@@ -102,7 +101,7 @@ const toggleButtonBorder = tv({
     {
       preset: ["hextech"],
       isDisabled: true,
-      class: hextechGradientDisabled,
+      class: disabledGradient,
     },
   ],
 });

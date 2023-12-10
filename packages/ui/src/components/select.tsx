@@ -16,7 +16,7 @@ import {
 } from "react-aria-components";
 import {
   goldGradient,
-  goldGradientDisabled,
+  disabledGradient,
   goldGradientHover,
   goldGradientPressed,
 } from "../utilities/gradient";
@@ -34,7 +34,7 @@ const selectButtonBorder = tv({
     isHovered: { true: goldGradientHover },
     isPressed: { true: goldGradientPressed },
     isOpen: { true: goldGradientPressed },
-    isDisabled: { true: goldGradientDisabled },
+    isDisabled: { true: disabledGradient },
     isFocused: { true: "" },
     isFocusVisible: { true: outlineClassName },
   },

@@ -4,7 +4,7 @@ import {
   Button as AriaButton,
   type SearchFieldProps as AriaSearchFieldProps,
 } from "react-aria-components";
-import { goldGradient, goldGradientDisabled } from "../utilities/gradient";
+import { goldGradient, disabledGradient } from "../utilities/gradient";
 import { ComponentProps } from "react";
 import { resolveClassName } from "../utilities/resolve-class-name";
 import { tv } from "../utilities/tv";
@@ -17,7 +17,7 @@ const searchFieldBorder = tv({
   ],
   variants: {
     isDisabled: {
-      true: goldGradientDisabled,
+      true: disabledGradient,
     },
   },
 });

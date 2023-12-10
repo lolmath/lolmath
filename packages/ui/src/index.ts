@@ -19,3 +19,4 @@ export * from "./components/typography/heading";
 export * from "./components/typography/text";
 export * from "./utilities/tv";
 export * from "./components/toggle-button";
+export * from "./utilities/gradient";

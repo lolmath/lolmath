@@ -6,7 +6,7 @@ import {
   TextField as AriaTextField,
   Input as AriaInput,
 } from "react-aria-components";
-import { goldGradient, goldGradientDisabled } from "../utilities/gradient";
+import { goldGradient, disabledGradient } from "../utilities/gradient";
 import { resolveClassName } from "../utilities/resolve-class-name";
 import { ComponentProps } from "react";
 import { tv } from "../utilities/tv";
@@ -19,7 +19,7 @@ const textFieldBorder = tv({
   ],
   variants: {
     isDisabled: {
-      true: [goldGradientDisabled],
+      true: [disabledGradient],
     },
   },
 });

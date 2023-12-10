@@ -8,11 +8,10 @@ import {
 } from "react-aria-components";
 import {
   goldGradient,
-  goldGradientDisabled,
   goldGradientHover,
   goldGradientPressed,
   hextechGradient,
-  hextechGradientDisabled,
+  disabledGradient,
   hextechGradientHover,
   hextechGradientPressed,
   dimmedGradient,
@@ -87,7 +86,7 @@ const buttonBorder = tv({
     {
       preset: ["primary", "secondary", "dimmed"],
       isDisabled: true,
-      class: goldGradientDisabled,
+      class: disabledGradient,
     },
     {
       preset: ["primary", "secondary"],
@@ -111,7 +110,7 @@ const buttonBorder = tv({
     {
       preset: ["hextech"],
       isDisabled: true,
-      class: hextechGradientDisabled,
+      class: disabledGradient,
     },
   ],
 });

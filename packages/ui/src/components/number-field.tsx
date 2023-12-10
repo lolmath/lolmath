@@ -7,7 +7,7 @@ import {
 } from "react-aria-components";
 import {
   goldGradient,
-  goldGradientDisabled,
+  disabledGradient,
   goldGradientHover,
   dimmedGradient,
 } from "../utilities/gradient";
@@ -25,7 +25,7 @@ const numberFieldBorder = tv({
       dimmed: dimmedGradient,
     },
     isDisabled: {
-      true: goldGradientDisabled,
+      true: disabledGradient,
     },
     isFocusWithin: {
       true: goldGradientHover,

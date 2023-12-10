@@ -4,7 +4,7 @@ import {
   goldGradient,
   goldGradientHover,
   goldGradientPressed,
-  goldGradientDisabled,
+  disabledGradient,
 } from "../utilities/gradient";
 import { tv } from "../utilities/tv";
 
@@ -21,7 +21,7 @@ const switchTrackBorder = tv({
       true: goldGradientPressed,
     },
     isDisabled: {
-      true: goldGradientDisabled,
+      true: disabledGradient,
     },
     isFocusVisible: {
       true: "outline outline-1 outline-offset-2 outline-yellow-50",
@@ -70,7 +70,7 @@ const switchKnobBorder = tv({
       true: goldGradientPressed,
     },
     isDisabled: {
-      true: goldGradientDisabled,
+      true: disabledGradient,
     },
   },
 });
