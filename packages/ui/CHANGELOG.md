@@ -1,5 +1,12 @@
 # @lolmath/ui
 
+## 3.2.0
+
+### Minor Changes
+
+- be713a2: Add Divider Component
+- c4b3afe: Export gradients
+
 ## 3.1.1
 
 ### Patch Changes
