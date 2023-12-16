@@ -1,7 +1,7 @@
 import { tv } from "../utilities/tv";
 
 const divider = tv({
-  base: "h-px grow bg-gradient-to-r border-0",
+  base: "h-px grow border-0 bg-gradient-to-r",
   variants: {
     preset: {
       left: "to-lol-gold-600 from-transparent",
@@ -11,16 +11,20 @@ const divider = tv({
   },
 });
 
-interface DividerProps {
+interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
   preset?: keyof typeof divider.variants.preset;
+  hrProps?: React.HTMLAttributes<HTMLHRElement>;
 }
-export function Divider({ preset = "center" }: DividerProps) {
+export function Divider({ preset = "center", hrProps, ...rest }: DividerProps) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center" {...rest}>
       {preset === "right" && (
         <div className="border-lol-gold-600 h-[5px] w-[5px] rotate-45 border" />
       )}
-      <hr className={divider({ preset })} />
+      <hr
+        {...hrProps}
+        className={divider({ preset, className: hrProps?.className })}
+      />
       {preset === "left" && (
         <div className="border-lol-gold-600 h-[5px] w-[5px] rotate-45 border" />
       )}
