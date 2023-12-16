@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 3.2.1
+
+### Patch Changes
+
+- 4d8e119: Add extra prop forwarding for divider
+
 ## 3.2.0
 
 ### Minor Changes
