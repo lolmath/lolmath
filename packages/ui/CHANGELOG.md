@@ -1,5 +1,12 @@
 # @lolmath/ui
 
+## 3.2.3
+
+### Patch Changes
+
+- df0f027: switch to nodenext module resolution
+- 3473fb2: Change file names of cjs exports
+
 ## 3.2.2
 
 ### Patch Changes
