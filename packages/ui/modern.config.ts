@@ -30,6 +30,9 @@ export default defineConfig({
             context: "./public",
           },
         ],
+        options: {
+          enableCopySync: true,
+        },
       },
     },
   ],
