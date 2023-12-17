@@ -4,14 +4,15 @@
   "private": false,
   "description": "lolmath.net UI",
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/lib/index.cjs",
+  "module": "./dist/es/index.js",
+  "types": "./dist/es/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "modern build",
+    "dev": "modern build --watch",
     "lint": "publint",
     "typecheck": "tsc --noEmit"
   },
@@ -39,14 +40,13 @@
     "email": "incoming+lol-math-lolmath-41959739-1qbix14106nxnde3k5iusimi8-issue@incoming.gitlab.com"
   },
   "devDependencies": {
+    "@modern-js/module-tools": "^2.42.2",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "publint": "^0.2.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.3.6",
-    "tsup": "^8.0.1",
-    "vitest": "^1.0.3"
+    "tailwindcss": "^3.3.6"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -55,9 +55,24 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/es/index.d.ts",
+        "default": "./dist/es/index.js"
+      },
+      "require": {
+        "types": "./dist/lib/index.d.cts",
+        "default": "./dist/lib/index.cjs"
+      }
+    },
+    "./plugin": {
+      "import": {
+        "types": "./dist/es/plugin.d.ts",
+        "default": "./dist/es/plugin.js"
+      },
+      "require": {
+        "types": "./dist/lib/plugin.d.cts",
+        "default": "./dist/lib/plugin.cjs"
+      }
     },
     "./font/beaufort": {
       "import": "./dist/font/beaufort/beaufort.css",
@@ -66,11 +81,6 @@
     "./font/spiegel": {
       "import": "./dist/font/spiegel/spiegel.css",
       "require": "./dist/font/spiegel/spiegel.css"
-    },
-    "./plugin": {
-      "types": "./dist/plugin.d.ts",
-      "import": "./dist/plugin.js",
-      "require": "./dist/plugin.cjs"
     }
   }
 }

@@ -9,13 +9,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
     "types": ["vitest/globals", "vitest/importMeta"],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "rootDir": "src"
   },
-  "include": ["src", "./docs.ts", "../../apps/ui-storybook/src/button.stories.tsx"]
+  "include": ["src", "./docs.ts"]
 }

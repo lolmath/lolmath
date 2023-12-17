@@ -8,6 +8,13 @@
     },
     "build": {
       "dependsOn": ["docs"],
+      "inputs": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "test/**/*.ts",
+        "test/**/*.tsx",
+        "./*.*"
+      ],
       "outputs": ["dist/**", "build/**", "storybook-static/**", "out/**"]
     },
     "lint": {

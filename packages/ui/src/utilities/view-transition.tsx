@@ -1,8 +1,8 @@
 import { flushSync } from "react-dom";
 
 export function startViewTransition(callback: () => void) {
-  if (document.startViewTransition) {
-    document.startViewTransition(() => {
+  if ("startViewTransition" in document) {
+    (document.startViewTransition as any)(() => {
       flushSync(callback);
     });
   } else {
