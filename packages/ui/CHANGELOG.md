@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 3.2.2
+
+### Patch Changes
+
+- b4c9c80: Use modern.js instead of tsup
+
 ## 3.2.1
 
 ### Patch Changes
