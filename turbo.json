@@ -7,7 +7,7 @@
       "outputs": ["docs/**", "pages/**"]
     },
     "build": {
-      "dependsOn": ["docs"],
+      "dependsOn": ["docs", "^build"],
       "inputs": [
         "src/**/*.tsx",
         "src/**/*.ts",
