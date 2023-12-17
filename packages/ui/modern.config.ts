@@ -8,7 +8,6 @@ export default defineConfig({
       target: "es2022",
       buildType: "bundleless",
       outDir: "./dist/lib",
-      autoExtension: true,
       sourceMap: true,
     },
     {

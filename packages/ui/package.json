@@ -59,8 +59,8 @@
         "default": "./dist/es/index.js"
       },
       "require": {
-        "types": "./dist/lib/index.d.cts",
-        "default": "./dist/lib/index.cjs"
+        "types": "./dist/lib/index.d.ts",
+        "default": "./dist/lib/index.js"
       }
     },
     "./plugin": {
@@ -69,8 +69,8 @@
         "default": "./dist/es/plugin.js"
       },
       "require": {
-        "types": "./dist/lib/plugin.d.cts",
-        "default": "./dist/lib/plugin.cjs"
+        "types": "./dist/lib/plugin.d.ts",
+        "default": "./dist/lib/plugin.js"
       }
     },
     "./font/beaufort": {
