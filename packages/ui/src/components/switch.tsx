@@ -5,8 +5,8 @@ import {
   goldGradientHover,
   goldGradientPressed,
   disabledGradient,
-} from "../utilities/gradient";
-import { tv } from "../utilities/tv";
+} from "../utilities/gradient.js";
+import { tv } from "../utilities/tv.js";
 
 const switchTrackBorder = tv({
   base: [

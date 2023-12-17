@@ -1,5 +1,5 @@
-import plugin from "tailwindcss/plugin";
-import { theme } from "./utilities/theme";
+import plugin from "tailwindcss/plugin.js";
+import { theme } from "./utilities/theme.js";
 
 export const lolmathui = plugin(function ({}) {}, {
   theme: {

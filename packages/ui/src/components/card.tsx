@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
-import { goldGradient } from "../utilities/gradient";
-import { tv } from "../utilities/tv";
+import { goldGradient } from "../utilities/gradient.js";
+import { tv } from "../utilities/tv.js";
 
 export interface CardProps extends ComponentProps<"div"> {
   borderProps?: ComponentProps<"div">;

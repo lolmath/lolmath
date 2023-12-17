@@ -10,9 +10,9 @@ import {
   disabledGradient,
   goldGradientHover,
   dimmedGradient,
-} from "../utilities/gradient";
+} from "../utilities/gradient.js";
 import { ComponentProps } from "react";
-import { resolveClassName } from "../utilities/resolve-class-name";
+import { resolveClassName } from "../utilities/resolve-class-name.js";
 import { tv } from "tailwind-variants";
 
 type NumberFieldPreset = "normal" | "dimmed";

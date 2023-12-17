@@ -16,9 +16,9 @@ import {
   sliderDisabled,
   sliderHover,
   sliderNormal,
-} from "./images";
-import { resolveClassName } from "../../utilities/resolve-class-name";
-import { tv } from "../../utilities/tv";
+} from "./images.js";
+import { resolveClassName } from "../../utilities/resolve-class-name.js";
+import { tv } from "../../utilities/tv.js";
 
 const sliderTrack = tv({
   base: "group relative h-7 w-full",

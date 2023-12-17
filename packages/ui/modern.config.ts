@@ -5,7 +5,7 @@ export default defineConfig({
   buildConfig: [
     {
       format: "cjs",
-      target: "esnext",
+      target: "es2022",
       buildType: "bundleless",
       outDir: "./dist/lib",
       autoExtension: true,
@@ -13,7 +13,7 @@ export default defineConfig({
     },
     {
       format: "esm",
-      target: "esnext",
+      target: "es2022",
       buildType: "bundleless",
       outDir: "./dist/es",
       sourceMap: true,

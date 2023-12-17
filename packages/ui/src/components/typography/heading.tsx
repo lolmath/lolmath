@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import { tv } from "../../utilities/tv";
+import { tv } from "../../utilities/tv.js";
 
 export type HeadingColor = "gold-100" | "gold-200" | "gold-400" | "grey-100";
 export type HeadingElement = "h1" | "h2" | "h3" | "h4" | "h5";

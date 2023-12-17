@@ -3,8 +3,8 @@ import {
   ToggleButton as AriaToggleButton,
   type ToggleButtonProps as AriaToggleButtonProps,
 } from "react-aria-components";
-import { tv } from "../utilities/tv";
-import { resolveClassName } from "../utilities/resolve-class-name";
+import { tv } from "../utilities/tv.js";
+import { resolveClassName } from "../utilities/resolve-class-name.js";
 import {
   dimmedGradient,
   goldGradient,
@@ -14,7 +14,7 @@ import {
   hextechGradientHover,
   hextechGradientPressed,
   disabledGradient,
-} from "../utilities/gradient";
+} from "../utilities/gradient.js";
 
 export type ToggleButtonShape = "round" | "square" | "normal";
 export type ToggleButtonPreset = "gold" | "hextech" | "dimmed";

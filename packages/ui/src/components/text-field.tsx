@@ -6,10 +6,10 @@ import {
   TextField as AriaTextField,
   Input as AriaInput,
 } from "react-aria-components";
-import { goldGradient, disabledGradient } from "../utilities/gradient";
-import { resolveClassName } from "../utilities/resolve-class-name";
+import { goldGradient, disabledGradient } from "../utilities/gradient.js";
+import { resolveClassName } from "../utilities/resolve-class-name.js";
 import { ComponentProps } from "react";
-import { tv } from "../utilities/tv";
+import { tv } from "../utilities/tv.js";
 
 const textFieldBorder = tv({
   base: [

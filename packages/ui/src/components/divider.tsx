@@ -1,4 +1,4 @@
-import { tv } from "../utilities/tv";
+import { tv } from "../utilities/tv.js";
 
 const divider = tv({
   base: "h-px grow border-0 bg-gradient-to-r",

@@ -2,9 +2,9 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "module": "ESNext",
+    "module": "NodeNext",
     "lib": ["ESNext", "DOM"],
-    "moduleResolution": "bundler",
+    "moduleResolution": "NodeNext",
     "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -15,7 +15,8 @@
     "skipLibCheck": true,
     "types": ["vitest/globals", "vitest/importMeta"],
     "jsx": "react-jsx",
-    "rootDir": "src"
+    "rootDir": "src",
+    "sourceMap": true
   },
   "include": ["src", "./docs.ts"]
 }

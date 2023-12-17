@@ -9,9 +9,9 @@ import {
   DialogTriggerProps as AriaDialogTriggerProps,
   DialogProps,
 } from "react-aria-components";
-import { goldGradientPressed } from "../utilities/gradient";
-import { resolveClassName } from "../utilities/resolve-class-name";
-import { tv } from "../utilities/tv";
+import { goldGradientPressed } from "../utilities/gradient.js";
+import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { tv } from "../utilities/tv.js";
 
 const modalOverlay = tv({
   base: "bg-lol-grey-hextech-black fixed inset-0 z-10 flex min-h-full flex-col items-center justify-center overflow-y-auto bg-opacity-25 px-4 text-center backdrop-blur",

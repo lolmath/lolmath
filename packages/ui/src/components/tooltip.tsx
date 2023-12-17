@@ -1,8 +1,8 @@
 import type { TooltipProps } from "react-aria-components";
 import { Tooltip as AriaTooltip, OverlayArrow } from "react-aria-components";
-import { goldGradient } from "../utilities/gradient";
-import { resolveClassName } from "../utilities/resolve-class-name";
-import { tv } from "../utilities/tv";
+import { goldGradient } from "../utilities/gradient.js";
+import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { tv } from "../utilities/tv.js";
 
 const tooltipBorder = tv({
   base: ["w-[280px] bg-gradient-to-t p-0.5 drop-shadow-lg", goldGradient],

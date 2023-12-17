@@ -1,8 +1,8 @@
 "use client";
 
 import { Checkbox as AriaCheckbox, CheckboxProps } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
-import { tv } from "../utilities/tv";
+import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { tv } from "../utilities/tv.js";
 
 const checkbox = tv({
   base: "text-lol-grey-100 font-spiegel flex cursor-pointer items-center gap-1 text-xs tracking-widest",

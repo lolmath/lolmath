@@ -15,9 +15,9 @@ import {
   hextechGradientHover,
   hextechGradientPressed,
   dimmedGradient,
-} from "../utilities/gradient";
-import { resolveClassName as resolveClassName } from "../utilities/resolve-class-name";
-import { tv } from "../utilities/tv";
+} from "../utilities/gradient.js";
+import { resolveClassName as resolveClassName } from "../utilities/resolve-class-name.js";
+import { tv } from "../utilities/tv.js";
 
 export type ButtonShape = "round" | "square" | "normal";
 export type ButtonPreset =

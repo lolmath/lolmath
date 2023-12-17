@@ -1,4 +1,4 @@
-import { ThemeConfig } from "tailwindcss/types/config";
+import { ThemeConfig } from "tailwindcss/types/config.js";
 
 export const theme = {
   colors: {

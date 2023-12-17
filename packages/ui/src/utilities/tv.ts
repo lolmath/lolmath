@@ -1,5 +1,5 @@
 import { createTV } from "tailwind-variants";
-import { theme } from "./theme";
+import { theme } from "./theme.js";
 
 // function formatColors() {
 //   const colors = [];

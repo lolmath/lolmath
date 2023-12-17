@@ -19,10 +19,10 @@ import {
   disabledGradient,
   goldGradientHover,
   goldGradientPressed,
-} from "../utilities/gradient";
-import { outlineClassName } from "../utilities/outline";
-import { resolveClassName } from "../utilities/resolve-class-name";
-import { tv } from "../utilities/tv";
+} from "../utilities/gradient.js";
+import { outlineClassName } from "../utilities/outline.js";
+import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { tv } from "../utilities/tv.js";
 
 const select = tv({
   base: "font-spiegel",

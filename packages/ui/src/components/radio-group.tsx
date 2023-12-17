@@ -5,8 +5,8 @@ import {
   type RadioRenderProps,
   Radio as AriaRadio,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
-import { tv } from "../utilities/tv";
+import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { tv } from "../utilities/tv.js";
 
 const radioGroup = tv({
   base: "flex flex-col items-start",

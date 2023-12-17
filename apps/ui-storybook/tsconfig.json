@@ -6,7 +6,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -20,10 +20,10 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@lolmath/ui": ["../../packages/ui/src/index"],
-      "@lolmath/ui/font": ["../../packages/ui/public/*"]
+      "@lolmath/ui/font": ["../../packages/ui/public/*"],
+      "@lolmath/ui/plugin": ["../../packages/ui/src/plugin"]
     },
     "baseUrl": "."
   },
-  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useState, useContext } from "react";
-import { useCssId } from "../utilities/css-id";
-import { startViewTransition } from "../utilities/view-transition";
-import { tv } from "../utilities/tv";
+import { useCssId } from "../utilities/css-id.js";
+import { startViewTransition } from "../utilities/view-transition.js";
+import { tv } from "../utilities/tv.js";
 
 interface AccordionProps {
   children: React.ReactNode;

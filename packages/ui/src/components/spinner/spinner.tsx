@@ -1,5 +1,5 @@
-import { tv } from "../..";
-import { spinnerImage } from "./images";
+import { tv } from "../../utilities/tv.js";
+import { spinnerImage } from "./images.js";
 
 const spinner = tv({
   base: "aspect-square w-12 animate-spin",

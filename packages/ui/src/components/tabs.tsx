@@ -8,11 +8,11 @@ import {
   TabProps,
   TabPanelProps,
 } from "react-aria-components";
-import { useCssId } from "../utilities/css-id";
+import { useCssId } from "../utilities/css-id.js";
 import { createContext, useContext } from "react";
-import { startViewTransition } from "../utilities/view-transition";
-import { resolveClassName } from "../utilities/resolve-class-name";
-import { tv } from "../utilities/tv";
+import { startViewTransition } from "../utilities/view-transition.js";
+import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { tv } from "../utilities/tv.js";
 
 export type { Key } from "react-aria-components";
 
