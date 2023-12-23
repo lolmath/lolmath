@@ -30,6 +30,6 @@
   },
   "packageManager": "pnpm@7.18.2",
   "dependencies": {
-    "changesets-gitlab": "^0.11.4"
+    "changesets-gitlab": "^0.11.5"
   }
 }
