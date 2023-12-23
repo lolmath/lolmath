@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 3.2.4
+
+### Patch Changes
+
+- 9257833: Upgrade dependencies
+
 ## 3.2.3
 
 ### Patch Changes
