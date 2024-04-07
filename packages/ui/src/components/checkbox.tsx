@@ -1,5 +1,3 @@
-"use client";
-
 import { Checkbox as AriaCheckbox, CheckboxProps } from "react-aria-components";
 import { resolveClassName } from "../utilities/resolve-class-name.js";
 import { tv } from "../utilities/tv.js";

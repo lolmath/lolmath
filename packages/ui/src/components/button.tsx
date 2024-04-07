@@ -1,5 +1,3 @@
-"use client";
-
 import { Ref, forwardRef } from "react";
 import {
   Button as AriaButton,

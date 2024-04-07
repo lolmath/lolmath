@@ -18,8 +18,6 @@ export default defineConfig({
       sourceMap: true,
     },
     {
-      buildType: "bundleless",
-      dts: false,
       input: [],
       copy: {
         patterns: [

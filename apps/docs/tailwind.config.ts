@@ -1,7 +1,7 @@
 import { lolmathui } from "@lolmath/ui/plugin";
+import { Config } from "tailwindcss";
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,6 +12,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [lolmathui],
-  important: "#__next",
-};
+  // plugins: [lolmathui],
+  // important: "#__next",
+} satisfies Config;
