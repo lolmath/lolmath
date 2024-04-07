@@ -12,6 +12,6 @@ export default {
   theme: {
     extend: {},
   },
-  // plugins: [lolmathui],
-  // important: "#__next",
+  plugins: [lolmathui],
+  important: "#__next",
 } satisfies Config;
