@@ -14,7 +14,7 @@ interface HeadingProps
   as?: HeadingElement | "span";
 }
 
-const heading = tv({
+export const heading = tv({
   base: "font-beaufort scroll-m-20 uppercase",
   variants: {
     color: {
