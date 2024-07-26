@@ -98,7 +98,7 @@ export function Tab({ children, className, ...rest }: TabProps) {
 							className={
 								"via-lol-gold-200 absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent to-transparent"
 							}
-						></div>
+						/>
 					)}
 				</>
 			)}

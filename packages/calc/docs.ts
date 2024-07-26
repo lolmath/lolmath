@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import {
 	type JSDocPropTag,
 	PropKind,
@@ -22,22 +22,22 @@ const docItems = Object.values(docObject).sort((a, b) => {
 });
 
 function validateItem(item: PropType) {
-	if (!item["parameters"]) {
+	if (!item.parameters) {
 		return `Item ${item.name} has no parameters`;
 	}
-	if (!item["parameters"].some((param) => param.description)) {
+	if (!item.parameters.some((param) => param.description)) {
 		return `Item ${item.name} has no parameter description`;
 	}
-	if (!item["returns"]) {
+	if (!item.returns) {
 		return `Item ${item.name} has no return type`;
 	}
-	if (!item["returns"].description) {
+	if (!item.returns.description) {
 		return `Item ${item.name} has no return description`;
 	}
-	if (!item["tags"]) {
+	if (!item.tags) {
 		return `Item ${item.name} has no tags`;
 	}
-	if (!item["tags"].some((tag) => tag.tag === "category")) {
+	if (!item.tags.some((tag) => tag.tag === "category")) {
 		return `Item ${item.name} has no category`;
 	}
 }
@@ -51,7 +51,7 @@ if (validationErrors.length) {
 
 // Find all categories
 const categories = docItems
-	.flatMap((item) => item["tags"])
+	.flatMap((item) => item.tags)
 	.filter(Boolean)
 	.filter((tag: JSDocPropTag) => tag.tag === "category")
 	.map((tag: JSDocPropTag) => tag.content)
@@ -64,11 +64,8 @@ const categories = docItems
 	}, []);
 
 function hasCategory(propType: PropType, category: string) {
-	return (
-		propType.tags &&
-		propType.tags.some(
-			(tag: JSDocPropTag) => tag.tag === "category" && tag.content === category,
-		)
+	return propType.tags?.some(
+		(tag: JSDocPropTag) => tag.tag === "category" && tag.content === category,
 	);
 }
 
@@ -99,18 +96,18 @@ function generalExample(item: PropType) {
 	return `\`\`\`ts
 import { ${item.name} } from "@lolmath/calc";
 
-${item.name}(${item["parameters"].map((param) => param.name).join(", ")})
+${item.name}(${item.parameters.map((param) => param.name).join(", ")})
 \`\`\``;
 }
 
 function parameters(item: PropType) {
-	const params = item["parameters"];
+	const params = item.parameters;
 	if (!params.length) {
 		return "";
 	}
 	return `### Arguments
 
-${item["parameters"]
+${item.parameters
 	.map(
 		(param) =>
 			`- \`${param.name}\` (*${PropKind[param.kind]}*): ${param.description}`,
@@ -120,7 +117,7 @@ ${item["parameters"]
 }
 
 function returns(item: PropType) {
-	const returns = item["returns"];
+	const returns = item.returns;
 	if (!returns) {
 		return "";
 	}

@@ -182,7 +182,7 @@ export function ToggleButton({
 	innerProps = {},
 	preset = "gold",
 	shape = "normal",
-	thin = preset === "dimmed" ? true : false,
+	thin = preset === "dimmed",
 	...props
 }: ToggleButtonProps) {
 	return (

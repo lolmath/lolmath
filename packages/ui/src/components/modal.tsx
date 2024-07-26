@@ -71,7 +71,7 @@ export function Modal({
 					{(dialogRenderProps) => (
 						<>
 							<div className="relative h-1">
-								<div className="border-lol-gold-600 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-b-0"></div>
+								<div className="border-lol-gold-600 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-b-0" />
 							</div>
 							<div className={dialogBorder()}>
 								<div className="bg-lol-grey-hextech-black">
@@ -81,7 +81,7 @@ export function Modal({
 								</div>
 							</div>
 							<div className="relative h-1">
-								<div className="border-lol-gold-500 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-t-0"></div>
+								<div className="border-lol-gold-500 bg-lol-grey-hextech-black absolute left-5 right-5 h-full rounded-full border border-t-0" />
 							</div>
 						</>
 					)}

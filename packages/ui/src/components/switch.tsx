@@ -93,7 +93,7 @@ export function Switch({
 					<div className={switchTrackBorder(values)}>
 						<div className={switchTrack(values)}>
 							<span className={switchKnobBorder(values)}>
-								<span className="bg-lol-grey-300 block h-full w-full rounded-full"></span>
+								<span className="bg-lol-grey-300 block h-full w-full rounded-full" />
 							</span>
 						</div>
 					</div>

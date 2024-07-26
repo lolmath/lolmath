@@ -17,7 +17,7 @@ const inner = tv({
 });
 
 export function Card({ children, className, style, borderProps }: CardProps) {
-	const r = `1rem`;
+	const r = "1rem";
 
 	return (
 		<div

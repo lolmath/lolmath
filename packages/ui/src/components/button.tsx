@@ -202,7 +202,7 @@ function _Button(
 		preset = "secondary",
 		shape = "normal",
 		innerClassName,
-		thin = preset === "dimmed" ? true : false,
+		thin = preset === "dimmed",
 		...props
 	}: ButtonProps,
 	ref: Ref<HTMLButtonElement>,
