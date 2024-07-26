@@ -40,9 +40,11 @@ export function Breadcrumb(props: BreadcrumbProps & LinkProps) {
 	return (
 		<AriaBreadcrumb
 			{...props}
-			className={values => breadCrumb({
-				className: resolveClassName(props.className, values),
-			})}
+			className={(values) =>
+				breadCrumb({
+					className: resolveClassName(props.className, values),
+				})
+			}
 		>
 			<Link
 				className={(values) =>
