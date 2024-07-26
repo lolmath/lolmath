@@ -1,7 +1,7 @@
 {
-    "name": "@lolmath/champion",
-    "private": true,
-    "devDependencies": {
-        "typescript": "^5.5.4"
-    }
+	"name": "@lolmath/champion",
+	"private": true,
+	"devDependencies": {
+		"typescript": "^5.5.4"
+	}
 }

@@ -1,6 +1,6 @@
 export function resolveClassName(
-  className: ((values: any) => string) | string | undefined,
-  values: any,
+	className: ((values: any) => string) | string | undefined,
+	values: any,
 ): string {
-  return typeof className === "function" ? className(values) : className ?? "";
+	return typeof className === "function" ? className(values) : className ?? "";
 }

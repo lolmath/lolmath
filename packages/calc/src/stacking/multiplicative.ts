@@ -15,5 +15,5 @@
  * const result = multiplicative(initial, value); // 19% Armor Penetration
  */
 export function multiplicative(initial: number, value: number) {
-  return 1 - (1 - initial) * (1 - value);
+	return 1 - (1 - initial) * (1 - value);
 }

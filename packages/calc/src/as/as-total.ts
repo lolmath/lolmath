@@ -11,12 +11,12 @@
  * @returns Total attack speed
  */
 export function asTotal(
-  base: number,
-  ratio: number,
-  bonus: number,
-  urfMode: boolean = false,
-  isMelee: boolean = false,
+	base: number,
+	ratio: number,
+	bonus: number,
+	urfMode = false,
+	isMelee = false,
 ): number {
-  const urfx = urfMode ? (isMelee ? 1.5 : 2) : 1;
-  return base + ratio * bonus * urfx;
+	const urfx = urfMode ? (isMelee ? 1.5 : 2) : 1;
+	return base + ratio * bonus * urfx;
 }

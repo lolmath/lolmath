@@ -4,23 +4,23 @@ import type { AbilityUsage } from "../enum/ability-usage";
 import type { AbilityKey } from "./ability-key";
 
 export interface Ability {
-  cooldown: number[];
-  damageType: AbilityDamage;
-  targetType: AbilityTarget;
-  usageType?: AbilityUsage;
+	cooldown: number[];
+	damageType: AbilityDamage;
+	targetType: AbilityTarget;
+	usageType?: AbilityUsage;
 
-  onHit: number;
-  imperialMandate: number;
-  rylaisImperialMandate: number;
-  abyssalMaskNegative: number;
-  muramana: number;
-  turretDamage: number;
+	onHit: number;
+	imperialMandate: number;
+	rylaisImperialMandate: number;
+	abyssalMaskNegative: number;
+	muramana: number;
+	turretDamage: number;
 
-  spellEffects: boolean;
-  phantomHit: boolean;
-  lifeSteal: boolean;
-  hasHardCc: boolean;
+	spellEffects: boolean;
+	phantomHit: boolean;
+	lifeSteal: boolean;
+	hasHardCc: boolean;
 
-  levelKey: AbilityKey;
-  id: string;
+	levelKey: AbilityKey;
+	id: string;
 }

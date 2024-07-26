@@ -1,85 +1,83 @@
 {
-  "name": "@lolmath/ui",
-  "version": "3.2.4",
-  "private": false,
-  "description": "lolmath.net UI",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "modern build",
-    "dev": "modern build --watch",
-    "lint": "publint",
-    "typecheck": "tsc --noEmit"
-  },
-  "keywords": [],
-  "author": "lolmath.net",
-  "license": "ISC",
-  "dependencies": {
-    "class-variance-authority": "^0.7.0",
-    "kurasu": "^3.0.3",
-    "react-aria-components": "1.3.1",
-    "tailwind-variants": "^0.2.1"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "homepage": "https://ui.lolmath.net",
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.com/lol-math/lolmath.git",
-    "directory": "packages/ui"
-  },
-  "bugs": {
-    "url": "https://gitlab.com/lol-math/lolmath/-/issues",
-    "email": "incoming+lol-math-lolmath-41959739-1qbix14106nxnde3k5iusimi8-issue@incoming.gitlab.com"
-  },
-  "devDependencies": {
-    "@modern-js/module-tools": "^2.56.2",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "publint": "^0.2.9",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwindcss": "^3.4.7",
-    "typescript": "^5.5.4",
-    "vitest": "^2.0.4"
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18",
-    "tailwindcss": ">=3"
-  },
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/es/index.d.ts",
-        "default": "./dist/es/index.js"
-      },
-      "require": {
-        "types": "./dist/lib/index.d.ts",
-        "default": "./dist/lib/index.js"
-      }
-    },
-    "./plugin": {
-      "import": {
-        "types": "./dist/es/plugin.d.ts",
-        "default": "./dist/es/plugin.js"
-      },
-      "require": {
-        "types": "./dist/lib/plugin.d.ts",
-        "default": "./dist/lib/plugin.js"
-      }
-    },
-    "./font/beaufort": {
-      "import": "./dist/font/beaufort/beaufort.css",
-      "require": "./dist/font/beaufort/beaufort.css"
-    },
-    "./font/spiegel": {
-      "import": "./dist/font/spiegel/spiegel.css",
-      "require": "./dist/font/spiegel/spiegel.css"
-    }
-  }
+	"name": "@lolmath/ui",
+	"version": "3.2.4",
+	"private": false,
+	"description": "lolmath.net UI",
+	"type": "module",
+	"files": ["dist"],
+	"scripts": {
+		"build": "modern build",
+		"dev": "modern build --watch",
+		"lint": "publint",
+		"typecheck": "tsc --noEmit"
+	},
+	"keywords": [],
+	"author": "lolmath.net",
+	"license": "ISC",
+	"dependencies": {
+		"class-variance-authority": "^0.7.0",
+		"kurasu": "^3.0.3",
+		"react-aria-components": "1.3.1",
+		"tailwind-variants": "^0.2.1"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"homepage": "https://ui.lolmath.net",
+	"repository": {
+		"type": "git",
+		"url": "https://gitlab.com/lol-math/lolmath.git",
+		"directory": "packages/ui"
+	},
+	"bugs": {
+		"url": "https://gitlab.com/lol-math/lolmath/-/issues",
+		"email": "incoming+lol-math-lolmath-41959739-1qbix14106nxnde3k5iusimi8-issue@incoming.gitlab.com"
+	},
+	"devDependencies": {
+		"@modern-js/module-tools": "^2.56.2",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
+		"publint": "^0.2.9",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"tailwindcss": "^3.4.7",
+		"typescript": "^5.5.4",
+		"vitest": "^2.0.4"
+	},
+	"peerDependencies": {
+		"react": ">=18",
+		"react-dom": ">=18",
+		"tailwindcss": ">=3"
+	},
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/es/index.d.ts",
+				"default": "./dist/es/index.js"
+			},
+			"require": {
+				"types": "./dist/lib/index.d.ts",
+				"default": "./dist/lib/index.js"
+			}
+		},
+		"./plugin": {
+			"import": {
+				"types": "./dist/es/plugin.d.ts",
+				"default": "./dist/es/plugin.js"
+			},
+			"require": {
+				"types": "./dist/lib/plugin.d.ts",
+				"default": "./dist/lib/plugin.js"
+			}
+		},
+		"./font/beaufort": {
+			"import": "./dist/font/beaufort/beaufort.css",
+			"require": "./dist/font/beaufort/beaufort.css"
+		},
+		"./font/spiegel": {
+			"import": "./dist/font/spiegel/spiegel.css",
+			"require": "./dist/font/spiegel/spiegel.css"
+		}
+	}
 }

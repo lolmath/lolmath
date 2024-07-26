@@ -17,16 +17,16 @@ import { theme } from "./theme.js";
 // }
 
 export const tv = createTV({
-  twMergeConfig: {
-    // theme: {
-    // colors: formatColors(),
-    // },
-    classGroups: {
-      "font-size": [
-        {
-          text: Object.keys(theme.fontSize),
-        },
-      ],
-    },
-  },
+	twMergeConfig: {
+		// theme: {
+		// colors: formatColors(),
+		// },
+		classGroups: {
+			"font-size": [
+				{
+					text: Object.keys(theme.fontSize),
+				},
+			],
+		},
+	},
 });

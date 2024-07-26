@@ -1,8 +1,8 @@
 {
-  "editor.foldingImportsByDefault": false,
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.patterns": {
-    "*.ts": "${capture}.spec.ts"
-  },
-  "tailwindCSS.experimental.classRegex": ["([a-zA-Z0-9\\-:]+)"]
+	"editor.foldingImportsByDefault": false,
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"*.ts": "${capture}.spec.ts"
+	},
+	"tailwindCSS.experimental.classRegex": ["([a-zA-Z0-9\\-:]+)"]
 }

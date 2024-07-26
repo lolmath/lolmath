@@ -1,29 +1,26 @@
 {
-  "name": "@lolmath/monorepo",
-  "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "docs": "turbo run docs",
-    "build": "turbo run build",
-    "test": "turbo run test",
-    "lint": "turbo run lint",
-    "deploy": "turbo run deploy",
-    "typecheck": "turbo run typecheck",
-    "dev": "turbo run dev",
-    "dev:ui:storybook": "turbo run dev --filter ui-storybook",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "publish-packages": "turbo run build lint test && changeset version && changeset publish",
-    "changeset": "changeset"
-  },
-  "devDependencies": {
-    "@changesets/cli": "^2.27.7",
-    "turbo": "^2.0.9",
-    "@biomejs/biome": "^1.8.3",
-    "changesets-gitlab": "^0.12.0"
-  },
-  "packageManager": "pnpm@9.6.0"
+	"name": "@lolmath/monorepo",
+	"version": "0.0.0",
+	"private": true,
+	"workspaces": ["apps/*", "packages/*"],
+	"scripts": {
+		"docs": "turbo run docs",
+		"build": "turbo run build",
+		"test": "turbo run test",
+		"lint": "turbo run lint",
+		"deploy": "turbo run deploy",
+		"typecheck": "turbo run typecheck",
+		"dev": "turbo run dev",
+		"dev:ui:storybook": "turbo run dev --filter ui-storybook",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"publish-packages": "turbo run build lint test && changeset version && changeset publish",
+		"changeset": "changeset"
+	},
+	"devDependencies": {
+		"@changesets/cli": "^2.27.7",
+		"turbo": "^2.0.9",
+		"@biomejs/biome": "^1.8.3",
+		"changesets-gitlab": "^0.12.0"
+	},
+	"packageManager": "pnpm@9.6.0"
 }

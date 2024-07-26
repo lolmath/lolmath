@@ -5,244 +5,244 @@ import { FaGear } from "react-icons/fa6";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Button",
-  component: Button,
-  tags: ["autodocs"],
-  argTypes: {
-    isDisabled: {
-      defaultValue: false,
-      description: "Is the button disabled?",
-      type: { name: "boolean" },
-    },
-    preset: {
-      defaultValue: undefined,
-    },
-    shape: {
-      defaultValue: "normal",
-      description: "The Shape of the button",
-    },
-    thin: {
-      defaultValue: false,
-      description: "Is the button thin?",
-      type: { name: "boolean" },
-    },
-    onPress: {
-      action: "onPress",
-    },
-  },
-  args: {
-    children: "League of Legends",
-  },
+	title: "Button",
+	component: Button,
+	tags: ["autodocs"],
+	argTypes: {
+		isDisabled: {
+			defaultValue: false,
+			description: "Is the button disabled?",
+			type: { name: "boolean" },
+		},
+		preset: {
+			defaultValue: undefined,
+		},
+		shape: {
+			defaultValue: "normal",
+			description: "The Shape of the button",
+		},
+		thin: {
+			defaultValue: false,
+			description: "Is the button thin?",
+			type: { name: "boolean" },
+		},
+		onPress: {
+			action: "onPress",
+		},
+	},
+	args: {
+		children: "League of Legends",
+	},
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-  args: {
-    preset: "primary",
-  },
+	args: {
+		preset: "primary",
+	},
 };
 
 export const Secondary: Story = {
-  args: {
-    preset: "secondary",
-  },
+	args: {
+		preset: "secondary",
+	},
 };
 
 export const Hextech: Story = {
-  args: {
-    preset: "hextech",
-  },
+	args: {
+		preset: "hextech",
+	},
 };
 
 export const Dimmed: Story = {
-  args: {
-    preset: "dimmed",
-  },
+	args: {
+		preset: "dimmed",
+	},
 };
 
 export const Disabled: Story = {
-  args: {
-    isDisabled: true,
-  },
+	args: {
+		isDisabled: true,
+	},
 };
 
 export const Text: Story = {
-  args: {
-    preset: "text",
-  },
+	args: {
+		preset: "text",
+	},
 };
 
 export const TextDisabled: Story = {
-  args: {
-    isDisabled: true,
-    preset: "text",
-  },
+	args: {
+		isDisabled: true,
+		preset: "text",
+	},
 };
 
 export const TextInline: Story = {
-  args: {
-    preset: "text",
-  },
-  render: (args) => (
-    <div className="bg-black p-4 text-white">
-      This is a <Button {...args} /> button. There is also a lot of text here.
-      Multiline text even. It's pretty cool. I like it. I like it a lot. I like
-      it so much that I'm going to keep typing. I'm going to keep typing until
-      this text wraps. I'm going to keep typing until this text wraps twice.
-    </div>
-  ),
+	args: {
+		preset: "text",
+	},
+	render: (args) => (
+		<div className="bg-black p-4 text-white">
+			This is a <Button {...args} /> button. There is also a lot of text here.
+			Multiline text even. It's pretty cool. I like it. I like it a lot. I like
+			it so much that I'm going to keep typing. I'm going to keep typing until
+			this text wraps. I'm going to keep typing until this text wraps twice.
+		</div>
+	),
 };
 
 export const RoundedPrimary: Story = {
-  args: {
-    preset: "primary",
-    shape: "round",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "primary",
+		shape: "round",
+		children: <FaGear />,
+	},
 };
 
 export const RoundedSecondary: Story = {
-  args: {
-    preset: "secondary",
-    shape: "round",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "secondary",
+		shape: "round",
+		children: <FaGear />,
+	},
 };
 
 export const RoundedHextech: Story = {
-  args: {
-    preset: "hextech",
-    shape: "round",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "hextech",
+		shape: "round",
+		children: <FaGear />,
+	},
 };
 
 export const RoundedDimmed: Story = {
-  args: {
-    preset: "dimmed",
-    shape: "round",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "dimmed",
+		shape: "round",
+		children: <FaGear />,
+	},
 };
 
 export const RoundedDisabled: Story = {
-  args: {
-    isDisabled: true,
-    shape: "round",
-    children: <FaGear />,
-  },
+	args: {
+		isDisabled: true,
+		shape: "round",
+		children: <FaGear />,
+	},
 };
 
 export const RoundedText: Story = {
-  args: {
-    preset: "text",
-    shape: "round",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "text",
+		shape: "round",
+		children: <FaGear />,
+	},
 };
 
 export const RoundedTextDisabled: Story = {
-  args: {
-    isDisabled: true,
-    shape: "round",
-    preset: "text",
-    children: <FaGear />,
-  },
+	args: {
+		isDisabled: true,
+		shape: "round",
+		preset: "text",
+		children: <FaGear />,
+	},
 };
 
 export const RoundedPrimaryWithText: Story = {
-  args: {
-    preset: "primary",
-    shape: "round",
-    children: "A",
-  },
+	args: {
+		preset: "primary",
+		shape: "round",
+		children: "A",
+	},
 };
 
 export const SquaredPrimary: Story = {
-  args: {
-    preset: "primary",
-    shape: "square",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "primary",
+		shape: "square",
+		children: <FaGear />,
+	},
 };
 
 export const SquaredSecondary: Story = {
-  args: {
-    preset: "secondary",
-    shape: "square",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "secondary",
+		shape: "square",
+		children: <FaGear />,
+	},
 };
 
 export const SquaredHextech: Story = {
-  args: {
-    preset: "hextech",
-    shape: "square",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "hextech",
+		shape: "square",
+		children: <FaGear />,
+	},
 };
 
 export const SquaredDimmed: Story = {
-  args: {
-    preset: "dimmed",
-    shape: "square",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "dimmed",
+		shape: "square",
+		children: <FaGear />,
+	},
 };
 
 export const SquaredDisabled: Story = {
-  args: {
-    isDisabled: true,
-    shape: "square",
-    children: <FaGear />,
-  },
+	args: {
+		isDisabled: true,
+		shape: "square",
+		children: <FaGear />,
+	},
 };
 
 export const SquaredText: Story = {
-  args: {
-    preset: "text",
-    shape: "square",
-    children: <FaGear />,
-  },
+	args: {
+		preset: "text",
+		shape: "square",
+		children: <FaGear />,
+	},
 };
 
 export const SquaredTextDisabled: Story = {
-  args: {
-    isDisabled: true,
-    shape: "square",
-    preset: "text",
-    children: <FaGear />,
-  },
+	args: {
+		isDisabled: true,
+		shape: "square",
+		preset: "text",
+		children: <FaGear />,
+	},
 };
 
 export const SquaredImage: Story = {
-  args: {
-    shape: "square",
-    children: (
-      <img
-        src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
-        className="w-full"
-      />
-    ),
-  },
+	args: {
+		shape: "square",
+		children: (
+			<img
+				src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
+				className="w-full"
+			/>
+		),
+	},
 };
 
 export const SquaredInsideFlex: Story = {
-  args: {
-    shape: "square",
-    className: "h-full",
-    children: (
-      <img
-        src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
-        className="w-full"
-      />
-    ),
-  },
-  render: (args) => (
-    <div className="flex h-24 w-36">
-      <Button {...args} />
-    </div>
-  ),
+	args: {
+		shape: "square",
+		className: "h-full",
+		children: (
+			<img
+				src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
+				className="w-full"
+			/>
+		),
+	},
+	render: (args) => (
+		<div className="flex h-24 w-36">
+			<Button {...args} />
+		</div>
+	),
 };

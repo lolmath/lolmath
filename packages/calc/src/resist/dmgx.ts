@@ -15,8 +15,8 @@
  * ```
  */
 export function dmgx(resist: number) {
-  if (resist > 0) {
-    return 100 / (100 + resist);
-  }
-  return 2 - 100 / (100 - resist);
+	if (resist > 0) {
+		return 100 / (100 + resist);
+	}
+	return 2 - 100 / (100 - resist);
 }

@@ -16,6 +16,5 @@
  * ```
  */
 export function growth(lvl: number) {
-  return (lvl - 1) * (0.7025 + 0.0175 * (lvl - 1));
+	return (lvl - 1) * (0.7025 + 0.0175 * (lvl - 1));
 }
-

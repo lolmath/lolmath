@@ -1,43 +1,41 @@
 {
-  "name": "@lolmath/calc",
-  "version": "0.0.7",
-  "private": false,
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "test": "vitest --coverage",
-    "coverage": "vitest run --coverage",
-    "docs": "vite-node ./docs.ts",
-    "lint": "publint"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "devDependencies": {
-    "@structured-types/api": "^3.46.12",
-    "@types/node": "^20.14.12",
-    "@vitest/coverage-v8": "^2.0.4",
-    "tsup": "^8.2.3",
-    "turbo": "^2.0.9",
-    "typescript": "^5.5.4",
-    "vite-node": "^2.0.4",
-    "vitest": "^2.0.4"
-  },
-  "dependencies": {
-    "publint": "^0.2.9"
-  }
+	"name": "@lolmath/calc",
+	"version": "0.0.7",
+	"private": false,
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"files": ["dist"],
+	"scripts": {
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"test": "vitest --coverage",
+		"coverage": "vitest run --coverage",
+		"docs": "vite-node ./docs.ts",
+		"lint": "publint"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"devDependencies": {
+		"@structured-types/api": "^3.46.12",
+		"@types/node": "^20.14.12",
+		"@vitest/coverage-v8": "^2.0.4",
+		"tsup": "^8.2.3",
+		"turbo": "^2.0.9",
+		"typescript": "^5.5.4",
+		"vite-node": "^2.0.4",
+		"vitest": "^2.0.4"
+	},
+	"dependencies": {
+		"publint": "^0.2.9"
+	}
 }

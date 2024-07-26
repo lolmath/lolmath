@@ -1,10 +1,10 @@
-import {
-  parseFiles,
-  JSDocPropTag,
-  PropType,
-  PropKind,
-} from "@structured-types/api";
 import fs from "fs";
+import {
+	type JSDocPropTag,
+	PropKind,
+	type PropType,
+	parseFiles,
+} from "@structured-types/api";
 
 const src = "./src/index.ts";
 const dest = "./docs";
@@ -12,75 +12,75 @@ const dest = "./docs";
 const docObject = parseFiles([src]);
 
 const docItems = Object.values(docObject).sort((a, b) => {
-  if (a.name < b.name) {
-    return -1;
-  }
-  if (a.name > b.name) {
-    return 1;
-  }
-  return 0;
+	if (a.name < b.name) {
+		return -1;
+	}
+	if (a.name > b.name) {
+		return 1;
+	}
+	return 0;
 });
 
 function validateItem(item: PropType) {
-  if (!item["parameters"]) {
-    return `Item ${item.name} has no parameters`;
-  }
-  if (!item["parameters"].some((param) => param.description)) {
-    return `Item ${item.name} has no parameter description`;
-  }
-  if (!item["returns"]) {
-    return `Item ${item.name} has no return type`;
-  }
-  if (!item["returns"].description) {
-    return `Item ${item.name} has no return description`;
-  }
-  if (!item["tags"]) {
-    return `Item ${item.name} has no tags`;
-  }
-  if (!item["tags"].some((tag) => tag.tag === "category")) {
-    return `Item ${item.name} has no category`;
-  }
+	if (!item["parameters"]) {
+		return `Item ${item.name} has no parameters`;
+	}
+	if (!item["parameters"].some((param) => param.description)) {
+		return `Item ${item.name} has no parameter description`;
+	}
+	if (!item["returns"]) {
+		return `Item ${item.name} has no return type`;
+	}
+	if (!item["returns"].description) {
+		return `Item ${item.name} has no return description`;
+	}
+	if (!item["tags"]) {
+		return `Item ${item.name} has no tags`;
+	}
+	if (!item["tags"].some((tag) => tag.tag === "category")) {
+		return `Item ${item.name} has no category`;
+	}
 }
 
 const validationErrors = docItems.map(validateItem).filter(Boolean);
 
 if (validationErrors.length) {
-  console.error(validationErrors);
-  process.exit(1);
+	console.error(validationErrors);
+	process.exit(1);
 }
 
 // Find all categories
 const categories = docItems
-  .flatMap((item) => item["tags"])
-  .filter(Boolean)
-  .filter((tag: JSDocPropTag) => tag.tag === "category")
-  .map((tag: JSDocPropTag) => tag.content)
-  .filter(Boolean)
-  .reduce((acc, cur) => {
-    if (!acc.includes(cur)) {
-      acc.push(cur);
-    }
-    return acc;
-  }, []);
+	.flatMap((item) => item["tags"])
+	.filter(Boolean)
+	.filter((tag: JSDocPropTag) => tag.tag === "category")
+	.map((tag: JSDocPropTag) => tag.content)
+	.filter(Boolean)
+	.reduce((acc, cur) => {
+		if (!acc.includes(cur)) {
+			acc.push(cur);
+		}
+		return acc;
+	}, []);
 
 function hasCategory(propType: PropType, category: string) {
-  return (
-    propType.tags &&
-    propType.tags.some(
-      (tag: JSDocPropTag) => tag.tag === "category" && tag.content === category,
-    )
-  );
+	return (
+		propType.tags &&
+		propType.tags.some(
+			(tag: JSDocPropTag) => tag.tag === "category" && tag.content === category,
+		)
+	);
 }
 
 const itemsPerCategory = categories.map((category) => {
-  const items = docItems.filter((item: PropType) => {
-    return hasCategory(item, category);
-  });
-  return { category, items };
+	const items = docItems.filter((item: PropType) => {
+		return hasCategory(item, category);
+	});
+	return { category, items };
 });
 
 function itemToMd(item: PropType) {
-  return `## \`${item.name}\`
+	return `## \`${item.name}\`
 
 ${item.description}
 
@@ -96,7 +96,7 @@ ${examples(item)}`;
 }
 
 function generalExample(item: PropType) {
-  return `\`\`\`ts
+	return `\`\`\`ts
 import { ${item.name} } from "@lolmath/calc";
 
 ${item.name}(${item["parameters"].map((param) => param.name).join(", ")})
@@ -104,37 +104,37 @@ ${item.name}(${item["parameters"].map((param) => param.name).join(", ")})
 }
 
 function parameters(item: PropType) {
-  const params = item["parameters"];
-  if (!params.length) {
-    return "";
-  }
-  return `### Arguments
+	const params = item["parameters"];
+	if (!params.length) {
+		return "";
+	}
+	return `### Arguments
 
 ${item["parameters"]
-  .map(
-    (param) =>
-      `- \`${param.name}\` (*${PropKind[param.kind]}*): ${param.description}`,
-  )
-  .join("\n")}
+	.map(
+		(param) =>
+			`- \`${param.name}\` (*${PropKind[param.kind]}*): ${param.description}`,
+	)
+	.join("\n")}
 `;
 }
 
 function returns(item: PropType) {
-  const returns = item["returns"];
-  if (!returns) {
-    return "";
-  }
-  return `### Returns
+	const returns = item["returns"];
+	if (!returns) {
+		return "";
+	}
+	return `### Returns
 
 (*${PropKind[returns.kind]}*) ${returns.description}`;
 }
 
 function remarks(item: PropType) {
-  const remarkTags = item.tags?.filter((tag) => tag.tag === "remarks") ?? [];
-  if (!remarkTags.length) {
-    return "";
-  }
-  return `<details><summary>More Info</summary>
+	const remarkTags = item.tags?.filter((tag) => tag.tag === "remarks") ?? [];
+	if (!remarkTags.length) {
+		return "";
+	}
+	return `<details><summary>More Info</summary>
 <p>
 
 ${remarkTags.map((tag) => tag.content).join("\n\n")}
@@ -145,39 +145,39 @@ ${remarkTags.map((tag) => tag.content).join("\n\n")}
 }
 
 function examples(item: PropType) {
-  const exampleTags = item.examples ?? [];
-  if (!exampleTags.length) {
-    return "";
-  }
-  return `### Examples
+	const exampleTags = item.examples ?? [];
+	if (!exampleTags.length) {
+		return "";
+	}
+	return `### Examples
 
 ${exampleTags.map((tag) => tag.content).join("\n\n")}`;
 }
 
 function combineItems(items: PropType[]) {
-  return items.map(itemToMd).join("\n\n---\n");
+	return items.map(itemToMd).join("\n\n---\n");
 }
 
 function slugify(category: string) {
-  return category.toLowerCase().replace(/ /g, "-");
+	return category.toLowerCase().replace(/ /g, "-");
 }
 
 const mdPerCategory = itemsPerCategory.map(({ category, items }) => ({
-  category: category,
-  slug: slugify(category),
-  md: combineItems(items, category),
+	category: category,
+	slug: slugify(category),
+	md: combineItems(items, category),
 }));
 
 // Clear the current /calc folder
 // check if the folder exists
 if (fs.existsSync(dest)) {
-  fs.rmSync(dest, { recursive: true });
+	fs.rmSync(dest, { recursive: true });
 }
 // Create the new /docs/calc folder, recursively
 fs.mkdirSync(dest, { recursive: true });
 
 mdPerCategory.forEach(({ slug, md }) => {
-  fs.writeFileSync(`${dest}/${slug}.md`, md);
+	fs.writeFileSync(`${dest}/${slug}.md`, md);
 });
 
 // Copy the README.md, and add a sidebar position

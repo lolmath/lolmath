@@ -1,36 +1,36 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Radio, RadioGroup, Label } from "@lolmath/ui";
+import { Label, Radio, RadioGroup } from "@lolmath/ui";
 
 const meta = {
-  title: "RadioGroup",
-  component: RadioGroup,
-  tags: ["autodocs"],
-  argTypes: {},
-  args: {
-    defaultValue: "cats",
-  },
-  render: (props) => {
-    return (
-      <RadioGroup {...props}>
-        <Label>Favorite pet</Label>
-        <Radio value="dogs">Dog</Radio>
-        <Radio value="cats">Cat</Radio>
-        <Radio value="dragon">Dragon</Radio>
-      </RadioGroup>
-    );
-  },
+	title: "RadioGroup",
+	component: RadioGroup,
+	tags: ["autodocs"],
+	argTypes: {},
+	args: {
+		defaultValue: "cats",
+	},
+	render: (props) => {
+		return (
+			<RadioGroup {...props}>
+				<Label>Favorite pet</Label>
+				<Radio value="dogs">Dog</Radio>
+				<Radio value="cats">Cat</Radio>
+				<Radio value="dragon">Dragon</Radio>
+			</RadioGroup>
+		);
+	},
 } satisfies Meta<typeof RadioGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-  args: {},
+	args: {},
 };
 
 export const Disabled: Story = {
-  args: {
-    isDisabled: true,
-  },
+	args: {
+		isDisabled: true,
+	},
 };

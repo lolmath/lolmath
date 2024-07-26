@@ -11,16 +11,16 @@
  * @returns The final movement speed of a champion
  */
 export function msTotal(
-  base: number,
-  flat: number,
-  percent: number,
-  percentMultiplicative: number,
-  bonusMultiplier: number,
+	base: number,
+	flat: number,
+	percent: number,
+	percentMultiplicative: number,
+	bonusMultiplier: number,
 ): number {
-  const _flat = flat * (1 + bonusMultiplier);
-  const _percent = percent * (1 + bonusMultiplier);
-  const _percentMultiplicative =
-    (percentMultiplicative - 1) * (1 + bonusMultiplier) + 1;
+	const _flat = flat * (1 + bonusMultiplier);
+	const _percent = percent * (1 + bonusMultiplier);
+	const _percentMultiplicative =
+		(percentMultiplicative - 1) * (1 + bonusMultiplier) + 1;
 
-  return (base + _flat) * (1 + _percent) * _percentMultiplicative;
+	return (base + _flat) * (1 + _percent) * _percentMultiplicative;
 }

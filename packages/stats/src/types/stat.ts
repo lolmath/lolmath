@@ -1,8 +1,8 @@
-import { Stacking } from "../enum/addition-type";
-import { StatKey } from "../enum/stat-key";
+import type { Stacking } from "../enum/addition-type";
+import type { StatKey } from "../enum/stat-key";
 
 export interface Stat {
-  key: StatKey;
-  name: string;
-  stacking: Stacking;
+	key: StatKey;
+	name: string;
+	stacking: Stacking;
 }

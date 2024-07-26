@@ -1,4 +1,4 @@
 export enum AbilityTarget {
-  single = "single",
-  multi = "multi",
+	single = "single",
+	multi = "multi",
 }

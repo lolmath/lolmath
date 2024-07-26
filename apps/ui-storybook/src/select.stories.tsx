@@ -4,32 +4,32 @@ import { Item, Select } from "@lolmath/ui";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Select",
-  component: Select,
-  render: (args) => (
-    <Select {...args}>
-      <Item>Purchase date</Item>
-      <Item>Mint</Item>
-      <Item>Strawberry</Item>
-      <Item>Vanilla</Item>
-    </Select>
-  ),
-  tags: ["autodocs"],
-  argTypes: {},
-  args: {
-    label: "Select a flavor",
-  },
+	title: "Select",
+	component: Select,
+	render: (args) => (
+		<Select {...args}>
+			<Item>Purchase date</Item>
+			<Item>Mint</Item>
+			<Item>Strawberry</Item>
+			<Item>Vanilla</Item>
+		</Select>
+	),
+	tags: ["autodocs"],
+	argTypes: {},
+	args: {
+		label: "Select a flavor",
+	},
 } satisfies Meta<typeof Select>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-  args: {},
+	args: {},
 };
 
 export const Disabled: Story = {
-  args: {
-    isDisabled: true,
-  },
+	args: {
+		isDisabled: true,
+	},
 };

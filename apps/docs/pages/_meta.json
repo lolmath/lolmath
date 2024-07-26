@@ -1,18 +1,18 @@
 {
-  "calc": {
-    "title": "Calc",
-    "type": "page"
-  },
-  "dev": {
-    "title": "Dev",
-    "type": "page"
-  },
-  "index": {
-    "display": "hidden",
-    "theme": {
-      "layout": "raw",
-      "sidebar": false,
-      "toc": true
-    }
-  }
+	"calc": {
+		"title": "Calc",
+		"type": "page"
+	},
+	"dev": {
+		"title": "Dev",
+		"type": "page"
+	},
+	"index": {
+		"display": "hidden",
+		"theme": {
+			"layout": "raw",
+			"sidebar": false,
+			"toc": true
+		}
+	}
 }

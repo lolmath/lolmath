@@ -1,6 +1,5 @@
 export interface StatPreference {
-    offense: number;
-    defense: number;
-    utility: number;
-  }
-  
+	offense: number;
+	defense: number;
+	utility: number;
+}

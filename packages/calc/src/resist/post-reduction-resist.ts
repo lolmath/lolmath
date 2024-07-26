@@ -22,25 +22,25 @@
  * @returns The resist after all reductions and penetrations.
  */
 export function postReductionResist(
-  resist: number,
-  flatReduction: number,
-  percentReduction: number,
-  percentPenetration: number,
-  flatPenetration: number,
+	resist: number,
+	flatReduction: number,
+	percentReduction: number,
+	percentPenetration: number,
+	flatPenetration: number,
 ) {
-  // Don't modify original.
-  let newResist = resist;
-  newResist -= flatReduction;
-  // Only flat resist reduction will apply below 0.
-  if (newResist > 0) {
-    newResist *= 1 - percentReduction;
-    newResist *= 1 - percentPenetration;
-    newResist -= flatPenetration;
-    // We cannot penetrate below 0.
-    if (newResist < 0) {
-      newResist = 0;
-    }
-  }
+	// Don't modify original.
+	let newResist = resist;
+	newResist -= flatReduction;
+	// Only flat resist reduction will apply below 0.
+	if (newResist > 0) {
+		newResist *= 1 - percentReduction;
+		newResist *= 1 - percentPenetration;
+		newResist -= flatPenetration;
+		// We cannot penetrate below 0.
+		if (newResist < 0) {
+			newResist = 0;
+		}
+	}
 
-  return newResist;
+	return newResist;
 }

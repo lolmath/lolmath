@@ -16,5 +16,5 @@
  * ```
  */
 export function cdx(ah: number) {
-  return 1 / (ah + 1);
+	return 1 / (ah + 1);
 }

@@ -9,7 +9,7 @@
  * @returns the scaling multiplier
  */
 export function linear(maxLvl: number, lvl: number): number {
-  return (lvl - 1) / (maxLvl - 1);
+	return (lvl - 1) / (maxLvl - 1);
 }
 
 /**
@@ -21,7 +21,7 @@ export function linear(maxLvl: number, lvl: number): number {
  * @returns the scaling multiplier
  */
 export function linear3(lvl: number): number {
-  return linear(3, lvl);
+	return linear(3, lvl);
 }
 
 /**
@@ -41,7 +41,7 @@ export function linear3(lvl: number): number {
  * ```
  */
 export function linear5(lvl: number): number {
-  return linear(5, lvl);
+	return linear(5, lvl);
 }
 
 /**
@@ -53,5 +53,5 @@ export function linear5(lvl: number): number {
  * @returns the scaling multiplier
  */
 export function linear18(lvl: number): number {
-  return linear(18, lvl);
+	return linear(18, lvl);
 }
