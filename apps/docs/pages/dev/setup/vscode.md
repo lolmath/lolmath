@@ -8,7 +8,6 @@ Code](https://code.visualstudio.com/).
 ## Extensions
 
 - Biome
-- Prettier
 - IntelliCode
 - GitLens
 - Tailwind CSS IntelliSense
