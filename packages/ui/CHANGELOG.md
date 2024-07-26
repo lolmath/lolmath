@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 3.2.5
+
+### Patch Changes
+
+- 67c5a5f: Tabs is a `use client` component.
+
 ## 3.2.4
 
 ### Patch Changes
