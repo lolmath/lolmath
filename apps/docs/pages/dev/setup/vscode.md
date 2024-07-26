@@ -7,7 +7,7 @@ Code](https://code.visualstudio.com/).
 
 ## Extensions
 
-- Eslint
+- Biome
 - Prettier
 - IntelliCode
 - GitLens
