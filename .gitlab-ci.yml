@@ -3,14 +3,14 @@ stages:
   - main
 
 comment:
-  image: node:20
+  image: node:22
   stage: comment
   only:
     - merge_requests
   script: npx -y changesets-gitlab comment
 
 main:
-  image: node:20
+  image: node:22
   stage: main
   script:
     - npm install -g pnpm

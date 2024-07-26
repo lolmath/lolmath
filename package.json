@@ -8,7 +8,7 @@
 		"build": "turbo run build",
 		"test": "turbo run test",
 		"lint": "turbo run lint",
-		"deploy": "turbo run deploy",
+		"deploy": "turbo run deploy --env-mode=loose",
 		"typecheck": "turbo run typecheck",
 		"dev": "turbo run dev",
 		"dev:ui:storybook": "turbo run dev --filter ui-storybook",
