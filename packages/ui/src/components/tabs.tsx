@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Tabs as AriaTabs,
   TabList as AriaTabList,
