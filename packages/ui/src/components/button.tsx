@@ -59,7 +59,7 @@ const button = cva({
 	},
 });
 
-function _Button(
+export function _Button(
 	{
 		children,
 		className,
@@ -91,3 +91,4 @@ function _Button(
 }
 
 export const Button = forwardRef(_Button);
+Button.displayName = "Button";
