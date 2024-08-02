@@ -1,0 +1,123 @@
+/* ----- CSS reset ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+/* ----- Default CSS variables ----- */
+
+:root {
+  color-scheme: dark;
+
+  --lol-z-index-app: 100;
+  --lol-z-index-modal: 200;
+  --lol-z-index-popover: 300;
+  --lol-z-index-overlay: 400;
+  --lol-z-index-max: 9999;
+
+  --lol-scale: 1;
+
+  --lol-color-blue-100: #CDFAFA;
+  --lol-color-blue-200: #0AC8B9;
+  --lol-color-blue-300: #0397AB;
+  --lol-color-blue-400: #005A82;
+  --lol-color-blue-500: #0A323C;
+  --lol-color-blue-600: #091428;
+  --lol-color-blue-700: #0A1428;
+
+  --lol-color-grey-100: #CDFAFA;
+  --lol-color-grey-150: #0AC8B9;
+  --lol-color-grey-200: #0397AB;
+  --lol-color-grey-300: #0397AB;
+  --lol-color-grey-cool: #1E282D;
+  --lol-color-grey-hextech-black: #010A13;
+
+  --lol-color-gold-100: #F0E6D2;
+  --lol-color-gold-200: #C8AA6E;
+  --lol-color-gold-300: #CDBE91;
+  --lol-color-gold-400: #C89B3C;
+  --lol-color-gold-500: #785A28;
+  --lol-color-gold-600: #463714;
+  --lol-color-gold-700: #32281E;
+
+  --lol-font-size-h1: 3.3333rem;
+  --lol-line-height-h1: 3.5rem;
+  --lol-letter-spacing-h1: 0.05em;
+  --lol-font-weight-h1: 700;
+
+  --lol-font-size-h2: 2.3333rem;
+  --lol-line-height-h2: 2.6667rem;
+  --lol-letter-spacing-h2: 0.05em;
+  --lol-font-weight-h2: 700;
+
+  --lol-font-size-h3: 1.9167rem;
+  --lol-line-height-h3: 2.3333rem;
+  --lol-letter-spacing-h3: 0.05em;
+  --lol-font-weight-h3: 700;
+
+  --lol-font-size-h4: 1.5rem;
+  --lol-line-height-h4: 1.8333rem;
+  --lol-letter-spacing-h4: 0.05em;
+  --lol-font-weight-h4: 700;
+
+  --lol-font-size-h5: 1.1667rem;
+  --lol-line-height-h5: 1.5rem;
+  --lol-letter-spacing-h5: 0.075em;
+  --lol-font-weight-h5: 700;
+
+  --lol-font-size-label: 0.9167rem;
+  --lol-line-height-label: 1.3333rem;
+  --lol-letter-spacing-label: 0.05em;
+  --lol-font-weight-label: 700;
+
+  --lol-font-size-stat: 1.1667rem;
+  --lol-line-height-stat: 1.6667rem;
+  --lol-letter-spacing-stat: 0.05em;
+  --lol-font-weight-stat: 700;
+
+  --lol-font-size-stat: 1.1667rem;
+  --lol-line-height-stat: 1.6667rem;
+  --lol-letter-spacing-stat: 0.05em;
+  --lol-font-weight-stat: 700;
+
+  --lol-font-size-large-number: 4.75rem;
+  --lol-line-height-large-number: 5.1667rem;
+  --lol-letter-spacing-large-number: 0.025em;
+  --lol-font-weight-large-number: 500;
+
+  --lol-font-size-sm: 0.875rem;
+  --lol-line-height-sm: 1.1025rem;
+  --lol-letter-spacing-sm: 0.02em;
+  --lol-font-weight-sm: 400;
+
+  --lol-font-size-base: 1rem;
+  --lol-line-height-base: 1.24rem;
+  --lol-letter-spacing-base: 0.01em;
+  --lol-font-weight-base: 400;
+
+  --lol-font-size-md: 1.1667rem;
+  --lol-line-height-md: 1.6667rem;
+  --lol-letter-spacing-md: 0.025em;
+  --lol-font-weight-md: 400;
+
+  --lol-font-size-lg: 1.5rem;
+  --lol-line-height-lg: 1.875rem;
+  --lol-letter-spacing-lg: 0.025em;
+  --lol-font-weight-lg: 400;
+
+  --lol-font-family-beaufort: 'beaufort';
+  --lol-font-family-spiegel: 'spiegel';
+}

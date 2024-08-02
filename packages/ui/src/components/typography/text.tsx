@@ -3,37 +3,37 @@ import {
 	Label as AriaLabel,
 	type LabelProps as AriaLabelProps,
 } from "react-aria-components";
-import { tv } from "../../utilities/tv.js";
+import { cva } from "class-variance-authority";
+import classes from "./text.module.css";
 
-export type TextColor = "grey-100" | "grey-150" | "gold-100";
+export type TextColor = "grey100" | "grey150" | "gold100";
 export type TextElement = "p" | "span" | "div";
-export type TextPreset = "sm" | "base" | "md" | "lg" | "large-number" | "stat";
+export type TextPreset = "sm" | "base" | "md" | "lg" | "largeNumber" | "stat";
 
 const presetElements: Record<TextPreset, TextElement> = {
 	sm: "p",
 	base: "p",
 	md: "p",
 	lg: "p",
-	"large-number": "span",
+	largeNumber: "span",
 	stat: "span",
 };
 
-const text = tv({
-	base: "font-spiegel",
+const text = cva(classes.text, {
 	variants: {
 		color: {
-			"grey-100": "text-lol-grey-100",
-			"grey-150": "text-lol-grey-150",
-			"gold-100": "text-lol-gold-100",
+			grey100: classes.grey100,
+			grey150: classes.grey150,
+			gold100: classes.gold100,
 		},
 		preset: {
-			sm: "text-lol-sm",
-			base: "text-lol-base",
-			md: "text-lol-md",
-			lg: "text-lol-lg",
-			label: "text-lol-label",
-			"large-number": "text-lol-large-number font-beaufort italic",
-			stat: "text-lol-stat font-beaufort",
+			sm: classes.sm,
+			base: classes.base,
+			md: classes.md,
+			lg: classes.lg,
+			label: classes.label,
+			largeNumber: classes.largeNumber,
+			stat: classes.stat,
 		},
 	},
 });
@@ -50,7 +50,7 @@ interface TextProps
 export function Text({
 	as = "p",
 	preset = "base",
-	color = "grey-100",
+	color = "grey100",
 	className,
 	...rest
 }: TextProps): JSX.Element {
@@ -68,7 +68,7 @@ interface LabelProps extends AriaLabelProps {
 }
 export function Label({
 	preset = "sm",
-	color = "grey-100",
+	color = "grey100",
 	className,
 	...rest
 }: LabelProps): JSX.Element {

@@ -1,0 +1,64 @@
+.text {
+	font-family: var(--lol-font-family-spiegel);
+}
+
+.label {
+	font-size: var(--lol-font-size-label);
+	line-height: var(--lol-line-height-label);
+	letter-spacing: var(--lol-letter-spacing-label);
+	font-weight: var(--lol-font-weight-label);
+}
+
+.stat {
+	font-size: var(--lol-font-size-stat);
+	line-height: var(--lol-line-height-stat);
+	letter-spacing: var(--lol-letter-spacing-stat);
+	font-weight: var(--lol-font-weight-stat);
+}
+
+.largeNumber {
+	font-size: var(--lol-font-size-large-number);
+	line-height: var(--lol-line-height-large-number);
+	letter-spacing: var(--lol-letter-spacing-large-number);
+	font-weight: var(--lol-font-weight-large-number);
+}
+
+.sm {
+	font-size: var(--lol-font-size-sm);
+	line-height: var(--lol-line-height-sm);
+	letter-spacing: var(--lol-letter-spacing-sm);
+	font-weight: var(--lol-font-weight-sm);
+}
+
+.base {
+	font-size: var(--lol-font-size-base);
+	line-height: var(--lol-line-height-base);
+	letter-spacing: var(--lol-letter-spacing-base);
+	font-weight: var(--lol-font-weight-base);
+}
+
+.md {
+	font-size: var(--lol-font-size-md);
+	line-height: var(--lol-line-height-md);
+	letter-spacing: var(--lol-letter-spacing-md);
+	font-weight: var(--lol-font-weight-md);
+}
+
+.lg {
+	font-size: var(--lol-font-size-lg);
+	line-height: var(--lol-line-height-lg);
+	letter-spacing: var(--lol-letter-spacing-lg);
+	font-weight: var(--lol-font-weight-lg);
+}
+
+.grey100 {
+	color: var(--lol-grey-100);
+}
+
+.grey150 {
+	color: var(--lol-grey-150);
+}
+
+.gold100 {
+	color: var(--lol-gold-100);
+}

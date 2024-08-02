@@ -1,7 +1,8 @@
 import { createElement } from "react";
-import { tv } from "../../utilities/tv.js";
+import classes from "./heading.module.css";
+import { cva } from "class-variance-authority";
 
-export type HeadingColor = "gold-100" | "gold-200" | "gold-400" | "grey-100";
+export type HeadingColor = "gold100" | "gold200" | "gold400" | "grey100";
 export type HeadingElement = "h1" | "h2" | "h3" | "h4" | "h5";
 
 interface HeadingProps
@@ -14,21 +15,20 @@ interface HeadingProps
 	as?: HeadingElement | "span";
 }
 
-export const heading = tv({
-	base: "font-beaufort scroll-m-20 uppercase",
+export const heading = cva(classes.heading, {
 	variants: {
 		color: {
-			"gold-100": "text-lol-gold-100",
-			"gold-200": "text-lol-gold-200",
-			"gold-400": "text-lol-gold-400",
-			"grey-100": "text-lol-grey-100",
+			gold100: classes.gold100,
+			gold200: classes.gold200,
+			gold400: classes.gold400,
+			grey100: classes.grey100,
 		},
 		preset: {
-			h1: "text-lol-h1",
-			h2: "text-lol-h2",
-			h3: "text-lol-h3",
-			h4: "text-lol-h4",
-			h5: "text-lol-h5",
+			h1: classes.h1,
+			h2: classes.h2,
+			h3: classes.h3,
+			h4: classes.h4,
+			h5: classes.h5,
 		},
 	},
 });
@@ -36,7 +36,7 @@ export const heading = tv({
 export function Heading({
 	as,
 	preset = "h1",
-	color = "gold-100",
+	color = "gold100",
 	className,
 	...rest
 }: HeadingProps): JSX.Element {

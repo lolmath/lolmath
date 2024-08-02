@@ -4,14 +4,15 @@
 	"private": false,
 	"description": "lolmath.net UI",
 	"type": "module",
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"scripts": {
 		"build": "modern build",
 		"dev": "modern build --watch",
 		"lint": "publint",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
+		"dev:storybook": "npx storybook dev -p 6006",
+		"build:storybook": "storybook build",
+		"deploy:storybook": "wrangler pages deploy ./storybook-static --project-name lolmath-ui --branch $CI_COMMIT_REF_NAME"
 	},
 	"keywords": [],
 	"author": "lolmath.net",
@@ -61,6 +62,16 @@
 			"require": {
 				"types": "./dist/lib/index.d.ts",
 				"default": "./dist/lib/index.js"
+			}
+		},
+		"./style.css": {
+			"import": {
+				"types": "./dist/es/style.d.ts",
+				"default": "./dist/es/style.css"
+			},
+			"require": {
+				"types": "./dist/lib/style.d.ts",
+				"default": "./dist/lib/style.css"
 			}
 		},
 		"./plugin": {
