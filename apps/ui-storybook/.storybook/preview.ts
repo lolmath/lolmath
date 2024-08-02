@@ -3,6 +3,7 @@ import { themes } from "@storybook/theming";
 import "../src/tailwind.css";
 import "@lolmath/ui/font/beaufort";
 import "@lolmath/ui/font/spiegel";
+import "@lolmath/ui/style.css";
 
 const preview: Preview = {
 	parameters: {

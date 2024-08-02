@@ -2,14 +2,13 @@
 
 import { createContext, useContext, useState } from "react";
 import { useCssId } from "../utilities/css-id.js";
-import { tv } from "../utilities/tv.js";
-import { startViewTransition } from "../utilities/view-transition.js";
+import { cva } from "cva";
+import classes from "./accordion.module.css";
 
 interface AccordionProps {
 	children: React.ReactNode;
-	className?: string;
 }
-export function Accordion({ children, className }: AccordionProps) {
+export function Accordion({ children }: AccordionProps) {
 	const [activeItem, setActiveItem] = useState<string>("");
 	const id = useCssId();
 
@@ -21,24 +20,13 @@ export function Accordion({ children, className }: AccordionProps) {
 				id,
 			}}
 		>
-			<div
-				className={className}
-				style={{
-					viewTransitionName: `${id}`,
-				}}
-			>
-				{children}
-			</div>
+			{children}
 		</AccordionContext.Provider>
 	);
 }
 
-export const accordionTrigger = tv({
-	base: "text-lol-grey-100 font-beaufort active:text-lol-gold-100 hover:text-lol-gold-100 flex w-full items-center py-2 text-left font-bold uppercase",
-});
-
-export const accordionTriggerInner = tv({
-	base: "ml-0.5 mr-2 inline-block rotate-90 transform text-xs",
+export const accordionTrigger = cva({
+	base: classes.trigger,
 });
 
 interface AccordionTriggerProps {
@@ -54,16 +42,15 @@ export function AccordionTrigger({
 
 	return (
 		<button
+			type="button"
 			className={accordionTrigger({
 				className,
 			})}
 			onClick={() => {
-				startViewTransition(() => {
-					setActiveItem((currentItem) => (currentItem === item ? "" : item));
-				});
+				setActiveItem((currentItem) => (currentItem === item ? "" : item));
 			}}
 		>
-			<span className={accordionTriggerInner()}>❯</span>
+			<span className={classes.triggerIcon}>❯</span>
 			{children}
 		</button>
 	);
@@ -74,22 +61,13 @@ interface AccordionItemProps {
 	value: string;
 }
 export function AccordionItem({ children, value }: AccordionItemProps) {
-	const { id } = useContext(AccordionContext);
-
 	return (
 		<AccordionItemContext.Provider
 			value={{
 				item: value,
 			}}
 		>
-			<div
-				className="border-lol-gold-600 border-b last-of-type:border-none"
-				style={{
-					viewTransitionName: `${id}-${value}`,
-				}}
-			>
-				{children}
-			</div>
+			<div className={classes.item}>{children}</div>
 		</AccordionItemContext.Provider>
 	);
 }
@@ -105,7 +83,7 @@ export function AccordionContent({ children }: AccordionContentProps) {
 		return null;
 	}
 
-	return <div className="font-spiegel text-lol-grey-100 py-2">{children}</div>;
+	return <div className={classes.content}>{children}</div>;
 }
 
 const AccordionContext = createContext<{

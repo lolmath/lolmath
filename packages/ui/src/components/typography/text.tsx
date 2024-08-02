@@ -3,7 +3,7 @@ import {
 	Label as AriaLabel,
 	type LabelProps as AriaLabelProps,
 } from "react-aria-components";
-import { cva } from "class-variance-authority";
+import { cva } from "cva";
 import classes from "./text.module.css";
 
 export type TextColor = "grey100" | "grey150" | "gold100";
@@ -19,7 +19,8 @@ const presetElements: Record<TextPreset, TextElement> = {
 	stat: "span",
 };
 
-const text = cva(classes.text, {
+const text = cva({
+	base: classes.text,
 	variants: {
 		color: {
 			grey100: classes.grey100,

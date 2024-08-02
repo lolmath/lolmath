@@ -40,17 +40,17 @@
 }
 
 .grey100 {
-	color: var(--lol-grey-100);
+	color: var(--lol-color-grey-100);
 }
 
 .gold100 {
-	color: var(--lol-gold-100);
+	color: var(--lol-color-gold-100);
 }
 
 .gold200 {
-	color: var(--lol-gold-200);
+	color: var(--lol-color-gold-200);
 }
 
 .gold400 {
-	color: var(--lol-gold-400);
+	color: var(--lol-color-gold-400);
 }

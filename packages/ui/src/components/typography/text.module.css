@@ -52,13 +52,13 @@
 }
 
 .grey100 {
-	color: var(--lol-grey-100);
+	color: var(--lol-color-grey-100);
 }
 
 .grey150 {
-	color: var(--lol-grey-150);
+	color: var(--lol-color-grey-150);
 }
 
 .gold100 {
-	color: var(--lol-gold-100);
+	color: var(--lol-color-gold-100);
 }

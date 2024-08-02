@@ -44,7 +44,7 @@ export const LargeText: Story = {
 
 export const LargeNumberText: Story = {
 	args: {
-		preset: "large-number",
+		preset: "largeNumber",
 		children: "+1,381",
 	},
 };
@@ -58,18 +58,18 @@ export const StatText: Story = {
 
 export const TextGrey100: Story = {
 	args: {
-		color: "grey-100",
+		color: "grey100",
 	},
 };
 
 export const TextGrey150: Story = {
 	args: {
-		color: "grey-150",
+		color: "grey150",
 	},
 };
 
 export const TextGold100: Story = {
 	args: {
-		color: "gold-100",
+		color: "gold100",
 	},
 };

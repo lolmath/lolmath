@@ -38,12 +38,13 @@ select {
   --lol-color-blue-600: #091428;
   --lol-color-blue-700: #0A1428;
 
-  --lol-color-grey-100: #CDFAFA;
-  --lol-color-grey-150: #0AC8B9;
-  --lol-color-grey-200: #0397AB;
-  --lol-color-grey-300: #0397AB;
+  --lol-color-grey-100: #A09B8C;
+  --lol-color-grey-150: #5B5A56;
+  --lol-color-grey-200: #3C3C41;
+  --lol-color-grey-300: #1E2328;
   --lol-color-grey-cool: #1E282D;
-  --lol-color-grey-hextech-black: #010A13;
+
+  --lol-color-hextech-black: #010A13;
 
   --lol-color-gold-100: #F0E6D2;
   --lol-color-gold-200: #C8AA6E;
@@ -120,4 +121,17 @@ select {
 
   --lol-font-family-beaufort: 'beaufort';
   --lol-font-family-spiegel: 'spiegel';
+
+  --lol-gradient-gold: linear-gradient(to top, var(--lol-color-gold-500), var(--lol-color-gold-400), var(--lol-color-gold-200));
+  --lol-gradient-gold-hover: linear-gradient(to top, var(--lol-color-gold-400), var(--lol-color-gold-200), var(--lol-color-gold-100));
+  --lol-gradient-gold-press: linear-gradient(to top, var(--lol-color-gold-600), var(--lol-color-gold-600), var(--lol-color-gold-500));
+
+  --lol-gradient-grey-300: linear-gradient(to top, var(--lol-color-grey-300), var(--lol-color-grey-300), var(--lol-color-grey-300));
+  --lol-gradient-hextech-black: linear-gradient(to top, var(--lol-color-hextech-black), var(--lol-color-hextech-black));
+  --lol-gradient-disabled: linear-gradient(to top, var(--lol-color-grey-150), var(--lol-color-grey-150), var(--lol-color-grey-150));
+  --lol-gradient-transparent: linear-gradient(to top, transparent, transparent);
+
+  --lol-gradient-hextech: linear-gradient(to top, var(--lol-color-blue-200), var(--lol-color-blue-400));
+  --lol-gradient-hextech-hover: linear-gradient(to top, var(--lol-color-blue-100), var(--lol-color-blue-300));
+  --lol-gradient-hextech-press: linear-gradient(to top, var(--lol-color-blue-500), var(--lol-color-blue-400));
 }

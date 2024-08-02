@@ -1,6 +1,6 @@
 import { createElement } from "react";
 import classes from "./heading.module.css";
-import { cva } from "class-variance-authority";
+import { cva } from "cva";
 
 export type HeadingColor = "gold100" | "gold200" | "gold400" | "grey100";
 export type HeadingElement = "h1" | "h2" | "h3" | "h4" | "h5";
@@ -15,7 +15,8 @@ interface HeadingProps
 	as?: HeadingElement | "span";
 }
 
-export const heading = cva(classes.heading, {
+export const heading = cva({
+	base: classes.heading,
 	variants: {
 		color: {
 			gold100: classes.gold100,

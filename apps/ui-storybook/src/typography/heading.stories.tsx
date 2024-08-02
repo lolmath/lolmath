@@ -48,24 +48,24 @@ export const H5Heading: Story = {
 
 export const ColorGold100Heading: Story = {
 	args: {
-		color: "gold-100",
+		color: "gold100",
 	},
 };
 
 export const ColorGold200Heading: Story = {
 	args: {
-		color: "gold-200",
+		color: "gold200",
 	},
 };
 
 export const ColorGold400Heading: Story = {
 	args: {
-		color: "gold-400",
+		color: "gold400",
 	},
 };
 
 export const ColorGrey100Heading: Story = {
 	args: {
-		color: "grey-100",
+		color: "grey100",
 	},
 };
