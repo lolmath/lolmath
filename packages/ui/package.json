@@ -65,14 +65,8 @@
 			}
 		},
 		"./style.css": {
-			"import": {
-				"types": "./dist/es/style.d.ts",
-				"default": "./dist/es/style.css"
-			},
-			"require": {
-				"types": "./dist/lib/style.d.ts",
-				"default": "./dist/lib/style.css"
-			}
+			"import": "./dist/es/style.css",
+			"require": "./dist/lib/style.css"
 		},
 		"./plugin": {
 			"import": {
