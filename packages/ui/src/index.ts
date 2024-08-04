@@ -1,5 +1,6 @@
-export * from "./components/breadcrumbs.js";
 export * from "./components/accordion.js";
+export * from "./components/breadcrumbs.js";
+export * from "./components/button-link.js";
 export * from "./components/button.js";
 export * from "./components/card.js";
 export * from "./components/checkbox.js";
@@ -22,4 +23,3 @@ export * from "./components/typography/heading.js";
 export * from "./components/typography/text.js";
 export * from "./utilities/gradient.js";
 export * from "./utilities/tv.js";
-export * from "./components/button-link.js";

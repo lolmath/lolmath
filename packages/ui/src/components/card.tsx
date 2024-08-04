@@ -1,52 +1,33 @@
+import { cva } from "cva";
 import type { ComponentProps } from "react";
-import { goldGradient } from "../utilities/gradient.js";
-import { tv } from "../utilities/tv.js";
+import classes from "./card.module.css";
 
 export interface CardProps extends ComponentProps<"div"> {
-	borderProps?: ComponentProps<"div">;
+	radius?: string;
+	borderWidth?: string;
 }
 
-const cardBorder = tv({
-	base: ["bg-gradient-to-t p-[2px]", goldGradient],
-	variants: {},
+const card = cva({
+	base: classes.card,
 });
 
-const inner = tv({
-	base: "bg-lol-grey-hextech-black w-full",
-	variants: {},
-});
-
-export function Card({ children, className, style, borderProps }: CardProps) {
-	const r = "1rem";
-
+export function Card({
+	className,
+	style,
+	radius = "1rem",
+	borderWidth = "2px",
+	...props
+}: CardProps) {
 	return (
 		<div
-			{...(borderProps ?? {})}
-			className={cardBorder({
-				className: borderProps?.className,
-			})}
+			className={card({ className })}
 			style={{
-				WebkitMask: borderInverted(r),
-				mask: borderInverted(r),
-				...(borderProps?.style ?? {}),
+				// @ts-ignore: Css variable
+				"--lol-card-radius": radius,
+				"--lol-card-border-width": borderWidth,
+				...(style ?? {}),
 			}}
-		>
-			<div
-				className={inner({
-					className,
-				})}
-				style={{
-					WebkitMask: borderInverted(r),
-					mask: borderInverted(r),
-					...(style ?? {}),
-				}}
-			>
-				{children}
-			</div>
-		</div>
+			{...props}
+		/>
 	);
-}
-
-export function borderInverted(r: string) {
-	return `radial-gradient(${r} at ${r} ${r},#0000 98%,#000) -${r} -${r}`;
 }

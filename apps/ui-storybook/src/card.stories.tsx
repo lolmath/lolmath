@@ -30,18 +30,17 @@ export const Default: Story = {
 export const BackgroundImage: Story = {
 	args: {
 		children: (
-			<img src="https://ddragon-webp.lolmath.net/img/champion/loading/Jhin_37.webp" />
+			<img
+				src="https://ddragon-webp.lolmath.net/img/champion/loading/Jhin_37.webp"
+				alt="Jhin"
+			/>
 		),
-		borderProps: {
-			className: "inline-block",
-		},
+		className: "inline-block",
 	},
 };
 
 export const SmallerBorderWidth: Story = {
 	args: {
-		borderProps: {
-			className: "p-0.5",
-		},
+		borderWidth: "1px",
 	},
 };
