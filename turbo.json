@@ -9,10 +9,8 @@
 		"build": {
 			"dependsOn": ["docs", "^build"],
 			"inputs": [
-				"src/**/*.tsx",
-				"src/**/*.ts",
-				"test/**/*.ts",
-				"test/**/*.tsx",
+				"src/**/*.{ts,tsx,css,scss,less}",
+				"test/**/*.{ts,tsx,css,scss,less}",
 				"./*.*"
 			],
 			"outputs": ["dist/**", "build/**", "storybook-static/**", "out/**"]
@@ -22,7 +20,10 @@
 		},
 		"test": {
 			"outputs": [],
-			"inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
+			"inputs": [
+				"src/**/*.{ts,tsx,css,scss,less}",
+				"test/**/*.{ts,tsx,css,scss,less}"
+			]
 		},
 		"deploy": {
 			"inputs": ["dist/**", "build/**", "storybook-static/**", "out/**"],

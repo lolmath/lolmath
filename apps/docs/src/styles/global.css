@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark {
+	/* Modify theme color */
+	--rp-c-bg: var(--lol-color-hextech-black);
+	--rp-c-brand: var(--lol-color-gold-300);
+	--rp-c-brand-tint: var(--lol-color-gold-600);
+	--rp-c-brand-light: var(--lol-color-gold-200);
+	--rp-c-brand-lighter: var(--lol-color-gold-100);
+
+	--rp-code-block-bg: var(--lol-color-blue-700)
+}
+
+body {
+	@apply font-spiegel;
+}

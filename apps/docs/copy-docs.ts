@@ -11,7 +11,7 @@ const directories = [
 ];
 
 directories.forEach(({ name, packageName, docsFolder }) => {
-	const dest = `./pages/${name}`;
+	const dest = `./src/pages/${name}`;
 	const packagePath = path.dirname(resolvePackagePath(packageName, "."));
 
 	const src = path.join(packagePath, docsFolder);

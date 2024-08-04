@@ -13,6 +13,7 @@
 
 	background: var(--lol-button-background-gradient) padding-box,
 		var(--lol-button-border-gradient) border-box;
+	display: inline-block;
 }
 
 .text {

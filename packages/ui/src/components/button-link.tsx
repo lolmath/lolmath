@@ -1,21 +1,11 @@
 import { type Ref, forwardRef } from "react";
-import {
-	Button as AriaButton,
-	type ButtonProps as AriaButtonProps,
-} from "react-aria-components";
+import { Link as AriaButton, type LinkProps } from "react-aria-components";
 import { resolveClassName } from "../utilities/resolve-class-name.js";
 import { cva } from "cva";
 import classes from "./button.module.css";
+import type { ButtonPreset, ButtonShape } from "./button.js";
 
-export type ButtonShape = "round" | "square" | "normal";
-export type ButtonPreset =
-	| "primary"
-	| "secondary"
-	| "text"
-	| "hextech"
-	| "dimmed";
-
-interface ButtonProps extends AriaButtonProps {
+interface ButtonLinkProps extends LinkProps {
 	preset?: ButtonPreset;
 	thin?: boolean;
 	shape?: ButtonShape;
@@ -57,7 +47,7 @@ const button = cva({
 	},
 });
 
-export function _Button(
+export function _ButtonLink(
 	{
 		children,
 		className,
@@ -65,8 +55,8 @@ export function _Button(
 		shape = "normal",
 		thin = preset === "dimmed",
 		...props
-	}: ButtonProps,
-	ref: Ref<HTMLButtonElement>,
+	}: ButtonLinkProps,
+	ref: Ref<HTMLAnchorElement>,
 ) {
 	return (
 		<AriaButton
@@ -87,5 +77,5 @@ export function _Button(
 	);
 }
 
-export const Button = forwardRef(_Button);
-Button.displayName = "Button";
+export const ButtonLink = forwardRef(_ButtonLink);
+ButtonLink.displayName = "ButtonLink";

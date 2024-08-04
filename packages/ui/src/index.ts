@@ -22,3 +22,4 @@ export * from "./components/typography/heading.js";
 export * from "./components/typography/text.js";
 export * from "./utilities/gradient.js";
 export * from "./utilities/tv.js";
+export * from "./components/button-link.js";

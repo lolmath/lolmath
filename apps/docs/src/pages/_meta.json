@@ -1,0 +1,16 @@
+[
+	{
+		"text": "Calc",
+		"link": "/calc/",
+		"activeMatch": "/calc/"
+	},
+	{
+		"text": "Dev",
+		"link": "/dev/",
+		"activeMatch": "/dev/"
+	},
+	{
+		"text": "UI",
+		"link": "https://ui.lolmath.net/"
+	}
+]

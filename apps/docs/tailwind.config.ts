@@ -3,9 +3,8 @@ import type { Config } from "tailwindcss";
 
 export default {
 	content: [
-		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/**/*.{js,ts,jsx,tsx,mdx,css}",
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
-		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./node_modules/@lolmath/ui/src/**/*.{ts,js,jsx,tsx}",
 		"./theme.config.tsx",
 	],
@@ -13,5 +12,4 @@ export default {
 		extend: {},
 	},
 	plugins: [lolmathui],
-	important: "#__next",
 } satisfies Config;
