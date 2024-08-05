@@ -3,7 +3,7 @@ export * from "./components/breadcrumbs.js";
 export * from "./components/button-link.js";
 export * from "./components/button.js";
 export * from "./components/card.js";
-export * from "./components/checkbox.js";
+export * from "./components/checkbox/checkbox.js";
 export * from "./components/divider.js";
 export * from "./components/modal.js";
 export * from "./components/number-field.js";
