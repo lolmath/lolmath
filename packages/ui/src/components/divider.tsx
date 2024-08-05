@@ -1,32 +1,33 @@
-import { tv } from "../utilities/tv.js";
+import { cva } from "cva";
+import classes from "./divider.module.css";
 
-const divider = tv({
-	base: "h-px grow border-0 bg-gradient-to-r",
+const divider = cva({
+	base: classes.divider,
 	variants: {
 		preset: {
-			left: "to-lol-gold-600 from-transparent",
-			right: "from-lol-gold-600 to-transparent",
-			center: "via-lol-gold-600 from-transparent to-transparent",
+			left: classes.left,
+			center: classes.center,
+			right: classes.right,
 		},
 	},
 });
 
 interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
-	preset?: keyof typeof divider.variants.preset;
+	preset?: "left" | "center" | "right";
 	hrProps?: React.HTMLAttributes<HTMLHRElement>;
 }
 export function Divider({ preset = "center", hrProps, ...rest }: DividerProps) {
 	return (
-		<div className="flex items-center" {...rest}>
+		<div className={classes.wrapper} {...rest}>
 			{preset === "right" && (
-				<div className="border-lol-gold-600 h-[5px] w-[5px] rotate-45 border" />
+				<div className={classes.block} />
 			)}
 			<hr
 				{...hrProps}
 				className={divider({ preset, className: hrProps?.className })}
 			/>
 			{preset === "left" && (
-				<div className="border-lol-gold-600 h-[5px] w-[5px] rotate-45 border" />
+				<div className={classes.block} />
 			)}
 		</div>
 	);
