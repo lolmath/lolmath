@@ -127,6 +127,7 @@ select {
   --lol-gradient-gold-press: linear-gradient(to top, var(--lol-color-gold-600), var(--lol-color-gold-600), var(--lol-color-gold-500));
 
   --lol-gradient-grey-300: linear-gradient(to top, var(--lol-color-grey-300), var(--lol-color-grey-300), var(--lol-color-grey-300));
+  --lol-gradient-grey-focus: linear-gradient(to top, var(--lol-color-grey-200), var(--lol-color-grey-300), var(--lol-color-grey-300));
   --lol-gradient-hextech-black: linear-gradient(to top, var(--lol-color-hextech-black), var(--lol-color-hextech-black));
   --lol-gradient-disabled: linear-gradient(to top, var(--lol-color-grey-150), var(--lol-color-grey-150), var(--lol-color-grey-150));
   --lol-gradient-transparent: linear-gradient(to top, transparent, transparent);

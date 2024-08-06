@@ -39,3 +39,11 @@ export const Dimmed: Story = {
 		preset: "dimmed",
 	},
 };
+
+export const AlignStart: Story = {
+	render: (args) => (
+		<div className="flex items-start">
+			<NumberField {...args} />
+		</div>
+	),
+};

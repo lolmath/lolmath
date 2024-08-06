@@ -1,3 +1,4 @@
+import { cva } from "cva";
 import type { ComponentProps } from "react";
 import type { NumberFieldProps as AriaNumberFieldProps } from "react-aria-components";
 import {
@@ -6,52 +7,44 @@ import {
 	Button,
 	Group,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
-import {
-	dimmedGradient,
-	disabledGradient,
-	goldGradient,
-	goldGradientHover,
-} from "../utilities/gradient.js";
 import { resolveClassName } from "../utilities/resolve-class-name.js";
+import classes from "./number-field.module.css";
 
 type NumberFieldPreset = "normal" | "dimmed";
 
-const numberFieldBorder = tv({
-	base: "grid grid-cols-[auto_1fr_auto] gap-px bg-gradient-to-t p-px outline-none",
+const numberFieldGroup = cva({
+	base: classes.group,
 	variants: {
 		preset: {
-			normal: goldGradient,
-			dimmed: dimmedGradient,
+			normal: classes.normal,
+			dimmed: classes.dimmed,
 		},
 		isDisabled: {
-			true: disabledGradient,
+			true: classes.disabled,
 		},
 		isFocusWithin: {
-			true: goldGradientHover,
+			true: classes.focusWithin,
 		},
 	},
 });
 
-const numberFieldInput = tv({
-	base: [
-		"text-lol-gold-100 font-spiegel bg-lol-grey-hextech-black w-full px-3 py-2 text-xs outline-none",
-	],
+const numberFieldInput = cva({
+	base: classes.input,
 	variants: {
 		isDisabled: {
-			true: "text-lol-grey-150 bg-lol-grey-300",
+			true: classes.disabled,
 		},
 		isFocused: {
-			true: "from-lol-grey-200 via-lol-grey-300 to-lol-grey-300 bg-gradient-to-t",
+			true: classes.focus,
 		},
 	},
 });
 
-const numberFieldButton = tv({
-	base: ["text-lol-gold-100 bg-lol-grey-hextech-black px-2.5"],
+const numberFieldButton = cva({
+	base: classes.button,
 	variants: {
 		isDisabled: {
-			true: "text-lol-grey-150 bg-lol-grey-300",
+			true: classes.disabled,
 		},
 	},
 });
@@ -75,7 +68,7 @@ export function NumberField({
 					<Group
 						{...groupProps}
 						className={(values) => {
-							return numberFieldBorder({
+							return numberFieldGroup({
 								className: resolveClassName(groupProps.className, values),
 								preset,
 								...values,
