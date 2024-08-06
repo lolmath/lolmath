@@ -1,22 +1,10 @@
+import { cx } from "cva";
 import {
 	ProgressBar as AriaProgressBar,
 	type ProgressBarProps as AriaProgressBarProps,
 	Label,
 } from "react-aria-components";
-import { goldGradient } from "../utilities/gradient.js";
-import { tv } from "../utilities/tv.js";
-
-const progressBarBorder = tv({
-	base: ["-ml-0.5 -mr-1 h-3 rounded-full bg-gradient-to-t p-px", goldGradient],
-});
-
-const progressBarBackground = tv({
-	base: ["bg-lol-grey-300 h-full w-full rounded-full"],
-});
-
-const progressBarFill = tv({
-	base: "from-lol-blue-400 to-lol-blue-200 h-full rounded-full bg-gradient-to-r",
-});
+import classes from "./progress-bar.module.css";
 
 interface ProgressBarProps extends Omit<AriaProgressBarProps, "children"> {
 	label?: string;
@@ -28,20 +16,15 @@ export function ProgressBar({
 	...props
 }: ProgressBarProps): JSX.Element {
 	return (
-		<AriaProgressBar className={"flex w-56 flex-col gap-1 text-sm"} {...props}>
+		<AriaProgressBar className={cx(classes.wrapper, className)} {...props}>
 			{({ percentage, valueText }) => (
 				<>
-					<div className="font-beaufort text-lol-gold-100 flex font-bold uppercase">
-						<Label className="flex-1">{label ?? "Loading"}</Label>
+					<div className={classes.labelWrapper}>
+						<Label>{label ?? "Loading"}</Label>
 						<span>{valueText}</span>
 					</div>
-					<div className={progressBarBorder()}>
-						<div className={progressBarBackground()}>
-							<div
-								className={progressBarFill()}
-								style={{ width: `${percentage}%` }}
-							/>
-						</div>
+					<div className={classes.progressBar}>
+						<div className={classes.fill} style={{ width: `${percentage}%` }} />
 					</div>
 				</>
 			)}
