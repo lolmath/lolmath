@@ -8,7 +8,7 @@ export * from "./components/divider.js";
 export * from "./components/modal.js";
 export * from "./components/number-field.js";
 export * from "./components/progress-bar.js";
-export * from "./components/radio-group.js";
+export * from "./components/radio-group/radio-group.js";
 export * from "./components/search-field.js";
 export * from "./components/select.js";
 export * from "./components/slider/slider.js";

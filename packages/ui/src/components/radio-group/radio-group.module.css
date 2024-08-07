@@ -1,0 +1,53 @@
+.radioGroup {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+}
+
+.radio {
+	font-family: var(--lol-font-family-spiegel);
+	background-size: 18px;
+	background-position: left;
+	background-repeat: no-repeat;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 1.5rem;
+	padding-right: 1rem;
+	font-size: 0.75rem;
+	line-height: 1rem;
+	font-weight: 400;
+	background-image: url('./unchecked.png');
+	color: var(--lol-color-grey-100);
+
+	&.selected {
+		color: var(--lol-color-gold-100);
+		background-image: url('./checked.png');
+	}
+
+	&.disabled {
+		color: var(--lol-color-grey-150);
+		background-image: url('./unchecked-disabled.png');
+
+		&.selected {
+			background-image: url('./checked-disabled.png');
+		}
+	}
+
+	&.hovered {
+		color: var(--lol-color-gold-100);
+		background-image: url('./unchecked-hovered.png');
+
+		&.selected {
+			background-image: url('./checked-hovered.png');
+		}
+	}
+
+	&.pressed {
+		color: var(--lol-color-grey-150);
+		background-image: url('./unchecked-pressed.png');
+
+		&.selected {
+			background-image: url('./checked-pressed.png');
+		}
+	}
+}
