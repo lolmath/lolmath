@@ -1,3 +1,4 @@
+import { cva } from "cva";
 import type { ReactNode } from "react";
 import type {
 	SelectProps as AriaSelectProps,
@@ -12,12 +13,10 @@ import {
 	Text as AriaText,
 	ListBoxItem,
 } from "react-aria-components";
-import { outlineClassName } from "../../utilities/outline.js";
 import { resolveClassName } from "../../utilities/resolve-class-name.js";
-import { tv } from "../../utilities/tv.js";
 import classes from "./select.module.css";
 
-const selectButtonBorder = tv({
+const selectButtonBorder = cva({
 	base: classes.button,
 	variants: {
 		isHovered: { true: classes.hover },
@@ -69,7 +68,7 @@ export function Select<T extends object>({
 	);
 }
 
-const item = tv({
+const item = cva({
 	base: classes.item,
 	variants: {
 		isHovered: { true: classes.hover },
