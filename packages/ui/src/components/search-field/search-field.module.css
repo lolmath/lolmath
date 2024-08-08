@@ -10,10 +10,6 @@
 	color: var(--lol-color-gold-100);
 }
 
-/* base: [
-		"bg-lol-grey-hextech-black min-h-full w-full px-3 py-2 pl-6 outline-none",
-		"text-lol-gold-100 font-spiegel text-xs font-medium tracking-wide",
-	], */
 .input {
 	background: url('./search.png') no-repeat 5px center,
 		var(--lol-search-field-background-gradient) padding-box,
