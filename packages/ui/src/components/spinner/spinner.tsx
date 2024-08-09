@@ -1,9 +1,6 @@
-import { tv } from "../../utilities/tv.js";
-import { spinnerImage } from "./images.js";
-
-const spinner = tv({
-	base: "aspect-square w-12 animate-spin",
-});
+import { cx } from "cva";
+import classes from "./spinner.module.css";
+import spinnerImage from "./spinner.png";
 
 interface SpinnerProps {
 	className?: string;
@@ -15,7 +12,7 @@ export function Spinner({ className }: SpinnerProps) {
 			aria-live="polite"
 			aria-label="loading"
 			src={spinnerImage}
-			className={spinner({ className })}
+			className={cx(classes.spinner, className)}
 		/>
 	);
 }
