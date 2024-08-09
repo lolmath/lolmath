@@ -36,24 +36,28 @@ type Story = StoryObj<typeof meta>;
 
 export const Gold: Story = {
 	args: {
+		children: "some text",
 		preset: "gold",
 	},
 };
 
 export const Hextech: Story = {
 	args: {
+		children: "some text",
 		preset: "hextech",
 	},
 };
 
 export const Dimmed: Story = {
 	args: {
+		children: "some text",
 		preset: "dimmed",
 	},
 };
 
 export const Disabled: Story = {
 	args: {
+		children: "some text",
 		isDisabled: true,
 	},
 };
@@ -126,6 +130,24 @@ export const SquaredDisabled: Story = {
 	args: {
 		isDisabled: true,
 		shape: "square",
+		children: <FaGear />,
+	},
+};
+
+export const SquaredThinGold: Story = {
+	args: {
+		preset: "gold",
+		shape: "square",
+		thin: true,
+		children: <FaGear />,
+	},
+};
+
+export const SquaredDimmedDisabled: Story = {
+	args: {
+		preset: "dimmed",
+		shape: "square",
+		isDisabled: true,
 		children: <FaGear />,
 	},
 };
