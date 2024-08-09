@@ -1,3 +1,4 @@
+import { cva, cx } from "cva";
 import type {
 	SliderProps as AriaSliderProps,
 	SliderOutputProps,
@@ -12,55 +13,34 @@ import {
 	SliderTrack as AriaSliderTrack,
 } from "react-aria-components";
 import { resolveClassName } from "../../utilities/resolve-class-name.js";
-import { tv } from "../../utilities/tv.js";
-import {
-	sliderActive,
-	sliderDisabled,
-	sliderHover,
-	sliderNormal,
-} from "./images.js";
+import textClasses from "../typography/text.module.css";
+import classes from "./slider.module.css";
 
-const sliderTrack = tv({
-	base: "group relative h-7 w-full",
-});
-
-const sliderTrackBackground = tv({
-	base: "bg-lol-grey-300 absolute top-[50%] h-0.5 w-full translate-y-[-50%] transform rounded-full",
-});
-
-const sliderTrackForeground = tv({
-	base: "from-lol-gold-600 to-lol-gold-500 absolute top-[50%] h-0.5 translate-y-[-50%] transform bg-gradient-to-r",
+const sliderTrackForeground = cva({
+	base: classes.foreground,
 	variants: {
 		isDisabled: {
-			true: "bg-[#5C5B57] from-transparent via-transparent to-transparent",
-			false: [
-				"group-hover:from-lol-gold-500 group-hover:via-lol-gold-400 group-hover:to-lol-gold-200",
-				"group-active:from-lol-gold-500 group-active:via-lol-gold-600 group-active:to-lol-gold-600",
-			],
+			true: classes.disabled,
 		},
 	},
 });
 
-const sliderThumb = tv({
-	base: "top-[50%] h-7 w-7 bg-contain outline-none [background-image:var(--normal)]",
+const sliderThumb = cva({
+	base: classes.thumb,
 	variants: {
-		isDisabled: {
-			true: "[background-image:var(--disabled)]",
-		},
 		isThumbDragging: {
-			true: "[background-image:var(--active)]",
+			true: classes.thumbDragging,
 		},
 		isOtherThumbDragging: {
-			true: "",
+			true: classes.otherThumbDragging,
+		},
+		isDisabled: {
+			true: classes.disabled,
+		},
+		isHovered: {
+			true: classes.hovered,
 		},
 	},
-	compoundVariants: [
-		{
-			isThumbDragging: false,
-			isOtherThumbDragging: false,
-			className: "group-hover:[background-image:var(--hover)]",
-		},
-	],
 });
 
 export function Slider<T extends number | number[]>({
@@ -92,13 +72,13 @@ export function Slider<T extends number | number[]>({
 					<AriaSliderTrack
 						{...sliderTrackProps}
 						className={(sliderTrackRenderProps) =>
-							sliderTrack({
-								...sliderTrackRenderProps,
-								className: resolveClassName(
+							cx(
+								classes.track,
+								resolveClassName(
 									sliderTrackProps.className,
 									sliderTrackRenderProps,
 								),
-							})
+							)
 						}
 					>
 						{(values) => {
@@ -117,12 +97,10 @@ export function Slider<T extends number | number[]>({
 							return (
 								<>
 									<div
-										className={sliderTrackBackground({
-											className: resolveClassName(
-												sliderTrackBackgroundClassName,
-												values,
-											),
-										})}
+										className={cx(
+											classes.background,
+											resolveClassName(sliderTrackBackgroundClassName, values),
+										)}
 									/>
 									<div
 										className={sliderTrackForeground({
@@ -148,6 +126,7 @@ export function Slider<T extends number | number[]>({
 													index={i}
 													{...sliderThumbProps}
 													className={(sliderThumbRenderProps) => {
+														sliderThumbRenderProps.isDragging;
 														return sliderThumb({
 															isDisabled: sliderThumbRenderProps.isDisabled,
 															isThumbDragging:
@@ -162,15 +141,9 @@ export function Slider<T extends number | number[]>({
 															),
 														});
 													}}
-													style={
-														{
-															"--normal": sliderNormal,
-															"--hover": sliderHover,
-															"--active": sliderActive,
-															"--disabled": sliderDisabled,
-															zIndex,
-														} as any
-													}
+													style={{
+														zIndex,
+													}}
 												/>
 											</>
 										);
@@ -185,16 +158,16 @@ export function Slider<T extends number | number[]>({
 	);
 }
 
-const sliderOutput = tv({
-	base: "font-spiegel text-lol-grey-100 text-lol-sm",
-});
 export function SliderOutput(props: SliderOutputProps) {
 	return (
 		<AriaSliderOutput
 			className={(values) =>
-				sliderOutput({
-					className: resolveClassName(props.className, values),
-				})
+				cx(
+					textClasses.text,
+					textClasses.sm,
+					textClasses.grey100,
+					resolveClassName(props.className, values),
+				)
 			}
 			children={(sliderRenderProps) =>
 				sliderRenderProps.state.values
