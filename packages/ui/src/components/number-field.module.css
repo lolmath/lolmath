@@ -42,19 +42,6 @@
 	}
 }
 
-/* 
-
-const numberFieldButton = cva({
-	base: ["text-lol-gold-100 bg-lol-grey-hextech-black px-2.5"],
-	variants: {
-		isDisabled: {
-			true: "text-lol-grey-150 bg-lol-grey-300",
-		},
-	},
-});
-
-*/
-
 .button {
 	color: var(--lol-color-gold-100);
 	background-color: var(--lol-color-hextech-black);

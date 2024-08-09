@@ -1,3 +1,4 @@
+import { cva } from "cva";
 import type { ComponentProps } from "react";
 import type {
 	TextFieldProps as AriaTextFieldProps,
@@ -7,67 +8,42 @@ import {
 	TextArea as AriaTextArea,
 	TextField as AriaTextField,
 } from "react-aria-components";
-import { disabledGradient, goldGradient } from "../utilities/gradient.js";
 import { resolveClassName } from "../utilities/resolve-class-name.js";
-import { tv } from "../utilities/tv.js";
+import classes from "./text-area.module.css";
 
-const textAreaBorder = tv({
-	base: [
-		"flex bg-gradient-to-t p-px outline-none",
-		goldGradient,
-		"focus-within:from-lol-gold-400 focus-within:via-lol-gold-200 focus-within:to-lol-gold-100",
-	],
+const textArea = cva({
+	base: classes.textArea,
 	variants: {
 		isDisabled: {
-			true: [disabledGradient],
+			true: classes.disabled,
 		},
-	},
-});
-
-const textArea = tv({
-	base: [
-		"bg-lol-grey-hextech-black min-h-full w-full px-3 py-2 outline-none",
-		"text-lol-gold-100 font-spiegel text-xs tracking-wide",
-		"focus-within:from-lol-grey-200 focus-within:via-lol-grey-300 focus-within:to-lol-grey-300 focus-within:bg-gradient-to-t",
-	],
-	variants: {
-		isDisabled: {
-			true: ["text-lol-grey-150"],
+		isFocused: {
+			true: classes.focus,
 		},
 	},
 });
 
 export function TextArea({
 	textAreaProps = {},
-	borderProps = {},
 	children,
 	...props
 }: AriaTextFieldProps & {
 	textAreaProps?: TextAreaProps;
-	borderProps?: ComponentProps<"div">;
 }) {
 	return (
 		<AriaTextField {...props}>
 			{(values) => (
 				<>
 					{typeof children === "function" ? children(values) : children}
-					<div
-						{...borderProps}
-						className={textAreaBorder({
-							...values,
-							className: resolveClassName(borderProps?.className, values),
-						})}
-					>
-						<AriaTextArea
-							{...textAreaProps}
-							className={(values) =>
-								textArea({
-									...values,
-									className: resolveClassName(textAreaProps?.className, values),
-								})
-							}
-						/>
-					</div>
+					<AriaTextArea
+						{...textAreaProps}
+						className={(values) =>
+							textArea({
+								...values,
+								className: resolveClassName(textAreaProps?.className, values),
+							})
+						}
+					/>
 				</>
 			)}
 		</AriaTextField>

@@ -1,0 +1,34 @@
+.textArea {
+	background:
+		var(--lol-input-background-gradient) padding-box,
+		var(--lol-input-border-gradient) border-box;
+
+	--lol-input-border-gradient: var(--lol-gradient-gold);
+	--lol-input-background-gradient: var(--lol-gradient-hextech-black);
+
+	border: 1px solid transparent;
+	grid-area: input;
+	padding: 0.5rem 0.75rem;
+	margin: 0;
+	font-size: 0.75rem;
+	line-height: 1rem;
+	color: var(--field-text-color);
+	outline: none;
+	font-family: var(--lol-font-family-spiegel);
+	font-weight: 500;
+	letter-spacing: 0.025em;
+
+	display: flex;
+	width: 100%;
+	min-height: 100%;
+
+	&.disabled {
+		--lol-input-border-gradient: var(--lol-gradient-disabled);
+		color: var(--lol-color-grey-150);
+	}
+
+	&.focus {
+		--lol-input-border-gradient: var(--lol-gradient-gold-hover);
+		--lol-input-background-gradient: var(--lol-gradient-grey-focus);
+	}
+}
