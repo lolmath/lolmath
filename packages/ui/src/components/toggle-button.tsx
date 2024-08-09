@@ -1,5 +1,4 @@
 import { cva } from "cva";
-import type { ComponentProps } from "react";
 import {
 	ToggleButton as AriaToggleButton,
 	type ToggleButtonProps as AriaToggleButtonProps,

@@ -141,7 +141,7 @@
 .square {
 	display: flex;
 	aspect-ratio: 1/1;
-	height: 1.75rem;
+	height: 2rem;
 	align-items: center;
 	justify-content: center;
 	padding: 0px;
