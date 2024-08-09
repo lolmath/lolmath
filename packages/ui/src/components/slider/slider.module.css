@@ -24,7 +24,7 @@
 	border-radius: 9999px;
 
 	&.disabled {
-		background-image: linear-gradient(to right, var(--lol-color-grey-300), var(--lol-color-grey-300));
+		background-image: linear-gradient(to right, #5c5b57, #5c5b57);
 	}
 }
 
