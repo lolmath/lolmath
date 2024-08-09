@@ -1,8 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
-import { useCssId } from "../utilities/css-id.js";
 import { cva } from "cva";
+import { createContext, useContext, useState } from "react";
 import classes from "./accordion.module.css";
 
 interface AccordionProps {
@@ -10,14 +9,12 @@ interface AccordionProps {
 }
 export function Accordion({ children }: AccordionProps) {
 	const [activeItem, setActiveItem] = useState<string>("");
-	const id = useCssId();
 
 	return (
 		<AccordionContext.Provider
 			value={{
 				activeItem,
 				setActiveItem,
-				id,
 			}}
 		>
 			{children}
@@ -89,7 +86,6 @@ export function AccordionContent({ children }: AccordionContentProps) {
 const AccordionContext = createContext<{
 	activeItem: string;
 	setActiveItem: React.Dispatch<React.SetStateAction<string>>;
-	id: string;
 }>(undefined as any);
 
 const AccordionItemContext = createContext<{
