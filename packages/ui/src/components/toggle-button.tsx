@@ -4,16 +4,16 @@ import {
 	type ToggleButtonProps as AriaToggleButtonProps,
 } from "react-aria-components";
 import { resolveClassName } from "../utilities/resolve-class-name.js";
-import classes from "./toggle-button.module.css";
+import classes from "./button.module.css";
 
 export type ToggleButtonShape = "round" | "square" | "normal";
-export type ToggleButtonPreset = "gold" | "hextech" | "dimmed";
+export type ToggleButtonPreset = "secondary" | "hextech" | "dimmed";
 
 const button = cva({
 	base: classes.button,
 	variants: {
 		preset: {
-			gold: classes.gold,
+			secondary: classes.secondary,
 			hextech: classes.hextech,
 			dimmed: classes.dimmed,
 		},
@@ -51,7 +51,7 @@ interface ToggleButtonProps extends AriaToggleButtonProps {
 export function ToggleButton({
 	children,
 	className,
-	preset = "gold",
+	preset = "secondary",
 	shape = "normal",
 	thin = preset === "dimmed",
 	...props

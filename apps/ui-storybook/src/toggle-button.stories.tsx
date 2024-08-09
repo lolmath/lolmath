@@ -34,10 +34,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Gold: Story = {
+export const Secondary: Story = {
 	args: {
 		children: "some text",
-		preset: "gold",
+		preset: "secondary",
 	},
 };
 
@@ -62,9 +62,9 @@ export const Disabled: Story = {
 	},
 };
 
-export const RoundedGold: Story = {
+export const RoundedSecondary: Story = {
 	args: {
-		preset: "gold",
+		preset: "secondary",
 		shape: "round",
 		children: <FaGear />,
 	},
@@ -94,17 +94,17 @@ export const RoundedDisabled: Story = {
 	},
 };
 
-export const RoundedGoldWithText: Story = {
+export const RoundedSecondaryWithText: Story = {
 	args: {
-		preset: "gold",
+		preset: "secondary",
 		shape: "round",
 		children: "A",
 	},
 };
 
-export const SquaredGold: Story = {
+export const SquaredSecondary: Story = {
 	args: {
-		preset: "gold",
+		preset: "secondary",
 		shape: "square",
 		children: <FaGear />,
 	},
@@ -134,9 +134,9 @@ export const SquaredDisabled: Story = {
 	},
 };
 
-export const SquaredThinGold: Story = {
+export const SquaredThinSecondary: Story = {
 	args: {
-		preset: "gold",
+		preset: "secondary",
 		shape: "square",
 		thin: true,
 		children: <FaGear />,
