@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, Tooltip, TooltipTrigger } from "@lolmath/ui";
+import { Button, Heading, Text, Tooltip, TooltipTrigger } from "@lolmath/ui";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
@@ -10,7 +10,7 @@ const meta = {
 	argTypes: {},
 	args: {
 		isOpen: true,
-		children: "fsd",
+		children: "XX",
 	},
 
 	render: (args) => (
@@ -65,9 +65,11 @@ export const Bottom: Story = {
 export const LongText: Story = {
 	args: {
 		children: (
-			<div className="prose text-lol-grey-300 font-spiegel p-2 font-normal">
-				<h1>Lorum Ipsum</h1>
-				<p>
+			<div className="p-2">
+				<Heading preset="h3" as="h3" className="mb-2">
+					Lorum Ipsum
+				</Heading>
+				<Text>
 					There are many variations of passages of Lorem Ipsum available, but
 					the majority have suffered alteration in some form, by injected
 					humour, or randomised words which don't look even slightly believable.
@@ -79,7 +81,7 @@ export const LongText: Story = {
 					a handful of model sentence structures, to generate Lorem Ipsum which
 					looks reasonable. The generated Lorem Ipsum is therefore always free
 					from repetition, injected humour, or non-characteristic words etc.
-				</p>
+				</Text>
 			</div>
 		),
 		isOpen: undefined,
