@@ -37,6 +37,10 @@ export default {
 
 ```
 
+## Client-side Routing
+
+See [react-aria-components](https://react-spectrum.adobe.com/react-aria/routing.html#app-router)
+
 ## Links
 
 - [Documentation](https://docs.lolmath.net).

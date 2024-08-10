@@ -1,3 +1,4 @@
+export { RouterProvider } from "react-aria-components";
 export * from "./components/accordion.js";
 export * from "./components/breadcrumbs.js";
 export * from "./components/button-link.js";
