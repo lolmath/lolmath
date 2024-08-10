@@ -53,6 +53,7 @@
 
 .disabled {
 	color: var(--lol-color-grey-150);
+	cursor: default;
 }
 
 .hextech {
