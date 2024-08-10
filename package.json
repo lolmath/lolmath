@@ -2,7 +2,10 @@
 	"name": "@lolmath/monorepo",
 	"version": "0.0.0",
 	"private": true,
-	"workspaces": ["apps/*", "packages/*"],
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
 	"scripts": {
 		"docs": "turbo run docs",
 		"build": "turbo run build",
@@ -16,10 +19,10 @@
 		"changeset": "changeset"
 	},
 	"devDependencies": {
-		"@changesets/cli": "^2.27.7",
-		"turbo": "^2.0.9",
 		"@biomejs/biome": "^1.8.3",
-		"changesets-gitlab": "^0.12.0"
+		"@changesets/cli": "^2.27.7",
+		"changesets-gitlab": "^0.12.0",
+		"turbo": "^2.0.12"
 	},
 	"packageManager": "pnpm@9.6.0"
 }
