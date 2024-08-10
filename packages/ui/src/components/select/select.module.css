@@ -60,6 +60,7 @@
 	letter-spacing: var(--lol-letter-spacing-sm);
 	padding: 0.375rem 0.5rem;
 	outline: none;
+	cursor: pointer;
 
 	&.hover {
 		background-color: var(--lol-color-grey-300);
@@ -67,7 +68,13 @@
 	}
 
 	&.press {
-		background-color: var(--lol-color-grey-300);
-		color: color-mix(in srgb, var(--lol-color-gold-300), transparent 50%);
+		background-color: color-mix(in srgb, var(--lol-color-grey-300), transparent 50%);
+		color: var(--lol-color-gold-600);
+	}
+
+	&.selected {
+		background-image: url(./dropdown-check.png);
+		background-position: right 0.5rem center;
+		background-repeat: no-repeat;
 	}
 }

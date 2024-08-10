@@ -73,6 +73,7 @@ const item = cva({
 	variants: {
 		isHovered: { true: classes.hover },
 		isPressed: { true: classes.press },
+		isSelected: { true: classes.selected },
 	},
 });
 

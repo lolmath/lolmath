@@ -99,6 +99,11 @@ select {
   --lol-letter-spacing-large-number: 0.025em;
   --lol-font-weight-large-number: 500;
 
+  --lol-font-size-xs: 0.75rem;
+  --lol-line-height-xs: 1rem;
+  --lol-letter-spacing-xs: 0.025em;
+  --lol-font-weight-xs: 400;
+
   --lol-font-size-sm: 0.875rem;
   --lol-line-height-sm: 1.1025rem;
   --lol-letter-spacing-sm: 0.02em;
