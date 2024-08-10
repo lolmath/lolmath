@@ -1,16 +1,18 @@
-.card {
-	position: relative;
-	--mask:
-		radial-gradient(var(--lol-card-radius) at var(--lol-card-radius) var(--lol-card-radius), #0000 calc(98% - var(--lol-card-border-width)), #000 calc(100% - var(--lol-card-border-width)) 98%, #0000) calc(var(--lol-card-radius) * -1) calc(var(--lol-card-radius) * -1),
-		linear-gradient(90deg, #000 calc(var(--lol-card-border-width) * 2), #0000 0) calc(var(--lol-card-border-width) * -1) 50% /100% calc(100% - calc(var(--lol-card-radius) * 2) + var(--lol-card-border-width)) repeat-x,
-		linear-gradient(#000 calc(var(--lol-card-border-width) * 2), #0000 0) 50% calc(var(--lol-card-border-width) * -1)/calc(100% - calc(var(--lol-card-radius) * 2) + var(--lol-card-border-width)) 100% repeat-y;
-}
+@layer lol {
+	.card {
+		position: relative;
+		--mask:
+			radial-gradient(var(--lol-card-radius) at var(--lol-card-radius) var(--lol-card-radius), #0000 calc(98% - var(--lol-card-border-width)), #000 calc(100% - var(--lol-card-border-width)) 98%, #0000) calc(var(--lol-card-radius) * -1) calc(var(--lol-card-radius) * -1),
+			linear-gradient(90deg, #000 calc(var(--lol-card-border-width) * 2), #0000 0) calc(var(--lol-card-border-width) * -1) 50% /100% calc(100% - calc(var(--lol-card-radius) * 2) + var(--lol-card-border-width)) repeat-x,
+			linear-gradient(#000 calc(var(--lol-card-border-width) * 2), #0000 0) 50% calc(var(--lol-card-border-width) * -1)/calc(100% - calc(var(--lol-card-radius) * 2) + var(--lol-card-border-width)) 100% repeat-y;
+	}
 
-.card:before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background-image: var(--lol-gradient-gold);
-	mask: var(--mask);
-	pointer-events: none;
+	.card:before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-image: var(--lol-gradient-gold);
+		mask: var(--mask);
+		pointer-events: none;
+	}
 }

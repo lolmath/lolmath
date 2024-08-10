@@ -1,33 +1,35 @@
-.wrapper {
-	display: flex;
-	width: 14rem;
-	flex-direction: column;
-	gap: 0.25rem;
-	font-size: 0.875rem;
-}
+@layer lol {
+	.wrapper {
+		display: flex;
+		width: 14rem;
+		flex-direction: column;
+		gap: 0.25rem;
+		font-size: 0.875rem;
+	}
 
-.progressBar {
-	margin-left: -0.125rem;
-	margin-right: -0.25rem;
-	height: 0.75rem;
-	border-radius: 9999px;
-	padding: 1px;
-	background: var(--lol-gradient-grey-300) padding-box,
-		var(--lol-gradient-gold) border-box;
-	border: 1px solid transparent;
-}
+	.progressBar {
+		margin-left: -0.125rem;
+		margin-right: -0.25rem;
+		height: 0.75rem;
+		border-radius: 9999px;
+		padding: 1px;
+		background: var(--lol-gradient-grey-300) padding-box,
+			var(--lol-gradient-gold) border-box;
+		border: 1px solid transparent;
+	}
 
-.fill {
-	background-image: linear-gradient(to right, var(--lol-color-blue-400), var(--lol-color-blue-200));
-	border-radius: 9999px;
-	height: 100%;
-}
+	.fill {
+		background-image: linear-gradient(to right, var(--lol-color-blue-400), var(--lol-color-blue-200));
+		border-radius: 9999px;
+		height: 100%;
+	}
 
-.labelWrapper {
-	display: flex;
-	justify-content: space-between;
-	font-weight: 700;
-	text-transform: uppercase;
-	font-family: var(--lol-font-family-beaufort);
-	color: var(--lol-color-gold-100);
+	.labelWrapper {
+		display: flex;
+		justify-content: space-between;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-family: var(--lol-font-family-beaufort);
+		color: var(--lol-color-gold-100);
+	}
 }

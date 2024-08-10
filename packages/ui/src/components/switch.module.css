@@ -1,70 +1,72 @@
-.track {
-	background:
-		var(--lol-switch-background-gradient) padding-box,
-		var(--lol-switch-border-gradient) border-box;
+@layer lol {
+	.track {
+		background:
+			var(--lol-switch-background-gradient) padding-box,
+			var(--lol-switch-border-gradient) border-box;
 
-	--lol-switch-border-gradient: var(--lol-gradient-gold);
-	--lol-switch-background-gradient: var(--lol-gradient-grey-300);
+		--lol-switch-border-gradient: var(--lol-gradient-gold);
+		--lol-switch-background-gradient: var(--lol-gradient-grey-300);
 
 
-	border: 2px solid transparent;
-	height: 1.5rem;
-	width: 3.5rem;
+		border: 2px solid transparent;
+		height: 1.5rem;
+		width: 3.5rem;
 
-	border-radius: 9999px;
+		border-radius: 9999px;
 
-	position: relative;
+		position: relative;
 
-	&.hover {
-		--lol-switch-border-gradient: var(--lol-gradient-gold-hover);
+		&.hover {
+			--lol-switch-border-gradient: var(--lol-gradient-gold-hover);
+		}
+
+		&.press {
+			--lol-switch-border-gradient: var(--lol-gradient-gold-press);
+		}
+
+		&.disabled {
+			--lol-switch-border-gradient: var(--lol-gradient-disabled);
+		}
+
+		&.selected {
+			--lol-switch-background-gradient: var(--lol-gradient-hextech);
+		}
 	}
 
-	&.press {
-		--lol-switch-border-gradient: var(--lol-gradient-gold-press);
-	}
+	.knob {
+		position: absolute;
+		left: -.5rem;
+		top: -0.375rem;
+		height: 2rem;
+		width: 2rem;
+		border-radius: 9999px;
+		background:
+			var(--lol-switch-background-gradient) padding-box,
+			var(--lol-switch-border-gradient) border-box;
 
-	&.disabled {
-		--lol-switch-border-gradient: var(--lol-gradient-disabled);
-	}
+		transition: left 200ms ease-in-out;
 
-	&.selected {
-		--lol-switch-background-gradient: var(--lol-gradient-hextech);
-	}
-}
+		--lol-switch-border-gradient: var(--lol-gradient-gold);
+		--lol-switch-background-gradient: var(--lol-gradient-grey-300);
 
-.knob {
-	position: absolute;
-	left: -.5rem;
-	top: -0.375rem;
-	height: 2rem;
-	width: 2rem;
-	border-radius: 9999px;
-	background:
-		var(--lol-switch-background-gradient) padding-box,
-		var(--lol-switch-border-gradient) border-box;
-
-	transition: left 200ms ease-in-out;
-
-	--lol-switch-border-gradient: var(--lol-gradient-gold);
-	--lol-switch-background-gradient: var(--lol-gradient-grey-300);
-
-	border: 2px solid transparent;
+		border: 2px solid transparent;
 
 
-	&.hover {
-		--lol-switch-border-gradient: var(--lol-gradient-gold-hover);
-	}
+		&.hover {
+			--lol-switch-border-gradient: var(--lol-gradient-gold-hover);
+		}
 
-	&.press {
-		--lol-switch-border-gradient: var(--lol-gradient-gold-press);
-	}
+		&.press {
+			--lol-switch-border-gradient: var(--lol-gradient-gold-press);
+		}
 
-	&.disabled {
-		--lol-switch-border-gradient: var(--lol-gradient-disabled);
-	}
+		&.disabled {
+			--lol-switch-border-gradient: var(--lol-gradient-disabled);
+		}
 
-	&.selected {
-		left: calc(100% - 1.5rem);
+		&.selected {
+			left: calc(100% - 1.5rem);
 
+		}
 	}
 }

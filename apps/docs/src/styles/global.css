@@ -1,4 +1,9 @@
-@tailwind base;
+@layer preflight, tailwind-base, lol;
+
+@layer tailwind-base {
+	@tailwind base;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -14,5 +19,5 @@
 }
 
 body {
-	@apply font-spiegel;
+	font-family: var(--lol-font-family-spiegel);
 }

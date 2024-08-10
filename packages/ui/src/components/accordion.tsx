@@ -47,7 +47,7 @@ export function AccordionTrigger({
 				setActiveItem((currentItem) => (currentItem === item ? "" : item));
 			}}
 		>
-			<span className={classes.triggerIcon}>❯</span>
+			<span className={classes.icon}>❯</span>
 			{children}
 		</button>
 	);

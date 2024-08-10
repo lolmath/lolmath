@@ -1,60 +1,62 @@
-.track {
-	position: relative;
-	height: 1.75rem;
-	width: 100%;
-}
-
-.background {
-	background-color: var(--lol-color-grey-300);
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	height: 2px;
-	width: 100%;
-	border-radius: 9999px;
-}
-
-.foreground {
-	background-image: linear-gradient(to right, var(--lol-color-gold-600), var(--lol-color-gold-500));
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	height: 2px;
-	width: 100%;
-	border-radius: 9999px;
-
-	&.disabled {
-		background-image: linear-gradient(to right, #5c5b57, #5c5b57);
-	}
-}
-
-.track:hover .foreground {
-	background-image: linear-gradient(to right, var(--lol-color-gold-500), var(--lol-color-gold-400), var(--lol-color-gold-200));
-}
-
-.track:active .foreground {
-	background-image: linear-gradient(to right, var(--lol-color-gold-500), var(--lol-color-gold-600), var(--lol-color-gold-600));
-}
-
-.thumb {
-	background-image: url(./normal.png);
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	height: 1.75rem;
-	width: 1.75rem;
-	background-size: cover;
-	outline: none;
-
-	&.disabled {
-		background-image: url(./disabled.png);
+@layer lol {
+	.track {
+		position: relative;
+		height: 1.75rem;
+		width: 100%;
 	}
 
-	&.thumbDragging {
-		background-image: url(./active.png);
+	.background {
+		background-color: var(--lol-color-grey-300);
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		height: 2px;
+		width: 100%;
+		border-radius: 9999px;
 	}
-}
 
-.track:hover .thumb:not(.thumbDragging):not(.otherThumbDragging) {
-	background-image: url(./hover.png);
+	.foreground {
+		background-image: linear-gradient(to right, var(--lol-color-gold-600), var(--lol-color-gold-500));
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		height: 2px;
+		width: 100%;
+		border-radius: 9999px;
+
+		&.disabled {
+			background-image: linear-gradient(to right, #5c5b57, #5c5b57);
+		}
+	}
+
+	.track:hover .foreground {
+		background-image: linear-gradient(to right, var(--lol-color-gold-500), var(--lol-color-gold-400), var(--lol-color-gold-200));
+	}
+
+	.track:active .foreground {
+		background-image: linear-gradient(to right, var(--lol-color-gold-500), var(--lol-color-gold-600), var(--lol-color-gold-600));
+	}
+
+	.thumb {
+		background-image: url(./normal.png);
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		height: 1.75rem;
+		width: 1.75rem;
+		background-size: cover;
+		outline: none;
+
+		&.disabled {
+			background-image: url(./disabled.png);
+		}
+
+		&.thumbDragging {
+			background-image: url(./active.png);
+		}
+	}
+
+	.track:hover .thumb:not(.thumbDragging):not(.otherThumbDragging) {
+		background-image: url(./hover.png);
+	}
 }

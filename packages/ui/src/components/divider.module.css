@@ -1,29 +1,31 @@
-.divider {
-	height: 1px;
-	flex-grow: 1;
-	border: none;
-}
+@layer lol {
+	.divider {
+		height: 1px;
+		flex-grow: 1;
+		border: none;
+	}
 
-.left {
-	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--lol-color-gold-600));
-}
+	.left {
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--lol-color-gold-600));
+	}
 
-.center {
-	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--lol-color-gold-600), rgba(0, 0, 0, 0));
-}
+	.center {
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--lol-color-gold-600), rgba(0, 0, 0, 0));
+	}
 
-.right {
-	background-image: linear-gradient(to right, var(--lol-color-gold-600), rgba(0, 0, 0, 0));
-}
+	.right {
+		background-image: linear-gradient(to right, var(--lol-color-gold-600), rgba(0, 0, 0, 0));
+	}
 
-.block {
-	width: 5px;
-	height: 5px;
-	border: 1px solid var(--lol-color-gold-600);
-	rotate: 45deg;
-}
+	.block {
+		width: 5px;
+		height: 5px;
+		border: 1px solid var(--lol-color-gold-600);
+		rotate: 45deg;
+	}
 
-.wrapper {
-	display: flex;
-	align-items: center;
+	.wrapper {
+		display: flex;
+		align-items: center;
+	}
 }
