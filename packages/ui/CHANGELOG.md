@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 4.0.0
+
+### Major Changes
+
+- 12aebbc: Use CSS modules instead of tailwind for internal component styles
+
 ## 3.2.5
 
 ### Patch Changes
