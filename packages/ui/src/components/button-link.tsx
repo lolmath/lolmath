@@ -1,7 +1,7 @@
 import { type Ref, forwardRef } from "react";
 import { Link as AriaButton, type LinkProps } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
-import { type ButtonPreset, type ButtonShape, button } from "./button.js";
+import { resolveClassName } from "../utilities/resolve-class-name";
+import { type ButtonPreset, type ButtonShape, button } from "./button";
 
 interface ButtonLinkProps extends LinkProps {
 	preset?: ButtonPreset;

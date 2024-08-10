@@ -1,7 +1,7 @@
 import { cva } from "cva";
 import type { TooltipProps } from "react-aria-components";
 import { Tooltip as AriaTooltip, OverlayArrow } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./tooltip.module.css";
 
 const tooltipBorder = cva({

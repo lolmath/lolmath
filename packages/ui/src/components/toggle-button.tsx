@@ -3,7 +3,7 @@ import {
 	ToggleButton as AriaToggleButton,
 	type ToggleButtonProps as AriaToggleButtonProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./button.module.css";
 
 export type ToggleButtonShape = "round" | "square" | "normal";

@@ -7,7 +7,7 @@ import {
 	Input as AriaInput,
 	TextField as AriaTextField,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { resolveClassName } from "../utilities/resolve-class-name";
 
 import { cva } from "cva";
 import classes from "./text-field.module.css";

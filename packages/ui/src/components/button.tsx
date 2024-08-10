@@ -1,10 +1,10 @@
+import { cva } from "cva";
 import { type Ref, forwardRef } from "react";
 import {
 	Button as AriaButton,
 	type ButtonProps as AriaButtonProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
-import { cva } from "cva";
+import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./button.module.css";
 
 export type ButtonShape = "round" | "square" | "normal";

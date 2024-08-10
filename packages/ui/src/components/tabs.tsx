@@ -10,7 +10,7 @@ import {
 	type TabPanelProps,
 	type TabProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./tabs.module.css";
 
 export type { Key } from "react-aria-components";

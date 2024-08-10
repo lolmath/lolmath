@@ -5,7 +5,7 @@ import {
 	type RadioProps as AriaRadioProps,
 	type RadioGroupProps as AriaRadiogroupProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name.js";
+import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "./radio-group.module.css";
 
 export function RadioGroup({ className, ...props }: AriaRadiogroupProps) {

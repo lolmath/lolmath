@@ -6,8 +6,8 @@ import {
 	TextArea as AriaTextArea,
 	TextField as AriaTextField,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
-import { textField } from "./text-field.js";
+import { resolveClassName } from "../utilities/resolve-class-name";
+import { textField } from "./text-field";
 
 export function TextArea({
 	textAreaProps = {},

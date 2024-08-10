@@ -6,7 +6,7 @@ import {
 	SearchField as AriaSearchField,
 	type SearchFieldProps as AriaSearchFieldProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name.js";
+import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "./search-field.module.css";
 
 const searchFieldInput = cva({

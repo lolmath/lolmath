@@ -4,9 +4,7 @@
 	"private": false,
 	"description": "lolmath.net UI",
 	"type": "module",
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"scripts": {
 		"build": "modern build",
 		"dev": "modern build --watch",
@@ -72,8 +70,8 @@
 			}
 		},
 		"./css": {
-			"import": "./dist/es/style.css",
-			"require": "./dist/lib/style.css"
+			"import": "./dist/es/index.css",
+			"require": "./dist/lib/index.css"
 		},
 		"./plugin": {
 			"import": {

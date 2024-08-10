@@ -13,7 +13,7 @@ import {
 	Text as AriaText,
 	ListBoxItem,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name.js";
+import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "./select.module.css";
 
 const selectButtonBorder = cva({

@@ -7,7 +7,7 @@ import {
 	Button,
 	Group,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./number-field.module.css";
 
 type NumberFieldPreset = "normal" | "dimmed";

@@ -1,17 +1,13 @@
-stages:
-  - comment
-  - main
-
 comment:
   image: node:22
-  stage: comment
+  needs: []
   only:
     - merge_requests
   script: npx -y changesets-gitlab comment
 
 main:
   image: node:22
-  stage: main
+  needs: []
   script:
     - npm install -g pnpm
     - pnpm i --frozen-lockfile

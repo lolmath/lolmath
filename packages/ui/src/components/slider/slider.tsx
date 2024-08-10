@@ -12,7 +12,7 @@ import {
 	SliderThumb as AriaSliderThumb,
 	SliderTrack as AriaSliderTrack,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name.js";
+import { resolveClassName } from "../../utilities/resolve-class-name";
 import textClasses from "../typography/text.module.css";
 import classes from "./slider.module.css";
 

@@ -7,7 +7,7 @@ import {
 	Link,
 	type LinkProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name.js";
+import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "../breadcrumbs/breadcrumbs.module.css";
 import divider from "./divider.png";
 

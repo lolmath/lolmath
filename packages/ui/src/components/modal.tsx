@@ -10,7 +10,7 @@ import {
 	ModalOverlay,
 	type ModalOverlayProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
+import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./modal.module.css";
 
 const overlay = cva({

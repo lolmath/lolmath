@@ -3,7 +3,7 @@ import {
 	Checkbox as AriaCheckbox,
 	type CheckboxProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name.js";
+import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "./checkbox.module.css";
 import imageCheckedHover from "./checked-hover.png";
 import imageChecked from "./checked.png";
