@@ -1,5 +1,5 @@
-import { defineConfig } from "rspress/config";
 import { join } from "node:path";
+import { defineConfig } from "rspress/config";
 
 export default defineConfig({
 	root: join(__dirname, "src/pages"),
@@ -17,4 +17,5 @@ export default defineConfig({
 		],
 	},
 	outDir: "dist",
+	icon: "/img/logo.png",
 });
