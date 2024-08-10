@@ -1,20 +1,23 @@
+import { cva } from "cva";
 import type { TooltipProps } from "react-aria-components";
 import { Tooltip as AriaTooltip, OverlayArrow } from "react-aria-components";
 import { resolveClassName } from "../utilities/resolve-class-name.js";
-import { tv } from "../utilities/tv.js";
 import classes from "./tooltip.module.css";
 
-const tooltipBorder = tv({
+const tooltipBorder = cva({
 	base: classes.tooltip,
 	variants: {
 		placement: {
 			bottom: classes.bottom,
 			top: classes.top,
+			left: classes.left,
+			right: classes.right,
+			center: "",
 		},
 	},
 });
 
-const tooltipArrowBorder = tv({
+const tooltipArrowBorder = cva({
 	base: classes.arrowBorder,
 	variants: {
 		placement: {
@@ -22,11 +25,12 @@ const tooltipArrowBorder = tv({
 			bottom: classes.bottom,
 			left: classes.left,
 			right: classes.right,
+			center: "",
 		},
 	},
 });
 
-const tooltipArrow = tv({
+const tooltipArrow = cva({
 	base: classes.arrow,
 	variants: {
 		placement: {
@@ -34,6 +38,7 @@ const tooltipArrow = tv({
 			bottom: classes.bottom,
 			left: classes.left,
 			right: classes.right,
+			center: "",
 		},
 	},
 });

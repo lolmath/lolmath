@@ -2,15 +2,20 @@
 	{
 		"text": "Calc",
 		"link": "/calc/",
-		"activeMatch": "/calc/"
+		"activeMatch": "/calc"
 	},
 	{
 		"text": "Dev",
 		"link": "/dev/",
-		"activeMatch": "/dev/"
+		"activeMatch": "/dev"
 	},
 	{
 		"text": "UI",
+		"link": "/ui/",
+		"activeMatch": "/ui"
+	},
+	{
+		"text": "UI Storybook",
 		"link": "https://ui.lolmath.net/"
 	}
 ]

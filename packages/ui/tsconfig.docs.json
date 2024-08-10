@@ -4,19 +4,13 @@
 		"useDefineForClassFields": true,
 		"module": "NodeNext",
 		"lib": ["ESNext", "DOM"],
-		"moduleResolution": "NodeNext",
-		"strict": true,
+		"moduleResolution": "Bundler",
+		"strict": false,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"esModuleInterop": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noImplicitReturns": true,
 		"skipLibCheck": true,
-		"types": ["vitest/globals", "vitest/importMeta"],
-		"jsx": "react-jsx",
-		"rootDir": "src",
 		"sourceMap": true
 	},
-	"include": ["src"]
+	"include": ["./docs.ts"]
 }

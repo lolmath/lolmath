@@ -8,6 +8,11 @@ const directories = [
 		docsFolder: "./docs",
 		packageName: "@lolmath/calc",
 	},
+	{
+		name: "ui",
+		docsFolder: "./docs",
+		packageName: "@lolmath/ui",
+	},
 ];
 
 directories.forEach(({ name, packageName, docsFolder }) => {

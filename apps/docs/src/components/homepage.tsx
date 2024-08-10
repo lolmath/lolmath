@@ -1,14 +1,14 @@
-import { Heading, Text, ButtonLink } from "@lolmath/ui";
+import { ButtonLink, Heading, Text } from "@lolmath/ui";
 import React from "react";
 
 export function Homepage(): JSX.Element {
 	return (
-		<div className="flex flex-col items-center justify-center gap-16 p-4 md:h-screen bg-lol-grey-hextech-black">
+		<div className="flex flex-col items-center justify-center gap-16 p-4 md:h-screen bg-lol-hextech-black">
 			<Heading as="h1" preset="h2">
 				League of Legends Math Docs
 			</Heading>
 			<div className="grid max-w-3xl grid-cols-1 gap-4 md:grid-cols-2">
-				<div className="border-lol-grey-200 hover:border-lol-gold-500 hover:bg-lol-blue-700 flex flex-col items-start gap-4 border bg-lol-grey-hextech-black p-8 pt-7">
+				<div className="border-lol-grey-200 hover:border-lol-gold-500 hover:bg-lol-blue-700 flex flex-col items-start gap-4 border bg-lol-hextech-black p-8 pt-7">
 					<Heading preset="h4" as="h2" color="gold200">
 						Calc
 					</Heading>
@@ -17,7 +17,7 @@ export function Homepage(): JSX.Element {
 						Docs
 					</ButtonLink>
 				</div>
-				<div className="border-lol-grey-200 hover:border-lol-gold-500 hover:bg-lol-blue-700 flex flex-col items-start gap-4 border bg-lol-grey-hextech-black p-8 pt-7">
+				<div className="border-lol-grey-200 hover:border-lol-gold-500 hover:bg-lol-blue-700 flex flex-col items-start gap-4 border bg-lol-hextech-black p-8 pt-7">
 					<Heading preset="h4" as="h2" color="gold200">
 						UI
 					</Heading>
@@ -26,8 +26,12 @@ export function Homepage(): JSX.Element {
 						Based on React Aria Components.
 					</Text>
 					<div className="space-x-2">
-						<ButtonLink isDisabled>Docs</ButtonLink>
-						<ButtonLink className="mt-auto" href="https://ui.lolmath.net/">
+						<ButtonLink href="/ui">Docs</ButtonLink>
+						<ButtonLink
+							className="mt-auto"
+							href="https://ui.lolmath.net/"
+							preset="hextech"
+						>
 							Storybook
 						</ButtonLink>
 					</div>

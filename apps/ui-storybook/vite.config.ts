@@ -15,6 +15,10 @@ export default defineConfig({
 				__dirname,
 				"../../packages/ui/public/font/spiegel/spiegel.css",
 			),
+			"@lolmath/ui/css": path.resolve(
+				__dirname,
+				"../../packages/ui/src/style.css",
+			),
 			"@lolmath/ui": path.resolve(__dirname, "../../packages/ui/src"),
 		},
 	},

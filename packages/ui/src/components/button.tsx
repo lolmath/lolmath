@@ -21,7 +21,7 @@ interface ButtonProps extends AriaButtonProps {
 	shape?: ButtonShape;
 }
 
-const button = cva({
+export const button = cva({
 	base: classes.button,
 	variants: {
 		preset: {

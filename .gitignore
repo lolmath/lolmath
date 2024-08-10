@@ -208,6 +208,7 @@ yarn-error.log*
 
 # Generated files
 apps/docs/src/pages/calc/**/*.md
+apps/docs/src/pages/ui/**/*.md
 
 doc_build
 
@@ -215,7 +216,8 @@ doc_build
 # @lolmath/calc
 packages/calc/docs
 
-
+# @lolmath/ui
+packages/ui/docs
 
 # Logs
 logs

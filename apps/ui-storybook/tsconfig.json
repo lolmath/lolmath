@@ -21,7 +21,8 @@
 		"paths": {
 			"@lolmath/ui": ["../../packages/ui/src/index"],
 			"@lolmath/ui/font": ["../../packages/ui/public/*"],
-			"@lolmath/ui/plugin": ["../../packages/ui/src/plugin"]
+			"@lolmath/ui/plugin": ["../../packages/ui/src/plugin"],
+			"@lolmath/ui/css": ["../../packages/ui/src/style.css"]
 		},
 		"baseUrl": "."
 	},
