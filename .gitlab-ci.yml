@@ -14,9 +14,8 @@ main:
     - pnpm run build
     - pnpm run lint
     - pnpm run test
-    - npx changesets-gitlab
+    - sh -x ./scripts/changesets.sh
     - pnpm run deploy
   variables:
-    INPUT_PUBLISH: bash -x ./scripts/changesets-publish.sh
-    INPUT_VERSION: bash -x ./scripts/changesets-version.sh
+    INPUT_PUBLISH: pnpm run changeset publish
     INPUT_REMOVE_SOURCE_BRANCH: "true"
