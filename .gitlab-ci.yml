@@ -14,7 +14,7 @@ main:
     - pnpm run build
     - pnpm run lint
     - pnpm run test
-    - sh -x ./scripts/changesets.sh
+    - bash -x ./scripts/changesets.sh
     - pnpm run deploy
   variables:
     INPUT_PUBLISH: pnpm run changeset publish
