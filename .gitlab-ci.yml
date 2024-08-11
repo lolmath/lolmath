@@ -17,6 +17,6 @@ main:
     - npx changesets-gitlab
     - pnpm run deploy
   variables:
-    INPUT_PUBLISH: sh ./scripts/changesets-publish.sh
-    INPUT_VERSION: sh ./scripts/changesets-version.sh
+    INPUT_PUBLISH: bash -x ./scripts/changesets-publish.sh
+    INPUT_VERSION: bash -x ./scripts/changesets-version.sh
     INPUT_REMOVE_SOURCE_BRANCH: "true"
