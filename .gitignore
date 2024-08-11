@@ -351,3 +351,5 @@ dist
 .pnp.*
 
 storybook-static
+
+.npmrc
