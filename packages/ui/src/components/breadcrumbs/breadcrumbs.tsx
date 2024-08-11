@@ -5,9 +5,8 @@ import {
 	type BreadcrumbProps,
 	type BreadcrumbsProps,
 	Link,
-	type LinkProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "../breadcrumbs/breadcrumbs.module.css";
 import divider from "./divider.png";
 
@@ -30,13 +29,18 @@ const breadcrumbLink = cva({
 	},
 });
 
-export function Breadcrumb(props: BreadcrumbProps & LinkProps) {
+export function Breadcrumb({
+	className,
+	...props
+}: BreadcrumbProps & {
+	href?: string;
+}) {
 	return (
 		<AriaBreadcrumb
 			{...props}
-			className={(values) =>
-				cx(classes.item, resolveClassName(props.className, values))
-			}
+			className={composeRenderProps(className, (className) =>
+				cx(classes.item, className),
+			)}
 		>
 			<Link
 				className={(values) =>

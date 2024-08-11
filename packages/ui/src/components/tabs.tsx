@@ -9,8 +9,8 @@ import {
 	type TabListProps,
 	type TabPanelProps,
 	type TabProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./tabs.module.css";
 
 export type { Key } from "react-aria-components";
@@ -24,9 +24,9 @@ export function TabList<T extends object>({
 	return (
 		<AriaTabList<T>
 			{...rest}
-			className={(values) =>
-				cx(classes.list, resolveClassName(className, values))
-			}
+			className={composeRenderProps(className, (className) =>
+				cx(classes.list, className),
+			)}
 		/>
 	);
 }
@@ -56,12 +56,12 @@ export function Tab({ children, className, ...rest }: TabProps) {
 	return (
 		<AriaTab
 			{...rest}
-			className={(values) =>
+			className={composeRenderProps(className, (className, values) =>
 				tab({
 					...values,
-					className: resolveClassName(className, values),
-				})
-			}
+					className,
+				}),
+			)}
 		>
 			{(values) => (
 				<>

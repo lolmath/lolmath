@@ -11,8 +11,8 @@ import {
 	SliderOutput as AriaSliderOutput,
 	SliderThumb as AriaSliderThumb,
 	SliderTrack as AriaSliderTrack,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name";
 import textClasses from "../typography/text.module.css";
 import classes from "./slider.module.css";
 
@@ -62,24 +62,15 @@ export function Slider<T extends number | number[]>({
 		| ((values: SliderTrackRenderProps) => string);
 }) {
 	return (
-		<AriaSlider<T>
-			{...props}
-			className={(values) => resolveClassName(className, values)}
-		>
+		<AriaSlider<T> {...props} className={className}>
 			{(values) => (
 				<>
 					{typeof children === "function" ? children(values) : children}
 					<AriaSliderTrack
 						{...sliderTrackProps}
-						className={(sliderTrackRenderProps) =>
-							cx(
-								classes.track,
-								resolveClassName(
-									sliderTrackProps.className,
-									sliderTrackRenderProps,
-								),
-							)
-						}
+						className={composeRenderProps(className, (className) =>
+							cx(classes.track, className),
+						)}
 					>
 						{(values) => {
 							const left =
@@ -97,19 +88,20 @@ export function Slider<T extends number | number[]>({
 							return (
 								<>
 									<div
-										className={cx(
-											classes.background,
-											resolveClassName(sliderTrackBackgroundClassName, values),
-										)}
+										className={composeRenderProps(
+											sliderTrackBackgroundClassName,
+											(className) => cx(className, classes.background),
+										)(values)}
 									/>
 									<div
-										className={sliderTrackForeground({
-											...values.state,
-											className: resolveClassName(
-												sliderTrackForegroundClassName,
-												values,
-											),
-										})}
+										className={composeRenderProps(
+											sliderTrackForegroundClassName,
+											(className) =>
+												sliderTrackForeground({
+													...values.state,
+													className,
+												}),
+										)(values)}
 										style={{ left: `${left}%`, width: `${width}%` }}
 									/>
 									{values.state.values.map((_, i) => {
@@ -124,26 +116,26 @@ export function Slider<T extends number | number[]>({
 												<AriaSliderThumb
 													key={i}
 													index={i}
-													{...sliderThumbProps}
-													className={(sliderThumbRenderProps) => {
-														sliderThumbRenderProps.isDragging;
-														return sliderThumb({
-															isDisabled: sliderThumbRenderProps.isDisabled,
-															isThumbDragging:
-																sliderThumbRenderProps.state.isThumbDragging(i),
-															isOtherThumbDragging:
-																sliderThumbRenderProps.state.isThumbDragging(
-																	i === 1 ? 0 : 1,
-																),
-															className: resolveClassName(
-																sliderThumbProps.className,
-																sliderThumbRenderProps,
-															),
-														});
-													}}
 													style={{
 														zIndex,
 													}}
+													{...sliderThumbProps}
+													className={composeRenderProps(
+														sliderThumbProps.className,
+														(className, sliderThumbRenderProps) =>
+															sliderThumb({
+																isDisabled: sliderThumbRenderProps.isDisabled,
+																isThumbDragging:
+																	sliderThumbRenderProps.state.isThumbDragging(
+																		i,
+																	),
+																isOtherThumbDragging:
+																	sliderThumbRenderProps.state.isThumbDragging(
+																		i === 1 ? 0 : 1,
+																	),
+																className,
+															}),
+													)}
 												/>
 											</>
 										);
@@ -158,23 +150,23 @@ export function Slider<T extends number | number[]>({
 	);
 }
 
-export function SliderOutput(props: SliderOutputProps) {
+export function SliderOutput({
+	children,
+	className,
+	...props
+}: SliderOutputProps) {
 	return (
 		<AriaSliderOutput
-			className={(values) =>
-				cx(
-					textClasses.text,
-					textClasses.sm,
-					textClasses.grey100,
-					resolveClassName(props.className, values),
-				)
-			}
-			children={(sliderRenderProps) =>
+			className={composeRenderProps(className, (className) =>
+				cx(textClasses.text, textClasses.sm, textClasses.grey100, className),
+			)}
+			{...props}
+		>
+			{(sliderRenderProps) =>
 				sliderRenderProps.state.values
 					.map((_, i) => sliderRenderProps.state.getThumbValueLabel(i))
 					.join(" – ")
 			}
-			{...props}
-		/>
+		</AriaSliderOutput>
 	);
 }

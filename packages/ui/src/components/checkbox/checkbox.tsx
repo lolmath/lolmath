@@ -2,8 +2,8 @@ import { cva } from "cva";
 import {
 	Checkbox as AriaCheckbox,
 	type CheckboxProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "./checkbox.module.css";
 import imageCheckedHover from "./checked-hover.png";
 import imageChecked from "./checked.png";
@@ -27,18 +27,15 @@ const checkbox = cva({
 export function Checkbox({ children, className, ...props }: CheckboxProps) {
 	return (
 		<AriaCheckbox
-			className={(values) => {
-				return checkbox({
-					className: resolveClassName(className, values),
-					...values,
-				});
-			}}
+			className={composeRenderProps(className, (className, values) =>
+				checkbox({ ...values, className }),
+			)}
 			{...props}
 		>
-			{(values) => (
+			{composeRenderProps(children, (children, values) => (
 				<>
 					<img
-						className="h-3.5 w-3.5"
+						className={classes.icon}
 						aria-hidden="true"
 						alt=""
 						src={
@@ -55,9 +52,9 @@ export function Checkbox({ children, className, ...props }: CheckboxProps) {
 										: imageUnchecked
 						}
 					/>
-					{typeof children === "function" ? children(values) : children}
+					{children}
 				</>
-			)}
+			))}
 		</AriaCheckbox>
 	);
 }

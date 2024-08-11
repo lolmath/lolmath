@@ -2,8 +2,8 @@ import { cva } from "cva";
 import {
 	ToggleButton as AriaToggleButton,
 	type ToggleButtonProps as AriaToggleButtonProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./button.module.css";
 
 export type ToggleButtonShape = "round" | "square" | "normal";
@@ -59,15 +59,15 @@ export function ToggleButton({
 	return (
 		<AriaToggleButton
 			{...props}
-			className={(values) =>
+			className={composeRenderProps(className, (className, values) =>
 				button({
 					...values,
 					preset,
 					shape,
 					thin,
-					className: resolveClassName(className, values),
-				})
-			}
+					className,
+				}),
+			)}
 		>
 			{children}
 		</AriaToggleButton>

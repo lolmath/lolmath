@@ -79,4 +79,8 @@
 			background-repeat: no-repeat;
 		}
 	}
+
+	.popover {
+		width: var(--trigger-width);
+	}
 }

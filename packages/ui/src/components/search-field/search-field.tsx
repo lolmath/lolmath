@@ -5,8 +5,8 @@ import {
 	Input as AriaInput,
 	SearchField as AriaSearchField,
 	type SearchFieldProps as AriaSearchFieldProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "./search-field.module.css";
 
 const searchFieldInput = cva({
@@ -48,12 +48,14 @@ export function SearchField({
 					{typeof children === "function" ? children(values) : children}
 					<AriaInput
 						{...inputProps}
-						className={(values) =>
-							searchFieldInput({
-								...values,
-								className: resolveClassName(inputProps.className, values),
-							})
-						}
+						className={composeRenderProps(
+							inputProps.className,
+							(className, values) =>
+								searchFieldInput({
+									className,
+									...values,
+								}),
+						)}
 						type="text"
 					/>
 					<AriaButton

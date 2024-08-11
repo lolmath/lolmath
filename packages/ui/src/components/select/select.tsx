@@ -12,8 +12,8 @@ import {
 	SelectValue as AriaSelectValue,
 	Text as AriaText,
 	ListBoxItem,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "./select.module.css";
 
 const selectButtonBorder = cva({
@@ -42,10 +42,7 @@ export function Select<T extends object>({
 	...props
 }: SelectProps<T>) {
 	return (
-		<AriaSelect
-			{...props}
-			className={(values) => resolveClassName(className, values)}
-		>
+		<AriaSelect {...props} className={className}>
 			{(values) => (
 				<>
 					<AriaButton
@@ -59,7 +56,7 @@ export function Select<T extends object>({
 					{errorMessage && (
 						<AriaText slot="errorMessage">{errorMessage}</AriaText>
 					)}
-					<AriaPopover offset={4} className="w-[--trigger-width]">
+					<AriaPopover offset={4} className={classes.popover}>
 						<AriaListBox className={classes.listBox}>{children}</AriaListBox>
 					</AriaPopover>
 				</>
@@ -81,12 +78,9 @@ export function Item({ className, ...props }: ListBoxItemProps) {
 	return (
 		<ListBoxItem
 			{...props}
-			className={(values) => {
-				return item({
-					...values,
-					className: resolveClassName(className, values),
-				});
-			}}
+			className={composeRenderProps(className, (className, values) =>
+				item({ ...values, className }),
+			)}
 		/>
 	);
 }

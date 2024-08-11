@@ -9,8 +9,8 @@ import {
 	type DialogProps,
 	ModalOverlay,
 	type ModalOverlayProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./modal.module.css";
 
 const overlay = cva({
@@ -41,19 +41,19 @@ export function Modal({
 	return (
 		<ModalOverlay
 			{...modalProps}
-			className={(values) => {
-				return overlay({
-					className: resolveClassName(modalOverlayClassName, values),
-				});
-			}}
+			className={composeRenderProps(modalOverlayClassName, (className) =>
+				overlay({
+					className,
+				}),
+			)}
 		>
 			<AriaModal
 				{...modalProps}
-				className={(values) =>
+				className={composeRenderProps(className, (className) =>
 					modal({
-						className: resolveClassName(className, values),
-					})
-				}
+						className,
+					}),
+				)}
 			>
 				<Dialog
 					{...dialogProps}

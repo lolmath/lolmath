@@ -1,6 +1,9 @@
 import { type Ref, forwardRef } from "react";
-import { Link as AriaButton, type LinkProps } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
+import {
+	Link as AriaButton,
+	type LinkProps,
+	composeRenderProps,
+} from "react-aria-components";
 import { type ButtonPreset, type ButtonShape, button } from "./button";
 
 interface ButtonLinkProps extends LinkProps {
@@ -24,15 +27,15 @@ export function _ButtonLink(
 		<AriaButton
 			ref={ref}
 			{...props}
-			className={(values) => {
-				return button({
-					className: resolveClassName(className, values),
+			className={composeRenderProps(className, (className, values) =>
+				button({
+					className,
 					preset,
 					shape,
 					thin,
 					...values,
-				});
-			}}
+				}),
+			)}
 		>
 			{children}
 		</AriaButton>

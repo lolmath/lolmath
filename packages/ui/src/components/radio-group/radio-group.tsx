@@ -4,17 +4,17 @@ import {
 	RadioGroup as AriaRadioGroup,
 	type RadioProps as AriaRadioProps,
 	type RadioGroupProps as AriaRadiogroupProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name";
 import classes from "./radio-group.module.css";
 
 export function RadioGroup({ className, ...props }: AriaRadiogroupProps) {
 	return (
 		<AriaRadioGroup
 			{...props}
-			className={(values) => {
-				return cx(classes.radioGroup, resolveClassName(className, values));
-			}}
+			className={composeRenderProps(className, (className) =>
+				cx(classes.radioGroup, className),
+			)}
 		/>
 	);
 }
@@ -32,12 +32,12 @@ export function Radio({ className, ...props }: AriaRadioProps) {
 	return (
 		<AriaRadio
 			{...props}
-			className={(values) =>
+			className={composeRenderProps(className, (className, values) =>
 				radio({
+					className,
 					...values,
-					className: resolveClassName(className, values),
-				})
-			}
+				}),
+			)}
 		/>
 	);
 }

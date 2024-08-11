@@ -5,8 +5,8 @@ import type {
 import {
 	TextArea as AriaTextArea,
 	TextField as AriaTextField,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
 import { textField } from "./text-field";
 
 export function TextArea({
@@ -23,12 +23,14 @@ export function TextArea({
 					{typeof children === "function" ? children(values) : children}
 					<AriaTextArea
 						{...textAreaProps}
-						className={(values) =>
-							textField({
-								...values,
-								className: resolveClassName(textAreaProps?.className, values),
-							})
-						}
+						className={composeRenderProps(
+							textAreaProps.className,
+							(className, values) =>
+								textField({
+									...values,
+									className,
+								}),
+						)}
 					/>
 				</>
 			)}

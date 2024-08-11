@@ -6,8 +6,8 @@ import {
 	NumberField as AriaNumberField,
 	Button,
 	Group,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./number-field.module.css";
 
 type NumberFieldPreset = "normal" | "dimmed";
@@ -67,13 +67,15 @@ export function NumberField({
 					{typeof children === "function" ? children(values) : children}
 					<Group
 						{...groupProps}
-						className={(values) => {
-							return numberFieldGroup({
-								className: resolveClassName(groupProps.className, values),
-								preset,
-								...values,
-							});
-						}}
+						className={composeRenderProps(
+							groupProps.className,
+							(className, values) =>
+								numberFieldGroup({
+									className,
+									preset,
+									...values,
+								}),
+						)}
 					>
 						<Button
 							className={(values) => numberFieldButton(values)}
@@ -83,12 +85,14 @@ export function NumberField({
 						</Button>
 						<AriaInput
 							{...inputProps}
-							className={(values) => {
-								return numberFieldInput({
-									className: resolveClassName(inputProps.className, values),
-									...values,
-								});
-							}}
+							className={composeRenderProps(
+								inputProps.className,
+								(className, values) =>
+									numberFieldInput({
+										className,
+										...values,
+									}),
+							)}
 						/>
 						<Button
 							className={(values) => numberFieldButton(values)}

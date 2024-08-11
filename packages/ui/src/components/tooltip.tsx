@@ -1,7 +1,10 @@
 import { cva } from "cva";
 import type { TooltipProps } from "react-aria-components";
-import { Tooltip as AriaTooltip, OverlayArrow } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
+import {
+	Tooltip as AriaTooltip,
+	OverlayArrow,
+	composeRenderProps,
+} from "react-aria-components";
 import classes from "./tooltip.module.css";
 
 const tooltipBorder = cva({
@@ -43,16 +46,16 @@ const tooltipArrow = cva({
 	},
 });
 
-export function Tooltip({ children, ...props }: TooltipProps) {
+export function Tooltip({ children, className, ...props }: TooltipProps) {
 	return (
 		<AriaTooltip
 			{...props}
-			className={(values) =>
+			className={composeRenderProps(className, (className, values) =>
 				tooltipBorder({
 					...values,
-					className: resolveClassName(props?.className, values),
-				})
-			}
+					className,
+				}),
+			)}
 		>
 			{(values) => (
 				<>

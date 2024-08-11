@@ -6,8 +6,8 @@ import type {
 import {
 	Input as AriaInput,
 	TextField as AriaTextField,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
 
 import { cva } from "cva";
 import classes from "./text-field.module.css";
@@ -42,12 +42,14 @@ export function TextField({
 					<AriaInput
 						type="text"
 						{...inputProps}
-						className={(values) =>
-							textField({
-								...values,
-								className: resolveClassName(inputProps?.className, values),
-							})
-						}
+						className={composeRenderProps(
+							inputProps.className,
+							(className, values) =>
+								textField({
+									...values,
+									className,
+								}),
+						)}
 					/>
 				</>
 			)}

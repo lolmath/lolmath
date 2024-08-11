@@ -3,8 +3,8 @@ import { type Ref, forwardRef } from "react";
 import {
 	Button as AriaButton,
 	type ButtonProps as AriaButtonProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name";
 import classes from "./button.module.css";
 
 export type ButtonShape = "round" | "square" | "normal";
@@ -72,15 +72,15 @@ export function _Button(
 		<AriaButton
 			ref={ref}
 			{...props}
-			className={(values) => {
-				return button({
-					className: resolveClassName(className, values),
+			className={composeRenderProps(className, (className, values) =>
+				button({
+					className,
 					preset,
 					shape,
 					thin,
 					...values,
-				});
-			}}
+				}),
+			)}
 		>
 			{children}
 		</AriaButton>
