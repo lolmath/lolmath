@@ -7,7 +7,7 @@ import {
 } from "react-aria-components";
 import classes from "./tooltip.module.css";
 
-const tooltipBorder = cva({
+const tooltip = cva({
 	base: classes.tooltip,
 	variants: {
 		placement: {
@@ -33,8 +33,8 @@ const tooltipArrowBorder = cva({
 	},
 });
 
-const tooltipArrow = cva({
-	base: classes.arrow,
+const tooltipArrowInner = cva({
+	base: classes.arrowInner,
 	variants: {
 		placement: {
 			top: classes.top,
@@ -51,7 +51,7 @@ export function Tooltip({ children, className, ...props }: TooltipProps) {
 		<AriaTooltip
 			{...props}
 			className={composeRenderProps(className, (className, values) =>
-				tooltipBorder({
+				tooltip({
 					...values,
 					className,
 				}),
@@ -59,13 +59,13 @@ export function Tooltip({ children, className, ...props }: TooltipProps) {
 		>
 			{(values) => (
 				<>
-					<OverlayArrow className="translate-y-1 transform">
+					<OverlayArrow>
 						{(values) => (
 							<>
 								<svg viewBox="0 0 12 12" className={tooltipArrowBorder(values)}>
 									<path d="M0 0,L6 6,L12 0" />
 								</svg>
-								<svg viewBox="0 0 12 12" className={tooltipArrow(values)}>
+								<svg viewBox="0 0 12 12" className={tooltipArrowInner(values)}>
 									<path d="M0 0,L6 6,L12 0" />
 								</svg>
 							</>

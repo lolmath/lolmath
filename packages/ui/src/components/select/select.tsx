@@ -34,6 +34,8 @@ interface SelectProps<T extends object>
 	children?: ReactNode | ((item: T) => ReactNode);
 }
 
+// Select should have a way to edit the button classes
+
 export function Select<T extends object>({
 	description,
 	errorMessage,

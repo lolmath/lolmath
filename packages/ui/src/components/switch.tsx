@@ -1,7 +1,11 @@
-import { cva } from "cva";
-import { Switch as AriaSwitch } from "react-aria-components";
+import { cva, cx } from "cva";
+import {
+	Switch as AriaSwitch,
+	composeRenderProps,
+} from "react-aria-components";
 import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
 import classes from "./switch.module.css";
+import textClasses from "./typography/text.module.css";
 
 const track = cva({
 	base: classes.track,
@@ -50,7 +54,15 @@ export function Switch({
 	return (
 		<AriaSwitch
 			{...props}
-			className="group inline-flex items-center gap-2 p-1 px-1.5 text-sm font-semibold text-black"
+			className={composeRenderProps(className, (className) =>
+				cx(
+					classes.switch,
+					textClasses.label,
+					textClasses.text,
+					textClasses.grey100,
+					className,
+				),
+			)}
 		>
 			{(values) => (
 				<>

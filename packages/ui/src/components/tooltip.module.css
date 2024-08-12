@@ -2,7 +2,6 @@
 	.tooltip {
 		padding: 2px;
 		box-shadow: 0 2px 4px 0 var(--lol-color-grey-300);
-
 		border: 2px solid transparent;
 		background: var(--lol-button-background-gradient) padding-box,
 			var(--lol-button-border-gradient) border-box;
@@ -17,6 +16,8 @@
 			margin-top: 0.5rem;
 		}
 	}
+
+
 
 	.arrowBorder {
 		fill: var(--lol-color-gold-600);
@@ -43,7 +44,7 @@
 		}
 	}
 
-	.arrow {
+	.arrowInner {
 		fill: var(--lol-color-grey-300);
 		display: block;
 		height: 16px;

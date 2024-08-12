@@ -34,3 +34,9 @@ export const Multiple: Story = {
 		</div>
 	),
 };
+
+export const WithChildren: Story = {
+	args: {
+		children: "Low Power Mode",
+	},
+};

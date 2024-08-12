@@ -91,11 +91,7 @@ export const LongText: Story = {
 
 export const Instant: Story = {
 	args: {
-		children: (
-			<div className="prose text-lol-grey-300 font-spiegel p-2 font-normal">
-				This tooltip should appear instantly
-			</div>
-		),
+		children: <div>This tooltip should appear instantly</div>,
 	},
 	render: (args) => (
 		<TooltipTrigger delay={0} closeDelay={0}>

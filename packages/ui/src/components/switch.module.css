@@ -1,4 +1,11 @@
 @layer lol {
+	.switch {
+		display: inline-flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.25rem 0.375rem;
+	}
+
 	.track {
 		background:
 			var(--lol-switch-background-gradient) padding-box,
