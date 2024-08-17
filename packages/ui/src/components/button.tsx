@@ -14,11 +14,13 @@ export type ButtonPreset =
 	| "text"
 	| "hextech"
 	| "dimmed";
+export type ButtonSize = "small" | "medium" | "large";
 
 interface ButtonProps extends AriaButtonProps {
 	preset?: ButtonPreset;
 	thin?: boolean;
 	shape?: ButtonShape;
+	size?: ButtonSize;
 }
 
 export const button = cva({
@@ -54,6 +56,11 @@ export const button = cva({
 		thin: {
 			true: classes.thin,
 		},
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
+		},
 	},
 });
 
@@ -63,6 +70,7 @@ export function _Button(
 		className,
 		preset = "secondary",
 		shape = "normal",
+		size = "medium",
 		thin = preset === "dimmed",
 		...props
 	}: ButtonProps,
@@ -78,6 +86,7 @@ export function _Button(
 					preset,
 					shape,
 					thin,
+					size,
 					...values,
 				}),
 			)}

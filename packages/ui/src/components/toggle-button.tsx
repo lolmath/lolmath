@@ -4,9 +4,9 @@ import {
 	type ToggleButtonProps as AriaToggleButtonProps,
 	composeRenderProps,
 } from "react-aria-components";
+import type { ButtonShape, ButtonSize } from "./button";
 import classes from "./button.module.css";
 
-export type ToggleButtonShape = "round" | "square" | "normal";
 export type ToggleButtonPreset = "secondary" | "hextech" | "dimmed";
 
 const button = cva({
@@ -40,12 +40,18 @@ const button = cva({
 		isSelected: {
 			true: classes.selected,
 		},
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
+		},
 	},
 });
 interface ToggleButtonProps extends AriaToggleButtonProps {
 	preset?: ToggleButtonPreset;
 	thin?: boolean;
-	shape?: ToggleButtonShape;
+	shape?: ButtonShape;
+	size?: ButtonSize;
 }
 
 export function ToggleButton({
@@ -53,6 +59,7 @@ export function ToggleButton({
 	className,
 	preset = "secondary",
 	shape = "normal",
+	size = "medium",
 	thin = preset === "dimmed",
 	...props
 }: ToggleButtonProps) {
@@ -65,6 +72,7 @@ export function ToggleButton({
 					preset,
 					shape,
 					thin,
+					size,
 					className,
 				}),
 			)}

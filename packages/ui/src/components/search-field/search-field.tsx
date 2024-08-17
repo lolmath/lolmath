@@ -18,6 +18,11 @@ const searchFieldInput = cva({
 		isFocused: {
 			true: classes.focus,
 		},
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
+		},
 	},
 });
 
@@ -36,10 +41,12 @@ export function SearchField({
 	borderProps = {},
 	children,
 	className,
+	size = "medium",
 	...props
 }: AriaSearchFieldProps & {
 	inputProps?: ComponentProps<typeof AriaInput>;
 	borderProps?: ComponentProps<"div">;
+	size?: "small" | "medium" | "large";
 }) {
 	return (
 		<AriaSearchField {...props} className={cx(classes.searchField, className)}>
@@ -53,6 +60,7 @@ export function SearchField({
 							(className, values) =>
 								searchFieldInput({
 									className,
+									size,
 									...values,
 								}),
 						)}

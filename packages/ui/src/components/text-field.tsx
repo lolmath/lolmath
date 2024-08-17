@@ -15,12 +15,14 @@ import classes from "./text-field.module.css";
 export const textField = cva({
 	base: classes.textField,
 	variants: {
-		isDisabled: {
-			true: classes.disabled,
+		isDisabled: { true: classes.disabled },
+		isFocused: { true: classes.focus },
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
 		},
-		isFocused: {
-			true: classes.focus,
-		},
+		isTextArea: { true: classes.textArea },
 	},
 });
 
@@ -28,10 +30,12 @@ export function TextField({
 	inputProps = {},
 	borderProps = {},
 	children,
+	size = "medium",
 	...props
 }: AriaTextFieldProps & {
 	inputProps?: InputProps;
 	borderProps?: ComponentProps<"div">;
+	size?: "small" | "medium" | "large";
 }) {
 	return (
 		<AriaTextField {...props}>
@@ -48,6 +52,7 @@ export function TextField({
 								textField({
 									...values,
 									className,
+									size,
 								}),
 						)}
 					/>

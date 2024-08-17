@@ -25,6 +25,11 @@ const numberFieldGroup = cva({
 		isFocusWithin: {
 			true: classes.focusWithin,
 		},
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
+		},
 	},
 });
 
@@ -54,11 +59,13 @@ export function NumberField({
 	groupProps = {},
 	children,
 	preset = "normal",
+	size = "medium",
 	...props
 }: AriaNumberFieldProps & {
 	inputProps?: ComponentProps<typeof AriaInput>;
 	groupProps?: ComponentProps<typeof Group>;
 	preset?: NumberFieldPreset;
+	size?: "small" | "medium" | "large";
 }) {
 	return (
 		<AriaNumberField {...props}>
@@ -73,6 +80,7 @@ export function NumberField({
 								numberFieldGroup({
 									className,
 									preset,
+									size,
 									...values,
 								}),
 						)}

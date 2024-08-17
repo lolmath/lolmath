@@ -4,12 +4,18 @@ import {
 	type LinkProps,
 	composeRenderProps,
 } from "react-aria-components";
-import { type ButtonPreset, type ButtonShape, button } from "./button";
+import {
+	type ButtonPreset,
+	type ButtonShape,
+	type ButtonSize,
+	button,
+} from "./button";
 
 interface ButtonLinkProps extends LinkProps {
 	preset?: ButtonPreset;
 	thin?: boolean;
 	shape?: ButtonShape;
+	size?: ButtonSize;
 }
 
 export function _ButtonLink(
@@ -18,6 +24,7 @@ export function _ButtonLink(
 		className,
 		preset = "secondary",
 		shape = "normal",
+		size = "medium",
 		thin = preset === "dimmed",
 		...props
 	}: ButtonLinkProps,
@@ -32,6 +39,7 @@ export function _ButtonLink(
 					className,
 					preset,
 					shape,
+					size,
 					thin,
 					...values,
 				}),

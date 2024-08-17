@@ -16,13 +16,18 @@ import {
 } from "react-aria-components";
 import classes from "./select.module.css";
 
-const selectButtonBorder = cva({
+const select = cva({
 	base: classes.button,
 	variants: {
 		isHovered: { true: classes.hover },
 		isPressed: { true: classes.press },
 		isOpen: { true: classes.open },
 		isDisabled: { true: classes.disabled },
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
+		},
 	},
 });
 
@@ -32,6 +37,7 @@ interface SelectProps<T extends object>
 	description?: string;
 	errorMessage?: string;
 	children?: ReactNode | ((item: T) => ReactNode);
+	size?: "small" | "medium" | "large";
 }
 
 // Select should have a way to edit the button classes
@@ -41,6 +47,7 @@ export function Select<T extends object>({
 	errorMessage,
 	children,
 	className,
+	size = "medium",
 	...props
 }: SelectProps<T>) {
 	return (
@@ -49,7 +56,7 @@ export function Select<T extends object>({
 				<>
 					<AriaButton
 						className={(buttonValues) =>
-							selectButtonBorder({ ...buttonValues, isOpen: values.isOpen })
+							select({ ...buttonValues, isOpen: values.isOpen, size })
 						}
 					>
 						<AriaSelectValue />

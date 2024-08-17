@@ -130,5 +130,10 @@
     --lol-gradient-hextech: linear-gradient(to top, var(--lol-color-blue-200), var(--lol-color-blue-400));
     --lol-gradient-hextech-hover: linear-gradient(to top, var(--lol-color-blue-100), var(--lol-color-blue-300));
     --lol-gradient-hextech-press: linear-gradient(to top, var(--lol-color-blue-500), var(--lol-color-blue-400));
+
+
+    --lol-form-height-small: 2rem;
+    --lol-form-height-medium: 2.25rem;
+    --lol-form-height-large: 2.5rem;
   }
 }

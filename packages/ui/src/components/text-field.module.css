@@ -9,7 +9,7 @@
 
 		border: 1px solid transparent;
 		grid-area: input;
-		padding: 0.5rem 0.75rem;
+		padding: 0 0.75rem;
 		margin: 0;
 		font-size: 0.75rem;
 		line-height: 1rem;
@@ -18,6 +18,8 @@
 		font-family: var(--lol-font-family-spiegel);
 		font-weight: 500;
 		letter-spacing: 0.025em;
+
+		min-height: var(--lol-form-input-min-height);
 
 		color: var(--lol-color-gold-100);
 
@@ -32,6 +34,23 @@
 		&.focus {
 			--lol-input-border-gradient: var(--lol-gradient-gold-hover);
 			--lol-input-background-gradient: var(--lol-gradient-grey-focus);
+		}
+
+		&.small {
+			min-height: var(--lol-form-height-small);
+		}
+
+		&.medium {
+			min-height: var(--lol-form-height-medium);
+		}
+
+		&.large {
+			min-height: var(--lol-form-height-large);
+		}
+
+		&.textArea {
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
 		}
 	}
 }

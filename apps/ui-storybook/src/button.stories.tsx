@@ -95,6 +95,24 @@ export const TextInline: Story = {
 	),
 };
 
+export const SizeSmall: Story = {
+	args: {
+		size: "small",
+	},
+};
+
+export const SizeMedium: Story = {
+	args: {
+		size: "medium",
+	},
+};
+
+export const SizeLarge: Story = {
+	args: {
+		size: "large",
+	},
+};
+
 export const RoundedPrimary: Story = {
 	args: {
 		preset: "primary",
@@ -157,6 +175,30 @@ export const RoundedPrimaryWithText: Story = {
 		preset: "primary",
 		shape: "round",
 		children: "A",
+	},
+};
+
+export const RoundedSmall: Story = {
+	args: {
+		shape: "round",
+		size: "small",
+		children: <FaGear />,
+	},
+};
+
+export const RoundedMedium: Story = {
+	args: {
+		shape: "round",
+		size: "medium",
+		children: <FaGear />,
+	},
+};
+
+export const RoundedLarge: Story = {
+	args: {
+		shape: "round",
+		size: "large",
+		children: <FaGear />,
 	},
 };
 
@@ -224,6 +266,7 @@ export const SquaredImage: Story = {
 			<img
 				src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
 				className="w-full"
+				alt="some item"
 			/>
 		),
 	},
@@ -237,6 +280,7 @@ export const SquaredInsideFlex: Story = {
 			<img
 				src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
 				className="w-full"
+				alt="some item"
 			/>
 		),
 	},

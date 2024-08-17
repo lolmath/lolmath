@@ -29,6 +29,7 @@ export function TextArea({
 								textField({
 									...values,
 									className,
+									isTextArea: true,
 								}),
 						)}
 					/>

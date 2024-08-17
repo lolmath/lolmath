@@ -11,12 +11,53 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		font-size: 1rem;
+		line-height: 1em;
+
+		display: inline-flex;
+		align-items: center;
 
 		background: var(--lol-button-background-gradient) padding-box,
 			var(--lol-button-border-gradient) border-box;
-		display: inline-block;
+
+		&.small {
+			font-size: var(--lol-font-size-sm);
+			min-height: var(--lol-form-height-small);
+		}
+
+		&.medium {
+			font-size: var(--lol-font-size-base);
+			min-height: var(--lol-form-height-medium);
+		}
+
+		&.large {
+			font-size: var(--lol-font-size-base);
+			min-height: var(--lol-form-height-large);
+		}
 	}
+
+
+	.primary,
+	.secondary,
+	.hextech,
+	.dimmed {
+
+		&:not(.square, .round) {
+
+			&.small {
+				padding: 0 0.5rem;
+			}
+
+			&.medium {
+				padding: 0 1rem;
+			}
+
+			&.large {
+				padding: 0 1rem;
+			}
+
+		}
+	}
+
 
 	.text {
 
@@ -100,12 +141,6 @@
 		}
 	}
 
-	.primary,
-	.secondary,
-	.hextech,
-	.dimmed {
-		padding: 0.5rem 1rem;
-	}
 
 	.secondary {
 		--lol-button-border-gradient: var(--lol-gradient-gold);
@@ -145,9 +180,10 @@
 
 	.round,
 	.square {
+		/* Hack to make sure that an icon does not wiggle around horizontally. */
+		will-change: transform;
 		display: flex;
 		aspect-ratio: 1/1;
-		height: 2rem;
 		align-items: center;
 		justify-content: center;
 		padding: 0px;
