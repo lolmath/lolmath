@@ -11,9 +11,11 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		line-height: 1em;
+		line-height: 1;
 
 		display: inline-flex;
+
+		justify-content: center;
 		align-items: center;
 
 		background: var(--lol-button-background-gradient) padding-box,
@@ -180,15 +182,9 @@
 
 	.round,
 	.square {
-		/* Hack to make sure that an icon does not wiggle around horizontally. */
-		will-change: transform;
-		display: flex;
 		aspect-ratio: 1/1;
-		align-items: center;
-		justify-content: center;
 		padding: 0px;
 		font-weight: 900;
-		line-height: 1;
 	}
 
 	.thin {
