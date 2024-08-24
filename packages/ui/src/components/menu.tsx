@@ -5,13 +5,14 @@ import {
 	type MenuItemProps as AriaMenuItemProps,
 	type MenuProps as AriaMenuProps,
 	MenuTrigger as AriaMenuTrigger,
-	Popover as AriaPopover,
+	SubmenuTrigger as AriaSubmenuTrigger,
+	Popover,
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "./menu.module.css";
 
-export const MenuPopover = AriaPopover;
 export const MenuTrigger = AriaMenuTrigger;
+export const SubmenuTrigger = AriaSubmenuTrigger;
 
 interface MenuProps<T extends object> extends AriaMenuProps<T> {}
 
@@ -21,9 +22,11 @@ export function Menu<T extends object>({
 	...props
 }: MenuProps<T>) {
 	return (
-		<AriaMenu<T> {...props} className={classes.menu}>
-			{children}
-		</AriaMenu>
+		<Popover>
+			<AriaMenu<T> {...props} className={classes.menu}>
+				{children}
+			</AriaMenu>
+		</Popover>
 	);
 }
 
