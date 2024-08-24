@@ -11,6 +11,7 @@ import {
 const meta = {
 	title: "Accordion",
 	component: Accordion,
+	subcomponents: { AccordionItem, AccordionTrigger, AccordionContent },
 	tags: ["autodocs"],
 	argTypes: {},
 	render: () => {

@@ -4,7 +4,9 @@
 	"private": false,
 	"description": "lolmath.net UI",
 	"type": "module",
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "modern build",
 		"dev": "modern build --watch",

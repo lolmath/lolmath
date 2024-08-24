@@ -13,6 +13,7 @@ import {
 const meta = {
 	title: "Modal",
 	component: Modal,
+	subcomponents: { DialogButtons, DialogHeading, DialogTrigger },
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {
