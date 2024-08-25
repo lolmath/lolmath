@@ -62,10 +62,10 @@ export function Tooltip({ children, className, ...props }: TooltipProps) {
 					<OverlayArrow>
 						{(values) => (
 							<>
-								<svg viewBox="0 0 12 12" className={tooltipArrowBorder(values)}>
+								<svg viewBox="0 0 12 6" className={tooltipArrowBorder(values)}>
 									<path d="M0 0,L6 6,L12 0" />
 								</svg>
-								<svg viewBox="0 0 12 12" className={tooltipArrowInner(values)}>
+								<svg viewBox="0 0 12 6" className={tooltipArrowInner(values)}>
 									<path d="M0 0,L6 6,L12 0" />
 								</svg>
 							</>
