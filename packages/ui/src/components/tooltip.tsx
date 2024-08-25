@@ -20,21 +20,8 @@ const tooltip = cva({
 	},
 });
 
-const tooltipArrowBorder = cva({
-	base: classes.arrowBorder,
-	variants: {
-		placement: {
-			top: classes.top,
-			bottom: classes.bottom,
-			left: classes.left,
-			right: classes.right,
-			center: "",
-		},
-	},
-});
-
-const tooltipArrowInner = cva({
-	base: classes.arrowInner,
+const arrow = cva({
+	base: classes.arrow,
 	variants: {
 		placement: {
 			top: classes.top,
@@ -56,17 +43,22 @@ export function Tooltip({ children, className, ...props }: TooltipProps) {
 					className,
 				}),
 			)}
+			
 		>
 			{(values) => (
 				<>
 					<OverlayArrow>
 						{(values) => (
 							<>
-								<svg viewBox="0 0 12 6" className={tooltipArrowBorder(values)}>
-									<path d="M0 0,L6 6,L12 0" />
-								</svg>
-								<svg viewBox="0 0 12 6" className={tooltipArrowInner(values)}>
-									<path d="M0 0,L6 6,L12 0" />
+								<svg
+									viewBox="0 0 12 6"
+									className={arrow(values)}
+									width={20}
+									height={10}
+								>
+									<title>Tooltip Arrow</title>
+									<path d="M0 0,L6 6,L12 0" className={classes.outer} />
+									<path d="M2 0 6 4 10 0" className={classes.inner} />
 								</svg>
 							</>
 						)}
