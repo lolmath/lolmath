@@ -80,6 +80,7 @@ const item = cva({
 		isHovered: { true: classes.hover },
 		isPressed: { true: classes.press },
 		isSelected: { true: classes.selected },
+		isFocused: { true: classes.focus },
 	},
 });
 

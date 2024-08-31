@@ -81,7 +81,8 @@
 			color: var(--lol-color-gold-100);
 		}
 
-		&.press {
+		&.press,
+		&.focus {
 			background-color: color-mix(in srgb, var(--lol-color-grey-300), transparent 50%);
 			color: var(--lol-color-gold-600);
 		}

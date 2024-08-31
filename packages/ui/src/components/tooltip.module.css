@@ -28,9 +28,6 @@
 
 
 	.arrow {
-		height: 10px;
-		width: 20px;
-
 		&.top {
 			transform: translateX(-1.5px);
 		}

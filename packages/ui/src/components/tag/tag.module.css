@@ -1,0 +1,41 @@
+.tag {
+	background: var(--lol-multiple-select-background-gradient) padding-box,
+		var(--lol-multiple-select-border-gradient) border-box;
+
+	--lol-multiple-select-border-gradient: var(--lol-gradient-gold);
+	--lol-multiple-select-background-gradient: linear-gradient(to top, var(--lol-color-gold-600), var(--lol-color-gold-600), var(--lol-color-gold-700));
+
+	border: 2px solid transparent;
+
+	align-items: center;
+	display: grid;
+	grid-template-columns: 1fr auto;
+
+	font-family: var(--lol-font-family-spiegel);
+	letter-spacing: var(--lol-letter-spacing-sm);
+	font-weight: var(--lol-font-weight-sm);
+	font-size: 0.75rem;
+	line-height: 1;
+	color: var(--lol-color-gold-300);
+	padding: 0 0.125rem 0 0.25rem;
+}
+
+.text {
+	padding: 0.25rem 0;
+}
+
+.remove {
+	mask: url(./control-close.png);
+	height: 1rem;
+	aspect-ratio: 1;
+	background-color: currentColor;
+	mask-size: contain;
+
+	&.hover {
+		background-color: var(--lol-color-gold-100);
+	}
+
+	&.press {
+		background-color: var(--lol-color-grey-150);
+	}
+}

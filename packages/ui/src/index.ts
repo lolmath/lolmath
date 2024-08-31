@@ -25,3 +25,5 @@ export * from "./components/tooltip";
 export * from "./components/typography/heading";
 export * from "./components/typography/text";
 export * from "./components/menu";
+export * from "./components/select/multiple-select";
+export * from "./components/tag/tag";
