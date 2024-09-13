@@ -43,7 +43,6 @@ export function Tooltip({ children, className, ...props }: TooltipProps) {
 					className,
 				}),
 			)}
-			
 		>
 			{(values) => (
 				<>

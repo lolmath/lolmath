@@ -7,13 +7,11 @@
 	}
 
 	.track {
-		background:
-			var(--lol-switch-background-gradient) padding-box,
+		background: var(--lol-switch-background-gradient) padding-box,
 			var(--lol-switch-border-gradient) border-box;
 
 		--lol-switch-border-gradient: var(--lol-gradient-gold);
 		--lol-switch-background-gradient: var(--lol-gradient-grey-300);
-
 
 		border: 2px solid transparent;
 		height: 1.5rem;
@@ -47,8 +45,7 @@
 		height: 2rem;
 		width: 2rem;
 		border-radius: 9999px;
-		background:
-			var(--lol-switch-background-gradient) padding-box,
+		background: var(--lol-switch-background-gradient) padding-box,
 			var(--lol-switch-border-gradient) border-box;
 
 		transition: left 200ms ease-in-out;
@@ -57,7 +54,6 @@
 		--lol-switch-background-gradient: var(--lol-gradient-grey-300);
 
 		border: 2px solid transparent;
-
 
 		&.hover {
 			--lol-switch-border-gradient: var(--lol-gradient-gold-hover);
@@ -73,7 +69,6 @@
 
 		&.selected {
 			left: calc(100% - 1.5rem);
-
 		}
 	}
 }

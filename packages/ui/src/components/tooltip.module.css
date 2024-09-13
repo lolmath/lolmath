@@ -25,8 +25,6 @@
 		}
 	}
 
-
-
 	.arrow {
 		&.top {
 			transform: translateX(-1.5px);

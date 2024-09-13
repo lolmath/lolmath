@@ -33,3 +33,14 @@ export const Disabled: Story = {
 		isDisabled: true,
 	},
 };
+
+export const TonsOfItems: Story = {
+	args: {},
+	render: () => (
+		<Select>
+			{Array.from({ length: 100 }, (_, i) => (
+				<Item key={i}>Item {i}</Item>
+			))}
+		</Select>
+	),
+};

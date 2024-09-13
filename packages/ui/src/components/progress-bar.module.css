@@ -19,7 +19,11 @@
 	}
 
 	.fill {
-		background-image: linear-gradient(to right, var(--lol-color-blue-400), var(--lol-color-blue-200));
+		background-image: linear-gradient(
+			to right,
+			var(--lol-color-blue-400),
+			var(--lol-color-blue-200)
+		);
 		border-radius: 9999px;
 		height: 100%;
 	}

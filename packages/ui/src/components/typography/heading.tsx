@@ -1,6 +1,6 @@
+import { cva } from "cva";
 import { createElement } from "react";
 import classes from "./heading.module.css";
-import { cva } from "cva";
 
 export type HeadingColor = "gold100" | "gold200" | "gold400" | "grey100";
 export type HeadingElement = "h1" | "h2" | "h3" | "h4" | "h5";

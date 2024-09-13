@@ -1,9 +1,9 @@
+import { cva } from "cva";
 import { createElement } from "react";
 import {
 	Label as AriaLabel,
 	type LabelProps as AriaLabelProps,
 } from "react-aria-components";
-import { cva } from "cva";
 import classes from "./text.module.css";
 
 export type TextColor = "grey100" | "grey150" | "gold100";

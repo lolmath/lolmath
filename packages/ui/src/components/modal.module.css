@@ -1,6 +1,10 @@
 @layer lol {
 	.overlay {
-		background-color: color-mix(in srgb, var(--lol-color-hextech-black), transparent 75%);
+		background-color: color-mix(
+			in srgb,
+			var(--lol-color-hextech-black),
+			transparent 75%
+		);
 		position: fixed;
 		top: 0;
 		right: 0;
@@ -23,9 +27,13 @@
 			var(--lol-button-border-gradient) border-box;
 		border: 2px solid transparent;
 
-
 		--lol-button-background-gradient: var(--lol-gradient-hextech-black);
-		--lol-button-border-gradient: linear-gradient(to bottom, var(--lol-color-gold-600), var(--lol-color-gold-600), var(--lol-color-gold-500));
+		--lol-button-border-gradient: linear-gradient(
+			to bottom,
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-500)
+		);
 
 		position: relative;
 		outline: none;
@@ -35,7 +43,7 @@
 			position: absolute;
 			left: 1.25rem;
 			right: 1.25rem;
-			content: '';
+			content: "";
 			display: block;
 			height: 0.25rem;
 			background-color: var(--lol-color-hextech-black);
@@ -54,7 +62,6 @@
 			border-top: 0;
 		}
 	}
-
 
 	.modal {
 		width: 100%;

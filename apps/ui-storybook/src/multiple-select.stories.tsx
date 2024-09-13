@@ -1,27 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import {
-	Item,
-	MultipleSelect,
-	type SelectedKey,
-	Tag,
-	useListData,
-} from "@lolmath/ui";
+import { Item, MultipleSelect, type SelectedKey, Tag } from "@lolmath/ui";
+import { useState } from "react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
 	title: "MultipleSelect",
 	component: MultipleSelect,
 	render: (args) => {
-		const selectedItems = useListData<SelectedKey>({
-			initialItems: [{ id: "1", name: "Apple" }],
-		});
+		const [selectedItems, setSelectedItems] = useState<SelectedKey[]>([
+			{ id: "1", name: "Apple" },
+		]);
 
 		return (
 			<MultipleSelect
 				className="max-w-xs"
 				{...args}
 				selectedItems={selectedItems}
+				onChange={setSelectedItems}
 			/>
 		);
 	},
@@ -62,4 +58,26 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	args: {},
+};
+
+export const TonsOfItems: Story = {
+	args: {},
+	render: (args) => {
+		const [selectedItems, setSelectedItems] = useState<SelectedKey[]>([
+			{ id: "1", name: "Apple" },
+		]);
+
+		return (
+			<MultipleSelect
+				{...args}
+				className="max-w-xs"
+				items={Array.from({ length: 100 }, (_, i) => ({
+					id: i.toString(),
+					name: `Item ${i}`,
+				}))}
+				selectedItems={selectedItems}
+				onChange={setSelectedItems}
+			/>
+		);
+	},
 };

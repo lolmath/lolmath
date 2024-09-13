@@ -16,19 +16,17 @@ interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 	preset?: "left" | "center" | "right";
 	hrProps?: React.HTMLAttributes<HTMLHRElement>;
 }
-export function Divider({ preset = "center", hrProps, ...rest }: DividerProps) {
+export function Divider({
+	preset = "center",
+	hrProps,
+	className,
+	...rest
+}: DividerProps) {
 	return (
 		<div className={classes.wrapper} {...rest}>
-			{preset === "right" && (
-				<div className={classes.block} />
-			)}
-			<hr
-				{...hrProps}
-				className={divider({ preset, className: hrProps?.className })}
-			/>
-			{preset === "left" && (
-				<div className={classes.block} />
-			)}
+			{preset === "right" && <div className={classes.block} />}
+			<hr {...hrProps} className={divider({ preset, className })} />
+			{preset === "left" && <div className={classes.block} />}
 		</div>
 	);
 }

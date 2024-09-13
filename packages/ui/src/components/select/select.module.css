@@ -23,10 +23,10 @@
 		--lol-select-border-gradient: var(--lol-gradient-gold);
 		--lol-select-background-gradient: var(--lol-gradient-hextech-black);
 
-		--lol-select-image: url('./closed.png');
+		--lol-select-image: url("./closed.png");
 
 		&.open {
-			--lol-select-image: url('./open.png');
+			--lol-select-image: url("./open.png");
 			color: var(--lol-color-gold-600);
 			--lol-select-background-gradient: var(--lol-gradient-grey-300);
 			--lol-select-border-gradient: var(--lol-gradient-gold-press);
@@ -57,13 +57,11 @@
 		}
 	}
 
-
 	.listBox {
 		background-color: var(--lol-color-hextech-black);
 		border: 1px solid var(--lol-color-gold-600);
 		outline: none;
 	}
-
 
 	.item {
 		border-bottom: 1px solid var(--lol-color-grey-300);
@@ -83,7 +81,11 @@
 
 		&.press,
 		&.focus {
-			background-color: color-mix(in srgb, var(--lol-color-grey-300), transparent 50%);
+			background-color: color-mix(
+				in srgb,
+				var(--lol-color-grey-300),
+				transparent 50%
+			);
 			color: var(--lol-color-gold-600);
 		}
 
@@ -96,5 +98,7 @@
 
 	.popover {
 		width: var(--trigger-width);
+		max-height: inherit;
+		overflow-y: auto;
 	}
 }

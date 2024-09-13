@@ -1,139 +1,187 @@
 @layer lol {
+	/* ----- CSS reset ----- */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
 
-  /* ----- CSS reset ----- */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+	/* ----- Default CSS variables ----- */
 
-  /* ----- Default CSS variables ----- */
+	:root {
+		color-scheme: dark;
 
-  :root {
-    color-scheme: dark;
+		--lol-z-index-app: 100;
+		--lol-z-index-modal: 200;
+		--lol-z-index-popover: 300;
+		--lol-z-index-overlay: 400;
+		--lol-z-index-max: 9999;
 
-    --lol-z-index-app: 100;
-    --lol-z-index-modal: 200;
-    --lol-z-index-popover: 300;
-    --lol-z-index-overlay: 400;
-    --lol-z-index-max: 9999;
+		--lol-scale: 1;
 
-    --lol-scale: 1;
+		--lol-color-blue-100: #cdfafa;
+		--lol-color-blue-200: #0ac8b9;
+		--lol-color-blue-300: #0397ab;
+		--lol-color-blue-400: #005a82;
+		--lol-color-blue-500: #0a323c;
+		--lol-color-blue-600: #091428;
+		--lol-color-blue-700: #0a1428;
 
-    --lol-color-blue-100: #CDFAFA;
-    --lol-color-blue-200: #0AC8B9;
-    --lol-color-blue-300: #0397AB;
-    --lol-color-blue-400: #005A82;
-    --lol-color-blue-500: #0A323C;
-    --lol-color-blue-600: #091428;
-    --lol-color-blue-700: #0A1428;
+		--lol-color-grey-100: #a09b8c;
+		--lol-color-grey-150: #5b5a56;
+		--lol-color-grey-200: #3c3c41;
+		--lol-color-grey-300: #1e2328;
+		--lol-color-grey-cool: #1e282d;
 
-    --lol-color-grey-100: #A09B8C;
-    --lol-color-grey-150: #5B5A56;
-    --lol-color-grey-200: #3C3C41;
-    --lol-color-grey-300: #1E2328;
-    --lol-color-grey-cool: #1E282D;
+		--lol-color-hextech-black: #010a13;
 
-    --lol-color-hextech-black: #010A13;
+		--lol-color-gold-100: #f0e6d2;
+		--lol-color-gold-200: #c8aa6e;
+		--lol-color-gold-300: #cdbe91;
+		--lol-color-gold-400: #c89b3c;
+		--lol-color-gold-500: #785a28;
+		--lol-color-gold-600: #463714;
+		--lol-color-gold-700: #32281e;
 
-    --lol-color-gold-100: #F0E6D2;
-    --lol-color-gold-200: #C8AA6E;
-    --lol-color-gold-300: #CDBE91;
-    --lol-color-gold-400: #C89B3C;
-    --lol-color-gold-500: #785A28;
-    --lol-color-gold-600: #463714;
-    --lol-color-gold-700: #32281E;
+		--lol-font-size-h1: 3.3333rem;
+		--lol-line-height-h1: 3.5rem;
+		--lol-letter-spacing-h1: 0.05em;
+		--lol-font-weight-h1: 700;
 
-    --lol-font-size-h1: 3.3333rem;
-    --lol-line-height-h1: 3.5rem;
-    --lol-letter-spacing-h1: 0.05em;
-    --lol-font-weight-h1: 700;
+		--lol-font-size-h2: 2.3333rem;
+		--lol-line-height-h2: 2.6667rem;
+		--lol-letter-spacing-h2: 0.05em;
+		--lol-font-weight-h2: 700;
 
-    --lol-font-size-h2: 2.3333rem;
-    --lol-line-height-h2: 2.6667rem;
-    --lol-letter-spacing-h2: 0.05em;
-    --lol-font-weight-h2: 700;
+		--lol-font-size-h3: 1.9167rem;
+		--lol-line-height-h3: 2.3333rem;
+		--lol-letter-spacing-h3: 0.05em;
+		--lol-font-weight-h3: 700;
 
-    --lol-font-size-h3: 1.9167rem;
-    --lol-line-height-h3: 2.3333rem;
-    --lol-letter-spacing-h3: 0.05em;
-    --lol-font-weight-h3: 700;
+		--lol-font-size-h4: 1.5rem;
+		--lol-line-height-h4: 1.8333rem;
+		--lol-letter-spacing-h4: 0.05em;
+		--lol-font-weight-h4: 700;
 
-    --lol-font-size-h4: 1.5rem;
-    --lol-line-height-h4: 1.8333rem;
-    --lol-letter-spacing-h4: 0.05em;
-    --lol-font-weight-h4: 700;
+		--lol-font-size-h5: 1.1667rem;
+		--lol-line-height-h5: 1.5rem;
+		--lol-letter-spacing-h5: 0.075em;
+		--lol-font-weight-h5: 700;
 
-    --lol-font-size-h5: 1.1667rem;
-    --lol-line-height-h5: 1.5rem;
-    --lol-letter-spacing-h5: 0.075em;
-    --lol-font-weight-h5: 700;
+		--lol-font-size-label: 0.9167rem;
+		--lol-line-height-label: 1.3333rem;
+		--lol-letter-spacing-label: 0.05em;
+		--lol-font-weight-label: 700;
 
-    --lol-font-size-label: 0.9167rem;
-    --lol-line-height-label: 1.3333rem;
-    --lol-letter-spacing-label: 0.05em;
-    --lol-font-weight-label: 700;
+		--lol-font-size-stat: 1.1667rem;
+		--lol-line-height-stat: 1.6667rem;
+		--lol-letter-spacing-stat: 0.05em;
+		--lol-font-weight-stat: 700;
 
-    --lol-font-size-stat: 1.1667rem;
-    --lol-line-height-stat: 1.6667rem;
-    --lol-letter-spacing-stat: 0.05em;
-    --lol-font-weight-stat: 700;
+		--lol-font-size-stat: 1.1667rem;
+		--lol-line-height-stat: 1.6667rem;
+		--lol-letter-spacing-stat: 0.05em;
+		--lol-font-weight-stat: 700;
 
-    --lol-font-size-stat: 1.1667rem;
-    --lol-line-height-stat: 1.6667rem;
-    --lol-letter-spacing-stat: 0.05em;
-    --lol-font-weight-stat: 700;
+		--lol-font-size-large-number: 4.75rem;
+		--lol-line-height-large-number: 5.1667rem;
+		--lol-letter-spacing-large-number: 0.025em;
+		--lol-font-weight-large-number: 500;
 
-    --lol-font-size-large-number: 4.75rem;
-    --lol-line-height-large-number: 5.1667rem;
-    --lol-letter-spacing-large-number: 0.025em;
-    --lol-font-weight-large-number: 500;
+		--lol-font-size-xs: 0.75rem;
+		--lol-line-height-xs: 1rem;
+		--lol-letter-spacing-xs: 0.025em;
+		--lol-font-weight-xs: 400;
 
-    --lol-font-size-xs: 0.75rem;
-    --lol-line-height-xs: 1rem;
-    --lol-letter-spacing-xs: 0.025em;
-    --lol-font-weight-xs: 400;
+		--lol-font-size-sm: 0.875rem;
+		--lol-line-height-sm: 1.1025rem;
+		--lol-letter-spacing-sm: 0.02em;
+		--lol-font-weight-sm: 400;
 
-    --lol-font-size-sm: 0.875rem;
-    --lol-line-height-sm: 1.1025rem;
-    --lol-letter-spacing-sm: 0.02em;
-    --lol-font-weight-sm: 400;
+		--lol-font-size-base: 1rem;
+		--lol-line-height-base: 1.24rem;
+		--lol-letter-spacing-base: 0.01em;
+		--lol-font-weight-base: 400;
 
-    --lol-font-size-base: 1rem;
-    --lol-line-height-base: 1.24rem;
-    --lol-letter-spacing-base: 0.01em;
-    --lol-font-weight-base: 400;
+		--lol-font-size-md: 1.1667rem;
+		--lol-line-height-md: 1.6667rem;
+		--lol-letter-spacing-md: 0.025em;
+		--lol-font-weight-md: 400;
 
-    --lol-font-size-md: 1.1667rem;
-    --lol-line-height-md: 1.6667rem;
-    --lol-letter-spacing-md: 0.025em;
-    --lol-font-weight-md: 400;
+		--lol-font-size-lg: 1.5rem;
+		--lol-line-height-lg: 1.875rem;
+		--lol-letter-spacing-lg: 0.025em;
+		--lol-font-weight-lg: 400;
 
-    --lol-font-size-lg: 1.5rem;
-    --lol-line-height-lg: 1.875rem;
-    --lol-letter-spacing-lg: 0.025em;
-    --lol-font-weight-lg: 400;
+		--lol-font-family-beaufort: "beaufort";
+		--lol-font-family-spiegel: "spiegel";
 
-    --lol-font-family-beaufort: 'beaufort';
-    --lol-font-family-spiegel: 'spiegel';
+		--lol-gradient-gold: linear-gradient(
+			to top,
+			var(--lol-color-gold-500),
+			var(--lol-color-gold-400),
+			var(--lol-color-gold-200)
+		);
+		--lol-gradient-gold-hover: linear-gradient(
+			to top,
+			var(--lol-color-gold-400),
+			var(--lol-color-gold-200),
+			var(--lol-color-gold-100)
+		);
+		--lol-gradient-gold-press: linear-gradient(
+			to top,
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-500)
+		);
 
-    --lol-gradient-gold: linear-gradient(to top, var(--lol-color-gold-500), var(--lol-color-gold-400), var(--lol-color-gold-200));
-    --lol-gradient-gold-hover: linear-gradient(to top, var(--lol-color-gold-400), var(--lol-color-gold-200), var(--lol-color-gold-100));
-    --lol-gradient-gold-press: linear-gradient(to top, var(--lol-color-gold-600), var(--lol-color-gold-600), var(--lol-color-gold-500));
+		--lol-gradient-grey-300: linear-gradient(
+			to top,
+			var(--lol-color-grey-300),
+			var(--lol-color-grey-300),
+			var(--lol-color-grey-300)
+		);
+		--lol-gradient-grey-focus: linear-gradient(
+			to top,
+			var(--lol-color-grey-200),
+			var(--lol-color-grey-300),
+			var(--lol-color-grey-300)
+		);
+		--lol-gradient-hextech-black: linear-gradient(
+			to top,
+			var(--lol-color-hextech-black),
+			var(--lol-color-hextech-black)
+		);
+		--lol-gradient-disabled: linear-gradient(
+			to top,
+			var(--lol-color-grey-150),
+			var(--lol-color-grey-150),
+			var(--lol-color-grey-150)
+		);
+		--lol-gradient-transparent: linear-gradient(
+			to top,
+			transparent,
+			transparent
+		);
 
-    --lol-gradient-grey-300: linear-gradient(to top, var(--lol-color-grey-300), var(--lol-color-grey-300), var(--lol-color-grey-300));
-    --lol-gradient-grey-focus: linear-gradient(to top, var(--lol-color-grey-200), var(--lol-color-grey-300), var(--lol-color-grey-300));
-    --lol-gradient-hextech-black: linear-gradient(to top, var(--lol-color-hextech-black), var(--lol-color-hextech-black));
-    --lol-gradient-disabled: linear-gradient(to top, var(--lol-color-grey-150), var(--lol-color-grey-150), var(--lol-color-grey-150));
-    --lol-gradient-transparent: linear-gradient(to top, transparent, transparent);
+		--lol-gradient-hextech: linear-gradient(
+			to top,
+			var(--lol-color-blue-200),
+			var(--lol-color-blue-400)
+		);
+		--lol-gradient-hextech-hover: linear-gradient(
+			to top,
+			var(--lol-color-blue-100),
+			var(--lol-color-blue-300)
+		);
+		--lol-gradient-hextech-press: linear-gradient(
+			to top,
+			var(--lol-color-blue-500),
+			var(--lol-color-blue-400)
+		);
 
-    --lol-gradient-hextech: linear-gradient(to top, var(--lol-color-blue-200), var(--lol-color-blue-400));
-    --lol-gradient-hextech-hover: linear-gradient(to top, var(--lol-color-blue-100), var(--lol-color-blue-300));
-    --lol-gradient-hextech-press: linear-gradient(to top, var(--lol-color-blue-500), var(--lol-color-blue-400));
-
-
-    --lol-form-height-small: 2rem;
-    --lol-form-height-medium: 2.25rem;
-    --lol-form-height-large: 2.5rem;
-  }
+		--lol-form-height-small: 2rem;
+		--lol-form-height-medium: 2.25rem;
+		--lol-form-height-large: 2.5rem;
+	}
 }

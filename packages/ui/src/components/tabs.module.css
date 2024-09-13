@@ -47,6 +47,11 @@
 		left: 0;
 		height: 1px;
 		width: 100%;
-		background: linear-gradient(to right, transparent, var(--lol-color-gold-200), transparent);
+		background: linear-gradient(
+			to right,
+			transparent,
+			var(--lol-color-gold-200),
+			transparent
+		);
 	}
 }

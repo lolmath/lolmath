@@ -1,8 +1,8 @@
 "use client";
 
 import { cva } from "cva";
-import React from "react";
-import { type Key, VisuallyHidden, useFilter } from "react-aria";
+import React, { useMemo } from "react";
+import { type Key, VisuallyHidden } from "react-aria";
 import {
 	Button as AriaButton,
 	ComboBox,
@@ -15,13 +15,11 @@ import {
 	TagGroup,
 	TagList,
 } from "react-aria-components";
-import { type ListData, useListData } from "react-stately";
 import { Button } from "../button";
 import { Text } from "../typography/text";
 import closed from "./closed.png";
 import classes from "./multiple-select.module.css";
 import selectClasses from "./select.module.css";
-export { useListData } from "react-stately";
 
 const multiSelect = cva({
 	base: classes.multiSelect,
@@ -67,10 +65,9 @@ interface MultipleSelectProps<T extends SelectedKey>
 		| "onInputChange"
 	> {
 	items: Array<T>;
-	selectedItems: ListData<T>;
+	selectedItems: Array<T>;
 	className?: string;
-	onItemInserted?: (key: Key) => void;
-	onItemCleared?: (key: Key) => void;
+	onChange?: (items: Array<T>) => void;
 	renderEmptyState?: (inputValue: string) => React.ReactNode;
 	tag: (item: T) => React.ReactNode;
 	children: React.ReactNode | ((item: T) => React.ReactNode);
@@ -82,8 +79,7 @@ export function MultipleSelect<T extends SelectedKey>({
 	children,
 	items,
 	selectedItems,
-	onItemCleared,
-	onItemInserted,
+	onChange,
 	className,
 	name,
 	renderEmptyState,
@@ -94,75 +90,67 @@ export function MultipleSelect<T extends SelectedKey>({
 	const triggerRef = React.useRef<HTMLDivElement | null>(null);
 	const [width, setWidth] = React.useState(0);
 
-	const { contains } = useFilter({ sensitivity: "base" });
-	const selectedKeys = selectedItems.items.map((i) => i.id);
-
-	const filter = React.useCallback(
-		(item: T, filterText: string) =>
-			!selectedKeys.includes(item.id) && contains(item.name, filterText),
-		[contains, selectedKeys],
-	);
-
-	const accessibleList = useListData({
-		initialItems: items,
-		filter,
-	});
-
+	const selectedKeys = selectedItems.map((i) => i.id);
 	const [fieldState, setFieldState] = React.useState<FieldState>({
 		selectedKey: null,
 		inputValue: "",
 	});
 
+	const accessibleItems = useMemo(
+		() =>
+			items
+				.filter(
+					(item) => !selectedItems.some((selected) => selected.id === item.id),
+				)
+				.filter((item) =>
+					item.name.toLowerCase().includes(fieldState.inputValue.toLowerCase()),
+				),
+		[selectedItems, fieldState.inputValue, items],
+	);
+
 	const onRemove = React.useCallback(
 		(keys: Set<Key>) => {
 			const key = keys.values().next().value;
-			selectedItems.remove(key);
+
+			onChange?.(selectedItems.filter((i) => i.id !== key));
+
 			setFieldState({ inputValue: "", selectedKey: null });
-			onItemCleared?.(key);
 		},
-		[selectedItems, onItemCleared],
+		[selectedItems, onChange],
 	);
 
 	const onSelectionChange = (id: Key | null) => {
 		if (!id) return;
 
-		const item = accessibleList.getItem(id);
+		const item = items.find((i) => i.id === id);
 
 		if (!item) return;
 
 		if (!selectedKeys.includes(id)) {
-			selectedItems.append(item);
+			onChange?.([...selectedItems, item]);
 			setFieldState({
 				inputValue: "",
 				selectedKey: id,
 			});
-			onItemInserted?.(id);
 		}
-
-		accessibleList.setFilterText("");
 	};
 	const onInputChange = (v: string) => {
 		setFieldState((prevState) => ({
 			inputValue: v,
 			selectedKey: v === "" ? null : prevState.selectedKey,
 		}));
-
-		accessibleList.setFilterText(v);
 	};
 
 	const popLast = React.useCallback(() => {
-		const endKey = selectedItems.items[selectedItems.items.length - 1];
-
-		if (endKey !== null) {
-			selectedItems.remove(endKey.id);
-			onItemCleared?.(endKey.id);
+		if (selectedItems.length > 0) {
+			onChange?.(selectedItems.slice(0, -1));
 		}
 
 		setFieldState({
 			inputValue: "",
 			selectedKey: null,
 		});
-	}, [selectedItems, onItemCleared]);
+	}, [selectedItems, onChange]);
 
 	const onKeyDownCapture = React.useCallback(
 		(e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -205,10 +193,7 @@ export function MultipleSelect<T extends SelectedKey>({
 								id={tagGroupIdentifier}
 								onRemove={onRemove}
 							>
-								<TagList
-									items={selectedItems.items}
-									className={classes.tagList}
-								>
+								<TagList items={selectedItems} className={classes.tagList}>
 									{props.tag}
 								</TagList>
 							</TagGroup>
@@ -217,7 +202,7 @@ export function MultipleSelect<T extends SelectedKey>({
 								aria-label="Available items"
 								allowsEmptyCollection
 								className={classes.comboBox}
-								items={accessibleList.items}
+								items={accessibleItems}
 								selectedKey={fieldState.selectedKey}
 								inputValue={fieldState.inputValue}
 								onSelectionChange={onSelectionChange}
@@ -230,7 +215,6 @@ export function MultipleSelect<T extends SelectedKey>({
 											inputValue: "",
 											selectedKey: null,
 										});
-										accessibleList.setFilterText("");
 									}}
 									onKeyDownCapture={onKeyDownCapture}
 									{...props.inputProps}

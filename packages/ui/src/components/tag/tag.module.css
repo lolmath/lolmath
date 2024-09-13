@@ -3,7 +3,12 @@
 		var(--lol-multiple-select-border-gradient) border-box;
 
 	--lol-multiple-select-border-gradient: var(--lol-gradient-gold);
-	--lol-multiple-select-background-gradient: linear-gradient(to top, var(--lol-color-gold-600), var(--lol-color-gold-600), var(--lol-color-gold-700));
+	--lol-multiple-select-background-gradient: linear-gradient(
+		to top,
+		var(--lol-color-gold-600),
+		var(--lol-color-gold-600),
+		var(--lol-color-gold-700)
+	);
 
 	border: 2px solid transparent;
 

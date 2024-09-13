@@ -44,3 +44,21 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {},
 };
+
+export const TonsOfItems: Story = {
+	args: {},
+	render: () => (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				☰
+			</Button>
+			<Menu>
+				{Array.from({ length: 100 }, (_, i) => (
+					<MenuItem key={i} onAction={() => alert(`Item ${i} action`)}>
+						Item {i}
+					</MenuItem>
+				))}
+			</Menu>
+		</MenuTrigger>
+	),
+};

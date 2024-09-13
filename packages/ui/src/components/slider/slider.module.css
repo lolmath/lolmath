@@ -16,7 +16,11 @@
 	}
 
 	.foreground {
-		background-image: linear-gradient(to right, var(--lol-color-gold-600), var(--lol-color-gold-500));
+		background-image: linear-gradient(
+			to right,
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-500)
+		);
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
@@ -30,11 +34,21 @@
 	}
 
 	.track:hover .foreground {
-		background-image: linear-gradient(to right, var(--lol-color-gold-500), var(--lol-color-gold-400), var(--lol-color-gold-200));
+		background-image: linear-gradient(
+			to right,
+			var(--lol-color-gold-500),
+			var(--lol-color-gold-400),
+			var(--lol-color-gold-200)
+		);
 	}
 
 	.track:active .foreground {
-		background-image: linear-gradient(to right, var(--lol-color-gold-500), var(--lol-color-gold-600), var(--lol-color-gold-600));
+		background-image: linear-gradient(
+			to right,
+			var(--lol-color-gold-500),
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-600)
+		);
 	}
 
 	.thumb {

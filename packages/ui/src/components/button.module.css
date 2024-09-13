@@ -44,14 +44,11 @@
 		}
 	}
 
-
 	.primary,
 	.secondary,
 	.hextech,
 	.dimmed {
-
 		&:not(.square, .round) {
-
 			&.small {
 				padding: 0 0.5rem;
 			}
@@ -63,13 +60,10 @@
 			&.large {
 				padding: 0 1rem;
 			}
-
 		}
 	}
 
-
 	.text {
-
 		&.round,
 		&.square {
 			&.hover {
@@ -89,7 +83,7 @@
 				left: -0.5rem;
 				bottom: -0.5rem;
 				right: -0.5rem;
-				content: '';
+				content: "";
 			}
 		}
 
@@ -148,17 +142,31 @@
 
 	.primary {
 		--lol-button-border-gradient: var(--lol-gradient-gold);
-		--lol-button-background-gradient: linear-gradient(to top, var(--lol-color-gold-600), var(--lol-color-gold-600), var(--lol-color-gold-700));
+		--lol-button-background-gradient: linear-gradient(
+			to top,
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-700)
+		);
 
 		&.hover {
-			--lol-button-background-gradient: linear-gradient(to top, var(--lol-color-gold-600), var(--lol-color-gold-600), var(--lol-color-gold-500));
+			--lol-button-background-gradient: linear-gradient(
+				to top,
+				var(--lol-color-gold-600),
+				var(--lol-color-gold-600),
+				var(--lol-color-gold-500)
+			);
 		}
 
 		&.press {
-			--lol-button-background-gradient: linear-gradient(to top, var(--lol-color-gold-600), var(--lol-color-gold-700), var(--lol-color-gold-700));
+			--lol-button-background-gradient: linear-gradient(
+				to top,
+				var(--lol-color-gold-600),
+				var(--lol-color-gold-700),
+				var(--lol-color-gold-700)
+			);
 		}
 	}
-
 
 	.secondary {
 		--lol-button-border-gradient: var(--lol-gradient-gold);
@@ -171,13 +179,11 @@
 		--lol-button-border-gradient: var(--lol-gradient-gold-hover);
 	}
 
-
 	.primary.press,
 	.secondary.press,
 	.dimmed.press {
 		--lol-button-border-gradient: var(--lol-gradient-gold-press);
 	}
-
 
 	.primary.disabled,
 	.secondary.disabled,
@@ -187,7 +193,6 @@
 
 	.primary.focusVisible,
 	.secondary.focusVisible {
-
 		outline-color: var(--lol-color-gold-400);
 	}
 
@@ -197,7 +202,7 @@
 
 	.round,
 	.square {
-		aspect-ratio: 1/1;
+		aspect-ratio: 1 / 1;
 		padding: 0px;
 		font-weight: 900;
 	}

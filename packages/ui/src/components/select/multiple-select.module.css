@@ -20,7 +20,6 @@
 		--lol-select-border-gradient: var(--lol-gradient-gold-hover);
 	}
 
-
 	&.disabled {
 		--lol-select-border-gradient: var(--lol-gradient-disabled);
 	}

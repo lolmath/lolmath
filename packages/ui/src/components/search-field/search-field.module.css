@@ -12,7 +12,7 @@
 	}
 
 	.input {
-		background: url('./search.png') no-repeat 5px center,
+		background: url("./search.png") no-repeat 5px center,
 			var(--lol-search-field-background-gradient) padding-box,
 			var(--lol-search-field-border-gradient) border-box;
 
@@ -59,7 +59,6 @@
 			min-height: var(--lol-form-height-large);
 		}
 	}
-
 
 	.button {
 		grid-area: button;

@@ -4,9 +4,7 @@
 	"private": false,
 	"description": "lolmath.net UI",
 	"type": "module",
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"scripts": {
 		"build": "modern build",
 		"dev": "modern build --watch",
@@ -41,16 +39,16 @@
 		"email": "incoming+lol-math-lolmath-41959739-1qbix14106nxnde3k5iusimi8-issue@incoming.gitlab.com"
 	},
 	"devDependencies": {
-		"@modern-js/module-tools": "^2.58.3",
+		"@modern-js/module-tools": "^2.60.0",
 		"@types/react": "^18.3.5",
 		"@types/react-dom": "^18.3.0",
 		"publint": "^0.2.10",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
-		"tailwindcss": "^3.4.10",
-		"typescript": "^5.5.4",
-		"vite-node": "^2.0.5",
-		"vitest": "^2.0.5"
+		"tailwindcss": "^3.4.11",
+		"typescript": "^5.6.2",
+		"vite-node": "^2.1.1",
+		"vitest": "^2.1.1"
 	},
 	"peerDependencies": {
 		"react": ">=18",
