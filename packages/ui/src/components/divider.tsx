@@ -1,4 +1,4 @@
-import { cva } from "cva";
+import { cva, cx } from "cva";
 import classes from "./divider.module.css";
 
 const divider = cva({
@@ -18,14 +18,17 @@ interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 export function Divider({
 	preset = "center",
-	hrProps,
+	hrProps: { className: hrClassName, ...hrProps } = {},
 	className,
 	...rest
 }: DividerProps) {
 	return (
-		<div className={classes.wrapper} {...rest}>
+		<div className={cx(classes.wrapper, className)} {...rest}>
 			{preset === "right" && <div className={classes.block} />}
-			<hr {...hrProps} className={divider({ preset, className })} />
+			<hr
+				{...hrProps}
+				className={divider({ preset, className: hrClassName })}
+			/>
 			{preset === "left" && <div className={classes.block} />}
 		</div>
 	);
