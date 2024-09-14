@@ -3,31 +3,26 @@
 		height: 1px;
 		flex-grow: 1;
 		border: none;
+		display: flex;
 	}
 
 	.left {
-		background-image: linear-gradient(
-			to right,
-			rgba(0, 0, 0, 0),
-			var(--lol-color-gold-600)
-		);
+		background-image: linear-gradient(to right,
+				rgba(0, 0, 0, 0),
+				var(--lol-color-gold-600));
 	}
 
 	.center {
-		background-image: linear-gradient(
-			to right,
-			rgba(0, 0, 0, 0),
-			var(--lol-color-gold-600),
-			rgba(0, 0, 0, 0)
-		);
+		background-image: linear-gradient(to right,
+				rgba(0, 0, 0, 0),
+				var(--lol-color-gold-600),
+				rgba(0, 0, 0, 0));
 	}
 
 	.right {
-		background-image: linear-gradient(
-			to right,
-			var(--lol-color-gold-600),
-			rgba(0, 0, 0, 0)
-		);
+		background-image: linear-gradient(to right,
+				var(--lol-color-gold-600),
+				rgba(0, 0, 0, 0));
 	}
 
 	.block {
@@ -40,5 +35,13 @@
 	.wrapper {
 		display: flex;
 		align-items: center;
+		flex-grow: 1;
+	}
+
+
+	.childrenWrapper {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
 	}
 }

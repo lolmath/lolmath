@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Divider } from "@lolmath/ui";
+import { Divider, Heading } from "@lolmath/ui";
 
 const meta = {
 	title: "Divider",
@@ -25,5 +25,25 @@ export const Left: Story = {
 export const Right: Story = {
 	args: {
 		preset: "right",
+	},
+};
+
+export const WithChildren: Story = {
+	args: {
+		children: <Heading preset="h4">Text</Heading>,
+	},
+};
+
+export const WithChildrenLeft: Story = {
+	args: {
+		preset: "left",
+		children: <Heading preset="h4">Text</Heading>,
+	},
+};
+
+export const WithChildrenRight: Story = {
+	args: {
+		preset: "right",
+		children: <Heading preset="h4">Text</Heading>,
 	},
 };
