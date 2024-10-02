@@ -16,13 +16,13 @@ const meta = {
 	argTypes: {},
 	render: () => {
 		return (
-			<Accordion>
-				<AccordionItem value="item-1">
+			<Accordion defaultExpandedKeys={["item-1"]}>
+				<AccordionItem id="item-1">
 					<AccordionTrigger>Title A</AccordionTrigger>
 					<AccordionContent>test</AccordionContent>
 				</AccordionItem>
 
-				<AccordionItem value="item-2">
+				<AccordionItem id="item-2">
 					<AccordionTrigger>Title B</AccordionTrigger>
 					<AccordionContent>
 						Yes. It's unstyled by default, giving you freedom over the look and
@@ -30,7 +30,7 @@ const meta = {
 					</AccordionContent>
 				</AccordionItem>
 
-				<AccordionItem value="item-3">
+				<AccordionItem id="item-3">
 					<AccordionTrigger>Title C</AccordionTrigger>
 					<AccordionContent>
 						Yes! You can animate the Accordion with CSS or JavaScript.
@@ -56,7 +56,7 @@ export const WithOneItem: Story = {
 	render: () => {
 		return (
 			<Accordion>
-				<AccordionItem value="item-1">
+				<AccordionItem id="item-1">
 					<AccordionTrigger>Title A</AccordionTrigger>
 					<AccordionContent>test</AccordionContent>
 				</AccordionItem>

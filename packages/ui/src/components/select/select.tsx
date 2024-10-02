@@ -36,6 +36,7 @@ interface SelectProps<T extends object>
 	label?: string;
 	description?: string;
 	errorMessage?: string;
+	items?: Iterable<T>;
 	children?: ReactNode | ((item: T) => ReactNode);
 	size?: "small" | "medium" | "large";
 }
@@ -46,6 +47,7 @@ export function Select<T extends object>({
 	description,
 	errorMessage,
 	children,
+	items,
 	className,
 	size = "medium",
 	...props
@@ -66,7 +68,9 @@ export function Select<T extends object>({
 						<AriaText slot="errorMessage">{errorMessage}</AriaText>
 					)}
 					<AriaPopover offset={4} className={classes.popover}>
-						<AriaListBox className={classes.listBox}>{children}</AriaListBox>
+						<AriaListBox className={classes.listBox} items={items}>
+							{children}
+						</AriaListBox>
 					</AriaPopover>
 				</>
 			)}

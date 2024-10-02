@@ -4,7 +4,9 @@
 	"private": false,
 	"description": "lolmath.net UI",
 	"type": "module",
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "modern build",
 		"dev": "modern build --watch",
@@ -21,7 +23,7 @@
 	"dependencies": {
 		"cva": "1.0.0-beta.1",
 		"react-aria": "^3.34.3",
-		"react-aria-components": "1.3.3",
+		"react-aria-components": "^1.4.0",
 		"react-stately": "^3.32.2"
 	},
 	"publishConfig": {
