@@ -41,6 +41,7 @@ export function Tooltip({ children, className, ...props }: TooltipProps) {
 				tooltip({
 					...values,
 					className,
+					placement: values.placement ?? undefined,
 				}),
 			)}
 		>
@@ -51,7 +52,10 @@ export function Tooltip({ children, className, ...props }: TooltipProps) {
 							<>
 								<svg
 									viewBox="0 0 12 6"
-									className={arrow(values)}
+									className={arrow({
+										...values,
+										placement: values.placement ?? undefined,
+									})}
 									width={20}
 									height={10}
 								>

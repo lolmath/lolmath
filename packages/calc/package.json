@@ -5,7 +5,9 @@
 	"type": "module",
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.js",
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "tsup",
 		"dev": "tsup --watch",
@@ -27,15 +29,15 @@
 	},
 	"devDependencies": {
 		"@structured-types/api": "^3.46.12",
-		"@types/node": "^22.5.4",
-		"@vitest/coverage-v8": "^2.1.1",
-		"tsup": "^8.2.4",
-		"turbo": "^2.1.2",
-		"typescript": "^5.6.2",
-		"vite-node": "^2.1.1",
-		"vitest": "^2.1.1"
+		"@types/node": "^22.10.1",
+		"@vitest/coverage-v8": "^2.1.6",
+		"tsup": "^8.3.5",
+		"turbo": "^2.3.3",
+		"typescript": "^5.7.2",
+		"vite-node": "^2.1.6",
+		"vitest": "^2.1.6"
 	},
 	"dependencies": {
-		"publint": "^0.2.10"
+		"publint": "^0.2.12"
 	}
 }

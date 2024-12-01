@@ -4,9 +4,9 @@ import { cx } from "cva";
 import {
 	Button,
 	type ButtonProps,
-	UNSTABLE_Disclosure as Disclosure,
-	UNSTABLE_DisclosureGroup as DisclosureGroup,
-	UNSTABLE_DisclosurePanel as DisclosurePanel,
+	Disclosure,
+	DisclosureGroup,
+	DisclosurePanel,
 	type DisclosurePanelProps,
 	type DisclosureProps,
 	composeRenderProps,
