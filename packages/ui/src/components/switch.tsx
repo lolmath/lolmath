@@ -1,4 +1,4 @@
-import { cva, cx } from "cva";
+import { cx } from "cva";
 import {
 	Switch as AriaSwitch,
 	composeRenderProps,
@@ -6,42 +6,6 @@ import {
 import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
 import classes from "./switch.module.css";
 import textClasses from "./typography/text.module.css";
-
-const track = cva({
-	base: classes.track,
-	variants: {
-		isHovered: {
-			true: classes.hover,
-		},
-		isPressed: {
-			true: classes.press,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isSelected: {
-			true: classes.selected,
-		},
-	},
-});
-
-const knob = cva({
-	base: classes.knob,
-	variants: {
-		isSelected: {
-			true: classes.selected,
-		},
-		isHovered: {
-			true: classes.hover,
-		},
-		isPressed: {
-			true: classes.press,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-	},
-});
 
 export function Switch({
 	className,
@@ -66,8 +30,8 @@ export function Switch({
 		>
 			{(values) => (
 				<>
-					<div className={track(values)}>
-						<span className={knob(values)} />
+					<div className={classes.track}>
+						<span className={classes.knob} />
 					</div>
 					{typeof children === "function" ? children(values) : children}
 				</>

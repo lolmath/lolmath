@@ -14,11 +14,11 @@
 			background-image: var(--lol-gradient-grey-300);
 		}
 
-		&.disabled {
+		&[data-disabled] {
 			background-image: var(--lol-gradient-disabled);
 		}
 
-		&.focusWithin {
+		&[data-focus-within] {
 			background-image: var(--lol-gradient-gold-hover);
 		}
 
@@ -45,7 +45,7 @@
 		width: 100%;
 		outline: none;
 
-		&.disabled {
+		&[data-disabled] {
 			background-color: var(--lol-color-grey-300);
 			color: var(--lol-color-grey-100);
 		}
@@ -60,7 +60,7 @@
 		background-color: var(--lol-color-hextech-black);
 		padding: 0 0.625rem;
 
-		&.disabled {
+		&[data-disabled] {
 			color: var(--lol-color-grey-150);
 			background-color: var(--lol-color-grey-300);
 		}

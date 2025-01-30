@@ -1,4 +1,4 @@
-import { cva } from "cva";
+import { cx } from "cva";
 import {
 	Checkbox as AriaCheckbox,
 	type CheckboxProps,
@@ -12,23 +12,11 @@ import imageIndeterminate from "./indeterminate.png";
 import imageUncheckedHover from "./unchecked-hover.png";
 import imageUnchecked from "./unchecked.png";
 
-const checkbox = cva({
-	base: classes.checkbox,
-	variants: {
-		isHovered: {
-			true: classes.hover,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-	},
-});
-
 export function Checkbox({ children, className, ...props }: CheckboxProps) {
 	return (
 		<AriaCheckbox
-			className={composeRenderProps(className, (className, values) =>
-				checkbox({ ...values, className }),
+			className={composeRenderProps(className, (className) =>
+				cx(classes.checkbox, className),
 			)}
 			{...props}
 		>

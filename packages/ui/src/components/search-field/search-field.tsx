@@ -12,27 +12,11 @@ import classes from "./search-field.module.css";
 const searchFieldInput = cva({
 	base: classes.input,
 	variants: {
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isFocused: {
-			true: classes.focus,
-		},
 		size: {
 			small: classes.small,
 			medium: classes.medium,
 			large: classes.large,
 		},
-	},
-});
-
-const searchFieldButton = cva({
-	base: classes.button,
-	variants: {
-		isHovered: { true: classes.hover },
-		isPressed: { true: classes.press },
-		isDisabled: { true: classes.disabled },
-		isEmpty: { true: classes.empty },
 	},
 });
 
@@ -66,17 +50,7 @@ export function SearchField({
 						)}
 						type="text"
 					/>
-					<AriaButton
-						className={(buttonValues) =>
-							searchFieldButton({
-								...buttonValues,
-								isDisabled: values.isDisabled,
-								isEmpty: values.isEmpty,
-							})
-						}
-					>
-						✕
-					</AriaButton>
+					<AriaButton className={classes.button}>✕</AriaButton>
 				</>
 			)}
 		</AriaSearchField>

@@ -9,31 +9,31 @@
 		"deploy": "wrangler pages deploy ./storybook-static --project-name lolmath-ui --branch $CI_COMMIT_REF_NAME"
 	},
 	"dependencies": {
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
-		"react-icons": "^5.3.0"
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-icons": "^5.4.0"
 	},
 	"devDependencies": {
 		"@lolmath/ui": "workspace:*",
-		"@storybook/addon-essentials": "^8.4.6",
-		"@storybook/addon-interactions": "^8.4.6",
-		"@storybook/addon-links": "^8.4.6",
-		"@storybook/addon-themes": "^8.4.6",
-		"@storybook/blocks": "^8.4.6",
-		"@storybook/cli": "^8.4.6",
-		"@storybook/manager-api": "^8.4.6",
-		"@storybook/react": "^8.4.6",
-		"@storybook/react-vite": "^8.4.6",
-		"@storybook/theming": "^8.4.6",
-		"@types/react": "^18.3.12",
-		"@types/react-dom": "^18.3.1",
+		"@storybook/addon-essentials": "^8.5.2",
+		"@storybook/addon-interactions": "^8.5.2",
+		"@storybook/addon-links": "^8.5.2",
+		"@storybook/addon-themes": "^8.5.2",
+		"@storybook/blocks": "^8.5.2",
+		"@storybook/cli": "^8.5.2",
+		"@storybook/manager-api": "^8.5.2",
+		"@storybook/react": "^8.5.2",
+		"@storybook/react-vite": "^8.5.2",
+		"@storybook/theming": "^8.5.2",
+		"@types/react": "^19.0.8",
+		"@types/react-dom": "^19.0.3",
 		"@vitejs/plugin-react-swc": "^3.7.2",
 		"autoprefixer": "^10.4.20",
-		"postcss": "^8.4.49",
+		"postcss": "^8.5.1",
 		"prop-types": "^15.8.1",
-		"storybook": "^8.4.6",
-		"typescript": "^5.7.2",
-		"vite": "^6.0.1",
-		"wrangler": "^3.91.0"
+		"storybook": "^8.5.2",
+		"typescript": "^5.7.3",
+		"vite": "^6.0.11",
+		"wrangler": "^3.107.0"
 	}
 }

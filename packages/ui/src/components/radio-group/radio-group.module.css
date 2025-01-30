@@ -20,34 +20,34 @@
 		background-image: url("./unchecked.png");
 		color: var(--lol-color-grey-100);
 
-		&.selected {
+		&[data-selected] {
 			color: var(--lol-color-gold-100);
 			background-image: url("./checked.png");
 		}
 
-		&.disabled {
+		&[data-disabled] {
 			color: var(--lol-color-grey-150);
 			background-image: url("./unchecked-disabled.png");
 
-			&.selected {
+			&[data-selected] {
 				background-image: url("./checked-disabled.png");
 			}
 		}
 
-		&.hovered {
+		&[data-hovered] {
 			color: var(--lol-color-gold-100);
 			background-image: url("./unchecked-hovered.png");
 
-			&.selected {
+			&[data-selected] {
 				background-image: url("./checked-hovered.png");
 			}
 		}
 
-		&.pressed {
+		&[data-pressed] {
 			color: var(--lol-color-grey-150);
 			background-image: url("./unchecked-pressed.png");
 
-			&.selected {
+			&[data-selected] {
 				background-image: url("./checked-pressed.png");
 			}
 		}

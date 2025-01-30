@@ -19,12 +19,6 @@ const numberFieldGroup = cva({
 			normal: classes.normal,
 			dimmed: classes.dimmed,
 		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isFocusWithin: {
-			true: classes.focusWithin,
-		},
 		size: {
 			small: classes.small,
 			medium: classes.medium,
@@ -41,15 +35,6 @@ const numberFieldInput = cva({
 		},
 		isFocused: {
 			true: classes.focus,
-		},
-	},
-});
-
-const numberFieldButton = cva({
-	base: classes.button,
-	variants: {
-		isDisabled: {
-			true: classes.disabled,
 		},
 	},
 });
@@ -85,10 +70,7 @@ export function NumberField({
 								}),
 						)}
 					>
-						<Button
-							className={(values) => numberFieldButton(values)}
-							slot="decrement"
-						>
+						<Button className={classes.button} slot="decrement">
 							-
 						</Button>
 						<AriaInput
@@ -102,10 +84,7 @@ export function NumberField({
 									}),
 							)}
 						/>
-						<Button
-							className={(values) => numberFieldButton(values)}
-							slot="increment"
-						>
+						<Button className={classes.button} slot="increment">
 							+
 						</Button>
 					</Group>

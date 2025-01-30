@@ -15,8 +15,6 @@ import classes from "./text-field.module.css";
 export const textField = cva({
 	base: classes.textField,
 	variants: {
-		isDisabled: { true: classes.disabled },
-		isFocused: { true: classes.focus },
 		size: {
 			small: classes.small,
 			medium: classes.medium,

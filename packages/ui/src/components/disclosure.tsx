@@ -2,21 +2,21 @@
 
 import { cx } from "cva";
 import {
+	Disclosure as AriaDisclosure,
+	DisclosureGroup as AriaDisclosureGroup,
+	DisclosurePanel as AriaDisclosurePanel,
 	Button,
 	type ButtonProps,
-	Disclosure,
-	DisclosureGroup,
-	DisclosurePanel,
 	type DisclosurePanelProps,
 	type DisclosureProps,
 	composeRenderProps,
 } from "react-aria-components";
 
-import classes from "./accordion.module.css";
+import classes from "./disclosure.module.css";
 
-export const Accordion = DisclosureGroup;
+export const DisclosureGroup = AriaDisclosureGroup;
 
-export function AccordionTrigger({
+export function DisclosureButton({
 	children,
 	className,
 	...props
@@ -25,7 +25,7 @@ export function AccordionTrigger({
 		<Button
 			{...props}
 			className={composeRenderProps(className, (className) =>
-				cx(classes.trigger, className),
+				cx(classes.disclosureButton, className),
 			)}
 			slot="trigger"
 		>
@@ -39,25 +39,22 @@ export function AccordionTrigger({
 	);
 }
 
-export function AccordionItem({ className, ...props }: DisclosureProps) {
+export function Disclosure({ className, ...props }: DisclosureProps) {
 	return (
-		<Disclosure
+		<AriaDisclosure
 			{...props}
 			className={composeRenderProps(className, (className) =>
-				cx(className, classes.item),
+				cx(className, classes.disclosure),
 			)}
 		/>
 	);
 }
 
-export function AccordionContent({
-	className,
-	...props
-}: DisclosurePanelProps) {
+export function DisclosurePanel({ className, ...props }: DisclosurePanelProps) {
 	return (
-		<DisclosurePanel
+		<AriaDisclosurePanel
 			className={composeRenderProps(className, (className) =>
-				cx(className, classes.content),
+				cx(className, classes.disclosurePanel),
 			)}
 			{...props}
 		/>

@@ -25,12 +25,12 @@
 		display: flex;
 		width: 100%;
 
-		&.disabled {
+		&[data-disabled] {
 			--lol-input-border-gradient: var(--lol-gradient-disabled);
 			color: var(--lol-color-grey-150);
 		}
 
-		&.focus {
+		&[data-focused] {
 			--lol-input-border-gradient: var(--lol-gradient-gold-hover);
 			--lol-input-background-gradient: var(--lol-gradient-grey-focus);
 		}

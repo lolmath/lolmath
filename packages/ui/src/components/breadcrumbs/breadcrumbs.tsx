@@ -1,4 +1,4 @@
-import { cva, cx } from "cva";
+import { cx } from "cva";
 import {
 	Breadcrumb as AriaBreadcrumb,
 	Breadcrumbs as AriaBreadcrumbs,
@@ -22,13 +22,6 @@ export function Breadcrumbs<T extends object>({
 	);
 }
 
-const breadcrumbLink = cva({
-	base: classes.link,
-	variants: {
-		isHovered: { true: classes.hover },
-	},
-});
-
 export function Breadcrumb({
 	className,
 	...props
@@ -42,14 +35,7 @@ export function Breadcrumb({
 				cx(classes.item, className),
 			)}
 		>
-			<Link
-				className={(values) =>
-					breadcrumbLink({
-						isHovered: values.isHovered,
-					})
-				}
-				{...props}
-			/>
+			<Link className={classes.link} {...props} />
 			{props.href && <img src={divider} alt="" className={classes.divider} />}
 		</AriaBreadcrumb>
 	);

@@ -1,5 +1,5 @@
 @layer lol {
-	.trigger {
+	.disclosureButton {
 		color: var(--lol-color-grey-100);
 		font-family: var(--lol-font-family-beaufort);
 
@@ -25,7 +25,7 @@
 		font-size: var(--lol-font-size-sm);
 	}
 
-	.item {
+	.disclosure {
 		border-bottom: 1px solid var(--lol-color-gold-600);
 
 		&:last-of-type {
@@ -33,9 +33,24 @@
 		}
 	}
 
-	.content {
-		padding: 1rem 0;
+	.disclosurePanel {
 		color: var(--lol-color-grey-100);
 		font-family: var(--lol-font-family-spiegel);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition-behavior: allow-discrete;
+			interpolate-size: allow-keywords;
+
+			overflow-y: clip;
+
+			transition-property: content-visibility, height;
+			transition-timing-function: ease;
+			transition-duration: 150ms;
+
+			height: auto;
+			&[aria-hidden="true"] {
+				height: 0;
+			}
+		}
 	}
 }

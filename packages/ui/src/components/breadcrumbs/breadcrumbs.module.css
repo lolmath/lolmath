@@ -19,7 +19,7 @@
 		letter-spacing: 0.1em;
 		padding: 0 1rem;
 
-		&.hover {
+		&[data-hovered] {
 			color: var(--lol-color-gold-100);
 		}
 	}

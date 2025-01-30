@@ -112,32 +112,28 @@ export function Slider<T extends number | number[]>({
 												: undefined;
 
 										return (
-											<>
-												<AriaSliderThumb
-													key={i}
-													index={i}
-													style={{
-														zIndex,
-													}}
-													{...sliderThumbProps}
-													className={composeRenderProps(
-														sliderThumbProps.className,
-														(className, sliderThumbRenderProps) =>
-															sliderThumb({
-																isDisabled: sliderThumbRenderProps.isDisabled,
-																isThumbDragging:
-																	sliderThumbRenderProps.state.isThumbDragging(
-																		i,
-																	),
-																isOtherThumbDragging:
-																	sliderThumbRenderProps.state.isThumbDragging(
-																		i === 1 ? 0 : 1,
-																	),
-																className,
-															}),
-													)}
-												/>
-											</>
+											<AriaSliderThumb
+												key={i}
+												index={i}
+												style={{
+													zIndex,
+												}}
+												{...sliderThumbProps}
+												className={composeRenderProps(
+													sliderThumbProps.className,
+													(className, sliderThumbRenderProps) =>
+														sliderThumb({
+															isDisabled: sliderThumbRenderProps.isDisabled,
+															isThumbDragging:
+																sliderThumbRenderProps.state.isThumbDragging(i),
+															isOtherThumbDragging:
+																sliderThumbRenderProps.state.isThumbDragging(
+																	i === 1 ? 0 : 1,
+																),
+															className,
+														}),
+												)}
+											/>
 										);
 									})}
 								</>

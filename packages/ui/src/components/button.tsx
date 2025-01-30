@@ -33,21 +33,6 @@ export const button = cva({
 			hextech: classes.hextech,
 			dimmed: classes.dimmed,
 		},
-		isHovered: {
-			true: classes.hover,
-		},
-		isPressed: {
-			true: classes.press,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isFocused: {
-			true: "",
-		},
-		isFocusVisible: {
-			true: classes.focusVisible,
-		},
 		shape: {
 			round: classes.round,
 			square: classes.square,

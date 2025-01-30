@@ -33,7 +33,7 @@
 		}
 	}
 
-	.track:hover .foreground {
+	.track:hover .foreground:not(.disabled) {
 		background-image: linear-gradient(
 			to right,
 			var(--lol-color-gold-500),
@@ -42,7 +42,7 @@
 		);
 	}
 
-	.track:active .foreground {
+	.track:active .foreground:not(.disabled) {
 		background-image: linear-gradient(
 			to right,
 			var(--lol-color-gold-500),
@@ -70,7 +70,8 @@
 		}
 	}
 
-	.track:hover .thumb:not(.thumbDragging):not(.otherThumbDragging) {
+	.track:hover
+		.thumb:not(.thumbDragging):not(.otherThumbDragging):not(.disabled) {
 		background-image: url(./hover.png);
 	}
 }

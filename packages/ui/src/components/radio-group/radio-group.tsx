@@ -1,4 +1,4 @@
-import { cva, cx } from "cva";
+import { cx } from "cva";
 import {
 	Radio as AriaRadio,
 	RadioGroup as AriaRadioGroup,
@@ -19,24 +19,12 @@ export function RadioGroup({ className, ...props }: AriaRadiogroupProps) {
 	);
 }
 
-const radio = cva({
-	base: classes.radio,
-	variants: {
-		isDisabled: { true: classes.disabled },
-		isHovered: { true: classes.hovered },
-		isSelected: { true: classes.selected },
-		isPressed: { true: classes.pressed },
-	},
-});
 export function Radio({ className, ...props }: AriaRadioProps) {
 	return (
 		<AriaRadio
 			{...props}
-			className={composeRenderProps(className, (className, values) =>
-				radio({
-					className,
-					...values,
-				}),
+			className={composeRenderProps(className, (className) =>
+				cx(classes.radio, className),
 			)}
 		/>
 	);

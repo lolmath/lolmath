@@ -1,5 +1,5 @@
 import { cva } from "cva";
-import { createElement } from "react";
+import { type JSX, createElement } from "react";
 import classes from "./heading.module.css";
 
 export type HeadingColor = "gold100" | "gold200" | "gold400" | "grey100";

@@ -37,12 +37,12 @@
 			-webkit-appearance: none;
 		}
 
-		&.disabled {
+		&[data-disabled] {
 			--lol-search-field-border-gradient: var(--lol-gradient-disabled);
 			color: var(--lol-color-grey-150);
 		}
 
-		&.focus {
+		&[data-focused] {
 			--lol-search-field-border-gradient: var(--lol-gradient-gold-hover);
 			--lol-search-field-background-gradient: var(--lol-gradient-grey-focus);
 		}
@@ -74,16 +74,16 @@
 
 		color: var(--lol-color-gold-300);
 
-		&.hover {
+		&[data-hovered] {
 			color: var(--lol-color-gold-100);
 		}
 
-		&.press {
+		&[data-pressed] {
 			color: var(--lol-color-gold-600);
 		}
 
-		&.empty,
-		&.disabled {
+		&[data-empty],
+		&[data-disabled] {
 			display: none;
 		}
 	}

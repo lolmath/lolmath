@@ -1,11 +1,10 @@
 import "./style.css";
 
 export { RouterProvider } from "react-aria-components";
-export * from "./components/accordion";
+export * from "./components/disclosure";
 export * from "./components/breadcrumbs/breadcrumbs";
 export * from "./components/button-link";
 export * from "./components/button";
-export * from "./components/card";
 export * from "./components/checkbox/checkbox";
 export * from "./components/divider";
 export * from "./components/modal";

@@ -17,18 +17,6 @@ const button = cva({
 			hextech: classes.hextech,
 			dimmed: classes.dimmed,
 		},
-		isHovered: {
-			true: classes.hover,
-		},
-		isPressed: {
-			true: classes.press,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isFocusVisible: {
-			true: classes.focusVisible,
-		},
 		shape: {
 			round: classes.round,
 			square: classes.square,
@@ -36,9 +24,6 @@ const button = cva({
 		},
 		thin: {
 			true: classes.thin,
-		},
-		isSelected: {
-			true: classes.selected,
 		},
 		size: {
 			small: classes.small,

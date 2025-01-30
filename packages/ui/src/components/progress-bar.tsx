@@ -1,4 +1,5 @@
 import { cx } from "cva";
+import type { JSX } from "react";
 import {
 	ProgressBar as AriaProgressBar,
 	type ProgressBarProps as AriaProgressBarProps,

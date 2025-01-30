@@ -36,11 +36,11 @@
 	background-color: currentColor;
 	mask-size: contain;
 
-	&.hover {
+	&[data-hovered] {
 		background-color: var(--lol-color-gold-100);
 	}
 
-	&.press {
+	&[data-pressed] {
 		background-color: var(--lol-color-grey-150);
 	}
 }

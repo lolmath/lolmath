@@ -1,4 +1,4 @@
-import { cva } from "cva";
+import { cx } from "cva";
 import {
 	Menu as AriaMenu,
 	MenuItem as AriaMenuItem,
@@ -30,24 +30,6 @@ export function Menu<T extends object>({
 	);
 }
 
-const menuItem = cva({
-	base: classes.item,
-	variants: {
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isHovered: {
-			true: classes.hover,
-		},
-		isPressed: {
-			true: classes.press,
-		},
-		isFocusVisible: {
-			true: classes.focusVisible,
-		},
-	},
-});
-
 export type MenuItemProps<T extends object> = AriaMenuItemProps<T>;
 
 export function MenuItem<T extends object>({
@@ -59,10 +41,7 @@ export function MenuItem<T extends object>({
 		<AriaMenuItem<T>
 			{...props}
 			className={composeRenderProps(className, (className, values) =>
-				menuItem({
-					className,
-					...values,
-				}),
+				cx(classes.item, className),
 			)}
 		>
 			{children}

@@ -1,6 +1,6 @@
 "use client";
 
-import { cva, cx } from "cva";
+import { cx } from "cva";
 import {
 	Tab as AriaTab,
 	TabList as AriaTabList,
@@ -31,36 +31,12 @@ export function TabList<T extends object>({
 	);
 }
 
-const tab = cva({
-	base: classes.tab,
-	variants: {
-		isSelected: {
-			true: classes.selected,
-		},
-		isHovered: {
-			true: classes.hovered,
-		},
-		isPressed: {
-			true: classes.pressed,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isFocusVisible: {
-			true: classes.focusVisible,
-		},
-	},
-});
-
 export function Tab({ children, className, ...rest }: TabProps) {
 	return (
 		<AriaTab
 			{...rest}
-			className={composeRenderProps(className, (className, values) =>
-				tab({
-					...values,
-					className,
-				}),
+			className={composeRenderProps(className, (className) =>
+				cx(classes.tab, className),
 			)}
 		>
 			{(values) => (

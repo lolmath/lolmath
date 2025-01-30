@@ -19,10 +19,7 @@ import classes from "./select.module.css";
 const select = cva({
 	base: classes.button,
 	variants: {
-		isHovered: { true: classes.hover },
-		isPressed: { true: classes.press },
 		isOpen: { true: classes.open },
-		isDisabled: { true: classes.disabled },
 		size: {
 			small: classes.small,
 			medium: classes.medium,

@@ -24,7 +24,7 @@
 		outline-style: solid;
 		outline-offset: 2px;
 
-		&:not(.focusVisible) {
+		&:not([data-focus-visible]) {
 			outline: none;
 		}
 
@@ -41,6 +41,26 @@
 		&.large {
 			font-size: var(--lol-font-size-base);
 			min-height: var(--lol-form-height-large);
+		}
+
+		&[data-hovered] {
+			color: var(--lol-color-gold-100);
+		}
+
+		/* order is important */
+		&[data-pressed] {
+			color: var(--lol-color-grey-150);
+		}
+
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+			cursor: default;
+		}
+
+		&[data-selected] {
+			--lol-button-background-gradient: var(--lol-gradient-hextech);
+			box-shadow: inset 0 2px 4px 0 var(--lol-color-grey-300);
+			color: var(--lol-color-blue-100);
 		}
 	}
 
@@ -66,7 +86,7 @@
 	.text {
 		&.round,
 		&.square {
-			&.hover {
+			&[data-hovered] {
 				--lol-button-background-gradient: var(--lol-gradient-grey-300);
 				--lol-button-border-gradient: var(--lol-gradient-transparent);
 			}
@@ -87,22 +107,9 @@
 			}
 		}
 
-		&.focusVisible {
+		&[data-focus-visible] {
 			outline-color: var(--lol-color-gold-400);
 		}
-	}
-
-	.hover {
-		color: var(--lol-color-gold-100);
-	}
-
-	.press {
-		color: var(--lol-color-grey-150);
-	}
-
-	.disabled {
-		color: var(--lol-color-grey-150);
-		cursor: default;
 	}
 
 	.hextech {
@@ -110,22 +117,22 @@
 		--lol-button-border-gradient: var(--lol-gradient-hextech);
 		--lol-button-background-gradient: var(--lol-gradient-grey-300);
 
-		&.hover {
+		&[data-hovered] {
 			color: var(--lol-color-blue-100);
 			--lol-button-border-gradient: var(--lol-gradient-hextech-hover);
 		}
 
-		&.press {
+		&[data-pressed] {
 			color: var(--lol-color-blue-400);
 			--lol-button-border-gradient: var(--lol-gradient-hextech-press);
 		}
 
-		&.disabled {
+		&[data-disabled] {
 			color: var(--lol-color-grey-150);
 			--lol-button-border-gradient: var(--lol-gradient-disabled);
 		}
 
-		&.focusVisible {
+		&[data-focus-visible] {
 			outline-color: var(--lol-color-blue-400);
 		}
 	}
@@ -135,7 +142,7 @@
 		--lol-button-border-gradient: var(--lol-gradient-grey-300);
 
 		&.selected,
-		&.focusVisible {
+		&[data-focus-visible] {
 			--lol-button-border-gradient: var(--lol-gradient-gold);
 		}
 	}
@@ -149,7 +156,7 @@
 			var(--lol-color-gold-700)
 		);
 
-		&.hover {
+		&[data-hovered] {
 			--lol-button-background-gradient: linear-gradient(
 				to top,
 				var(--lol-color-gold-600),
@@ -158,7 +165,7 @@
 			);
 		}
 
-		&.press {
+		&[data-pressed] {
 			--lol-button-background-gradient: linear-gradient(
 				to top,
 				var(--lol-color-gold-600),
@@ -173,26 +180,26 @@
 		--lol-button-background-gradient: var(--lol-gradient-grey-300);
 	}
 
-	.primary.hover,
-	.secondary.hover,
-	.dimmed.hover {
+	.primary[data-hovered],
+	.secondary[data-hovered],
+	.dimmed[data-hovered] {
 		--lol-button-border-gradient: var(--lol-gradient-gold-hover);
 	}
 
-	.primary.press,
-	.secondary.press,
-	.dimmed.press {
+	.primary[data-pressed],
+	.secondary[data-pressed],
+	.dimmed[data-pressed] {
 		--lol-button-border-gradient: var(--lol-gradient-gold-press);
 	}
 
-	.primary.disabled,
-	.secondary.disabled,
-	.dimmed.disabled {
+	.primary[data-disabled],
+	.secondary[data-disabled],
+	.dimmed[data-disabled] {
 		--lol-button-border-gradient: var(--lol-gradient-disabled);
 	}
 
-	.primary.focusVisible,
-	.secondary.focusVisible {
+	.primary[data-focus-visible],
+	.secondary[data-focus-visible] {
 		outline-color: var(--lol-color-gold-400);
 	}
 
@@ -209,11 +216,5 @@
 
 	.thin {
 		border-width: 1px;
-	}
-
-	.selected {
-		--lol-button-background-gradient: var(--lol-gradient-hextech);
-		box-shadow: inset 0 2px 4px 0 var(--lol-color-grey-300);
-		color: var(--lol-color-blue-100);
 	}
 }

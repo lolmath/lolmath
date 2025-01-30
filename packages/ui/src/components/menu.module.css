@@ -30,17 +30,17 @@
 	letter-spacing: var(--lol-letter-spacing-sm);
 	color: var(--lol-color-gold-300);
 
-	&.disabled {
+	&[data-disabled] {
 		color: var(--lol-color-grey-150);
 	}
 
-	&.hover,
-	&.focusVisible {
+	&[data-hovered],
+	&[data-focus-visible] {
 		background: var(--lol-color-grey-300);
 		color: var(--lol-color-gold-100);
 	}
 
-	&.press {
+	&[data-pressed] {
 		color: var(--lol-color-gold-300);
 	}
 }
