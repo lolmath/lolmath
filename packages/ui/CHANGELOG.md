@@ -1,5 +1,16 @@
 # @lolmath/ui
 
+## 4.1.0
+
+### Minor Changes
+
+- 42c4e04: Export RouterProvider to allow for client-side routing customization. See also https://react-spectrum.adobe.com/react-aria/routing.html#app-router
+
+### Patch Changes
+
+- 66836c7: Use default cursor for disabled links
+- a1e3c51: Fix select colors
+
 ## 4.0.0
 
 ### Major Changes
