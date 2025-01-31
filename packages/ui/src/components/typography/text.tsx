@@ -1,5 +1,6 @@
 import { cva } from "cva";
 import { createElement } from "react";
+import type { JSX } from "react";
 import {
 	Label as AriaLabel,
 	type LabelProps as AriaLabelProps,
