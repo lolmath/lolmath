@@ -41,7 +41,7 @@ export function MenuItem<T extends object>({
 		<AriaMenuItem<T>
 			{...props}
 			className={composeRenderProps(className, (className, values) =>
-				cx(classes.item, className),
+				cx(classes.item, className, values),
 			)}
 		>
 			{children}
