@@ -1,7 +1,5 @@
 import { cva } from "cva";
 import {
-	DialogTrigger as AriaDialogTrigger,
-	type DialogTriggerProps as AriaDialogTriggerProps,
 	Heading as AriaHeading,
 	type HeadingProps as AriaHeadingProps,
 	Modal as AriaModal,
@@ -85,8 +83,4 @@ export function DialogHeading({ className, ...props }: AriaHeadingProps) {
 
 export function DialogButtons({ children }: { children: React.ReactNode }) {
 	return <div className={classes.dialogButtons}>{children}</div>;
-}
-
-export function DialogTrigger(props: AriaDialogTriggerProps) {
-	return <AriaDialogTrigger {...props} />;
 }

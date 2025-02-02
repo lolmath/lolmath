@@ -1,186 +1,82 @@
+import { cva } from "cva";
+import type { PopoverProps } from "react-aria-components";
 import {
-	FloatingFocusManager,
-	FloatingPortal,
-	type Placement,
-	autoUpdate,
-	flip,
-	offset,
-	shift,
-	useClick,
-	useDismiss,
-	useFloating,
-	useInteractions,
-	useMergeRefs,
-	useRole,
-} from "@floating-ui/react";
-import * as React from "react";
+	Popover as AriaPopover,
+	Dialog,
+	OverlayArrow,
+	composeRenderProps,
+} from "react-aria-components";
+import classes from "./popover.module.css";
 
-interface PopoverOptions {
-	initialOpen?: boolean;
-	placement?: Placement;
-	modal?: boolean;
-	open?: boolean;
-	onOpenChange?: (open: boolean) => void;
-}
 
-export function usePopover({
-	initialOpen = false,
-	placement = "bottom",
-	modal,
-	open: controlledOpen,
-	onOpenChange: setControlledOpen,
-}: PopoverOptions = {}) {
-	const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen);
-	const [labelId, setLabelId] = React.useState<string | undefined>();
-	const [descriptionId, setDescriptionId] = React.useState<
-		string | undefined
-	>();
+// Note: there is no tooltip component. Tooltips do not work on mobile devices.
+// Use a text on the page instead, or use a toggle tip (which is a popover that
+// is used only for informational purposes).
 
-	const open = controlledOpen ?? uncontrolledOpen;
-	const setOpen = setControlledOpen ?? setUncontrolledOpen;
+const popover = cva({
+	base: classes.popover,
+	variants: {
+		placement: {
+			bottom: classes.bottom,
+			top: classes.top,
+			left: classes.left,
+			right: classes.right,
+			center: "",
+		},
+	},
+});
 
-	const data = useFloating({
-		placement,
-		open,
-		onOpenChange: setOpen,
-		whileElementsMounted: autoUpdate,
-		middleware: [
-			offset(5),
-			flip({
-				crossAxis: placement.includes("-"),
-				fallbackAxisSideDirection: "end",
-				padding: 5,
-			}),
-			shift({ padding: 5 }),
-		],
-	});
+const arrow = cva({
+	base: classes.arrow,
+	variants: {
+		placement: {
+			top: classes.top,
+			bottom: classes.bottom,
+			left: classes.left,
+			right: classes.right,
+			center: "",
+		},
+	},
+});
 
-	const context = data.context;
-
-	const click = useClick(context, {
-		enabled: controlledOpen == null,
-	});
-	const dismiss = useDismiss(context);
-	const role = useRole(context);
-
-	const interactions = useInteractions([click, dismiss, role]);
-
-	return React.useMemo(
-		() => ({
-			open,
-			setOpen,
-			...interactions,
-			...data,
-			modal,
-			labelId,
-			descriptionId,
-			setLabelId,
-			setDescriptionId,
-		}),
-		[open, setOpen, interactions, data, modal, labelId, descriptionId],
-	);
-}
-
-type ContextType =
-	| (ReturnType<typeof usePopover> & {
-			setLabelId: React.Dispatch<React.SetStateAction<string | undefined>>;
-			setDescriptionId: React.Dispatch<
-				React.SetStateAction<string | undefined>
-			>;
-	  })
-	| null;
-
-const PopoverContext = React.createContext<ContextType>(null);
-
-export const usePopoverContext = () => {
-	const context = React.useContext(PopoverContext);
-
-	if (context == null) {
-		throw new Error("Popover components must be wrapped in <Popover />");
-	}
-
-	return context;
-};
-
-export function Popover({
-	children,
-	modal = false,
-	...restOptions
-}: {
-	children: React.ReactNode;
-} & PopoverOptions) {
-	// This can accept any props as options, e.g. `placement`,
-	// or other positioning options.
-	const popover = usePopover({ modal, ...restOptions });
+export function Popover({ children, className, ...props }: PopoverProps) {
 	return (
-		<PopoverContext.Provider value={popover}>
-			{children}
-		</PopoverContext.Provider>
-	);
-}
-
-interface PopoverTriggerProps {
-	children: React.ReactNode;
-	asChild?: boolean;
-}
-
-export const PopoverTrigger = React.forwardRef<
-	HTMLElement,
-	React.HTMLProps<HTMLElement> & PopoverTriggerProps
->(function PopoverTrigger({ children, asChild = false, ...props }, propRef) {
-	const context = usePopoverContext();
-	// biome-ignore lint/suspicious/noExplicitAny:
-	const childrenRef = (children as any).ref;
-	const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
-
-	// `asChild` allows the user to pass any element as the anchor
-	if (asChild && React.isValidElement(children)) {
-		return React.cloneElement(
-			children,
-			context.getReferenceProps({
-				ref,
-				...props,
-				...children.props,
-				"data-state": context.open ? "open" : "closed",
-			}),
-		);
-	}
-
-	return (
-		<button
-			ref={ref}
-			type="button"
-			// The user can style the trigger based on the state
-			data-state={context.open ? "open" : "closed"}
-			{...context.getReferenceProps(props)}
+		<AriaPopover
+			{...props}
+			className={composeRenderProps(className, (className, values) =>
+				popover({
+					...values,
+					className,
+					placement: values.placement ?? undefined,
+				}),
+			)}
 		>
-			{children}
-		</button>
+			{(values) => (
+				<>
+					<OverlayArrow>
+						{(values) => (
+							<>
+								<svg
+									viewBox="0 0 12 6"
+									className={arrow({
+										...values,
+										placement: values.placement ?? undefined,
+									})}
+									width={20}
+									height={10}
+									aria-hidden="true"
+								>
+									<path d="M0 0,L6 6,L12 0" className={classes.outer} />
+									<path d="M2 0 6 4 10 0" className={classes.inner} />
+								</svg>
+							</>
+						)}
+					</OverlayArrow>
+					<Dialog>
+						{typeof children === "function" ? children(values) : children}
+					</Dialog>
+				</>
+			)}
+		</AriaPopover>
 	);
-});
-
-export const PopoverContent = React.forwardRef<
-	HTMLDivElement,
-	React.HTMLProps<HTMLDivElement>
->(function PopoverContent({ style, ...props }, propRef) {
-	const { context: floatingContext, ...context } = usePopoverContext();
-	const ref = useMergeRefs([context.refs.setFloating, propRef]);
-
-	if (!floatingContext.open) return null;
-
-	return (
-		<FloatingPortal>
-			<FloatingFocusManager context={floatingContext} modal={context.modal}>
-				<div
-					ref={ref}
-					style={{ ...context.floatingStyles, ...style }}
-					aria-labelledby={context.labelId}
-					aria-describedby={context.descriptionId}
-					{...context.getFloatingProps(props)}
-				>
-					{props.children}
-				</div>
-			</FloatingFocusManager>
-		</FloatingPortal>
-	);
-});
+}

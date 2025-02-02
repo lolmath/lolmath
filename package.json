@@ -2,10 +2,7 @@
 	"name": "@lolmath/monorepo",
 	"version": "0.0.0",
 	"private": true,
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	],
+	"workspaces": ["apps/*", "packages/*"],
 	"scripts": {
 		"docs": "turbo run docs",
 		"build": "turbo run build",
@@ -14,7 +11,7 @@
 		"deploy": "turbo run deploy --env-mode=loose",
 		"typecheck": "turbo run typecheck",
 		"dev": "turbo run dev",
-		"dev:ui:storybook": "turbo run dev --filter ui-storybook",
+		"dev:ui:storybook": "turbo run dev --filter @lolmath/ui-storybook",
 		"publish-packages": "turbo run build lint test && changeset version && changeset publish",
 		"changeset": "changeset",
 		"fix": "npx @biomejs/biome check --write"

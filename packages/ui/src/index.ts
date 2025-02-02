@@ -1,6 +1,6 @@
 import "./style.css";
 
-export { RouterProvider } from "react-aria-components";
+export { RouterProvider, DialogTrigger } from "react-aria-components";
 export * from "./components/disclosure";
 export * from "./components/breadcrumbs/breadcrumbs";
 export * from "./components/button-link";
@@ -20,7 +20,7 @@ export * from "./components/tabs";
 export * from "./components/text-area";
 export * from "./components/text-field";
 export * from "./components/toggle-button";
-export * from "./components/tooltip";
+export * from "./components/popover";
 export * from "./components/typography/heading";
 export * from "./components/typography/text";
 export * from "./components/menu";
