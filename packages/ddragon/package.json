@@ -10,6 +10,10 @@
 	"description": "Get data from League of Legends Ddragon API.",
 	"license": "MIT",
 	"author": "Mees van Dongen",
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
 	"scripts": {
 		"build": "tsc ",
 		"lint": "publint",
