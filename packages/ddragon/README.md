@@ -12,8 +12,9 @@ import { Ddragon } from "@lolmath/ddragon";
 const dd = new Ddragon({
   version: "6.24.1", // defaults to 8.9.1
   language: "ja_JP", // defaults to en_US
-  baseurl: "https://ddragon.leagueoflegends.com" // defaults to https://dragon.leagueoflegends.com
-  urlTransformer: (url) => url // defaults to (url) => url
+  dataBaseUrl: "https://ddragon.leagueoflegends.com/cdn" // defaults to https://ddragon.leagueoflegends.com/cdn
+  imageBaseUrl: "https://ddragon.leagueoflegends.com/cdn" // defaults to https://ddragon.leagueoflegends.com/cdn
+  imageUrlTransformer: (url) => url // defaults to (url) => url
 });
 
 dd.images.splash("Cassiopeia", 0); // https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Cassiopeia_0.jpg

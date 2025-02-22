@@ -32,7 +32,7 @@ export interface DdragonOptions {
 	language?: Language;
 	imageBaseUrl?: string;
 	dataBaseUrl?: string;
-	urlTransformer?: (url: string) => string;
+	imageUrlTransformer?: (url: string) => string;
 }
 
 export function createDdragon(options?: DdragonOptions) {
@@ -40,14 +40,14 @@ export function createDdragon(options?: DdragonOptions) {
 	let _language: Language = "en_US";
 	let _imageBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
 	let _dataBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
-	let _urlTransformer: (url: string) => string = (url) => url;
+	let _imageUrlTransformer: (url: string) => string = (url) => url;
 
 	function configure({
 		version,
 		language,
 		imageBaseUrl,
 		dataBaseUrl,
-		urlTransformer,
+		imageUrlTransformer,
 	}: DdragonOptions) {
 		if (version) {
 			_version = version;
@@ -61,8 +61,8 @@ export function createDdragon(options?: DdragonOptions) {
 		if (dataBaseUrl) {
 			_dataBaseUrl = dataBaseUrl;
 		}
-		if (urlTransformer) {
-			_urlTransformer = urlTransformer;
+		if (imageUrlTransformer) {
+			_imageUrlTransformer = imageUrlTransformer;
 		}
 	}
 
@@ -73,7 +73,7 @@ export function createDdragon(options?: DdragonOptions) {
 		 * Gets the splash image of a champion + skin
 		 */
 		splash(name: string, num: number) {
-			return _urlTransformer(
+			return _imageUrlTransformer(
 				`${_imageBaseUrl}/img/champion/splash/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
 			);
 		},
@@ -81,7 +81,7 @@ export function createDdragon(options?: DdragonOptions) {
 		 * Gets the loading image of a champion + skin
 		 */
 		loading(name: string, num: number) {
-			return _urlTransformer(
+			return _imageUrlTransformer(
 				`${_imageBaseUrl}/img/champion/loading/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
 			);
 		},
@@ -89,7 +89,7 @@ export function createDdragon(options?: DdragonOptions) {
 		 * Get the champion tile of a champion + skin
 		 */
 		tile(name: string, num: number) {
-			return _urlTransformer(
+			return _imageUrlTransformer(
 				`${_imageBaseUrl}/img/champion/tiles/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
 			);
 		},
@@ -97,7 +97,7 @@ export function createDdragon(options?: DdragonOptions) {
 		 * Get the champion centered image of a champion + skin
 		 */
 		centered(name: string, num: number) {
-			return _urlTransformer(
+			return _imageUrlTransformer(
 				`${_imageBaseUrl}/img/champion/centered/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
 			);
 		},
@@ -105,50 +105,52 @@ export function createDdragon(options?: DdragonOptions) {
 		 * A champion square
 		 */
 		champion(full: string): string {
-			return _urlTransformer(
+			return _imageUrlTransformer(
 				`${_imageBaseUrl}/${_version}/img/champion/${full}`,
 			);
 		},
 		item: (full: string): string => {
-			return _urlTransformer(`${_imageBaseUrl}/${_version}/img/item/${full}`);
+			return _imageUrlTransformer(`${_imageBaseUrl}/${_version}/img/item/${full}`);
 		},
 		map(full: string) {
-			return _urlTransformer(`${_imageBaseUrl}/${_version}/img/map/${full}`);
+			return _imageUrlTransformer(`${_imageBaseUrl}/${_version}/img/map/${full}`);
 		},
 		mission(full: string) {
-			return _urlTransformer(
+			return _imageUrlTransformer(
 				`${_imageBaseUrl}/${_version}/img/mission/${full}`,
 			);
 		},
 		passive(full: string) {
-			return _urlTransformer(
+			return _imageUrlTransformer(
 				`${_imageBaseUrl}/${_version}/img/passive/${full}`,
 			);
 		},
 		profileicon(full: string) {
-			return _urlTransformer(
+			return _imageUrlTransformer(
 				`${_imageBaseUrl}/${_version}/img/profileicon/${full}`,
 			);
 		},
 		spell(full: string) {
-			return _urlTransformer(`${_imageBaseUrl}/${_version}/img/spell/${full}`);
+			return _imageUrlTransformer(`${_imageBaseUrl}/${_version}/img/spell/${full}`);
 		},
 		summoner(full: string) {
 			return images.spell(full);
 		},
 		sprite(sprite: string) {
-			return _urlTransformer(
+			return _imageUrlTransformer(
 				`${_imageBaseUrl}/${_version}/img/sprite/${sprite}`,
 			);
 		},
 		rune(icon: string) {
-			return _urlTransformer(`${_imageBaseUrl}/img/${icon}`);
+			return _imageUrlTransformer(`${_imageBaseUrl}/img/${icon}`);
 		},
 		/**
 		 * A stat rune
 		 */
 		statMod(statName: string) {
-			return `${_imageBaseUrl}/img/perk-images/StatMods/StatMods${statName}Icon.webp`;
+			return _imageUrlTransformer(
+				`${_imageBaseUrl}/img/perk-images/StatMods/StatMods${statName}Icon.webp`,
+			);
 		},
 	};
 
@@ -216,11 +218,11 @@ export function createDdragon(options?: DdragonOptions) {
 }
 
 export function withWebp(
-	options?: Omit<DdragonOptions, "imageBaseUrl" | "urlTransformer">,
+	options?: Omit<DdragonOptions, "imageBaseUrl" | "imageUrlTransformer">,
 ): DdragonOptions {
 	return {
 		...options,
 		imageBaseUrl: "https://ddragon-webp.lolmath.net",
-		urlTransformer: (url) => url.replace(/.(png|jpg|jpeg)$/, ".webp"),
+		imageUrlTransformer: (url) => url.replace(/.(png|jpg|jpeg)$/, ".webp"),
 	};
 }

@@ -15,7 +15,7 @@ describe("constructor", () => {
 			version: "1.1.1",
 			language: "el_GR",
 			dataBaseUrl: "https://test.com",
-			urlTransformer: (url) => url,
+			imageUrlTransformer: (url) => url,
 		});
 		const championsUrl = dd.data.champions();
 		expect(championsUrl).toContain("1.1.1");
@@ -43,10 +43,20 @@ describe(".configure", () => {
 		dd.configure({ language: "el_GR" });
 		expect(dd.data.champions()).toContain("el_GR");
 	});
-	it("updates the baseurl", () => {
+	it("updates the data base url", () => {
 		const dd = createDdragon();
 		dd.configure({ dataBaseUrl: "https://test.com" });
 		expect(dd.data.champions()).toContain("https://test.com");
+	});
+	it("updates the image base url", () => {
+		const dd = createDdragon();
+		dd.configure({ imageBaseUrl: "https://test.com" });
+		expect(dd.images.tile("Fiddlesticks", 1)).toContain("https://test.com");
+	});
+	it("updates the url transformer", () => {
+		const dd = createDdragon();
+		dd.configure({ imageUrlTransformer: (url) => `${url}?test` });
+		expect(dd.images.tile("Fiddlesticks", 1)).toContain("?test");
 	});
 });
 
