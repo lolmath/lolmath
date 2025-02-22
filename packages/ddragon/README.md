@@ -7,7 +7,7 @@ ddragon api for League of Legends.
 ## Usage
 
 ```js
-import { Ddragon } from "ddragon";
+import { Ddragon } from "@lolmath/ddragon";
 
 const dd = new Ddragon({
   version: "6.24.1", // defaults to 8.9.1
@@ -34,7 +34,7 @@ ddragon.images.splash("Cassiopeia", 0); // https://ddragon.leagueoflegends.com/c
 ### Webp
 
 ```js
-import { Ddragon, withWebp } from "ddragon";
+import { Ddragon, withWebp } from "@lolmath/ddragon";
 
 const dd = new Ddragon(withWebp());
 
