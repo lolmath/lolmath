@@ -1,0 +1,45 @@
+{
+	"name": "@lolmath/ddragon",
+	"repository": {
+		"url": "https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ddragon",
+		"type": "git"
+	},
+	"homepage": "https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ddragon",
+	"version": "3.5.2",
+	"description": "Get data from League of Legends Ddragon API.",
+	"license": "MIT",
+	"author": "Mees van Dongen",
+	"scripts": {
+		"build": "tsc ",
+		"lint": "publint",
+		"test": "vitest",
+		"typedoc": "typedoc --disableSources --githubPages false --plugin typedoc-plugin-markdown --entryFileName docs.md --readme none --hideBreadcrumbs --excludePrivate --out ./docs ./src"
+	},
+	"targets": {
+		"main": {
+			"optimize": true
+		},
+		"module": {
+			"optimize": true
+		}
+	},
+	"devDependencies": {
+		"publint": "^0.3.6",
+		"typedoc": "^0.27.8",
+		"typedoc-plugin-markdown": "^4.4.2",
+		"vitest": "^3.0.4",
+		"typescript": "^5.7.3"
+	},
+	"files": ["/dist", "/src", "README.md"],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./global": {
+			"types": "./dist/global.d.ts",
+			"import": "./dist/global.js"
+		}
+	},
+	"type": "module"
+}

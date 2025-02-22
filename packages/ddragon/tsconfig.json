@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"outDir": "dist",
+		"rootDir": "src",
+		"declaration": true
+	},
+	"include": ["src/**/*", "src/index.test.ts"],
+	"exclude": ["node_modules", "./src/**/*.test.ts"]
+}
