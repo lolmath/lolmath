@@ -27,10 +27,18 @@ export type Language =
 	| "zh_MY"
 	| "zh_TW";
 
+export interface DdragonOptions {
+	version?: string;
+	language?: Language;
+	baseurl?: string;
+	urlTransformer?: (url: string) => string;
+}
+
 export class Ddragon {
-	private _version: string;
-	private _language: Language;
-	private _baseurl: string;
+	private _version = "9.22.1";
+	private _language: Language = "en_US";
+	private _baseurl = "https://ddragon.leagueoflegends.com/cdn";
+	private urlTransformer: (url: string) => string = (url) => url;
 
 	/**
 	 * Create a new instance of Ddragon
@@ -39,18 +47,28 @@ export class Ddragon {
 	 * @param language The language that will be used for generating URLs
 	 * @param baseurl The baseurl that will be used for generating URLs
 	 */
-	constructor(version?: string, language?: Language, baseurl?: string) {
-		this.configure(version, language, baseurl);
+	constructor(options?: DdragonOptions) {
+		this.configure(options ?? {});
 	}
 
-	public configure(
-		version = "9.22.1",
-		language: Language = "en_US",
-		baseurl = "https://ddragon.leagueoflegends.com",
-	) {
-		this._version = version;
-		this._language = language;
-		this._baseurl = baseurl;
+	public configure({
+		version,
+		language,
+		baseurl,
+		urlTransformer,
+	}: DdragonOptions) {
+		if (version) {
+			this._version = version;
+		}
+		if (language) {
+			this._language = language;
+		}
+		if (baseurl) {
+			this._baseurl = baseurl;
+		}
+		if (urlTransformer) {
+			this.urlTransformer = urlTransformer;
+		}
 	}
 
 	/**
@@ -68,51 +86,71 @@ export class Ddragon {
 		 * Gets the splash image of a champion + skin
 		 */
 		splash: (name: string, num: number) =>
-			`${this._baseurl}/cdn/img/champion/splash/${
-				name === "Fiddlesticks" ? "FiddleSticks" : name
-			}_${num}.jpg`,
+			this.urlTransformer(
+				`${this._baseurl}/img/champion/splash/${
+					name === "Fiddlesticks" ? "FiddleSticks" : name
+				}_${num}.jpg`,
+			),
 		/**
 		 * Gets the loading image of a champion + skin
 		 */
 		loading: (name: string, num: number) =>
-			`${this._baseurl}/cdn/img/champion/loading/${
-				name === "Fiddlesticks" ? "FiddleSticks" : name
-			}_${num}.jpg`,
+			this.urlTransformer(
+				`${this._baseurl}/img/champion/loading/${
+					name === "Fiddlesticks" ? "FiddleSticks" : name
+				}_${num}.jpg`,
+			),
 		/**
 		 * Get the champion tile of a champion + skin
 		 */
 		tile: (name: string, num: number) =>
-			`${this._baseurl}/cdn/img/champion/tiles/${
-				name === "Fiddlesticks" ? "FiddleSticks" : name
-			}_${num}.jpg`,
+			this.urlTransformer(
+				`${this._baseurl}/img/champion/tiles/${
+					name === "Fiddlesticks" ? "FiddleSticks" : name
+				}_${num}.jpg`,
+			),
 		/**
 		 * Get the champion centered image of a champion + skin
 		 */
 		centered: (name: string, num: number) =>
-			`${this._baseurl}/img/champion/centered/${
-				name === "Fiddlesticks" ? "FiddleSticks" : name
-			}_${num}.jpg`,
+			this.urlTransformer(
+				`${this._baseurl}/img/champion/centered/${
+					name === "Fiddlesticks" ? "FiddleSticks" : name
+				}_${num}.jpg`,
+			),
 		/**
 		 * A champion square
 		 */
 		champion: (full: string) =>
-			`${this._baseurl}/cdn/${this._version}/img/champion/${full}`,
+			this.urlTransformer(
+				`${this._baseurl}/${this._version}/img/champion/${full}`,
+			),
 		item: (full: string) =>
-			`${this._baseurl}/cdn/${this._version}/img/item/${full}`,
+			this.urlTransformer(`${this._baseurl}/${this._version}/img/item/${full}`),
 		map: (full: string) =>
-			`${this._baseurl}/cdn/${this._version}/img/map/${full}`,
+			this.urlTransformer(`${this._baseurl}/${this._version}/img/map/${full}`),
 		mission: (full: string) =>
-			`${this._baseurl}/cdn/${this._version}/img/mission/${full}`,
+			this.urlTransformer(
+				`${this._baseurl}/${this._version}/img/mission/${full}`,
+			),
 		passive: (full: string) =>
-			`${this._baseurl}/cdn/${this._version}/img/passive/${full}`,
+			this.urlTransformer(
+				`${this._baseurl}/${this._version}/img/passive/${full}`,
+			),
 		profileicon: (full: string) =>
-			`${this._baseurl}/cdn/${this._version}/img/profileicon/${full}`,
+			this.urlTransformer(
+				`${this._baseurl}/${this._version}/img/profileicon/${full}`,
+			),
 		spell: (full: string) =>
-			`${this._baseurl}/cdn/${this._version}/img/spell/${full}`,
+			this.urlTransformer(
+				`${this._baseurl}/${this._version}/img/spell/${full}`,
+			),
 		summoner: (full: string) => this.images.spell(full),
 		sprite: (sprite: string) =>
-			`${this._baseurl}/cdn/${this._version}/img/sprite/${sprite}`,
-		rune: (icon: string) => `${this._baseurl}/cdn/img/${icon}`,
+			this.urlTransformer(
+				`${this._baseurl}/${this._version}/img/sprite/${sprite}`,
+			),
+		rune: (icon: string) => this.urlTransformer(`${this._baseurl}/img/${icon}`),
 		/**
 		 * A stat rune
 		 */
@@ -122,33 +160,42 @@ export class Ddragon {
 	};
 	public data = {
 		champion: (name: string) =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}champion/${name}.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}champion/${name}.json`,
 		champions: () =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}/champion.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}/champion.json`,
 		championsFull: () =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}/championFull.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}/championFull.json`,
 		item: () =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}/item.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}/item.json`,
 		language: () =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}/language.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}/language.json`,
 		map: () =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}/map.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}/map.json`,
 		missionAssets: () =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}/mission-assets.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}/mission-assets.json`,
 		profileicon: () =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}/profileicon.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}/profileicon.json`,
 		runes: () =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}/runesReforged.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}/runesReforged.json`,
 		summoner: () =>
-			`${this._baseurl}/cdn/${this._version}/data/${this._language}/summoner.json`,
+			`${this._baseurl}/${this._version}/data/${this._language}/summoner.json`,
 	};
 	/**
 	 * A compressed tarball (.tgz) which will contain all assets for a patch.
 	 */
-	dragontail = () => `${this._baseurl}/cdn/dragontail-${this._version}.tgz`;
+	dragontail = () => `${this._baseurl}/dragontail-${this._version}.tgz`;
 	/**
 	 * All supported languages.
 	 */
-	languages = () => `${this._baseurl}/cdn/languages.json`;
+	languages = () => `${this._baseurl}/languages.json`;
 }
 
+export function withWebp(
+	options?: Omit<DdragonOptions, "baseurl" | "urlTransformer">,
+): DdragonOptions {
+	return {
+		...options,
+		baseurl: "https://ddragon-webp.lolmath.net",
+		urlTransformer: (url) => url.replace(/.(png|jpg|jpeg)$/, ".webp"),
+	};
+}

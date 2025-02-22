@@ -3,7 +3,9 @@
 		"target": "ESNext",
 		"outDir": "dist",
 		"rootDir": "src",
-		"declaration": true
+		"declaration": true,
+		"strict": true,
+		"strictNullChecks": true
 	},
 	"include": ["src/**/*", "src/index.test.ts"],
 	"exclude": ["node_modules", "./src/**/*.test.ts"]
