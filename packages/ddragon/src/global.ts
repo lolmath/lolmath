@@ -1,3 +1,3 @@
-import { Ddragon } from "./index";
+import { createDdragon } from "./index";
 
-export const ddragon = new Ddragon();
+export const ddragon = createDdragon();

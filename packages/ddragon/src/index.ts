@@ -30,172 +30,197 @@ export type Language =
 export interface DdragonOptions {
 	version?: string;
 	language?: Language;
-	baseurl?: string;
+	imageBaseUrl?: string;
+	dataBaseUrl?: string;
 	urlTransformer?: (url: string) => string;
 }
 
-export class Ddragon {
-	private _version = "9.22.1";
-	private _language: Language = "en_US";
-	private _baseurl = "https://ddragon.leagueoflegends.com/cdn";
-	private urlTransformer: (url: string) => string = (url) => url;
+export function createDdragon(options?: DdragonOptions) {
+	let _version = "9.22.1";
+	let _language: Language = "en_US";
+	let _imageBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
+	let _dataBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
+	let _urlTransformer: (url: string) => string = (url) => url;
 
-	/**
-	 * Create a new instance of Ddragon
-	 *
-	 * @param version The version that will be used for generating URLs
-	 * @param language The language that will be used for generating URLs
-	 * @param baseurl The baseurl that will be used for generating URLs
-	 */
-	constructor(options?: DdragonOptions) {
-		this.configure(options ?? {});
-	}
-
-	public configure({
+	function configure({
 		version,
 		language,
-		baseurl,
+		imageBaseUrl,
+		dataBaseUrl,
 		urlTransformer,
 	}: DdragonOptions) {
 		if (version) {
-			this._version = version;
+			_version = version;
 		}
 		if (language) {
-			this._language = language;
+			_language = language;
 		}
-		if (baseurl) {
-			this._baseurl = baseurl;
+		if (imageBaseUrl) {
+			_imageBaseUrl = imageBaseUrl;
+		}
+		if (dataBaseUrl) {
+			_dataBaseUrl = dataBaseUrl;
 		}
 		if (urlTransformer) {
-			this.urlTransformer = urlTransformer;
+			_urlTransformer = urlTransformer;
 		}
 	}
 
-	/**
-	 * You can find all valid Data Dragon versions in the versions file. Typically
-	 * there's only a single build of Data Dragon for a given patch, however
-	 * occasionally there will be additional builds. This typically occurs when
-	 * there's an error in the original build. As such, you should always use the
-	 * most recent Data Dragon version for a given patch for the best results.
-	 *
-	 * The latest version is always the first element in the array.
-	 */
-	public versions = () => `${this._baseurl}/api/versions.json`;
-	public images = {
+	configure(options ?? {});
+
+	const images = {
 		/**
 		 * Gets the splash image of a champion + skin
 		 */
-		splash: (name: string, num: number) =>
-			this.urlTransformer(
-				`${this._baseurl}/img/champion/splash/${
-					name === "Fiddlesticks" ? "FiddleSticks" : name
-				}_${num}.jpg`,
-			),
+		splash(name: string, num: number) {
+			return _urlTransformer(
+				`${_imageBaseUrl}/img/champion/splash/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
+			);
+		},
 		/**
 		 * Gets the loading image of a champion + skin
 		 */
-		loading: (name: string, num: number) =>
-			this.urlTransformer(
-				`${this._baseurl}/img/champion/loading/${
-					name === "Fiddlesticks" ? "FiddleSticks" : name
-				}_${num}.jpg`,
-			),
+		loading(name: string, num: number) {
+			return _urlTransformer(
+				`${_imageBaseUrl}/img/champion/loading/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
+			);
+		},
 		/**
 		 * Get the champion tile of a champion + skin
 		 */
-		tile: (name: string, num: number) =>
-			this.urlTransformer(
-				`${this._baseurl}/img/champion/tiles/${
-					name === "Fiddlesticks" ? "FiddleSticks" : name
-				}_${num}.jpg`,
-			),
+		tile(name: string, num: number) {
+			return _urlTransformer(
+				`${_imageBaseUrl}/img/champion/tiles/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
+			);
+		},
 		/**
 		 * Get the champion centered image of a champion + skin
 		 */
-		centered: (name: string, num: number) =>
-			this.urlTransformer(
-				`${this._baseurl}/img/champion/centered/${
-					name === "Fiddlesticks" ? "FiddleSticks" : name
-				}_${num}.jpg`,
-			),
+		centered(name: string, num: number) {
+			return _urlTransformer(
+				`${_imageBaseUrl}/img/champion/centered/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
+			);
+		},
 		/**
 		 * A champion square
 		 */
-		champion: (full: string) =>
-			this.urlTransformer(
-				`${this._baseurl}/${this._version}/img/champion/${full}`,
-			),
-		item: (full: string) =>
-			this.urlTransformer(`${this._baseurl}/${this._version}/img/item/${full}`),
-		map: (full: string) =>
-			this.urlTransformer(`${this._baseurl}/${this._version}/img/map/${full}`),
-		mission: (full: string) =>
-			this.urlTransformer(
-				`${this._baseurl}/${this._version}/img/mission/${full}`,
-			),
-		passive: (full: string) =>
-			this.urlTransformer(
-				`${this._baseurl}/${this._version}/img/passive/${full}`,
-			),
-		profileicon: (full: string) =>
-			this.urlTransformer(
-				`${this._baseurl}/${this._version}/img/profileicon/${full}`,
-			),
-		spell: (full: string) =>
-			this.urlTransformer(
-				`${this._baseurl}/${this._version}/img/spell/${full}`,
-			),
-		summoner: (full: string) => this.images.spell(full),
-		sprite: (sprite: string) =>
-			this.urlTransformer(
-				`${this._baseurl}/${this._version}/img/sprite/${sprite}`,
-			),
-		rune: (icon: string) => this.urlTransformer(`${this._baseurl}/img/${icon}`),
+		champion(full: string): string {
+			return _urlTransformer(
+				`${_imageBaseUrl}/${_version}/img/champion/${full}`,
+			);
+		},
+		item: (full: string): string => {
+			return _urlTransformer(`${_imageBaseUrl}/${_version}/img/item/${full}`);
+		},
+		map(full: string) {
+			return _urlTransformer(`${_imageBaseUrl}/${_version}/img/map/${full}`);
+		},
+		mission(full: string) {
+			return _urlTransformer(
+				`${_imageBaseUrl}/${_version}/img/mission/${full}`,
+			);
+		},
+		passive(full: string) {
+			return _urlTransformer(
+				`${_imageBaseUrl}/${_version}/img/passive/${full}`,
+			);
+		},
+		profileicon(full: string) {
+			return _urlTransformer(
+				`${_imageBaseUrl}/${_version}/img/profileicon/${full}`,
+			);
+		},
+		spell(full: string) {
+			return _urlTransformer(`${_imageBaseUrl}/${_version}/img/spell/${full}`);
+		},
+		summoner(full: string) {
+			return images.spell(full);
+		},
+		sprite(sprite: string) {
+			return _urlTransformer(
+				`${_imageBaseUrl}/${_version}/img/sprite/${sprite}`,
+			);
+		},
+		rune(icon: string) {
+			return _urlTransformer(`${_imageBaseUrl}/img/${icon}`);
+		},
 		/**
 		 * A stat rune
 		 */
-		statMod: (statName: string) => {
-			return `${this._baseurl}/img/perk-images/StatMods/StatMods${statName}Icon.webp`;
+		statMod(statName: string) {
+			return `${_imageBaseUrl}/img/perk-images/StatMods/StatMods${statName}Icon.webp`;
 		},
 	};
-	public data = {
-		champion: (name: string) =>
-			`${this._baseurl}/${this._version}/data/${this._language}champion/${name}.json`,
-		champions: () =>
-			`${this._baseurl}/${this._version}/data/${this._language}/champion.json`,
-		championsFull: () =>
-			`${this._baseurl}/${this._version}/data/${this._language}/championFull.json`,
-		item: () =>
-			`${this._baseurl}/${this._version}/data/${this._language}/item.json`,
+
+	const data = {
+		/**
+		 * You can find all valid Data Dragon versions in the versions file. Typically
+		 * there's only a single build of Data Dragon for a given patch, however
+		 * occasionally there will be additional builds. This typically occurs when
+		 * there's an error in the original build. As such, you should always use the
+		 * most recent Data Dragon version for a given patch for the best results.
+		 *
+		 * The latest version is always the first element in the array.
+		 */
+		versions() {
+			return `${_dataBaseUrl}/api/versions.json`;
+		},
+		/**
+		 * A compressed tarball (.tgz) which will contain all assets for a patch.
+		 */
+		dragontail() {
+			return `${_dataBaseUrl}/dragontail-${_version}.tgz`;
+		},
+		/**
+		 * All supported languages.
+		 */
+		languages() {
+			return `${_dataBaseUrl}/languages.json`;
+		},
+		champion: (name: string) => {
+			return `${_dataBaseUrl}/${_version}/data/${_language}champion/${name}.json`;
+		},
+		champions() {
+			return `${_dataBaseUrl}/${_version}/data/${_language}/champion.json`;
+		},
+		championsFull() {
+			return `${_dataBaseUrl}/${_version}/data/${_language}/championFull.json`;
+		},
+		item() {
+			return `${_dataBaseUrl}/${_version}/data/${_language}/item.json`;
+		},
 		language: () =>
-			`${this._baseurl}/${this._version}/data/${this._language}/language.json`,
-		map: () =>
-			`${this._baseurl}/${this._version}/data/${this._language}/map.json`,
-		missionAssets: () =>
-			`${this._baseurl}/${this._version}/data/${this._language}/mission-assets.json`,
-		profileicon: () =>
-			`${this._baseurl}/${this._version}/data/${this._language}/profileicon.json`,
-		runes: () =>
-			`${this._baseurl}/${this._version}/data/${this._language}/runesReforged.json`,
-		summoner: () =>
-			`${this._baseurl}/${this._version}/data/${this._language}/summoner.json`,
+			`${_dataBaseUrl}/${_version}/data/${_language}/language.json`,
+		map() {
+			return `${_dataBaseUrl}/${_version}/data/${_language}/map.json`;
+		},
+		missionAssets() {
+			return `${_dataBaseUrl}/${_version}/data/${_language}/mission-assets.json`;
+		},
+		profileicon() {
+			return `${_dataBaseUrl}/${_version}/data/${_language}/profileicon.json`;
+		},
+		runes() {
+			return `${_dataBaseUrl}/${_version}/data/${_language}/runesReforged.json`;
+		},
+		summoner() {
+			return `${_dataBaseUrl}/${_version}/data/${_language}/summoner.json`;
+		},
 	};
-	/**
-	 * A compressed tarball (.tgz) which will contain all assets for a patch.
-	 */
-	dragontail = () => `${this._baseurl}/dragontail-${this._version}.tgz`;
-	/**
-	 * All supported languages.
-	 */
-	languages = () => `${this._baseurl}/languages.json`;
+
+	return {
+		configure,
+		images,
+		data,
+	};
 }
 
 export function withWebp(
-	options?: Omit<DdragonOptions, "baseurl" | "urlTransformer">,
+	options?: Omit<DdragonOptions, "imageBaseUrl" | "urlTransformer">,
 ): DdragonOptions {
 	return {
 		...options,
-		baseurl: "https://ddragon-webp.lolmath.net",
+		imageBaseUrl: "https://ddragon-webp.lolmath.net",
 		urlTransformer: (url) => url.replace(/.(png|jpg|jpeg)$/, ".webp"),
 	};
 }

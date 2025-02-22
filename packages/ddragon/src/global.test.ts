@@ -1,17 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { ddragon } from "./global";
-import { Ddragon } from "./index";
 
 describe("Ddragon instance", () => {
-	it("should be an instance of Ddragon", () => {
-		expect(ddragon).toBeInstanceOf(Ddragon);
-	});
-
 	it("should configure", async () => {
 		ddragon.configure({
 			version: "1.1.1",
 			language: "en_GB",
-			baseurl: "https://test.com",
+			dataBaseUrl: "https://test.com",
 		});
 		expect(ddragon.data.champions()).toContain("1.1.1");
 		expect(ddragon.data.champions()).toContain("en_GB");
@@ -20,7 +15,7 @@ describe("Ddragon instance", () => {
 		ddragon.configure({
 			version: "1.2.0",
 			language: "ja_JP",
-			baseurl: "https://test2.com",
+			dataBaseUrl: "https://test2.com",
 		});
 		expect(ddragon.data.champions()).toContain("1.2.0");
 		expect(ddragon.data.champions()).toContain("ja_JP");
