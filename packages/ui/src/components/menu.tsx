@@ -6,7 +6,6 @@ import {
 	type MenuProps as AriaMenuProps,
 	MenuTrigger as AriaMenuTrigger,
 	SubmenuTrigger as AriaSubmenuTrigger,
-	Popover,
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "./menu.module.css";
@@ -22,11 +21,9 @@ export function Menu<T extends object>({
 	...props
 }: MenuProps<T>) {
 	return (
-		<Popover>
-			<AriaMenu<T> {...props} className={classes.menu}>
-				{children}
-			</AriaMenu>
-		</Popover>
+		<AriaMenu<T> {...props} className={cx(classes.menu, className)}>
+			{children}
+		</AriaMenu>
 	);
 }
 

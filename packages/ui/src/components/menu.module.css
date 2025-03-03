@@ -1,46 +1,48 @@
-.menu {
-	max-height: inherit;
-	box-sizing: border-box;
-	overflow: auto;
-	min-width: 150px;
-	outline: none;
+@layer lol {
+	.menu {
+		max-height: inherit;
+		box-sizing: border-box;
+		overflow: auto;
+		min-width: 150px;
+		outline: none;
 
-	background: var(--lol-button-background-gradient) padding-box,
-		var(--lol-button-border-gradient) border-box;
+		background: var(--lol-button-background-gradient) padding-box,
+			var(--lol-button-border-gradient) border-box;
 
-	--lol-button-border-gradient: linear-gradient(
-		to bottom,
-		var(--lol-color-gold-600),
-		var(--lol-color-gold-600),
-		var(--lol-color-gold-500)
-	);
-	--lol-button-background-gradient: var(--lol-gradient-hextech-black);
+		--lol-button-border-gradient: linear-gradient(
+			to bottom,
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-500)
+		);
+		--lol-button-background-gradient: var(--lol-gradient-hextech-black);
 
-	border: 2px solid transparent;
+		border: 2px solid transparent;
 
-	font-family: var(--lol-font-family-spiegel);
-}
-
-.item {
-	padding: 0.375rem 0.5rem;
-	outline: none;
-	font-size: var(--lol-font-size-sm);
-	line-height: var(--lol-line-height-sm);
-	font-weight: var(--lol-font-weight-sm);
-	letter-spacing: var(--lol-letter-spacing-sm);
-	color: var(--lol-color-gold-300);
-
-	&[data-disabled] {
-		color: var(--lol-color-grey-150);
+		font-family: var(--lol-font-family-spiegel);
 	}
 
-	&[data-hovered],
-	&[data-focus-visible] {
-		background: var(--lol-color-grey-300);
-		color: var(--lol-color-gold-100);
-	}
-
-	&[data-pressed] {
+	.item {
+		padding: 0.375rem 0.5rem;
+		outline: none;
+		font-size: var(--lol-font-size-sm);
+		line-height: var(--lol-line-height-sm);
+		font-weight: var(--lol-font-weight-sm);
+		letter-spacing: var(--lol-letter-spacing-sm);
 		color: var(--lol-color-gold-300);
+
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+		}
+
+		&[data-hovered],
+		&[data-focus-visible] {
+			background: var(--lol-color-grey-300);
+			color: var(--lol-color-gold-100);
+		}
+
+		&[data-pressed] {
+			color: var(--lol-color-gold-300);
+		}
 	}
 }

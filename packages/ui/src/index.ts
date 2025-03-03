@@ -1,6 +1,11 @@
 import "./style.css";
 
-export { RouterProvider, DialogTrigger, Dialog } from "react-aria-components";
+export {
+	RouterProvider,
+	DialogTrigger,
+	Dialog,
+	Popover as UnstyledPopover,
+} from "react-aria-components";
 export * from "./components/disclosure";
 export * from "./components/breadcrumbs/breadcrumbs";
 export * from "./components/button-link";
