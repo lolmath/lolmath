@@ -8,7 +8,6 @@ import {
 } from "react-aria-components";
 import classes from "./popover.module.css";
 
-
 // Note: there is no tooltip component. Tooltips do not work on mobile devices.
 // Use a text on the page instead, or use a toggle tip (which is a popover that
 // is used only for informational purposes).

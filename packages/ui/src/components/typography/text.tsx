@@ -20,7 +20,7 @@ const presetElements: Record<TextPreset, TextElement> = {
 	stat: "span",
 };
 
-const text = cva({
+export const text = cva({
 	base: classes.text,
 	variants: {
 		color: {

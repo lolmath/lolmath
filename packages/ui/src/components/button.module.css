@@ -12,6 +12,7 @@
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		line-height: 1;
+		white-space: nowrap;
 
 		display: inline-flex;
 
@@ -24,7 +25,7 @@
 		outline-style: solid;
 		outline-offset: 2px;
 
-		&:not([data-focus-visible]) {
+		&:not(:focus-visible) {
 			outline: none;
 		}
 
@@ -43,16 +44,16 @@
 			min-height: var(--lol-form-height-large);
 		}
 
-		&[data-hovered] {
+		&:hover {
 			color: var(--lol-color-gold-100);
 		}
 
 		/* order is important */
-		&[data-pressed] {
+		&:active {
 			color: var(--lol-color-grey-150);
 		}
 
-		&[data-disabled] {
+		&:disabled {
 			color: var(--lol-color-grey-150);
 			cursor: default;
 		}
@@ -86,7 +87,7 @@
 	.text {
 		&.round,
 		&.square {
-			&[data-hovered] {
+			&:hover {
 				--lol-button-background-gradient: var(--lol-gradient-grey-300);
 				--lol-button-border-gradient: var(--lol-gradient-transparent);
 			}
@@ -107,7 +108,7 @@
 			}
 		}
 
-		&[data-focus-visible] {
+		&:focus-visible {
 			outline-color: var(--lol-color-gold-400);
 		}
 	}
@@ -117,22 +118,22 @@
 		--lol-button-border-gradient: var(--lol-gradient-hextech);
 		--lol-button-background-gradient: var(--lol-gradient-grey-300);
 
-		&[data-hovered] {
+		&:hover {
 			color: var(--lol-color-blue-100);
 			--lol-button-border-gradient: var(--lol-gradient-hextech-hover);
 		}
 
-		&[data-pressed] {
+		&:active {
 			color: var(--lol-color-blue-400);
 			--lol-button-border-gradient: var(--lol-gradient-hextech-press);
 		}
 
-		&[data-disabled] {
+		&:disabled {
 			color: var(--lol-color-grey-150);
 			--lol-button-border-gradient: var(--lol-gradient-disabled);
 		}
 
-		&[data-focus-visible] {
+		&:focus-visible {
 			outline-color: var(--lol-color-blue-400);
 		}
 	}
@@ -142,7 +143,7 @@
 		--lol-button-border-gradient: var(--lol-gradient-grey-300);
 
 		&.selected,
-		&[data-focus-visible] {
+		&:focus-visible {
 			--lol-button-border-gradient: var(--lol-gradient-gold);
 		}
 	}
@@ -156,7 +157,7 @@
 			var(--lol-color-gold-700)
 		);
 
-		&[data-hovered] {
+		&:hover {
 			--lol-button-background-gradient: linear-gradient(
 				to top,
 				var(--lol-color-gold-600),
@@ -165,7 +166,7 @@
 			);
 		}
 
-		&[data-pressed] {
+		&:active {
 			--lol-button-background-gradient: linear-gradient(
 				to top,
 				var(--lol-color-gold-600),
@@ -180,26 +181,26 @@
 		--lol-button-background-gradient: var(--lol-gradient-grey-300);
 	}
 
-	.primary[data-hovered],
-	.secondary[data-hovered],
-	.dimmed[data-hovered] {
+	.primary:hover,
+	.secondary:hover,
+	.dimmed:hover {
 		--lol-button-border-gradient: var(--lol-gradient-gold-hover);
 	}
 
-	.primary[data-pressed],
-	.secondary[data-pressed],
-	.dimmed[data-pressed] {
+	.primary:active,
+	.secondary:active,
+	.dimmed:active {
 		--lol-button-border-gradient: var(--lol-gradient-gold-press);
 	}
 
-	.primary[data-disabled],
-	.secondary[data-disabled],
-	.dimmed[data-disabled] {
+	.primary:disabled,
+	.secondary:disabled,
+	.dimmed:disabled {
 		--lol-button-border-gradient: var(--lol-gradient-disabled);
 	}
 
-	.primary[data-focus-visible],
-	.secondary[data-focus-visible] {
+	.primary:focus-visible,
+	.secondary:focus-visible {
 		outline-color: var(--lol-color-gold-400);
 	}
 

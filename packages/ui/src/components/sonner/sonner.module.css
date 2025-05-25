@@ -1,0 +1,91 @@
+@layer lol {
+	.toast {
+		padding: 1rem;
+		border: 2px solid transparent;
+		background: var(--lol-toast-background-gradient) padding-box,
+			var(--lol-toast-border-gradient) border-box;
+
+		padding: 16px;
+		width: var(--width);
+		font-size: 13px;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	.default {
+		--lol-toast-background-gradient: var(--lol-gradient-hextech-black);
+		--lol-toast-border-gradient: var(--lol-gradient-grey-300);
+		--lol-toast-icon-color: var(--lol-color-gold-300);
+	}
+
+	.title {
+		font-size: var(--lol-font-size-sm);
+	}
+
+	.content {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.icon {
+		display: flex;
+		height: 20px;
+		width: 20px;
+		position: relative;
+		justify-content: flex-start;
+		align-items: center;
+		flex-shrink: 0;
+		margin-left: var(--toast-icon-margin-start);
+		margin-right: var(--toast-icon-margin-end);
+		& > * {
+			flex-shrink: 0;
+		}
+		& svg {
+			margin-left: var(--toast-svg-margin-start);
+			margin-right: var(--toast-svg-margin-end);
+		}
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.actions {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 0.25rem;
+	}
+
+	.button {
+		padding-left: 8px;
+		padding-right: 8px;
+		margin-left: var(--toast-button-margin-start);
+		margin-right: var(--toast-button-margin-end);
+		flex-shrink: 0;
+	}
+
+	.closeButton {
+		position: absolute;
+		min-height: 1.33rem !important;
+		left: var(--toast-close-button-start);
+		right: var(--toast-close-button-end);
+		top: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+		transform: var(--toast-close-button-transform);
+		border-radius: 50%;
+		cursor: pointer;
+		z-index: 1;
+	}
+
+	.loader {
+		width: 20px;
+		height: 20px;
+	}
+}

@@ -32,7 +32,8 @@
 		},
 		"dev": {
 			"outputs": [],
-			"inputs": ["src/**/*.tsx", "src/**/*.ts"]
+			"inputs": ["src/**/*.tsx", "src/**/*.ts"],
+			"persistent": true
 		},
 		"typecheck": {
 			"outputs": [],

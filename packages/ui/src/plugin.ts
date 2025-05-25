@@ -1,6 +1,6 @@
 import plugin from "tailwindcss/plugin";
 
-export const lolmathui = plugin(({}) => {}, {
+export const lolmathui = plugin(() => {}, {
 	theme: {
 		extend: {
 			colors: {

@@ -19,6 +19,7 @@ export * from "./components/radio-group/radio-group";
 export * from "./components/search-field/search-field";
 export * from "./components/select/select";
 export * from "./components/slider/slider";
+export * from "./components/sonner/sonner";
 export * from "./components/spinner/spinner";
 export * from "./components/switch";
 export * from "./components/tabs";

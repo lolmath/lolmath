@@ -5,9 +5,7 @@
 	"type": "module",
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.js",
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"scripts": {
 		"build": "tsup",
 		"dev": "tsup --watch",

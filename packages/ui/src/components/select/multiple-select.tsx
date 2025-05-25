@@ -17,8 +17,8 @@ import {
 } from "react-aria-components";
 import { Button } from "../button";
 import { Text } from "../typography/text";
-import closed from "./closed.png";
 import classes from "./multiple-select.module.css";
+import closed from "./select-closed.png";
 import selectClasses from "./select.module.css";
 
 const multiSelect = cva({

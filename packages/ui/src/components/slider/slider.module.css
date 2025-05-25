@@ -52,7 +52,7 @@
 	}
 
 	.thumb {
-		background-image: url(./normal.png);
+		background-image: url(./slider-normal.png);
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
@@ -62,16 +62,16 @@
 		outline: none;
 
 		&.disabled {
-			background-image: url(./disabled.png);
+			background-image: url(./slider-disabled.png);
 		}
 
 		&.thumbDragging {
-			background-image: url(./active.png);
+			background-image: url(./slider-active.png);
 		}
 	}
 
 	.track:hover
 		.thumb:not(.thumbDragging):not(.otherThumbDragging):not(.disabled) {
-		background-image: url(./hover.png);
+		background-image: url(./slider-hover.png);
 	}
 }

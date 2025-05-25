@@ -6,7 +6,7 @@ import { Button, DialogTrigger, Heading, Popover, Text } from "@lolmath/ui";
 const meta = {
 	title: "Popover",
 	component: Popover,
-	
+
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {

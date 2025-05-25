@@ -8,7 +8,7 @@ import {
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "../breadcrumbs/breadcrumbs.module.css";
-import divider from "./divider.png";
+import divider from "./breadcrumbs-divider.png";
 
 export function Breadcrumbs<T extends object>({
 	className,

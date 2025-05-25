@@ -110,10 +110,14 @@ export function createDdragon(options?: DdragonOptions) {
 			);
 		},
 		item: (full: string): string => {
-			return _imageUrlTransformer(`${_imageBaseUrl}/${_version}/img/item/${full}`);
+			return _imageUrlTransformer(
+				`${_imageBaseUrl}/${_version}/img/item/${full}`,
+			);
 		},
 		map(full: string) {
-			return _imageUrlTransformer(`${_imageBaseUrl}/${_version}/img/map/${full}`);
+			return _imageUrlTransformer(
+				`${_imageBaseUrl}/${_version}/img/map/${full}`,
+			);
 		},
 		mission(full: string) {
 			return _imageUrlTransformer(
@@ -131,7 +135,9 @@ export function createDdragon(options?: DdragonOptions) {
 			);
 		},
 		spell(full: string) {
-			return _imageUrlTransformer(`${_imageBaseUrl}/${_version}/img/spell/${full}`);
+			return _imageUrlTransformer(
+				`${_imageBaseUrl}/${_version}/img/spell/${full}`,
+			);
 		},
 		summoner(full: string) {
 			return images.spell(full);
