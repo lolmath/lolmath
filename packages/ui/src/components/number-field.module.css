@@ -1,54 +1,68 @@
-.group {
-	display: grid;
-	grid-template-columns: auto 1fr auto;
-	gap: 1px;
-	padding: 1px;
-	outline: none;
+@layer lol {
+	.group {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 1px;
+		padding: 1px;
+		outline: none;
 
-	&.normal {
-		background-image: var(--lol-gradient-gold);
+		&.normal {
+			background-image: var(--lol-gradient-gold);
+		}
+
+		&.dimmed {
+			background-image: var(--lol-gradient-grey-300);
+		}
+
+		&[data-disabled] {
+			background-image: var(--lol-gradient-disabled);
+		}
+
+		&[data-focus-within] {
+			background-image: var(--lol-gradient-gold-hover);
+		}
+
+		&.small {
+			min-height: var(--lol-form-height-small);
+		}
+
+		&.medium {
+			min-height: var(--lol-form-height-medium);
+		}
+
+		&.large {
+			min-height: var(--lol-form-height-large);
+		}
 	}
 
-	&.dimmed {
-		background-image: var(--lol-gradient-grey-300);
+	.input {
+		background-color: var(--lol-color-hextech-black);
+		color: var(--lol-color-gold-100);
+		font-family: var(--lol-font-family-spiegel);
+		font-size: 0.75rem;
+		padding: 0 0.75rem;
+		line-height: 1rem;
+		width: 100%;
+		outline: none;
+
+		&[data-disabled] {
+			background-color: var(--lol-color-grey-300);
+			color: var(--lol-color-grey-100);
+		}
+
+		&.focus {
+			background-image: var(--lol-gradient-grey-focus);
+		}
 	}
 
-	&.disabled {
-		background-image: var(--lol-gradient-disabled);
-	}
+	.button {
+		color: var(--lol-color-gold-100);
+		background-color: var(--lol-color-hextech-black);
+		padding: 0 0.625rem;
 
-	&.focusWithin {
-		background-image: var(--lol-gradient-gold-hover);
-	}
-}
-
-.input {
-	background-color: var(--lol-color-hextech-black);
-	color: var(--lol-color-gold-100);
-	font-family: var(--lol-font-family-spiegel);
-	font-size: 0.75rem;
-	padding: 0.5rem 0.75rem;
-	line-height: 1rem;
-	width: 100%;
-	outline: none;
-
-	&.disabled {
-		background-color: var(--lol-color-grey-300);
-		color: var(--lol-color-grey-100);
-	}
-
-	&.focus {
-		background-image: var(--lol-gradient-grey-focus);
-	}
-}
-
-.button {
-	color: var(--lol-color-gold-100);
-	background-color: var(--lol-color-hextech-black);
-	padding: 0 0.625rem;
-
-	&.disabled {
-		color: var(--lol-color-grey-150);
-		background-color: var(--lol-color-grey-300);
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+			background-color: var(--lol-color-grey-300);
+		}
 	}
 }

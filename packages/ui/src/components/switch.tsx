@@ -1,43 +1,11 @@
-import { cva } from "cva";
-import { Switch as AriaSwitch } from "react-aria-components";
+import { cx } from "cva";
+import {
+	Switch as AriaSwitch,
+	composeRenderProps,
+} from "react-aria-components";
 import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
 import classes from "./switch.module.css";
-
-const track = cva({
-	base: classes.track,
-	variants: {
-		isHovered: {
-			true: classes.hover,
-		},
-		isPressed: {
-			true: classes.press,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isSelected: {
-			true: classes.selected,
-		},
-	},
-});
-
-const knob = cva({
-	base: classes.knob,
-	variants: {
-		isSelected: {
-			true: classes.selected,
-		},
-		isHovered: {
-			true: classes.hover,
-		},
-		isPressed: {
-			true: classes.press,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-	},
-});
+import textClasses from "./typography/text.module.css";
 
 export function Switch({
 	className,
@@ -50,12 +18,20 @@ export function Switch({
 	return (
 		<AriaSwitch
 			{...props}
-			className="group inline-flex items-center gap-2 p-1 px-1.5 text-sm font-semibold text-black"
+			className={composeRenderProps(className, (className) =>
+				cx(
+					classes.switch,
+					textClasses.label,
+					textClasses.text,
+					textClasses.grey100,
+					className,
+				),
+			)}
 		>
 			{(values) => (
 				<>
-					<div className={track(values)}>
-						<span className={knob(values)} />
+					<div className={classes.track}>
+						<span className={classes.knob} />
 					</div>
 					{typeof children === "function" ? children(values) : children}
 				</>

@@ -2,11 +2,11 @@ import { cva } from "cva";
 import {
 	ToggleButton as AriaToggleButton,
 	type ToggleButtonProps as AriaToggleButtonProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
+import type { ButtonShape, ButtonSize } from "./button";
 import classes from "./button.module.css";
 
-export type ToggleButtonShape = "round" | "square" | "normal";
 export type ToggleButtonPreset = "secondary" | "hextech" | "dimmed";
 
 const button = cva({
@@ -17,18 +17,6 @@ const button = cva({
 			hextech: classes.hextech,
 			dimmed: classes.dimmed,
 		},
-		isHovered: {
-			true: classes.hover,
-		},
-		isPressed: {
-			true: classes.press,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isFocusVisible: {
-			true: classes.focusVisible,
-		},
 		shape: {
 			round: classes.round,
 			square: classes.square,
@@ -37,15 +25,18 @@ const button = cva({
 		thin: {
 			true: classes.thin,
 		},
-		isSelected: {
-			true: classes.selected,
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
 		},
 	},
 });
 interface ToggleButtonProps extends AriaToggleButtonProps {
 	preset?: ToggleButtonPreset;
 	thin?: boolean;
-	shape?: ToggleButtonShape;
+	shape?: ButtonShape;
+	size?: ButtonSize;
 }
 
 export function ToggleButton({
@@ -53,21 +44,23 @@ export function ToggleButton({
 	className,
 	preset = "secondary",
 	shape = "normal",
+	size = "medium",
 	thin = preset === "dimmed",
 	...props
 }: ToggleButtonProps) {
 	return (
 		<AriaToggleButton
 			{...props}
-			className={(values) =>
+			className={composeRenderProps(className, (className, values) =>
 				button({
 					...values,
 					preset,
 					shape,
 					thin,
-					className: resolveClassName(className, values),
-				})
-			}
+					size,
+					className,
+				}),
+			)}
 		>
 			{children}
 		</AriaToggleButton>

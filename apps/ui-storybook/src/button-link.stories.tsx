@@ -227,6 +227,7 @@ export const SquaredImage: Story = {
 			<img
 				src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
 				className="w-full"
+				alt="Item Icon"
 			/>
 		),
 	},
@@ -240,6 +241,7 @@ export const SquaredInsideFlex: Story = {
 			<img
 				src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
 				className="w-full"
+				alt="Item Icon"
 			/>
 		),
 	},

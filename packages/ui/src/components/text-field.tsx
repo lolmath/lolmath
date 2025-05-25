@@ -6,8 +6,8 @@ import type {
 import {
 	Input as AriaInput,
 	TextField as AriaTextField,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
 
 import { cva } from "cva";
 import classes from "./text-field.module.css";
@@ -15,12 +15,12 @@ import classes from "./text-field.module.css";
 export const textField = cva({
 	base: classes.textField,
 	variants: {
-		isDisabled: {
-			true: classes.disabled,
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
 		},
-		isFocused: {
-			true: classes.focus,
-		},
+		isTextArea: { true: classes.textArea },
 	},
 });
 
@@ -28,10 +28,12 @@ export function TextField({
 	inputProps = {},
 	borderProps = {},
 	children,
+	size = "medium",
 	...props
 }: AriaTextFieldProps & {
 	inputProps?: InputProps;
 	borderProps?: ComponentProps<"div">;
+	size?: "small" | "medium" | "large";
 }) {
 	return (
 		<AriaTextField {...props}>
@@ -42,12 +44,15 @@ export function TextField({
 					<AriaInput
 						type="text"
 						{...inputProps}
-						className={(values) =>
-							textField({
-								...values,
-								className: resolveClassName(inputProps?.className, values),
-							})
-						}
+						className={composeRenderProps(
+							inputProps.className,
+							(className, values) =>
+								textField({
+									...values,
+									className,
+									size,
+								}),
+						)}
 					/>
 				</>
 			)}

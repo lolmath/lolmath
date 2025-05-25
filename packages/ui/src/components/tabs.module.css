@@ -1,50 +1,57 @@
-.list {
-	margin-left: -1rem;
-	display: flex;
-}
-
-.tab {
-	font-family: var(--lol-font-family-beaufort);
-	color: var(--lol-color-gold-300);
-	position: relative;
-	cursor: pointer;
-	user-select: none;
-	padding: 0.25rem 1rem;
-	font-size: 0.75rem;
-	font-weight: 500;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	line-height: 1rem;
-	outline: none;
-
-	&.selected {
-		color: var(--lol-color-gold-100);
+@layer lol {
+	.list {
+		margin-left: -1rem;
+		display: flex;
 	}
 
-	&.hovered {
-		color: var(--lol-color-gold-100);
+	.tab {
+		font-family: var(--lol-font-family-beaufort);
+		color: var(--lol-color-gold-300);
+		position: relative;
+		cursor: pointer;
+		user-select: none;
+		padding: 0.25rem 1rem;
+		font-size: 0.75rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		line-height: 1rem;
+		outline: none;
+
+		&[data-selected] {
+			color: var(--lol-color-gold-100);
+		}
+
+		&[data-hovered] {
+			color: var(--lol-color-gold-100);
+		}
+
+		&[data-pressed] {
+			color: var(--lol-color-gold-500);
+		}
+
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+			cursor: default;
+		}
+
+		&[data-focus-visible] {
+			outline: 1px solid var(--lol-color-gold-400);
+			outline-offset: 0.25rem;
+		}
 	}
 
-	&.pressed {
-		color: var(--lol-color-gold-500);
+	.indicator {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 1px;
+		width: 100%;
+		background: linear-gradient(
+			to right,
+			transparent,
+			var(--lol-color-gold-200),
+			transparent
+		);
 	}
-
-	&.disabled {
-		color: var(--lol-color-grey-150);
-		cursor: default;
-	}
-
-	&.focusVisible {
-		outline: 1px solid var(--lol-color-gold-400);
-		outline-offset: 0.25rem;
-	}
-}
-
-.indicator {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	height: 1px;
-	width: 100%;
-	background: linear-gradient(to right, transparent, var(--lol-color-gold-200), transparent);
 }

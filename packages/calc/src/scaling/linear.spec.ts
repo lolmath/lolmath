@@ -3,6 +3,12 @@ import { linear, linear3, linear5, linear18 } from "./linear";
 test("linear", () => {
 	expect(linear(8, 8)).toBe(1);
 	expect(linear(8, 1)).toBe(0);
+
+	expect(80 + linear(5, 1) * 180).toBeCloseTo(80);
+	expect(80 + linear(5, 2) * 180).toBeCloseTo(125);
+	expect(80 + linear(5, 3) * 180).toBeCloseTo(170);
+	expect(80 + linear(5, 4) * 180).toBeCloseTo(215);
+	expect(80 + linear(5, 5) * 180).toBeCloseTo(260);
 });
 test("linear3", () => {
 	// Talon R Damage @ 12.22

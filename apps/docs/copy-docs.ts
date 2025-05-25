@@ -15,7 +15,7 @@ const directories = [
 	},
 ];
 
-directories.forEach(({ name, packageName, docsFolder }) => {
+for (const { name, packageName, docsFolder } of directories) {
 	const dest = `./src/pages/${name}`;
 	const packagePath = path.dirname(resolvePackagePath(packageName, "."));
 
@@ -23,4 +23,4 @@ directories.forEach(({ name, packageName, docsFolder }) => {
 
 	// copy the directory from the src to the dest
 	fs.copySync(src, dest);
-});
+}

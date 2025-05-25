@@ -1,44 +1,29 @@
-import { cva } from "cva";
+import { cx } from "cva";
 import {
 	Checkbox as AriaCheckbox,
 	type CheckboxProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name.js";
+import imageCheckedHover from "./checkbox-checked-hover.png";
+import imageChecked from "./checkbox-checked.png";
+import imageIndeterminateHover from "./checkbox-indeterminate-hover.png";
+import imageIndeterminate from "./checkbox-indeterminate.png";
+import imageUncheckedHover from "./checkbox-unchecked-hover.png";
+import imageUnchecked from "./checkbox-unchecked.png";
 import classes from "./checkbox.module.css";
-import imageCheckedHover from "./checked-hover.png";
-import imageChecked from "./checked.png";
-import imageIndeterminateHover from "./indeterminate-hover.png";
-import imageIndeterminate from "./indeterminate.png";
-import imageUncheckedHover from "./unchecked-hover.png";
-import imageUnchecked from "./unchecked.png";
-
-const checkbox = cva({
-	base: classes.checkbox,
-	variants: {
-		isHovered: {
-			true: classes.hover,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-	},
-});
 
 export function Checkbox({ children, className, ...props }: CheckboxProps) {
 	return (
 		<AriaCheckbox
-			className={(values) => {
-				return checkbox({
-					className: resolveClassName(className, values),
-					...values,
-				});
-			}}
+			className={composeRenderProps(className, (className) =>
+				cx(classes.checkbox, className),
+			)}
 			{...props}
 		>
-			{(values) => (
+			{composeRenderProps(children, (children, values) => (
 				<>
 					<img
-						className="h-3.5 w-3.5"
+						className={classes.icon}
 						aria-hidden="true"
 						alt=""
 						src={
@@ -55,9 +40,9 @@ export function Checkbox({ children, className, ...props }: CheckboxProps) {
 										: imageUnchecked
 						}
 					/>
-					{typeof children === "function" ? children(values) : children}
+					{children}
 				</>
-			)}
+			))}
 		</AriaCheckbox>
 	);
 }

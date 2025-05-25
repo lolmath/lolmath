@@ -1,0 +1,56 @@
+@layer lol {
+	.disclosureButton {
+		color: var(--lol-color-grey-100);
+		font-family: var(--lol-font-family-beaufort);
+
+		&:active,
+		&:hover {
+			color: var(--lol-color-gold-100);
+		}
+
+		display: flex;
+		width: 100%;
+		align-items: center;
+		padding: 0.5rem 0;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-align: left;
+	}
+
+	.icon {
+		margin-left: .125rem;
+		margin-right: .5rem;
+		display: inline-block;
+		rotate: 90deg;
+		font-size: var(--lol-font-size-sm);
+	}
+
+	.disclosure {
+		border-bottom: 1px solid var(--lol-color-gold-600);
+
+		&:last-of-type {
+			border-bottom: none;
+		}
+	}
+
+	.disclosurePanel {
+		color: var(--lol-color-grey-100);
+		font-family: var(--lol-font-family-spiegel);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition-behavior: allow-discrete;
+			interpolate-size: allow-keywords;
+
+			overflow-y: clip;
+
+			transition-property: content-visibility, height;
+			transition-timing-function: ease;
+			transition-duration: 150ms;
+
+			height: auto;
+			&[aria-hidden="true"] {
+				height: 0;
+			}
+		}
+	}
+}

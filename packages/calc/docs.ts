@@ -173,9 +173,9 @@ if (fs.existsSync(dest)) {
 // Create the new /docs/calc folder, recursively
 fs.mkdirSync(dest, { recursive: true });
 
-mdPerCategory.forEach(({ slug, md }) => {
+for (const { slug, md } of mdPerCategory) {
 	fs.writeFileSync(`${dest}/${slug}.md`, md);
-});
+}
 
 // Copy the README.md, and add a sidebar position
 const readme = fs.readFileSync("./readme.md", "utf8");

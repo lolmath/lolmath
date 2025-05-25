@@ -1,6 +1,6 @@
 "use client";
 
-import { cva, cx } from "cva";
+import { cx } from "cva";
 import {
 	Tab as AriaTab,
 	TabList as AriaTabList,
@@ -9,8 +9,8 @@ import {
 	type TabListProps,
 	type TabPanelProps,
 	type TabProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
 import classes from "./tabs.module.css";
 
 export type { Key } from "react-aria-components";
@@ -24,44 +24,20 @@ export function TabList<T extends object>({
 	return (
 		<AriaTabList<T>
 			{...rest}
-			className={(values) =>
-				cx(classes.list, resolveClassName(className, values))
-			}
+			className={composeRenderProps(className, (className) =>
+				cx(classes.list, className),
+			)}
 		/>
 	);
 }
-
-const tab = cva({
-	base: classes.tab,
-	variants: {
-		isSelected: {
-			true: classes.selected,
-		},
-		isHovered: {
-			true: classes.hovered,
-		},
-		isPressed: {
-			true: classes.pressed,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isFocusVisible: {
-			true: classes.focusVisible,
-		},
-	},
-});
 
 export function Tab({ children, className, ...rest }: TabProps) {
 	return (
 		<AriaTab
 			{...rest}
-			className={(values) =>
-				tab({
-					...values,
-					className: resolveClassName(className, values),
-				})
-			}
+			className={composeRenderProps(className, (className) =>
+				cx(classes.tab, className),
+			)}
 		>
 			{(values) => (
 				<>

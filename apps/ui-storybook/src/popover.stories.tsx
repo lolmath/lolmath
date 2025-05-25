@@ -1,40 +1,34 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, Heading, Text, Tooltip, TooltipTrigger } from "@lolmath/ui";
+import { Button, DialogTrigger, Heading, Popover, Text } from "@lolmath/ui";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-	title: "Tooltip",
-	component: Tooltip,
+	title: "Popover",
+	component: Popover,
+
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {
-		isOpen: true,
 		children: "XX",
 	},
 
 	render: (args) => (
-		<TooltipTrigger isOpen={args.isOpen}>
-			<Button>Tooltip</Button>
-			<Tooltip {...args} />
-		</TooltipTrigger>
+		<DialogTrigger>
+			<Button>Popover</Button>
+			<Popover {...args} />
+		</DialogTrigger>
 	),
 	parameters: {
 		layout: "centered",
 	},
-} satisfies Meta<typeof Tooltip>;
+} satisfies Meta<typeof Popover>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	args: {},
-};
-
-export const Open: Story = {
-	args: {
-		isOpen: true,
-	},
 };
 
 export const Left: Story = {
@@ -46,7 +40,6 @@ export const Left: Story = {
 export const Right: Story = {
 	args: {
 		placement: "right",
-		isOpen: true,
 	},
 };
 
@@ -84,23 +77,18 @@ export const LongText: Story = {
 				</Text>
 			</div>
 		),
-		isOpen: undefined,
 		className: "w-[400px]",
 	},
 };
 
 export const Instant: Story = {
 	args: {
-		children: (
-			<div className="prose text-lol-grey-300 font-spiegel p-2 font-normal">
-				This tooltip should appear instantly
-			</div>
-		),
+		children: <div>This popover should appear instantly</div>,
 	},
 	render: (args) => (
-		<TooltipTrigger delay={0} closeDelay={0}>
-			<Button>Tooltip</Button>
-			<Tooltip {...args} />
-		</TooltipTrigger>
+		<DialogTrigger>
+			<Button>Popover</Button>
+			<Popover {...args} />
+		</DialogTrigger>
 	),
 };

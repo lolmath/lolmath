@@ -1,7 +1,5 @@
 import { cva } from "cva";
 import {
-	DialogTrigger as AriaDialogTrigger,
-	type DialogTriggerProps as AriaDialogTriggerProps,
 	Heading as AriaHeading,
 	type HeadingProps as AriaHeadingProps,
 	Modal as AriaModal,
@@ -9,8 +7,8 @@ import {
 	type DialogProps,
 	ModalOverlay,
 	type ModalOverlayProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
 import classes from "./modal.module.css";
 
 const overlay = cva({
@@ -41,19 +39,19 @@ export function Modal({
 	return (
 		<ModalOverlay
 			{...modalProps}
-			className={(values) => {
-				return overlay({
-					className: resolveClassName(modalOverlayClassName, values),
-				});
-			}}
+			className={composeRenderProps(modalOverlayClassName, (className) =>
+				overlay({
+					className,
+				}),
+			)}
 		>
 			<AriaModal
 				{...modalProps}
-				className={(values) =>
+				className={composeRenderProps(className, (className) =>
 					modal({
-						className: resolveClassName(className, values),
-					})
-				}
+						className,
+					}),
+				)}
 			>
 				<Dialog
 					{...dialogProps}
@@ -85,8 +83,4 @@ export function DialogHeading({ className, ...props }: AriaHeadingProps) {
 
 export function DialogButtons({ children }: { children: React.ReactNode }) {
 	return <div className={classes.dialogButtons}>{children}</div>;
-}
-
-export function DialogTrigger(props: AriaDialogTriggerProps) {
-	return <AriaDialogTrigger {...props} />;
 }

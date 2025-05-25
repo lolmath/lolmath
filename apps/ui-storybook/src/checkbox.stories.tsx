@@ -41,3 +41,16 @@ export const Multiple: Story = {
 		</div>
 	),
 };
+
+export const DynamicChildren: Story = {
+	args: {
+		children: (values) => `Enable Low Spec Mode (${values.isSelected})`,
+	},
+};
+
+export const DynamicClassname: Story = {
+	args: {
+		className: (values) =>
+			values.isSelected ? "text-green-700" : "text-red-700",
+	},
+};

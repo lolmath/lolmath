@@ -1,56 +1,58 @@
-.heading {
-	font-family: var(--lol-font-family-beaufort);
-	scroll-margin-top: 5rem;
-	text-transform: uppercase;
-}
+@layer lol {
+	.heading {
+		font-family: var(--lol-font-family-beaufort);
+		scroll-margin-top: 5rem;
+		text-transform: uppercase;
+	}
 
-.h1 {
-	font-size: var(--lol-font-size-h1);
-	line-height: var(--lol-line-height-h1);
-	letter-spacing: var(--lol-letter-spacing-h1);
-	font-weight: var(--lol-font-weight-h1);
-}
+	.h1 {
+		font-size: var(--lol-font-size-h1);
+		line-height: var(--lol-line-height-h1);
+		letter-spacing: var(--lol-letter-spacing-h1);
+		font-weight: var(--lol-font-weight-h1);
+	}
 
-.h2 {
-	font-size: var(--lol-font-size-h2);
-	line-height: var(--lol-line-height-h2);
-	letter-spacing: var(--lol-letter-spacing-h2);
-	font-weight: var(--lol-font-weight-h2);
-}
+	.h2 {
+		font-size: var(--lol-font-size-h2);
+		line-height: var(--lol-line-height-h2);
+		letter-spacing: var(--lol-letter-spacing-h2);
+		font-weight: var(--lol-font-weight-h2);
+	}
 
-.h3 {
-	font-size: var(--lol-font-size-h3);
-	line-height: var(--lol-line-height-h3);
-	letter-spacing: var(--lol-letter-spacing-h3);
-	font-weight: var(--lol-font-weight-h3);
-}
+	.h3 {
+		font-size: var(--lol-font-size-h3);
+		line-height: var(--lol-line-height-h3);
+		letter-spacing: var(--lol-letter-spacing-h3);
+		font-weight: var(--lol-font-weight-h3);
+	}
 
-.h4 {
-	font-size: var(--lol-font-size-h4);
-	line-height: var(--lol-line-height-h4);
-	letter-spacing: var(--lol-letter-spacing-h4);
-	font-weight: var(--lol-font-weight-h4);
-}
+	.h4 {
+		font-size: var(--lol-font-size-h4);
+		line-height: var(--lol-line-height-h4);
+		letter-spacing: var(--lol-letter-spacing-h4);
+		font-weight: var(--lol-font-weight-h4);
+	}
 
-.h5 {
-	font-size: var(--lol-font-size-h5);
-	line-height: var(--lol-line-height-h5);
-	letter-spacing: var(--lol-letter-spacing-h5);
-	font-weight: var(--lol-font-weight-h5);
-}
+	.h5 {
+		font-size: var(--lol-font-size-h5);
+		line-height: var(--lol-line-height-h5);
+		letter-spacing: var(--lol-letter-spacing-h5);
+		font-weight: var(--lol-font-weight-h5);
+	}
 
-.grey100 {
-	color: var(--lol-color-grey-100);
-}
+	.grey100 {
+		color: var(--lol-color-grey-100);
+	}
 
-.gold100 {
-	color: var(--lol-color-gold-100);
-}
+	.gold100 {
+		color: var(--lol-color-gold-100);
+	}
 
-.gold200 {
-	color: var(--lol-color-gold-200);
-}
+	.gold200 {
+		color: var(--lol-color-gold-200);
+	}
 
-.gold400 {
-	color: var(--lol-color-gold-400);
+	.gold400 {
+		color: var(--lol-color-gold-400);
+	}
 }

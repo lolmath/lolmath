@@ -1,80 +1,89 @@
-.overlay {
-	background-color: color-mix(in srgb, var(--lol-color-hextech-black), transparent 75%);
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: var(--lol-z-index-overlay);
-	display: flex;
-	flex-direction: column;
-	min-height: 100%;
-	align-items: center;
-	justify-content: safe center;
-	overflow-y: auto;
-	padding: 1rem 0;
-	text-align: center;
-	backdrop-filter: blur(8px);
-}
+@layer lol {
+	.overlay {
+		background-color: color-mix(
+			in srgb,
+			var(--lol-color-hextech-black),
+			transparent 75%
+		);
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: var(--lol-z-index-overlay);
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+		align-items: center;
+		justify-content: safe center;
+		overflow-y: auto;
+		padding: 1rem 0;
+		text-align: center;
+		backdrop-filter: blur(8px);
+	}
 
-.dialog {
-	background: var(--lol-button-background-gradient) padding-box,
-		var(--lol-button-border-gradient) border-box;
-	border: 2px solid transparent;
+	.dialog {
+		background: var(--lol-button-background-gradient) padding-box,
+			var(--lol-button-border-gradient) border-box;
+		border: 2px solid transparent;
 
+		--lol-button-background-gradient: var(--lol-gradient-hextech-black);
+		--lol-button-border-gradient: linear-gradient(
+			to bottom,
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-600),
+			var(--lol-color-gold-500)
+		);
 
-	--lol-button-background-gradient: var(--lol-gradient-hextech-black);
-	--lol-button-border-gradient: linear-gradient(to bottom, var(--lol-color-gold-600), var(--lol-color-gold-600), var(--lol-color-gold-500));
+		position: relative;
+		outline: none;
 
-	position: relative;
-	outline: none;
+		&::before,
+		&::after {
+			position: absolute;
+			left: 1.25rem;
+			right: 1.25rem;
+			content: "";
+			display: block;
+			height: 0.25rem;
+			background-color: var(--lol-color-hextech-black);
+			border-radius: 9999px;
+		}
 
-	&::before,
-	&::after {
-		position: absolute;
-		left: 1.25rem;
-		right: 1.25rem;
-		content: '';
-		display: block;
-		height: 0.25rem;
+		&::before {
+			bottom: calc(100% + 2px);
+			border: 1px solid var(--lol-color-gold-600);
+			border-bottom: 0;
+		}
+
+		&::after {
+			top: calc(100% + 2px);
+			border: 1px solid var(--lol-color-gold-500);
+			border-top: 0;
+		}
+	}
+
+	.modal {
+		width: 100%;
+		max-width: 28rem;
+	}
+
+	.dialogHeading {
+		color: var(--lol-color-gold-100);
+		font-family: var(--lol-font-family-beaufort);
+		text-transform: uppercase;
+		font-size: var(--lol-font-size-h5);
+		font-weight: var(--lol-font-weight-h5);
+		letter-spacing: var(--lol-letter-spacing-h5);
+		line-height: var(--lol-line-height-h5);
+	}
+
+	.dialogButtons {
+		justify-content: center;
+		transform: translateY(2px);
+		padding: 0 0.25rem;
+		gap: 0.25rem;
 		background-color: var(--lol-color-hextech-black);
-		border-radius: 9999px;
+		display: inline-flex;
 	}
-
-	&::before {
-		bottom: calc(100% + 2px);
-		border: 1px solid var(--lol-color-gold-600);
-		border-bottom: 0;
-	}
-
-	&::after {
-		top: calc(100% + 2px);
-		border: 1px solid var(--lol-color-gold-500);
-		border-top: 0;
-	}
-}
-
-
-.modal {
-	width: 100%;
-	max-width: 28rem;
-}
-
-.dialogHeading {
-	color: var(--lol-color-gold-100);
-	font-family: var(--lol-font-family-beaufort);
-	text-transform: uppercase;
-	font-size: var(--lol-font-size-h5);
-	font-weight: var(--lol-font-weight-h5);
-	letter-spacing: var(--lol-letter-spacing-h5);
-	line-height: var(--lol-line-height-h5);
-}
-
-.dialogButtons {
-	justify-content: center;
-	transform: translateY(2px);
-	padding: 0 0.25rem;
-	gap: 0.25rem;
-	background-color: var(--lol-color-hextech-black);
-	display: inline-flex;
 }

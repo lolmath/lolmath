@@ -1,0 +1,34 @@
+image: node:16
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+    - npm run typedoc
+  artifacts:
+    paths:
+      - node_modules
+      - dist
+      - docs
+
+test:
+  stage: test
+  script:
+    - npm run test
+  needs:
+    - job: build
+      artifacts: true
+
+publish:
+  stage: deploy
+  needs:
+    - job: build
+      artifacts: true
+    - job: test
+      artifacts: false
+  script:
+    - npx semantic-release
+  only:
+    - master
+    - next

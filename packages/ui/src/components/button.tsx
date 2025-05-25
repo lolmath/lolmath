@@ -1,10 +1,10 @@
+import { cva } from "cva";
 import { type Ref, forwardRef } from "react";
 import {
 	Button as AriaButton,
 	type ButtonProps as AriaButtonProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../utilities/resolve-class-name.js";
-import { cva } from "cva";
 import classes from "./button.module.css";
 
 export type ButtonShape = "round" | "square" | "normal";
@@ -14,11 +14,13 @@ export type ButtonPreset =
 	| "text"
 	| "hextech"
 	| "dimmed";
+export type ButtonSize = "small" | "medium" | "large";
 
 interface ButtonProps extends AriaButtonProps {
 	preset?: ButtonPreset;
 	thin?: boolean;
 	shape?: ButtonShape;
+	size?: ButtonSize;
 }
 
 export const button = cva({
@@ -31,21 +33,6 @@ export const button = cva({
 			hextech: classes.hextech,
 			dimmed: classes.dimmed,
 		},
-		isHovered: {
-			true: classes.hover,
-		},
-		isPressed: {
-			true: classes.press,
-		},
-		isDisabled: {
-			true: classes.disabled,
-		},
-		isFocused: {
-			true: "",
-		},
-		isFocusVisible: {
-			true: classes.focusVisible,
-		},
 		shape: {
 			round: classes.round,
 			square: classes.square,
@@ -53,6 +40,11 @@ export const button = cva({
 		},
 		thin: {
 			true: classes.thin,
+		},
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
 		},
 	},
 });
@@ -63,6 +55,7 @@ export function _Button(
 		className,
 		preset = "secondary",
 		shape = "normal",
+		size = "medium",
 		thin = preset === "dimmed",
 		...props
 	}: ButtonProps,
@@ -72,15 +65,16 @@ export function _Button(
 		<AriaButton
 			ref={ref}
 			{...props}
-			className={(values) => {
-				return button({
-					className: resolveClassName(className, values),
+			className={composeRenderProps(className, (className, values) =>
+				button({
+					className,
 					preset,
 					shape,
 					thin,
+					size,
 					...values,
-				});
-			}}
+				}),
+			)}
 		>
 			{children}
 		</AriaButton>

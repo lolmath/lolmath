@@ -5,6 +5,7 @@ import { Label, Radio, RadioGroup } from "@lolmath/ui";
 const meta = {
 	title: "RadioGroup",
 	component: RadioGroup,
+	subcomponents: { Radio },
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {

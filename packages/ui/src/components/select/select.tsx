@@ -12,17 +12,19 @@ import {
 	SelectValue as AriaSelectValue,
 	Text as AriaText,
 	ListBoxItem,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name.js";
 import classes from "./select.module.css";
 
-const selectButtonBorder = cva({
+const select = cva({
 	base: classes.button,
 	variants: {
-		isHovered: { true: classes.hover },
-		isPressed: { true: classes.press },
 		isOpen: { true: classes.open },
-		isDisabled: { true: classes.disabled },
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
+		},
 	},
 });
 
@@ -31,26 +33,29 @@ interface SelectProps<T extends object>
 	label?: string;
 	description?: string;
 	errorMessage?: string;
+	items?: Iterable<T>;
 	children?: ReactNode | ((item: T) => ReactNode);
+	size?: "small" | "medium" | "large";
 }
+
+// Select should have a way to edit the button classes
 
 export function Select<T extends object>({
 	description,
 	errorMessage,
 	children,
+	items,
 	className,
+	size = "medium",
 	...props
 }: SelectProps<T>) {
 	return (
-		<AriaSelect
-			{...props}
-			className={(values) => resolveClassName(className, values)}
-		>
+		<AriaSelect {...props} className={className}>
 			{(values) => (
 				<>
 					<AriaButton
 						className={(buttonValues) =>
-							selectButtonBorder({ ...buttonValues, isOpen: values.isOpen })
+							select({ ...buttonValues, isOpen: values.isOpen, size })
 						}
 					>
 						<AriaSelectValue />
@@ -59,8 +64,10 @@ export function Select<T extends object>({
 					{errorMessage && (
 						<AriaText slot="errorMessage">{errorMessage}</AriaText>
 					)}
-					<AriaPopover offset={4} className="w-[--trigger-width]">
-						<AriaListBox className={classes.listBox}>{children}</AriaListBox>
+					<AriaPopover offset={4} className={classes.popover}>
+						<AriaListBox className={classes.listBox} items={items}>
+							{children}
+						</AriaListBox>
 					</AriaPopover>
 				</>
 			)}
@@ -74,6 +81,7 @@ const item = cva({
 		isHovered: { true: classes.hover },
 		isPressed: { true: classes.press },
 		isSelected: { true: classes.selected },
+		isFocused: { true: classes.focus },
 	},
 });
 
@@ -81,12 +89,9 @@ export function Item({ className, ...props }: ListBoxItemProps) {
 	return (
 		<ListBoxItem
 			{...props}
-			className={(values) => {
-				return item({
-					...values,
-					className: resolveClassName(className, values),
-				});
-			}}
+			className={composeRenderProps(className, (className, values) =>
+				item({ ...values, className }),
+			)}
 		/>
 	);
 }

@@ -1,76 +1,90 @@
-.searchField {
-	display: grid;
-	grid-template-areas:
-		"label label"
-		"input button"
-		"help  help";
-	grid-template-columns: 1fr auto;
-	align-items: center;
+@layer lol {
+	.searchField {
+		display: grid;
+		grid-template-areas:
+			"label label"
+			"input button"
+			"help  help";
+		grid-template-columns: 1fr auto;
+		align-items: center;
 
-	color: var(--lol-color-gold-100);
-}
-
-.input {
-	background: url('./search.png') no-repeat 5px center,
-		var(--lol-search-field-background-gradient) padding-box,
-		var(--lol-search-field-border-gradient) border-box;
-
-	--lol-search-field-border-gradient: var(--lol-gradient-gold);
-	--lol-search-field-background-gradient: var(--lol-gradient-hextech-black);
-
-	background-size: 16px, auto, auto;
-	border: 1px solid transparent;
-	grid-area: input;
-	padding: 0.5rem 2.5rem 0.5rem 1.5rem;
-	margin: 0;
-	font-size: 0.75rem;
-	line-height: 1rem;
-	color: var(--field-text-color);
-	outline: none;
-	font-family: var(--lol-font-family-spiegel);
-	font-weight: 500;
-	letter-spacing: 0.025em;
-
-	&::-webkit-search-cancel-button,
-	&::-webkit-search-decoration {
-		-webkit-appearance: none;
-	}
-
-	&.disabled {
-		--lol-search-field-border-gradient: var(--lol-gradient-disabled);
-		color: var(--lol-color-grey-150);
-	}
-
-	&.focus {
-		--lol-search-field-border-gradient: var(--lol-gradient-gold-hover);
-		--lol-search-field-background-gradient: var(--lol-gradient-grey-focus);
-	}
-}
-
-.button {
-	grid-area: button;
-
-	font-size: 0.75rem;
-	line-height: 1rem;
-	font-weight: 900;
-
-	margin-left: -2.5rem;
-	width: 2.5rem;
-	align-self: stretch;
-	text-align: center;
-
-	color: var(--lol-color-gold-300);
-
-	&.hover {
 		color: var(--lol-color-gold-100);
 	}
 
-	&.press {
-		color: var(--lol-color-gold-600);
+	.input {
+		background: url("./search.png") no-repeat 5px center,
+			var(--lol-search-field-background-gradient) padding-box,
+			var(--lol-search-field-border-gradient) border-box;
+
+		--lol-search-field-border-gradient: var(--lol-gradient-gold);
+		--lol-search-field-background-gradient: var(--lol-gradient-hextech-black);
+
+		background-size: 16px, auto, auto;
+		border: 1px solid transparent;
+		grid-area: input;
+		padding: 0 2.5rem 0 1.5rem;
+		margin: 0;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--field-text-color);
+		outline: none;
+		font-family: var(--lol-font-family-spiegel);
+		font-weight: 500;
+		letter-spacing: 0.025em;
+
+		&::-webkit-search-cancel-button,
+		&::-webkit-search-decoration {
+			-webkit-appearance: none;
+		}
+
+		&[data-disabled] {
+			--lol-search-field-border-gradient: var(--lol-gradient-disabled);
+			color: var(--lol-color-grey-150);
+		}
+
+		&[data-focused] {
+			--lol-search-field-border-gradient: var(--lol-gradient-gold-hover);
+			--lol-search-field-background-gradient: var(--lol-gradient-grey-focus);
+		}
+
+		&.small {
+			min-height: var(--lol-form-height-small);
+		}
+
+		&.medium {
+			min-height: var(--lol-form-height-medium);
+		}
+
+		&.large {
+			min-height: var(--lol-form-height-large);
+		}
 	}
 
-	&.empty,
-	&.disabled {
-		display: none;
+	.button {
+		grid-area: button;
+
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 900;
+
+		margin-left: -2.5rem;
+		width: 2.5rem;
+		align-self: stretch;
+		text-align: center;
+
+		color: var(--lol-color-gold-300);
+
+		&[data-hovered] {
+			color: var(--lol-color-gold-100);
+		}
+
+		&[data-pressed] {
+			color: var(--lol-color-gold-600);
+		}
+
+		&[data-empty],
+		&[data-disabled] {
+			display: none;
+		}
 	}
 }

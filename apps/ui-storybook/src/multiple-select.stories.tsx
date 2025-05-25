@@ -1,0 +1,83 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { Item, MultipleSelect, type SelectedKey, Tag } from "@lolmath/ui";
+import { useState } from "react";
+
+// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
+const meta = {
+	title: "MultipleSelect",
+	component: MultipleSelect,
+	render: (args) => {
+		const [selectedItems, setSelectedItems] = useState<SelectedKey[]>([
+			{ id: "1", name: "Apple" },
+		]);
+
+		return (
+			<MultipleSelect
+				className="max-w-xs"
+				{...args}
+				selectedItems={selectedItems}
+				onChange={setSelectedItems}
+			/>
+		);
+	},
+	tags: ["autodocs"],
+	argTypes: {},
+	args: {
+		items: [
+			{ id: "1", name: "Apple" },
+			{ id: "2", name: "Banana" },
+			{ id: "3", name: "Cherry" },
+			{ id: "4", name: "Date" },
+			{ id: "5", name: "Elderberry" },
+			{ id: "6", name: "Fig" },
+			{ id: "7", name: "Grape" },
+			{ id: "8", name: "Honeydew" },
+			{ id: "9", name: "Kiwi" },
+			{ id: "10", name: "Lemon" },
+			{ id: "11", name: "Mango" },
+			{ id: "12", name: "Nectarine" },
+			{ id: "13", name: "Orange" },
+			{ id: "14", name: "Papaya" },
+			{ id: "15", name: "Quince" },
+			{ id: "16", name: "Raspberry" },
+			{ id: "17", name: "Strawberry" },
+			{ id: "18", name: "Tangerine" },
+			{ id: "19", name: "Ugli Fruit" },
+			{ id: "20", name: "Watermelon" },
+		],
+		tag: (item) => <Tag textValue={item.name}>{item.name}</Tag>,
+		children: (item) => {
+			return <Item textValue={item.name}>{item.name}</Item>;
+		},
+	},
+} satisfies Meta<typeof MultipleSelect>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
+	args: {},
+};
+
+export const TonsOfItems: Story = {
+	args: {},
+	render: (args) => {
+		const [selectedItems, setSelectedItems] = useState<SelectedKey[]>([
+			{ id: "1", name: "Apple" },
+		]);
+
+		return (
+			<MultipleSelect
+				{...args}
+				className="max-w-xs"
+				items={Array.from({ length: 100 }, (_, i) => ({
+					id: i.toString(),
+					name: `Item ${i}`,
+				}))}
+				selectedItems={selectedItems}
+				onChange={setSelectedItems}
+			/>
+		);
+	},
+};

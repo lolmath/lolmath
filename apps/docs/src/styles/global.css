@@ -1,4 +1,7 @@
-@tailwind base;
+@layer tailwind-base {
+	@tailwind base;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -10,9 +13,9 @@
 	--rp-c-brand-light: var(--lol-color-gold-200);
 	--rp-c-brand-lighter: var(--lol-color-gold-100);
 
-	--rp-code-block-bg: var(--lol-color-blue-700)
+	--rp-code-block-bg: var(--lol-color-blue-700);
 }
 
 body {
-	@apply font-spiegel;
+	font-family: var(--lol-font-family-spiegel);
 }

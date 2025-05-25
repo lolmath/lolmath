@@ -1,19 +1,26 @@
-.checkbox {
-	font-family: var(--lol-font-family-spiegel);
-	color: var(--lol-color-grey-100);
-	display: flex;
-	cursor: pointer;
-	align-items: center;
-	gap: 0.25rem;
-	font-size: .75rem;
-	letter-spacing: .1em;
+@layer lol {
+	.checkbox {
+		font-family: var(--lol-font-family-spiegel);
+		color: var(--lol-color-grey-100);
+		display: flex;
+		cursor: pointer;
+		align-items: center;
+		gap: 0.25rem;
+		font-size: .75rem;
+		letter-spacing: .1em;
 
-	&.hover {
-		color: var(--lol-color-gold-100);
+		&[data-hovered] {
+			color: var(--lol-color-gold-100);
+		}
+
+		&[data-disabled] {
+			filter: brightness(0.5);
+			cursor: default;
+		}
 	}
 
-	&.disabled {
-		filter: brightness(0.5);
-		cursor: default;
+	.icon {
+		width: 0.875rem;
+		height: 0.875rem;
 	}
 }

@@ -5,29 +5,18 @@ import {
 	Input as AriaInput,
 	SearchField as AriaSearchField,
 	type SearchFieldProps as AriaSearchFieldProps,
+	composeRenderProps,
 } from "react-aria-components";
-import { resolveClassName } from "../../utilities/resolve-class-name.js";
 import classes from "./search-field.module.css";
 
 const searchFieldInput = cva({
 	base: classes.input,
 	variants: {
-		isDisabled: {
-			true: classes.disabled,
+		size: {
+			small: classes.small,
+			medium: classes.medium,
+			large: classes.large,
 		},
-		isFocused: {
-			true: classes.focus,
-		},
-	},
-});
-
-const searchFieldButton = cva({
-	base: classes.button,
-	variants: {
-		isHovered: { true: classes.hover },
-		isPressed: { true: classes.press },
-		isDisabled: { true: classes.disabled },
-		isEmpty: { true: classes.empty },
 	},
 });
 
@@ -36,10 +25,12 @@ export function SearchField({
 	borderProps = {},
 	children,
 	className,
+	size = "medium",
 	...props
 }: AriaSearchFieldProps & {
 	inputProps?: ComponentProps<typeof AriaInput>;
 	borderProps?: ComponentProps<"div">;
+	size?: "small" | "medium" | "large";
 }) {
 	return (
 		<AriaSearchField {...props} className={cx(classes.searchField, className)}>
@@ -48,25 +39,18 @@ export function SearchField({
 					{typeof children === "function" ? children(values) : children}
 					<AriaInput
 						{...inputProps}
-						className={(values) =>
-							searchFieldInput({
-								...values,
-								className: resolveClassName(inputProps.className, values),
-							})
-						}
+						className={composeRenderProps(
+							inputProps.className,
+							(className, values) =>
+								searchFieldInput({
+									className,
+									size,
+									...values,
+								}),
+						)}
 						type="text"
 					/>
-					<AriaButton
-						className={(buttonValues) =>
-							searchFieldButton({
-								...buttonValues,
-								isDisabled: values.isDisabled,
-								isEmpty: values.isEmpty,
-							})
-						}
-					>
-						✕
-					</AriaButton>
+					<AriaButton className={classes.button}>✕</AriaButton>
 				</>
 			)}
 		</AriaSearchField>

@@ -1,35 +1,55 @@
-.textField {
-	background:
-		var(--lol-input-background-gradient) padding-box,
-		var(--lol-input-border-gradient) border-box;
+@layer lol {
+	.textField {
+		background: var(--lol-input-background-gradient) padding-box,
+			var(--lol-input-border-gradient) border-box;
 
-	--lol-input-border-gradient: var(--lol-gradient-gold);
-	--lol-input-background-gradient: var(--lol-gradient-hextech-black);
+		--lol-input-border-gradient: var(--lol-gradient-gold);
+		--lol-input-background-gradient: var(--lol-gradient-hextech-black);
 
-	border: 1px solid transparent;
-	grid-area: input;
-	padding: 0.5rem 0.75rem;
-	margin: 0;
-	font-size: 0.75rem;
-	line-height: 1rem;
-	color: var(--field-text-color);
-	outline: none;
-	font-family: var(--lol-font-family-spiegel);
-	font-weight: 500;
-	letter-spacing: 0.025em;
+		border: 1px solid transparent;
+		grid-area: input;
+		padding: 0 0.75rem;
+		margin: 0;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--field-text-color);
+		outline: none;
+		font-family: var(--lol-font-family-spiegel);
+		font-weight: 500;
+		letter-spacing: 0.025em;
 
-	color: var(--lol-color-gold-100);
+		min-height: var(--lol-form-input-min-height);
 
-	display: flex;
-	width: 100%;
+		color: var(--lol-color-gold-100);
 
-	&.disabled {
-		--lol-input-border-gradient: var(--lol-gradient-disabled);
-		color: var(--lol-color-grey-150);
-	}
+		display: flex;
+		width: 100%;
 
-	&.focus {
-		--lol-input-border-gradient: var(--lol-gradient-gold-hover);
-		--lol-input-background-gradient: var(--lol-gradient-grey-focus);
+		&[data-disabled] {
+			--lol-input-border-gradient: var(--lol-gradient-disabled);
+			color: var(--lol-color-grey-150);
+		}
+
+		&[data-focused] {
+			--lol-input-border-gradient: var(--lol-gradient-gold-hover);
+			--lol-input-background-gradient: var(--lol-gradient-grey-focus);
+		}
+
+		&.small {
+			min-height: var(--lol-form-height-small);
+		}
+
+		&.medium {
+			min-height: var(--lol-form-height-medium);
+		}
+
+		&.large {
+			min-height: var(--lol-form-height-large);
+		}
+
+		&.textArea {
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
+		}
 	}
 }

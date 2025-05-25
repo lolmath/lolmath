@@ -1,27 +1,20 @@
-stages:
-  - comment
-  - main
-
 comment:
   image: node:22
-  stage: comment
+  needs: []
   only:
     - merge_requests
   script: npx -y changesets-gitlab comment
 
 main:
   image: node:22
-  stage: main
+  needs: []
   script:
     - npm install -g pnpm
     - pnpm i --frozen-lockfile
     - pnpm run build
     - pnpm run lint
     - pnpm run test
-    - |
-      if [ "$CI_COMMIT_BRANCH" = "main" ]; then
-      npx changesets-gitlab
-      fi
+    - bash -x ./scripts/changesets.sh
     - pnpm run deploy
   variables:
     INPUT_PUBLISH: pnpm run changeset publish
