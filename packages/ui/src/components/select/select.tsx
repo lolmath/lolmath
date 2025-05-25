@@ -1,25 +1,24 @@
-import { cva } from "cva";
-import type { ReactNode } from "react";
+import { cva, cx } from "cva";
 import type {
-	SelectProps as AriaSelectProps,
+	ButtonProps,
 	ListBoxItemProps,
+	ListBoxProps,
+	PopoverProps,
 } from "react-aria-components";
 import {
 	Button as AriaButton,
 	ListBox as AriaListBox,
+	ListBoxItem as AriaListBoxItem,
 	Popover as AriaPopover,
-	Select as AriaSelect,
-	SelectValue as AriaSelectValue,
-	Text as AriaText,
-	ListBoxItem,
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "./select.module.css";
 
+export { Select, SelectValue } from "react-aria-components";
+
 const select = cva({
 	base: classes.button,
 	variants: {
-		isOpen: { true: classes.open },
 		size: {
 			small: classes.small,
 			medium: classes.medium,
@@ -28,66 +27,57 @@ const select = cva({
 	},
 });
 
-interface SelectProps<T extends object>
-	extends Omit<AriaSelectProps<T>, "children"> {
-	label?: string;
-	description?: string;
-	errorMessage?: string;
-	items?: Iterable<T>;
-	children?: ReactNode | ((item: T) => ReactNode);
-	size?: "small" | "medium" | "large";
-}
-
-// Select should have a way to edit the button classes
-
-export function Select<T extends object>({
-	description,
-	errorMessage,
-	children,
-	items,
+export function SelectButton({
 	className,
 	size = "medium",
 	...props
-}: SelectProps<T>) {
+}: ButtonProps & { size?: "small" | "medium" | "large" }) {
 	return (
-		<AriaSelect {...props} className={className}>
-			{(values) => (
-				<>
-					<AriaButton
-						className={(buttonValues) =>
-							select({ ...buttonValues, isOpen: values.isOpen, size })
-						}
-					>
-						<AriaSelectValue />
-					</AriaButton>
-					{description && <AriaText slot="description">{description}</AriaText>}
-					{errorMessage && (
-						<AriaText slot="errorMessage">{errorMessage}</AriaText>
-					)}
-					<AriaPopover offset={4} className={classes.popover}>
-						<AriaListBox className={classes.listBox} items={items}>
-							{children}
-						</AriaListBox>
-					</AriaPopover>
-				</>
+		<AriaButton
+			{...props}
+			className={composeRenderProps(className, (className, buttonValues) =>
+				select({ ...buttonValues, size, className }),
 			)}
-		</AriaSelect>
+		/>
+	);
+}
+
+export function SelectPopover({ className, ...props }: PopoverProps) {
+	return (
+		<AriaPopover
+			{...props}
+			className={composeRenderProps(className, (className) =>
+				cx(className, classes.popover),
+			)}
+		/>
+	);
+}
+
+export function SelectListBox<T extends object>({
+	className,
+	...props
+}: ListBoxProps<T>) {
+	return (
+		<AriaListBox<T>
+			{...props}
+			className={composeRenderProps(className, (className) =>
+				cx(className, classes.listBox),
+			)}
+		/>
 	);
 }
 
 const item = cva({
 	base: classes.item,
 	variants: {
-		isHovered: { true: classes.hover },
-		isPressed: { true: classes.press },
 		isSelected: { true: classes.selected },
 		isFocused: { true: classes.focus },
 	},
 });
 
-export function Item({ className, ...props }: ListBoxItemProps) {
+export function SelectListBoxItem({ className, ...props }: ListBoxItemProps) {
 	return (
-		<ListBoxItem
+		<AriaListBoxItem
 			{...props}
 			className={composeRenderProps(className, (className, values) =>
 				item({ ...values, className }),

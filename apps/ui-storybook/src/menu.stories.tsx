@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import {
+	Autocomplete,
 	Button,
 	Checkbox,
 	Dialog,
@@ -10,9 +11,11 @@ import {
 	MenuItem,
 	MenuTrigger,
 	Popover,
+	SearchField,
 	SubmenuTrigger,
 	Text,
 	UnstyledPopover,
+	useFilter,
 } from "@lolmath/ui";
 import { FaHamburger } from "react-icons/fa";
 
@@ -117,4 +120,34 @@ export const AccountMenu: Story = {
 			</DialogTrigger>
 		</div>
 	),
+};
+
+export const AutoCompleteExample: Story = {
+	args: {},
+	render: () => {
+		const { contains } = useFilter({ sensitivity: "base" });
+
+		return (
+			<MenuTrigger>
+				<Button aria-label="Menu" shape="square" preset="dimmed">
+					<FaHamburger />
+				</Button>
+				<UnstyledPopover>
+					<Autocomplete filter={contains}>
+						<SearchField />
+						<Menu>
+							<MenuItem>Create new file...</MenuItem>
+							<MenuItem>Create new folder...</MenuItem>
+							<MenuItem>Assign to...</MenuItem>
+							<MenuItem>Assign to me</MenuItem>
+							<MenuItem>Change status...</MenuItem>
+							<MenuItem>Change priority...</MenuItem>
+							<MenuItem>Add label...</MenuItem>
+							<MenuItem>Remove label...</MenuItem>
+						</Menu>
+					</Autocomplete>
+				</UnstyledPopover>
+			</MenuTrigger>
+		);
+	},
 };

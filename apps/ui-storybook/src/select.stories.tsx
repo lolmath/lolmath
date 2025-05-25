@@ -1,24 +1,40 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Item, Select } from "@lolmath/ui";
+import {
+	Autocomplete,
+	SearchField,
+	Select,
+	SelectButton,
+	SelectListBox,
+	SelectListBoxItem,
+	SelectPopover,
+	SelectValue,
+	useFilter,
+} from "@lolmath/ui";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
 	title: "Select",
 	component: Select,
 	render: (args) => (
-		<Select {...args}>
-			<Item>Purchase date</Item>
-			<Item>Mint</Item>
-			<Item>Strawberry</Item>
-			<Item>Vanilla</Item>
+		<Select isDisabled={args.isDisabled}>
+			<SelectButton>
+				<SelectValue />
+			</SelectButton>
+			<SelectPopover>
+				<SelectListBox>
+					<SelectListBoxItem>Aardvark</SelectListBoxItem>
+					<SelectListBoxItem>Cat</SelectListBoxItem>
+					<SelectListBoxItem>Dog</SelectListBoxItem>
+					<SelectListBoxItem>Kangaroo</SelectListBoxItem>
+					<SelectListBoxItem>Panda</SelectListBoxItem>
+					<SelectListBoxItem>Snake</SelectListBoxItem>
+				</SelectListBox>
+			</SelectPopover>
 		</Select>
 	),
 	tags: ["autodocs"],
 	argTypes: {},
-	args: {
-		label: "Select a flavor",
-	},
+	args: {},
 } satisfies Meta<typeof Select>;
 
 export default meta;
@@ -38,9 +54,44 @@ export const TonsOfItems: Story = {
 	args: {},
 	render: () => (
 		<Select>
-			{Array.from({ length: 100 }, (_, i) => (
-				<Item key={i}>Item {i}</Item>
-			))}
+			<SelectButton>
+				<SelectValue />
+			</SelectButton>
+			<SelectPopover>
+				<SelectListBox>
+					{Array.from({ length: 100 }, (_, i) => (
+						<SelectListBoxItem key={i}>Item {i}</SelectListBoxItem>
+					))}
+				</SelectListBox>
+			</SelectPopover>
 		</Select>
 	),
+};
+
+export const AutocompleteExample: Story = {
+	args: {},
+	render: () => {
+		const { contains } = useFilter({ sensitivity: "base" });
+
+		return (
+			<Select>
+				<SelectButton>
+					<SelectValue />
+				</SelectButton>
+				<SelectPopover>
+					<Autocomplete filter={contains}>
+						<SearchField aria-label="Search" autoFocus  />
+						<SelectListBox>
+							<SelectListBoxItem>Aardvark</SelectListBoxItem>
+							<SelectListBoxItem>Cat</SelectListBoxItem>
+							<SelectListBoxItem>Dog</SelectListBoxItem>
+							<SelectListBoxItem>Kangaroo</SelectListBoxItem>
+							<SelectListBoxItem>Panda</SelectListBoxItem>
+							<SelectListBoxItem>Snake</SelectListBoxItem>
+						</SelectListBox>
+					</Autocomplete>
+				</SelectPopover>
+			</Select>
+		);
+	},
 };

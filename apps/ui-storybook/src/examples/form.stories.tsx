@@ -1,10 +1,14 @@
 import {
 	Button,
 	ButtonLink,
-	Item,
 	NumberField,
 	SearchField,
 	Select,
+	SelectButton,
+	SelectListBox,
+	SelectListBoxItem,
+	SelectPopover,
+	SelectValue,
 	TextField,
 	ToggleButton,
 } from "@lolmath/ui";
@@ -38,8 +42,15 @@ export const EverythingOnOneLine: Story = {
 				<TextField />
 				<Button>Submit</Button>
 				<Select>
-					<Item>Option 1</Item>
-					<Item>Option 2</Item>
+					<SelectButton>
+						<SelectValue />
+					</SelectButton>
+					<SelectPopover>
+						<SelectListBox>
+							<SelectListBoxItem>Cat</SelectListBoxItem>
+							<SelectListBoxItem>Dog</SelectListBoxItem>
+						</SelectListBox>
+					</SelectPopover>
 				</Select>
 				<NumberField />
 				<SearchField />
@@ -62,9 +73,16 @@ export const Small: Story = {
 			<div className="flex gap-1 flex-wrap">
 				<TextField size="small" />
 				<Button size="small">Submit</Button>
-				<Select size="small">
-					<Item>Option 1</Item>
-					<Item>Option 2</Item>
+				<Select>
+					<SelectButton size="small">
+						<SelectValue />
+					</SelectButton>
+					<SelectPopover>
+						<SelectListBox>
+							<SelectListBoxItem>Cat</SelectListBoxItem>
+							<SelectListBoxItem>Dog</SelectListBoxItem>
+						</SelectListBox>
+					</SelectPopover>
 				</Select>
 				<NumberField size="small" />
 				<SearchField size="small" />
@@ -89,9 +107,16 @@ export const Medium: Story = {
 			<div className="flex gap-1 flex-wrap">
 				<TextField size="medium" />
 				<Button size="medium">Submit</Button>
-				<Select size="medium">
-					<Item>Option 1</Item>
-					<Item>Option 2</Item>
+				<Select>
+					<SelectButton size="medium">
+						<SelectValue />
+					</SelectButton>
+					<SelectPopover>
+						<SelectListBox>
+							<SelectListBoxItem>Cat</SelectListBoxItem>
+							<SelectListBoxItem>Dog</SelectListBoxItem>
+						</SelectListBox>
+					</SelectPopover>
 				</Select>
 				<NumberField size="medium" />
 				<SearchField size="medium" />
@@ -116,9 +141,16 @@ export const Large: Story = {
 			<div className="flex gap-1 flex-wrap">
 				<TextField size="large" />
 				<Button size="large">Submit</Button>
-				<Select size="large">
-					<Item>Option 1</Item>
-					<Item>Option 2</Item>
+				<Select>
+					<SelectButton size="large">
+						<SelectValue />
+					</SelectButton>
+					<SelectPopover>
+						<SelectListBox>
+							<SelectListBoxItem>Cat</SelectListBoxItem>
+							<SelectListBoxItem>Dog</SelectListBoxItem>
+						</SelectListBox>
+					</SelectPopover>
 				</Select>
 				<NumberField size="large" />
 				<SearchField size="large" />
