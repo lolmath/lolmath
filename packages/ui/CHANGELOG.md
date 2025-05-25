@@ -1,5 +1,28 @@
 # @lolmath/ui
 
+## 5.0.0
+
+### Major Changes
+
+- 3257e52: Switch to bundled output so that all css files are also bundled (which will be supported by more libraries)
+
+### Minor Changes
+
+- 8b82eb1: Menu popover now separately exported as UnstyledPopover. Menu now poperly in lol css layer.
+- fca488b: Added `@layer lol` to all css files
+- f6c6cec: Add Menu
+- 51101f4: Add Sonner Component
+
+### Patch Changes
+
+- 7968290: tooltip positioning
+- 1cdf0e8: Use raw color values for tailwind so that tailwind's color functions work again. E.g. if you used bg-lol-blue-300/50, it would not result in a class compiled by tailwind due to the inability to interpolate var() values.
+
+  If this fix needs to be done for other value types remains to be seen.
+
+- 7968290: Tooltip arrow svg size
+- 54a5002: Upgrade dependencies; add lerp to calc
+
 ## 4.1.0
 
 ### Minor Changes

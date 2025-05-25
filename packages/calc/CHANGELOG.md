@@ -1,5 +1,11 @@
 # @lolmath/calc
 
+## 0.0.8
+
+### Patch Changes
+
+- 54a5002: Upgrade dependencies; add lerp to calc
+
 ## 0.0.7
 
 ### Patch Changes

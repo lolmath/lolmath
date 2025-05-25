@@ -6,7 +6,7 @@
 		"type": "git"
 	},
 	"homepage": "https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ddragon",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Get data from League of Legends Ddragon API.",
 	"license": "MIT",
 	"author": "Mees van Dongen",
@@ -35,7 +35,11 @@
 		"typescript": "^5.7.3",
 		"vitest": "^3.0.4"
 	},
-	"files": ["/dist", "/src", "README.md"],
+	"files": [
+		"/dist",
+		"/src",
+		"README.md"
+	],
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
