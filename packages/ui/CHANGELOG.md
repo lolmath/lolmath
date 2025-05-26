@@ -1,5 +1,15 @@
 # @lolmath/ui
 
+## 6.1.0
+
+### Minor Changes
+
+- 0a101a1: Add MenuPopover
+
+### Patch Changes
+
+- 0a101a1: Fix sizing of menu, select with autocomplete component
+
 ## 6.0.0
 
 ### Major Changes
