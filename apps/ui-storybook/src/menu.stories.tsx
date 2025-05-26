@@ -9,12 +9,12 @@ import {
 	Heading,
 	Menu,
 	MenuItem,
+	MenuPopover,
 	MenuTrigger,
 	Popover,
 	SearchField,
 	SubmenuTrigger,
 	Text,
-	UnstyledPopover,
 	useFilter,
 } from "@lolmath/ui";
 import { FaHamburger } from "react-icons/fa";
@@ -29,7 +29,7 @@ const meta = {
 			<Button aria-label="Menu" shape="square" preset="dimmed">
 				☰
 			</Button>
-			<UnstyledPopover>
+			<MenuPopover>
 				<Menu {...args}>
 					<MenuItem onAction={() => alert("open")}>Open</MenuItem>
 					<MenuItem onAction={() => alert("rename")}>Rename…</MenuItem>
@@ -40,15 +40,15 @@ const meta = {
 					<MenuItem onAction={() => alert("delete")}>Delete…</MenuItem>
 					<SubmenuTrigger>
 						<MenuItem key="Email">Email</MenuItem>
-						<UnstyledPopover>
+						<MenuPopover>
 							<Menu onAction={(key) => alert(`Email menu ${key} action`)}>
 								<MenuItem key="Attachment">Email as Attachment</MenuItem>
 								<MenuItem key="Link">Email as Link</MenuItem>
 							</Menu>
-						</UnstyledPopover>
+						</MenuPopover>
 					</SubmenuTrigger>
 				</Menu>
-			</UnstyledPopover>
+			</MenuPopover>
 		</MenuTrigger>
 	),
 } satisfies Meta<typeof Menu>;
@@ -67,7 +67,7 @@ export const TonsOfItems: Story = {
 			<Button aria-label="Menu" shape="square" preset="dimmed">
 				<FaHamburger />
 			</Button>
-			<UnstyledPopover>
+			<MenuPopover>
 				<Menu>
 					{Array.from({ length: 100 }, (_, i) => (
 						<MenuItem key={i} onAction={() => alert(`Item ${i} action`)}>
@@ -75,7 +75,32 @@ export const TonsOfItems: Story = {
 						</MenuItem>
 					))}
 				</Menu>
-			</UnstyledPopover>
+			</MenuPopover>
+		</MenuTrigger>
+	),
+};
+
+export const TonsOfItemsWithRenderFunction: Story = {
+	args: {},
+	render: () => (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				<FaHamburger />
+			</Button>
+			<MenuPopover>
+				<Menu
+					items={Array.from({ length: 100 }).map((_, i) => ({
+						id: i,
+						value: `Item ${i}`,
+					}))}
+				>
+					{({ value }) => (
+						<MenuItem onAction={() => alert(`${value} action`)}>
+							{value}
+						</MenuItem>
+					)}
+				</Menu>
+			</MenuPopover>
 		</MenuTrigger>
 	),
 };
@@ -132,7 +157,7 @@ export const AutoCompleteExample: Story = {
 				<Button aria-label="Menu" shape="square" preset="dimmed">
 					<FaHamburger />
 				</Button>
-				<UnstyledPopover>
+				<MenuPopover>
 					<Autocomplete filter={contains}>
 						<SearchField />
 						<Menu>
@@ -146,7 +171,39 @@ export const AutoCompleteExample: Story = {
 							<MenuItem>Remove label...</MenuItem>
 						</Menu>
 					</Autocomplete>
-				</UnstyledPopover>
+				</MenuPopover>
+			</MenuTrigger>
+		);
+	},
+};
+
+export const TonsOfItemsWithAutocomplete: Story = {
+	args: {},
+	render: () => {
+		const { contains } = useFilter({ sensitivity: "base" });
+
+		return (
+			<MenuTrigger>
+				<Button aria-label="Menu" shape="square" preset="dimmed">
+					<FaHamburger />
+				</Button>
+				<MenuPopover>
+					<Autocomplete filter={contains}>
+						<SearchField aria-label="Search" autoFocus />
+						<Menu
+							items={Array.from({ length: 100 }).map((_, i) => ({
+								id: i,
+								value: `Item ${i}`,
+							}))}
+						>
+							{({ value, id }) => (
+								<MenuItem key={id} onAction={() => alert(`${value} action`)}>
+									{value}
+								</MenuItem>
+							)}
+						</Menu>
+					</Autocomplete>
+				</MenuPopover>
 			</MenuTrigger>
 		);
 	},

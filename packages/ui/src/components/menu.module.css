@@ -1,6 +1,5 @@
 @layer lol {
 	.menu {
-		max-height: inherit;
 		box-sizing: border-box;
 		overflow: auto;
 		min-width: 150px;
@@ -44,5 +43,10 @@
 		&[data-pressed] {
 			color: var(--lol-color-gold-300);
 		}
+	}
+
+	.popover {
+		display: flex;
+		flex-direction: column;
 	}
 }

@@ -3,9 +3,11 @@ import {
 	Menu as AriaMenu,
 	MenuItem as AriaMenuItem,
 	MenuTrigger as AriaMenuTrigger,
+	Popover as AriaPopover,
 	SubmenuTrigger as AriaSubmenuTrigger,
 	type MenuItemProps,
 	type MenuProps,
+	type PopoverProps,
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "./menu.module.css";
@@ -28,6 +30,17 @@ export function MenuItem<T extends object>({
 			{...props}
 			className={composeRenderProps(className, (className, values) =>
 				cx(classes.item, className, values),
+			)}
+		/>
+	);
+}
+
+export function MenuPopover({ className, ...props }: PopoverProps) {
+	return (
+		<AriaPopover
+			{...props}
+			className={composeRenderProps(className, (className) =>
+				cx(className, classes.popover),
 			)}
 		/>
 	);

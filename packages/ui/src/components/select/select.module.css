@@ -63,6 +63,7 @@
 		background-color: var(--lol-color-hextech-black);
 		border: 1px solid var(--lol-color-gold-600);
 		outline: none;
+		overflow-y: auto;
 	}
 
 	.item {
@@ -100,7 +101,7 @@
 
 	.popover {
 		width: var(--trigger-width);
-		max-height: inherit;
-		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
 	}
 }

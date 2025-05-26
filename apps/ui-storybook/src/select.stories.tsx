@@ -68,6 +68,27 @@ export const TonsOfItems: Story = {
 	),
 };
 
+export const TonsOfItemsWithRenderFunction: Story = {
+	args: {},
+	render: () => (
+		<Select>
+			<SelectButton>
+				<SelectValue />
+			</SelectButton>
+			<SelectPopover>
+				<SelectListBox
+					items={Array.from({ length: 100 }).map((_, i) => ({
+						id: i,
+						value: `Item ${i}`,
+					}))}
+				>
+					{({ value }) => <SelectListBoxItem>{value}</SelectListBoxItem>}
+				</SelectListBox>
+			</SelectPopover>
+		</Select>
+	),
+};
+
 export const AutocompleteExample: Story = {
 	args: {},
 	render: () => {
@@ -80,7 +101,7 @@ export const AutocompleteExample: Story = {
 				</SelectButton>
 				<SelectPopover>
 					<Autocomplete filter={contains}>
-						<SearchField aria-label="Search" autoFocus  />
+						<SearchField aria-label="Search" autoFocus />
 						<SelectListBox>
 							<SelectListBoxItem>Aardvark</SelectListBoxItem>
 							<SelectListBoxItem>Cat</SelectListBoxItem>
@@ -88,6 +109,34 @@ export const AutocompleteExample: Story = {
 							<SelectListBoxItem>Kangaroo</SelectListBoxItem>
 							<SelectListBoxItem>Panda</SelectListBoxItem>
 							<SelectListBoxItem>Snake</SelectListBoxItem>
+						</SelectListBox>
+					</Autocomplete>
+				</SelectPopover>
+			</Select>
+		);
+	},
+};
+
+export const AutocompleteWithTonsOfItems: Story = {
+	args: {},
+	render: () => {
+		const { contains } = useFilter({ sensitivity: "base" });
+
+		return (
+			<Select>
+				<SelectButton>
+					<SelectValue />
+				</SelectButton>
+				<SelectPopover>
+					<Autocomplete filter={contains}>
+						<SearchField aria-label="Search" autoFocus />
+						<SelectListBox
+							items={Array.from({ length: 100 }).map((_, i) => ({
+								id: i,
+								value: `Item ${i}`,
+							}))}
+						>
+							{({ value }) => <SelectListBoxItem>{value}</SelectListBoxItem>}
 						</SelectListBox>
 					</Autocomplete>
 				</SelectPopover>
