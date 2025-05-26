@@ -1,5 +1,15 @@
 # @lolmath/ui
 
+## 6.0.0
+
+### Major Changes
+
+- 42d7528: Reworked select component to not be batteries included.
+
+### Minor Changes
+
+- 42d7528: Exposed Autocomplete for both select and menu
+
 ## 5.0.0
 
 ### Major Changes
