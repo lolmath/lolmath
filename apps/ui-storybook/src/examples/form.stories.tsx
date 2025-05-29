@@ -12,7 +12,7 @@ import {
 	TextField,
 	ToggleButton,
 } from "@lolmath/ui";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FaGear } from "react-icons/fa6";
 
 const meta = {

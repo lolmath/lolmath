@@ -1,5 +1,5 @@
-import type { Preview } from "@storybook/react";
-import { themes } from "@storybook/theming";
+import type { Preview } from "@storybook/react-vite";
+import { themes } from "storybook/theming";
 import "../src/tailwind.css";
 import "@lolmath/ui/font/beaufort";
 import "@lolmath/ui/font/spiegel";
@@ -8,17 +8,15 @@ import "@lolmath/ui/css";
 const preview: Preview = {
 	parameters: {
 		backgrounds: {
-			default: "hextech-black",
-			values: [
-				{
-					name: "hextech-black",
-					value: "#010A13",
-				},
-				{
-					name: "dark-blue-gradient",
+			options: {
+				hextechBlack: { name: "Hextech Black", value: "#010A13" },
+				darkBlueGradient: {
+					name: "Dark Blue Gradient",
 					value: "linear-gradient(180deg, #091428 0%, #0A1428 100%)",
 				},
-			],
+				dark: { name: "Dark", value: "#333" },
+				light: { name: "Light", value: "#F7F9F2" },
+			},
 		},
 		actions: { argTypesRegex: "^on[A-Z].*" },
 		controls: {
@@ -27,8 +25,13 @@ const preview: Preview = {
 				date: /Date$/,
 			},
 		},
+		tags: ["autodocs"],
+
 		docs: {
 			theme: themes.dark,
+		},
+		initialGlobals: {
+			backgrounds: { value: "hextechBlack" },
 		},
 	},
 };

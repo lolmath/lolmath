@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import {
 	Autocomplete,
@@ -8,8 +8,10 @@ import {
 	DialogTrigger,
 	Heading,
 	Menu,
+	MenuHeader,
 	MenuItem,
 	MenuPopover,
+	MenuSection,
 	MenuTrigger,
 	Popover,
 	SearchField,
@@ -260,3 +262,183 @@ export const WithSingleSelect = () => {
 		</MenuTrigger>
 	);
 };
+
+export const WithoutPopover: Story = {
+	args: {},
+	render: () => (
+		<Menu>
+			<MenuItem onAction={() => alert("open")}>Open</MenuItem>
+			<MenuItem onAction={() => alert("rename")}>Rename…</MenuItem>
+			<MenuItem onAction={() => alert("duplicate")}>Duplicate</MenuItem>
+			<MenuItem isDisabled onAction={() => alert("share")}>
+				Share…
+			</MenuItem>
+			<MenuItem onAction={() => alert("delete")}>Delete…</MenuItem>
+		</Menu>
+	),
+};
+
+export function WithoutPopoverSections() {
+	return (
+		<Menu>
+			<MenuSection>
+				<MenuHeader>File</MenuHeader>
+				<MenuItem onAction={() => alert("open")}>Open</MenuItem>
+				<MenuItem onAction={() => alert("rename")}>Rename…</MenuItem>
+				<MenuItem onAction={() => alert("duplicate")}>Duplicate</MenuItem>
+				<MenuItem isDisabled onAction={() => alert("share")}>
+					Share…
+				</MenuItem>
+				<MenuItem onAction={() => alert("delete")}>Delete…</MenuItem>
+			</MenuSection>
+			<MenuSection>
+				<MenuHeader>Edit</MenuHeader>
+				<MenuItem onAction={() => alert("cut")}>Cut</MenuItem>
+				<MenuItem onAction={() => alert("copy")}>Copy</MenuItem>
+				<MenuItem onAction={() => alert("paste")}>Paste</MenuItem>
+			</MenuSection>
+		</Menu>
+	);
+}
+
+export function WithSections() {
+	return (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				<FaHamburger />
+			</Button>
+			<MenuPopover>
+				<Menu>
+					<MenuSection>
+						<MenuHeader>File</MenuHeader>
+						<MenuItem onAction={() => alert("open")}>Open</MenuItem>
+						<MenuItem onAction={() => alert("rename")}>Rename…</MenuItem>
+						<MenuItem onAction={() => alert("duplicate")}>Duplicate</MenuItem>
+						<MenuItem isDisabled onAction={() => alert("share")}>
+							Share…
+						</MenuItem>
+						<MenuItem onAction={() => alert("delete")}>Delete…</MenuItem>
+					</MenuSection>
+					<MenuSection>
+						<MenuHeader>Edit</MenuHeader>
+						<MenuItem onAction={() => alert("cut")}>Cut</MenuItem>
+						<MenuItem onAction={() => alert("copy")}>Copy</MenuItem>
+						<MenuItem onAction={() => alert("paste")}>Paste</MenuItem>
+					</MenuSection>
+				</Menu>
+			</MenuPopover>
+		</MenuTrigger>
+	);
+}
+
+export function WithKitchenSink() {
+	// Sub menus, sections, selection modes, and more.
+
+	const [singleSelected, setSingleSelected] = useState<Selection>(
+		() => new Set(["banana"]),
+	);
+	const [multipleSelected, setMultipleSelected] = useState<Selection>(
+		() => new Set(["apple", "orange"]),
+	);
+
+	const [subSelected, setSubSelected] = useState<Selection>(
+		() => new Set(["subitem1"]),
+	);
+	const [subMultipleSelected, setSubMultipleSelected] = useState<Selection>(
+		() => new Set(["subitem2"]),
+	);
+
+	return (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				<FaHamburger />
+			</Button>
+			<MenuPopover>
+				<Menu>
+					<MenuSection>
+						<MenuHeader>File Operations</MenuHeader>
+						<MenuItem onAction={() => alert("new file")}>New File</MenuItem>
+						<MenuItem onAction={() => alert("open")}>Open</MenuItem>
+						<MenuItem onAction={() => alert("save")}>Save</MenuItem>
+						<MenuItem isDisabled onAction={() => alert("save as")}>
+							Save As...
+						</MenuItem>
+					</MenuSection>
+
+					<MenuSection
+						selectionMode="single"
+						selectedKeys={singleSelected}
+						onSelectionChange={setSingleSelected}
+					>
+						<MenuHeader>Single Selection Fruits</MenuHeader>
+						<MenuItem id="banana">🍌 Banana</MenuItem>
+						<MenuItem id="apple">🍎 Apple</MenuItem>
+						<MenuItem id="orange">🍊 Orange</MenuItem>
+						<MenuItem id="grape">🍇 Grape</MenuItem>
+					</MenuSection>
+
+					<MenuSection
+						selectionMode="multiple"
+						selectedKeys={multipleSelected}
+						onSelectionChange={setMultipleSelected}
+					>
+						<MenuHeader>Multiple Selection Fruits</MenuHeader>
+						<MenuItem id="apple">🍎 Apple</MenuItem>
+						<MenuItem id="orange">🍊 Orange</MenuItem>
+						<MenuItem id="banana">🍌 Banana</MenuItem>
+						<MenuItem id="strawberry">🍓 Strawberry</MenuItem>
+					</MenuSection>
+
+					<MenuSection>
+						<MenuHeader>Advanced Options</MenuHeader>
+						<SubmenuTrigger>
+							<MenuItem key="preferences">⚙️ Preferences</MenuItem>
+							<MenuPopover>
+								<Menu
+									selectionMode="single"
+									selectedKeys={subSelected}
+									onSelectionChange={setSubSelected}
+								>
+									<MenuItem id="subitem1">Theme: Light</MenuItem>
+									<MenuItem id="subitem2">Theme: Dark</MenuItem>
+									<MenuItem id="subitem3">Theme: Auto</MenuItem>
+								</Menu>
+							</MenuPopover>
+						</SubmenuTrigger>
+
+						<SubmenuTrigger>
+							<MenuItem key="languages">🌐 Languages</MenuItem>
+							<MenuPopover>
+								<Menu
+									selectionMode="multiple"
+									selectedKeys={subMultipleSelected}
+									onSelectionChange={setSubMultipleSelected}
+								>
+									<MenuItem id="subitem1">English</MenuItem>
+									<MenuItem id="subitem2">Spanish</MenuItem>
+									<MenuItem id="subitem3">French</MenuItem>
+									<MenuItem id="subitem4">German</MenuItem>
+								</Menu>
+							</MenuPopover>
+						</SubmenuTrigger>
+
+						<MenuItem onAction={() => alert("settings")}>Settings</MenuItem>
+					</MenuSection>
+
+					<MenuSection>
+						<MenuHeader>Danger Zone</MenuHeader>
+						<MenuItem onAction={() => alert("clear cache")}>
+							Clear Cache
+						</MenuItem>
+						<MenuItem onAction={() => alert("reset settings")}>
+							Reset Settings
+						</MenuItem>
+						<MenuItem onAction={() => alert("delete account")}>
+							Delete Account
+						</MenuItem>
+					</MenuSection>
+				</Menu>
+			</MenuPopover>
+		</MenuTrigger>
+	);
+}

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { ButtonLink } from "@lolmath/ui";
 import { FaGear } from "react-icons/fa6";

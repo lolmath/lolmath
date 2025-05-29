@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { type Key, Tab, TabList, TabPanel, Tabs, Text } from "@lolmath/ui";
 import { useState } from "react";
