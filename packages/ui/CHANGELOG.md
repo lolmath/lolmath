@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 6.2.0
+
+### Minor Changes
+
+- 75cd778: Add Menu Selection styling
+
 ## 6.1.0
 
 ### Minor Changes
