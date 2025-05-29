@@ -13,10 +13,12 @@ import {
 	MenuTrigger,
 	Popover,
 	SearchField,
+	type Selection,
 	SubmenuTrigger,
 	Text,
 	useFilter,
 } from "@lolmath/ui";
+import { useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 
 const meta = {
@@ -207,4 +209,54 @@ export const TonsOfItemsWithAutocomplete: Story = {
 			</MenuTrigger>
 		);
 	},
+};
+
+export const WithMultipleSelect: Story = {
+	args: {},
+	render: () => (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				<FaHamburger />
+			</Button>
+			<MenuPopover>
+				<Menu selectionMode="multiple">
+					<MenuItem id="banana">Banana</MenuItem>
+					<MenuItem id="apple">Apple</MenuItem>
+					<MenuItem id="orange">Orange</MenuItem>
+					<MenuItem id="verylongitem">
+						This is a very long item that should wrap to the next line if it is
+						too long
+					</MenuItem>
+				</Menu>
+			</MenuPopover>
+		</MenuTrigger>
+	),
+};
+
+export const WithSingleSelect = () => {
+	const [selected, setSelected] = useState<Selection>(
+		() => new Set(["center"]),
+	);
+
+	return (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				<FaHamburger />
+			</Button>
+			<MenuPopover>
+				<Menu
+					selectionMode="single"
+					selectedKeys={selected}
+					onSelectionChange={setSelected}
+				>
+					<MenuItem id="banana">Banana</MenuItem>
+					<MenuItem id="apple">Apple</MenuItem>
+					<MenuItem id="orange">Orange</MenuItem>
+					<MenuItem id="verylongitem">
+						This is a very long item that is indeed very long.
+					</MenuItem>
+				</Menu>
+			</MenuPopover>
+		</MenuTrigger>
+	);
 };

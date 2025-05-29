@@ -43,6 +43,16 @@
 		&[data-pressed] {
 			color: var(--lol-color-gold-300);
 		}
+
+		&[data-selection-mode] {
+			padding-right: 2rem;
+		}
+
+		&[data-selected] {
+			background-image: url(./select/select-dropdown-check.png);
+			background-position: right 0.5rem center;
+			background-repeat: no-repeat;
+		}
 	}
 
 	.popover {

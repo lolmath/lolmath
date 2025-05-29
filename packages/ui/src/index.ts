@@ -4,6 +4,7 @@ export {
 	RouterProvider,
 	DialogTrigger,
 	Dialog,
+	type Selection,
 	// TODO: Maybe remove this if it is not used.
 	Popover as UnstyledPopover,
 } from "react-aria-components";
