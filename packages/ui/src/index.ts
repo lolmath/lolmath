@@ -32,7 +32,7 @@ export * from "./components/toggle-button";
 export * from "./components/popover";
 export * from "./components/typography/heading";
 export * from "./components/typography/text";
-export * from "./components/menu";
+export * from "./components/menu/menu";
 export * from "./components/select/multiple-select";
 export * from "./components/tag/tag";
 export * from "./components/autocomplete";

@@ -7,16 +7,17 @@ import {
 	MenuSection as AriaMenuSection,
 	MenuTrigger as AriaMenuTrigger,
 	Popover as AriaPopover,
+	Separator as AriaSeparator,
 	SubmenuTrigger as AriaSubmenuTrigger,
 	type MenuItemProps,
 	type MenuProps,
 	type MenuSectionProps,
 	type PopoverProps,
+	type SeparatorProps,
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "./menu.module.css";
-import { heading } from "./typography/heading";
-import { text } from "./typography/text";
+import { heading } from "../typography/heading";
 
 export type { MenuItemProps, MenuProps } from "react-aria-components";
 
@@ -74,5 +75,11 @@ export function MenuHeader({
 				preset: "h5",
 			})}
 		/>
+	);
+}
+
+export function MenuSeparator({ className, ...props }: SeparatorProps) {
+	return (
+		<AriaSeparator {...props} className={cx(className, classes.separator)} />
 	);
 }

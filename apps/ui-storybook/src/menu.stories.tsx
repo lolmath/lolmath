@@ -12,6 +12,7 @@ import {
 	MenuItem,
 	MenuPopover,
 	MenuSection,
+	MenuSeparator,
 	MenuTrigger,
 	Popover,
 	SearchField,
@@ -359,6 +360,7 @@ export function WithKitchenSink() {
 						<MenuHeader>File Operations</MenuHeader>
 						<MenuItem onAction={() => alert("new file")}>New File</MenuItem>
 						<MenuItem onAction={() => alert("open")}>Open</MenuItem>
+						<MenuSeparator />
 						<MenuItem onAction={() => alert("save")}>Save</MenuItem>
 						<MenuItem isDisabled onAction={() => alert("save as")}>
 							Save As...
@@ -373,20 +375,20 @@ export function WithKitchenSink() {
 						<MenuHeader>Single Selection Fruits</MenuHeader>
 						<MenuItem id="banana">🍌 Banana</MenuItem>
 						<MenuItem id="apple">🍎 Apple</MenuItem>
+						<MenuSeparator />
 						<MenuItem id="orange">🍊 Orange</MenuItem>
 						<MenuItem id="grape">🍇 Grape</MenuItem>
 					</MenuSection>
-
 					<MenuSection
 						selectionMode="multiple"
 						selectedKeys={multipleSelected}
 						onSelectionChange={setMultipleSelected}
 					>
 						<MenuHeader>Multiple Selection Fruits</MenuHeader>
-						<MenuItem id="apple">🍎 Apple</MenuItem>
-						<MenuItem id="orange">🍊 Orange</MenuItem>
-						<MenuItem id="banana">🍌 Banana</MenuItem>
+						<MenuItem id="lemon">🍋 Lemon</MenuItem>
+						<MenuItem id="kiwi">🥝 Kiwi</MenuItem>
 						<MenuItem id="strawberry">🍓 Strawberry</MenuItem>
+						<MenuItem id="blueberry">🫐 Blueberry</MenuItem>
 					</MenuSection>
 
 					<MenuSection>
