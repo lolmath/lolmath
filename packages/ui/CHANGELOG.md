@@ -1,5 +1,12 @@
 # @lolmath/ui
 
+## 6.3.0
+
+### Minor Changes
+
+- 700f65e: Add separator component
+- 700f65e: Add arrow to the submenu
+
 ## 6.2.0
 
 ### Minor Changes
