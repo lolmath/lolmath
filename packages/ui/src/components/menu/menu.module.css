@@ -54,8 +54,8 @@
 			background-repeat: no-repeat;
 		}
 		&[aria-haspopup] {
-			background-image: url(./menu-arrow-2.png);
-			background-size: 7px;
+			background-image: url(./menu-arrow.png);
+			background-size: 12px;
 			background-position: right 0.5rem center;
 			background-repeat: no-repeat;
 		}
