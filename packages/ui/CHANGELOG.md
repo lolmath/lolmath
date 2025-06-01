@@ -1,5 +1,13 @@
 # @lolmath/ui
 
+## 6.4.0
+
+### Minor Changes
+
+- 2653e5a: adjust text elements to use react-aria text
+- d52788a: Add SelectVirtualizer and MenuVirtualizer
+- 2653e5a: export Virtualizer from react-aria-components
+
 ## 6.3.0
 
 ### Minor Changes
