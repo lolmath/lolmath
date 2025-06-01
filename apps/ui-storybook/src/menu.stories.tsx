@@ -14,11 +14,13 @@ import {
 	MenuSection,
 	MenuSeparator,
 	MenuTrigger,
+	MenuVirtualizer,
 	Popover,
 	SearchField,
 	type Selection,
 	SubmenuTrigger,
 	Text,
+	Virtualizer,
 	useFilter,
 } from "@lolmath/ui";
 import { useState } from "react";
@@ -331,6 +333,71 @@ export function WithSections() {
 		</MenuTrigger>
 	);
 }
+
+export const VirtualizedMenu = () => {
+	// Create a large dataset for virtualization
+	const items = Array.from({ length: 5000 }, (_, i) => ({
+		id: i,
+		name: `Item ${i}`,
+	}));
+
+	return (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				<FaHamburger />
+			</Button>
+			<MenuPopover>
+				<MenuVirtualizer>
+					<Menu items={items}>
+						{(item) => (
+							<MenuItem
+								key={item.id}
+								onAction={() => alert(`Item ${item.id} action`)}
+							>
+								{item.name}
+							</MenuItem>
+						)}
+					</Menu>
+				</MenuVirtualizer>
+			</MenuPopover>
+		</MenuTrigger>
+	);
+};
+
+export const VirtualizedMenuWithSearch = () => {
+	// Create a large dataset for virtualization
+	const items = Array.from({ length: 5000 }, (_, i) => ({
+		id: i,
+		name: `Item ${i}`,
+	}));
+
+	const { contains } = useFilter({ sensitivity: "base" });
+
+	return (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				<FaHamburger />
+			</Button>
+			<MenuPopover>
+				<Autocomplete filter={contains}>
+					<SearchField />
+					<MenuVirtualizer>
+						<Menu items={items}>
+							{(item) => (
+								<MenuItem
+									key={item.id}
+									onAction={() => alert(`Item ${item.id} action`)}
+								>
+									{item.name}
+								</MenuItem>
+							)}
+						</Menu>
+					</MenuVirtualizer>
+				</Autocomplete>
+			</MenuPopover>
+		</MenuTrigger>
+	);
+};
 
 export function WithKitchenSink() {
 	// Sub menus, sections, selection modes, and more.

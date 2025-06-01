@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import {
 	Autocomplete,
+	GridLayout,
+	ListLayout,
 	SearchField,
 	Select,
 	SelectButton,
@@ -9,6 +11,10 @@ import {
 	SelectListBoxItem,
 	SelectPopover,
 	SelectValue,
+	SelectVirtualizer,
+	Size,
+	Virtualizer,
+	WaterfallLayout,
 	useFilter,
 } from "@lolmath/ui";
 
@@ -138,6 +144,73 @@ export const AutocompleteWithTonsOfItems: Story = {
 						>
 							{({ value }) => <SelectListBoxItem>{value}</SelectListBoxItem>}
 						</SelectListBox>
+					</Autocomplete>
+				</SelectPopover>
+			</Select>
+		);
+	},
+};
+
+export function VirtualizedList() {
+	// Create a large dataset for virtualization
+	const items = Array.from({ length: 5000 }, (_, i) => ({
+		id: i,
+		name: `Item ${i}`,
+	}));
+
+	return (
+		<Select>
+			<SelectButton>
+				<SelectValue />
+			</SelectButton>
+			<SelectPopover>
+				<SelectVirtualizer>
+					<SelectListBox
+						aria-label="Virtualized Select"
+						selectionMode="single"
+						items={items}
+					>
+						{(item) => (
+							<SelectListBoxItem key={item.id}>{item.name}</SelectListBoxItem>
+						)}
+					</SelectListBox>
+				</SelectVirtualizer>
+			</SelectPopover>
+		</Select>
+	);
+}
+
+export const VirtualizedWithAutocomplete: Story = {
+	args: {},
+	render: () => {
+		const { contains } = useFilter({ sensitivity: "base" });
+
+		const items = Array.from({ length: 5000 }, (_, i) => ({
+			id: i,
+			name: `Option ${i}`,
+		}));
+
+		return (
+			<Select>
+				<SelectButton>
+					<SelectValue />
+				</SelectButton>
+				<SelectPopover>
+					<Autocomplete filter={contains}>
+						<SearchField aria-label="Search options" autoFocus />
+						<SelectVirtualizer>
+							<SelectListBox
+								aria-label="Virtualized Autocomplete Select"
+								selectionMode="single"
+								items={items}
+							>
+								{(item) => (
+									<SelectListBoxItem key={item.id}>
+										{item.name}
+									</SelectListBoxItem>
+								)}
+							</SelectListBox>
+						</SelectVirtualizer>
 					</Autocomplete>
 				</SelectPopover>
 			</Select>

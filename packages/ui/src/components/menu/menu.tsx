@@ -9,15 +9,18 @@ import {
 	Popover as AriaPopover,
 	Separator as AriaSeparator,
 	SubmenuTrigger as AriaSubmenuTrigger,
+	Virtualizer as AriaVirtualizer,
+	ListLayout,
 	type MenuItemProps,
 	type MenuProps,
 	type MenuSectionProps,
 	type PopoverProps,
 	type SeparatorProps,
+	type VirtualizerProps,
 	composeRenderProps,
 } from "react-aria-components";
-import classes from "./menu.module.css";
 import { heading } from "../typography/heading";
+import classes from "./menu.module.css";
 
 export type { MenuItemProps, MenuProps } from "react-aria-components";
 
@@ -81,5 +84,24 @@ export function MenuHeader({
 export function MenuSeparator({ className, ...props }: SeparatorProps) {
 	return (
 		<AriaSeparator {...props} className={cx(className, classes.separator)} />
+	);
+}
+
+export function MenuVirtualizer<T>(
+	props: Omit<VirtualizerProps<T>, "layout" | "layoutOptions">,
+) {
+	return (
+		<AriaVirtualizer
+			layout={ListLayout}
+			layoutOptions={{
+				padding: 0,
+				gap: 0,
+				rowHeight: 30,
+				headingHeight: 35,
+				// estimatedRowHeight: 30,
+				// estimatedHeadingHeight: 35,
+			}}
+			{...props}
+		/>
 	);
 }

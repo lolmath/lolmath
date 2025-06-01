@@ -13,6 +13,7 @@ export {
 	WaterfallLayout,
 	TableLayout,
 	FieldError,
+	Size,
 	
 	// TODO: Maybe remove this if it is not used.
 	Popover as UnstyledPopover,

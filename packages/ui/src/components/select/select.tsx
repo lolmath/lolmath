@@ -1,15 +1,16 @@
 import { cva, cx } from "cva";
-import type {
-	ButtonProps,
-	ListBoxItemProps,
-	ListBoxProps,
-	PopoverProps,
-} from "react-aria-components";
 import {
 	Button as AriaButton,
 	ListBox as AriaListBox,
 	ListBoxItem as AriaListBoxItem,
 	Popover as AriaPopover,
+	Virtualizer as AriaVirtualizer,
+	type ButtonProps,
+	type ListBoxItemProps,
+	type ListBoxProps,
+	ListLayout,
+	type PopoverProps,
+	type VirtualizerProps,
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "./select.module.css";
@@ -82,6 +83,23 @@ export function SelectListBoxItem({ className, ...props }: ListBoxItemProps) {
 			className={composeRenderProps(className, (className, values) =>
 				item({ ...values, className }),
 			)}
+		/>
+	);
+}
+
+export function SelectVirtualizer<T>(
+	props: Omit<VirtualizerProps<T>, "layout" | "layoutOptions">,
+) {
+	return (
+		<AriaVirtualizer
+			layout={ListLayout}
+			layoutOptions={{
+				padding: 0,
+				gap: 0,
+				rowHeight: 31,
+				headingHeight: 35,
+			}}
+			{...props}
 		/>
 	);
 }
