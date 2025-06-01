@@ -1,5 +1,11 @@
 # @lolmath/calc
 
+## 0.1.0
+
+### Minor Changes
+
+- 0b2c483: Add lerp3, lerp5, lerp18
+
 ## 0.0.8
 
 ### Patch Changes
