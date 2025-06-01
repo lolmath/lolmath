@@ -1,24 +1,16 @@
 import { cva } from "cva";
-import { createElement } from "react";
 import type { JSX } from "react";
 import {
 	Label as AriaLabel,
 	type LabelProps as AriaLabelProps,
+	Text as AriaText,
+	type TextProps as AriaTextProps,
 } from "react-aria-components";
 import classes from "./text.module.css";
 
 export type TextColor = "grey100" | "grey150" | "gold100";
 export type TextElement = "p" | "span" | "div";
 export type TextPreset = "sm" | "base" | "md" | "lg" | "largeNumber" | "stat";
-
-const presetElements: Record<TextPreset, TextElement> = {
-	sm: "p",
-	base: "p",
-	md: "p",
-	lg: "p",
-	largeNumber: "span",
-	stat: "span",
-};
 
 export const text = cva({
 	base: classes.text,
@@ -40,33 +32,22 @@ export const text = cva({
 	},
 });
 
-interface TextProps
-	extends React.DetailedHTMLProps<
-		React.HTMLAttributes<HTMLElement>,
-		HTMLElement
-	> {
+interface TextProps extends AriaTextProps {
 	preset?: TextPreset;
 	color?: TextColor;
-	as?: TextElement;
 }
 export function Text({
-	as = "p",
 	preset = "base",
 	color = "grey100",
 	className,
 	...rest
 }: TextProps): JSX.Element {
-	const elementType = as ?? presetElements[preset];
-	return createElement(elementType, {
-		...rest,
-		className: text({ preset, color, className }),
-	});
+	return <AriaText className={text({ preset, color, className })} {...rest} />;
 }
 
 interface LabelProps extends AriaLabelProps {
 	preset?: TextPreset | "label";
 	color?: TextColor;
-	as?: TextElement;
 }
 export function Label({
 	preset = "sm",
@@ -74,8 +55,5 @@ export function Label({
 	className,
 	...rest
 }: LabelProps): JSX.Element {
-	return createElement(AriaLabel, {
-		...rest,
-		className: text({ preset, color, className }),
-	});
+	return <AriaLabel className={text({ preset, color, className })} {...rest} />;
 }

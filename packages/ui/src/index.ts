@@ -6,6 +6,14 @@ export {
 	Dialog,
 	type Selection,
 	Collection,
+	Virtualizer,
+	ListBoxItem,
+	ListLayout,
+	GridLayout,
+	WaterfallLayout,
+	TableLayout,
+	FieldError,
+	
 	// TODO: Maybe remove this if it is not used.
 	Popover as UnstyledPopover,
 } from "react-aria-components";
