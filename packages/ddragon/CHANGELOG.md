@@ -1,5 +1,11 @@
 # @lolmath/ddragon
 
+## 2.0.1
+
+### Patch Changes
+
+- e9faa9f: withWebp now properly replaces version number with latest
+
 ## 2.0.0
 
 ### Major Changes
