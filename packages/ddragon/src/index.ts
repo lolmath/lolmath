@@ -35,11 +35,16 @@ export interface DdragonOptions {
 	imageUrlTransformer?: (url: string) => string;
 }
 
+const defaultVersion = "9.22.1";
+const defaultLanguage: Language = "en_US";
+const defaultImageBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
+const defaultDataBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
+
 export function createDdragon(options?: DdragonOptions) {
-	let _version = "9.22.1";
-	let _language: Language = "en_US";
-	let _imageBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
-	let _dataBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
+	let _version = defaultVersion;
+	let _language: Language = defaultLanguage;
+	let _imageBaseUrl = defaultImageBaseUrl;
+	let _dataBaseUrl = defaultDataBaseUrl;
 	let _imageUrlTransformer: (url: string) => string = (url) => url;
 
 	function configure({
@@ -229,6 +234,9 @@ export function withWebp(
 	return {
 		...options,
 		imageBaseUrl: "https://ddragon-webp.lolmath.net",
-		imageUrlTransformer: (url) => url.replace(/.(png|jpg|jpeg)$/, ".webp"),
+		imageUrlTransformer: (url) =>
+			url
+				.replace(/.(png|jpg|jpeg)$/, ".webp")
+				.replaceAll(options?.version ?? defaultVersion, "latest"),
 	};
 }
