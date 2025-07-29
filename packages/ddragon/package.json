@@ -6,7 +6,7 @@
 		"type": "git"
 	},
 	"homepage": "https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ddragon",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "Get data from League of Legends Ddragon API.",
 	"license": "MIT",
 	"author": "Mees van Dongen",

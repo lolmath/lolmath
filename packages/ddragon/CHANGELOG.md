@@ -1,5 +1,11 @@
 # @lolmath/ddragon
 
+## 2.0.2
+
+### Patch Changes
+
+- 0475493: Fix version endpoint
+
 ## 2.0.1
 
 ### Patch Changes
