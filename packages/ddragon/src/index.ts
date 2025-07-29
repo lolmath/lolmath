@@ -37,8 +37,8 @@ export interface DdragonOptions {
 
 const defaultVersion = "9.22.1";
 const defaultLanguage: Language = "en_US";
-const defaultImageBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
-const defaultDataBaseUrl = "https://ddragon.leagueoflegends.com/cdn";
+const defaultImageBaseUrl = "https://ddragon.leagueoflegends.com";
+const defaultDataBaseUrl = "https://ddragon.leagueoflegends.com";
 
 export function createDdragon(options?: DdragonOptions) {
 	let _version = defaultVersion;
@@ -79,7 +79,7 @@ export function createDdragon(options?: DdragonOptions) {
 		 */
 		splash(name: string, num: number) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/img/champion/splash/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
+				`${_imageBaseUrl}/cdn/img/champion/splash/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
 			);
 		},
 		/**
@@ -87,7 +87,7 @@ export function createDdragon(options?: DdragonOptions) {
 		 */
 		loading(name: string, num: number) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/img/champion/loading/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
+				`${_imageBaseUrl}/cdn/img/champion/loading/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
 			);
 		},
 		/**
@@ -95,7 +95,7 @@ export function createDdragon(options?: DdragonOptions) {
 		 */
 		tile(name: string, num: number) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/img/champion/tiles/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
+				`${_imageBaseUrl}/cdn/img/champion/tiles/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
 			);
 		},
 		/**
@@ -103,7 +103,7 @@ export function createDdragon(options?: DdragonOptions) {
 		 */
 		centered(name: string, num: number) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/img/champion/centered/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
+				`${_imageBaseUrl}/cdn/img/champion/centered/${name === "Fiddlesticks" ? "FiddleSticks" : name}_${num}.jpg`,
 			);
 		},
 		/**
@@ -111,37 +111,37 @@ export function createDdragon(options?: DdragonOptions) {
 		 */
 		champion(full: string): string {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/${_version}/img/champion/${full}`,
+				`${_imageBaseUrl}/cdn/${_version}/img/champion/${full}`,
 			);
 		},
 		item: (full: string): string => {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/${_version}/img/item/${full}`,
+				`${_imageBaseUrl}/cdn/${_version}/img/item/${full}`,
 			);
 		},
 		map(full: string) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/${_version}/img/map/${full}`,
+				`${_imageBaseUrl}/cdn/${_version}/img/map/${full}`,
 			);
 		},
 		mission(full: string) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/${_version}/img/mission/${full}`,
+				`${_imageBaseUrl}/cdn/${_version}/img/mission/${full}`,
 			);
 		},
 		passive(full: string) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/${_version}/img/passive/${full}`,
+				`${_imageBaseUrl}/cdn/${_version}/img/passive/${full}`,
 			);
 		},
 		profileicon(full: string) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/${_version}/img/profileicon/${full}`,
+				`${_imageBaseUrl}/cdn/${_version}/img/profileicon/${full}`,
 			);
 		},
 		spell(full: string) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/${_version}/img/spell/${full}`,
+				`${_imageBaseUrl}/cdn/${_version}/img/spell/${full}`,
 			);
 		},
 		summoner(full: string) {
@@ -149,18 +149,18 @@ export function createDdragon(options?: DdragonOptions) {
 		},
 		sprite(sprite: string) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/${_version}/img/sprite/${sprite}`,
+				`${_imageBaseUrl}/cdn/${_version}/img/sprite/${sprite}`,
 			);
 		},
 		rune(icon: string) {
-			return _imageUrlTransformer(`${_imageBaseUrl}/img/${icon}`);
+			return _imageUrlTransformer(`${_imageBaseUrl}/cdn/img/${icon}`);
 		},
 		/**
 		 * A stat rune
 		 */
 		statMod(statName: string) {
 			return _imageUrlTransformer(
-				`${_imageBaseUrl}/img/perk-images/StatMods/StatMods${statName}Icon.webp`,
+				`${_imageBaseUrl}/cdn/img/perk-images/StatMods/StatMods${statName}Icon.webp`,
 			);
 		},
 	};
@@ -182,42 +182,42 @@ export function createDdragon(options?: DdragonOptions) {
 		 * A compressed tarball (.tgz) which will contain all assets for a patch.
 		 */
 		dragontail() {
-			return `${_dataBaseUrl}/dragontail-${_version}.tgz`;
+			return `${_dataBaseUrl}/cdn/dragontail-${_version}.tgz`;
 		},
 		/**
 		 * All supported languages.
 		 */
 		languages() {
-			return `${_dataBaseUrl}/languages.json`;
+			return `${_dataBaseUrl}/cdn/languages.json`;
 		},
 		champion: (name: string) => {
-			return `${_dataBaseUrl}/${_version}/data/${_language}champion/${name}.json`;
+			return `${_dataBaseUrl}/cdn/${_version}/data/${_language}champion/${name}.json`;
 		},
 		champions() {
-			return `${_dataBaseUrl}/${_version}/data/${_language}/champion.json`;
+			return `${_dataBaseUrl}/cdn/${_version}/data/${_language}/champion.json`;
 		},
 		championsFull() {
-			return `${_dataBaseUrl}/${_version}/data/${_language}/championFull.json`;
+			return `${_dataBaseUrl}/cdn/${_version}/data/${_language}/championFull.json`;
 		},
 		item() {
-			return `${_dataBaseUrl}/${_version}/data/${_language}/item.json`;
+			return `${_dataBaseUrl}/cdn/${_version}/data/${_language}/item.json`;
 		},
 		language: () =>
-			`${_dataBaseUrl}/${_version}/data/${_language}/language.json`,
+			`${_dataBaseUrl}/cdn/${_version}/data/${_language}/language.json`,
 		map() {
-			return `${_dataBaseUrl}/${_version}/data/${_language}/map.json`;
+			return `${_dataBaseUrl}/cdn/${_version}/data/${_language}/map.json`;
 		},
 		missionAssets() {
-			return `${_dataBaseUrl}/${_version}/data/${_language}/mission-assets.json`;
+			return `${_dataBaseUrl}/cdn/${_version}/data/${_language}/mission-assets.json`;
 		},
 		profileicon() {
-			return `${_dataBaseUrl}/${_version}/data/${_language}/profileicon.json`;
+			return `${_dataBaseUrl}/cdn/${_version}/data/${_language}/profileicon.json`;
 		},
 		runes() {
-			return `${_dataBaseUrl}/${_version}/data/${_language}/runesReforged.json`;
+			return `${_dataBaseUrl}/cdn/${_version}/data/${_language}/runesReforged.json`;
 		},
 		summoner() {
-			return `${_dataBaseUrl}/${_version}/data/${_language}/summoner.json`;
+			return `${_dataBaseUrl}/cdn/${_version}/data/${_language}/summoner.json`;
 		},
 	};
 
