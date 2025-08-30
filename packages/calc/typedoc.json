@@ -1,23 +1,27 @@
 {
-	"$schema": "https://typedoc.org/schema.json",
-	"entryPoints": ["./src/index.ts"],
+	"$schema": "https://typedoc-plugin-markdown.org/schema.json",
+	"entryPoints": ["./src/*/index.ts"],
 	"out": "./docs",
-	"plugin": ["typedoc-plugin-markdown", "./index.js"],
+	"plugin": [
+		"typedoc-plugin-markdown",
+		"typedoc-plugin-frontmatter",
+		"./custom-frontmatter.mjs"
+	],
 	"mergeReadme": true,
 	"hidePageHeader": true,
 	"hideBreadcrumbs": true,
 	"useCodeBlocks": true,
+	"disableSources": false,
 	"parametersFormat": "table",
 	"typeAliasPropertiesFormat": "table",
 	"enumMembersFormat": "table",
 	"propertyMembersFormat": "table",
 	"typeDeclarationFormat": "table",
-	"disableSources": true,
 	"pageTitleTemplates": {
 		"member": "`{rawName}`"
 	},
 	"entryFileName": "index",
 	"defaultCategory": "Other",
-	"router": "category",
-	"publicPath": "./"
+	"router": "module",
+	"gitRevision": "main"
 }

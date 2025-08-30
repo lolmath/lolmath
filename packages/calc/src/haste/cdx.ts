@@ -1,8 +1,6 @@
 /**
  * Calculates the *Cooldown Multiplier* from Ability Haste
  *
- * @category Haste
- *
  * @param ah The amount of Ability Haste
  * @returns The Cooldown Multiplier
  *

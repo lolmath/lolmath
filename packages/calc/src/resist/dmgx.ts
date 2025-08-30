@@ -1,8 +1,6 @@
 /**
  * Converts an amount of resist to a *Damage Multiplier*.
  *
- * @category Resist
- *
  * @param resist The amount of armor or magic resist.
  * @returns The damage multiplier.
  *
