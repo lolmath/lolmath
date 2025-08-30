@@ -15,7 +15,7 @@
 		"registry": "https://registry.npmjs.org/"
 	},
 	"scripts": {
-		"build": "tsc ",
+		"build": "tsgo",
 		"lint": "publint",
 		"test": "vitest",
 		"typedoc": "typedoc --disableSources --githubPages false --plugin typedoc-plugin-markdown --entryFileName docs.md --readme none --hideBreadcrumbs --excludePrivate --out ./docs ./src"
@@ -29,11 +29,11 @@
 		}
 	},
 	"devDependencies": {
-		"publint": "^0.3.6",
-		"typedoc": "^0.28.4",
-		"typedoc-plugin-markdown": "^4.4.2",
-		"typescript": "^5.7.3",
-		"vitest": "^3.0.4"
+		"@typescript/native-preview": "7.0.0-dev.20250829.3",
+		"publint": "^0.3.12",
+		"typedoc": "^0.28.11",
+		"typedoc-plugin-markdown": "^4.8.1",
+		"vitest": "^3.2.4"
 	},
 	"files": [
 		"/dist",

@@ -35,7 +35,7 @@ export function Breadcrumb({
 				cx(classes.item, className),
 			)}
 		>
-			<Link className={classes.link} {...props} />
+			<Link className={classes.link} />
 			{props.href && <img src={divider} alt="" className={classes.divider} />}
 		</AriaBreadcrumb>
 	);

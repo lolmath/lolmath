@@ -4,5 +4,6 @@
 	"explorer.fileNesting.patterns": {
 		"*.ts": "${capture}.spec.ts"
 	},
-	"cSpell.words": ["profileicon"]
+	"cSpell.words": ["profileicon"],
+	"typescript.experimental.useTsgo": true
 }

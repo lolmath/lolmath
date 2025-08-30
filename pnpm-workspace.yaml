@@ -1,8 +1,10 @@
 packages:
   - apps/*
   - packages/*
+
 onlyBuiltDependencies:
   - '@biomejs/biome'
+  - '@parcel/watcher'
   - '@swc/core'
   - core-js
   - esbuild
