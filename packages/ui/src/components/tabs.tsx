@@ -6,10 +6,10 @@ import {
 	TabList as AriaTabList,
 	TabPanel as AriaTabPanel,
 	Tabs as AriaTabs,
+	composeRenderProps,
 	type TabListProps,
 	type TabPanelProps,
 	type TabProps,
-	composeRenderProps,
 } from "react-aria-components";
 import classes from "./tabs.module.css";
 

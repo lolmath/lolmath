@@ -6,12 +6,12 @@ import {
 	Popover as AriaPopover,
 	Virtualizer as AriaVirtualizer,
 	type ButtonProps,
+	composeRenderProps,
 	type ListBoxItemProps,
 	type ListBoxProps,
 	ListLayout,
 	type PopoverProps,
 	type VirtualizerProps,
-	composeRenderProps,
 } from "react-aria-components";
 import classes from "./select.module.css";
 

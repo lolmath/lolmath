@@ -3,7 +3,8 @@
 		padding: 2px;
 		box-shadow: 0 2px 4px 0 var(--lol-color-grey-300);
 		border: 2px solid transparent;
-		background: var(--lol-button-background-gradient) padding-box,
+		background:
+			var(--lol-button-background-gradient) padding-box,
 			var(--lol-button-border-gradient) border-box;
 		--lol-button-border-gradient: var(--lol-gradient-gold-press);
 		--lol-button-background-gradient: var(--lol-gradient-grey-300);

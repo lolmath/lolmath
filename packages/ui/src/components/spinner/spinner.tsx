@@ -1,6 +1,6 @@
 import { cx } from "cva";
-import spinnerImage from "./spinner-spinner.png";
 import classes from "./spinner.module.css";
+import spinnerImage from "./spinner-spinner.png";
 
 interface SpinnerProps {
 	className?: string;

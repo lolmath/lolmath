@@ -5,8 +5,8 @@ import {
 	Input as AriaInput,
 	NumberField as AriaNumberField,
 	Button,
-	Group,
 	composeRenderProps,
+	Group,
 } from "react-aria-components";
 import classes from "./number-field.module.css";
 

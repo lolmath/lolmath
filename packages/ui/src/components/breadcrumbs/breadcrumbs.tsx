@@ -4,8 +4,8 @@ import {
 	Breadcrumbs as AriaBreadcrumbs,
 	type BreadcrumbProps,
 	type BreadcrumbsProps,
-	Link,
 	composeRenderProps,
+	Link,
 } from "react-aria-components";
 import classes from "../breadcrumbs/breadcrumbs.module.css";
 import divider from "./breadcrumbs-divider.png";

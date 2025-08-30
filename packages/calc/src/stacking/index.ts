@@ -6,6 +6,5 @@
  *
  */
 
-
+export * from "./additive";
 export * from "./multiplicative";
-export * from './additive'

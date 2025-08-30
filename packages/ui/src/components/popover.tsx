@@ -2,9 +2,9 @@ import { cva } from "cva";
 import type { PopoverProps } from "react-aria-components";
 import {
 	Popover as AriaPopover,
+	composeRenderProps,
 	Dialog,
 	OverlayArrow,
-	composeRenderProps,
 } from "react-aria-components";
 import classes from "./popover.module.css";
 

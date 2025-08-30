@@ -18,8 +18,8 @@
 	}
 
 	.icon {
-		margin-left: .125rem;
-		margin-right: .5rem;
+		margin-left: 0.125rem;
+		margin-right: 0.5rem;
 		display: inline-block;
 		rotate: 90deg;
 		font-size: var(--lol-font-size-sm);

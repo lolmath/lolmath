@@ -7,9 +7,9 @@ import {
 	DisclosurePanel as AriaDisclosurePanel,
 	Button,
 	type ButtonProps,
+	composeRenderProps,
 	type DisclosurePanelProps,
 	type DisclosureProps,
-	composeRenderProps,
 } from "react-aria-components";
 
 import classes from "./disclosure.module.css";

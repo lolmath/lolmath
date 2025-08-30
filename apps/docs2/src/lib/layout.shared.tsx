@@ -1,4 +1,5 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import { Gitlab } from "lucide-react";
 
 /**
  * Shared layout configurations
@@ -12,18 +13,39 @@ export function baseOptions(): BaseLayoutProps {
 		nav: {
 			title: (
 				<>
-					<img
-						src="/img/logo.svg"
-						alt="Logo"
-				  	width="24"
-            height="24"
-					/>
+					<img src="/img/logo.svg" alt="Logo" width="24" height="24" />
 					lolmath docs
 				</>
 			),
 		},
 		// see https://fumadocs.dev/docs/ui/navigation/links
-		links: [],
+		links: [
+			{
+				text: "Calc",
+				url: "/calc/",
+				activeMatch: "/calc",
+			},
+			{
+				text: "Dev",
+				url: "/dev/",
+				activeMatch: "/dev",
+			},
+			{
+				text: "UI",
+				url: "/ui/",
+				activeMatch: "/ui",
+			},
+			{
+				text: "UI Storybook",
+				url: "https://ui.lolmath.net/",
+			},
+			{
+				type: "icon",
+				label: "Gitlab",
+				icon: <Gitlab />,
+				url: "https://gitlab.com/lol-math/lolmath",
+			},
+		],
 		themeSwitch: {
 			enabled: false,
 		},

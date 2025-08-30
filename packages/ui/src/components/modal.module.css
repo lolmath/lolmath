@@ -23,7 +23,8 @@
 	}
 
 	.dialog {
-		background: var(--lol-button-background-gradient) padding-box,
+		background:
+			var(--lol-button-background-gradient) padding-box,
 			var(--lol-button-border-gradient) border-box;
 		border: 2px solid transparent;
 

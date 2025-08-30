@@ -1,7 +1,7 @@
 "use client";
-import { baseOptions } from "@/lib/layout.shared";
 import { ButtonLink, Heading, Text } from "@lolmath/ui";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
+import { baseOptions } from "@/lib/layout.shared";
 
 export default function HomePage() {
 	return (

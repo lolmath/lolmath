@@ -1,5 +1,3 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import {
 	Disclosure,
 	DisclosureButton,
@@ -7,6 +5,7 @@ import {
 	DisclosurePanel,
 	Text,
 } from "@lolmath/ui";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
 	title: "Disclosure",

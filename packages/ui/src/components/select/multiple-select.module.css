@@ -7,7 +7,8 @@
 
 	border: 1px solid transparent;
 
-	background: var(--lol-select-background-gradient) padding-box,
+	background:
+		var(--lol-select-background-gradient) padding-box,
 		var(--lol-select-border-gradient) border-box;
 
 	--lol-select-border-gradient: var(--lol-gradient-gold);

@@ -1,8 +1,8 @@
-import { type Ref, forwardRef } from "react";
+import { forwardRef, type Ref } from "react";
 import {
 	Link as AriaButton,
-	type LinkProps,
 	composeRenderProps,
+	type LinkProps,
 } from "react-aria-components";
 import {
 	type ButtonPreset,

@@ -18,8 +18,8 @@ import {
 import { Button } from "../button";
 import { Text } from "../typography/text";
 import classes from "./multiple-select.module.css";
-import closed from "./select-closed.png";
 import selectClasses from "./select.module.css";
+import closed from "./select-closed.png";
 
 const multiSelect = cva({
 	base: classes.multiSelect,

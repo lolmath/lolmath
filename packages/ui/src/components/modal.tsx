@@ -3,11 +3,11 @@ import {
 	Heading as AriaHeading,
 	type HeadingProps as AriaHeadingProps,
 	Modal as AriaModal,
+	composeRenderProps,
 	Dialog,
 	type DialogProps,
 	ModalOverlay,
 	type ModalOverlayProps,
-	composeRenderProps,
 } from "react-aria-components";
 import classes from "./modal.module.css";
 

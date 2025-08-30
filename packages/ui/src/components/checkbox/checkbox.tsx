@@ -4,13 +4,13 @@ import {
 	type CheckboxProps,
 	composeRenderProps,
 } from "react-aria-components";
-import imageCheckedHover from "./checkbox-checked-hover.png";
-import imageChecked from "./checkbox-checked.png";
-import imageIndeterminateHover from "./checkbox-indeterminate-hover.png";
-import imageIndeterminate from "./checkbox-indeterminate.png";
-import imageUncheckedHover from "./checkbox-unchecked-hover.png";
-import imageUnchecked from "./checkbox-unchecked.png";
 import classes from "./checkbox.module.css";
+import imageChecked from "./checkbox-checked.png";
+import imageCheckedHover from "./checkbox-checked-hover.png";
+import imageIndeterminate from "./checkbox-indeterminate.png";
+import imageIndeterminateHover from "./checkbox-indeterminate-hover.png";
+import imageUnchecked from "./checkbox-unchecked.png";
+import imageUncheckedHover from "./checkbox-unchecked-hover.png";
 
 export function Checkbox({ children, className, ...props }: CheckboxProps) {
 	return (
