@@ -1,17 +1,31 @@
-import '@/app/global.css';
-import { RootProvider } from 'fumadocs-ui/provider';
-import { Inter } from 'next/font/google';
+"use client";
+import "@/app/global.css";
+import "@lolmath/ui/font/beaufort";
+import "@lolmath/ui/font/spiegel";
+import "@lolmath/ui/css";
+import { RouterProvider } from "@lolmath/ui";
+import { RootProvider } from "fumadocs-ui/provider";
+import { useRouter } from "next/navigation";
 
-const inter = Inter({
-  subsets: ['latin'],
-});
-
-export default function Layout({ children }: LayoutProps<'/'>) {
-  return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen">
-        <RootProvider>{children}</RootProvider>
-      </body>
-    </html>
-  );
+export default function Layout({ children }: LayoutProps<"/">) {
+	const router = useRouter();
+		return (
+			<html lang="en" suppressHydrationWarning>
+				   <head>
+					   <title>lolmath docs</title>
+					<link rel="icon" href="/img/logo.png" />
+				</head>
+				<body className="flex flex-col min-h-screen">
+					<RouterProvider navigate={router.push}>
+						<RootProvider
+							theme={{
+								forcedTheme: "dark",
+							}}
+						>
+							{children}
+						</RootProvider>
+					</RouterProvider>
+				</body>
+			</html>
+		);
 }

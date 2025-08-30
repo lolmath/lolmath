@@ -2,13 +2,11 @@ import { baseOptions } from "@/lib/layout.shared";
 import { source } from "@/lib/source";
 import { DocsLayout } from "fumadocs-ui/layouts/notebook";
 
-export default function Layout({ children }: LayoutProps<"/docs">) {
+export default function Layout({ children }: LayoutProps<"/[...slug]">) {
+	const b = baseOptions();
+
 	return (
-		<DocsLayout
-			tree={source.pageTree}
-			{...baseOptions()}
-			nav={{ enabled: true }}
-		>
+		<DocsLayout tree={source.pageTree} {...b} nav={{ ...b.nav, enabled: true }}>
 			{children}
 		</DocsLayout>
 	);
