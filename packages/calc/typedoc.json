@@ -10,6 +10,8 @@
 	"mergeReadme": true,
 	"hidePageHeader": true,
 	"hideBreadcrumbs": true,
+	"hidePageTitle": true,
+	"hideGroupHeadings": true,
 	"useCodeBlocks": true,
 	"disableSources": false,
 	"parametersFormat": "table",
@@ -23,5 +25,6 @@
 	"entryFileName": "index",
 	"defaultCategory": "Other",
 	"router": "module",
-	"gitRevision": "main"
+	"gitRevision": "main",
+	"publicPath": "./"
 }
