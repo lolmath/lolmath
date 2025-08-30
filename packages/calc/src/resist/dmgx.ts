@@ -11,7 +11,7 @@
  * ```ts
  * const resist = 100; // 100 armor
  * const dmg = 100; // 100 damage
- * const result = dmgx(resist); // 50 damage
+ * const result = dmg * dmgx(resist); // 50 damage
  * ```
  */
 export function dmgx(resist: number) {

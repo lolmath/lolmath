@@ -18,4 +18,17 @@ export default defineConfig({
 	},
 	outDir: "dist",
 	icon: "/img/logo.png",
+	markdown: {
+		checkDeadLinks: true,
+	},
+	builderConfig: {
+		tools: {
+			rspack: {
+				resolve: {
+					symlinks: true,
+				}
+			}
+		}
+	}
+	
 });
