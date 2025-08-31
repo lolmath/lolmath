@@ -39,6 +39,5 @@
 		"typedoc": "^0.28.11",
 		"@lolmath/typedoc": "workspace:*",
 		"vitest": "^3.2.4"
-	},
-	"dependencies": {}
+	}
 }
