@@ -1,6 +1,20 @@
 {
 	"name": "@lolmath/typedoc",
 	"version": "0.0.0",
+	"private": false,
+	"type": "module",
+	"scripts": {
+		"lint": "publint"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://gitlab.com/lol-math/lolmath.git",
+		"directory": "packages/typedoc"
+	},
 	"packageManager": "pnpm@10.15.0",
 	"exports": {
 		".": {
@@ -14,5 +28,8 @@
 		"typedoc": "^0.28.11",
 		"typedoc-plugin-frontmatter": "^1.3.0",
 		"typedoc-plugin-markdown": "^4.8.1"
+	},
+	"devDependencies": {
+		"publint": "^0.3.12"
 	}
 }
