@@ -1,5 +1,15 @@
 # @lolmath/ui
 
+## 7.0.0
+
+### Major Changes
+
+- c5d1c2e: Updated to tailwind 4; tailwind 3 cannot be used anymore. Removed the tailwind plugin in favor of a new tailwind Theme.
+
+### Patch Changes
+
+- 0f9e56c: Upgrade dependencies
+
 ## 6.4.0
 
 ### Minor Changes
