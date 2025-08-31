@@ -2,8 +2,9 @@
 	"name": "@lolmath/ddragon",
 	"private": false,
 	"repository": {
-		"url": "https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ddragon",
-		"type": "git"
+		"url": "git+https://gitlab.com/lol-math/lolmath.git",
+		"type": "git",
+		"directory": "packages/ddragon"
 	},
 	"homepage": "https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ddragon",
 	"version": "2.0.2",
@@ -18,7 +19,7 @@
 		"build": "tsgo",
 		"lint": "publint",
 		"test": "vitest",
-		"docs": "typedoc"
+		"docs": "pnpm exec typedoc"
 	},
 	"targets": {
 		"main": {

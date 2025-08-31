@@ -1,15 +1,15 @@
 comment:
-  image: node:22
+  image: node:24
   needs: []
   only:
     - merge_requests
   script: npx -y changesets-gitlab comment
 
 main:
-  image: node:22
+  image: node:24
   needs: []
   script:
-    - npm install -g pnpm
+    - corepack enable
     - pnpm i --frozen-lockfile
     - pnpm run build
     - pnpm run lint

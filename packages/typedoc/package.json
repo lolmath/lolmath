@@ -1,5 +1,6 @@
 {
 	"name": "@lolmath/typedoc",
+	"version": "0.0.0",
 	"packageManager": "pnpm@10.15.0",
 	"exports": {
 		".": {

@@ -33,7 +33,7 @@
 	"homepage": "https://ui.lolmath.net",
 	"repository": {
 		"type": "git",
-		"url": "https://gitlab.com/lol-math/lolmath.git",
+		"url": "git+https://gitlab.com/lol-math/lolmath.git",
 		"directory": "packages/ui"
 	},
 	"bugs": {
@@ -70,8 +70,8 @@
 				"default": "./dist/es/index.js"
 			},
 			"require": {
-				"types": "./dist/lib/index.d.ts",
-				"default": "./dist/lib/index.js"
+				"types": "./dist/lib/index.d.cts",
+				"default": "./dist/lib/index.cjs"
 			}
 		},
 		"./css": {

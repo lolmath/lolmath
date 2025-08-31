@@ -13,13 +13,18 @@
 		"dev": "tsup --watch",
 		"test": "vitest --coverage",
 		"coverage": "vitest run --coverage",
-		"docs": "npx typedoc",
+		"docs": "pnpm exec typedoc",
 		"lint": "publint",
 		"typecheck": "tsgo --noEmit"
 	},
 	"publishConfig": {
 		"access": "public",
 		"registry": "https://registry.npmjs.org/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://gitlab.com/lol-math/lolmath.git",
+		"directory": "packages/calc"
 	},
 	"exports": {
 		".": {
