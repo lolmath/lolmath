@@ -12,9 +12,6 @@
 		"dev": "modern build --watch",
 		"lint": "publint",
 		"typecheck": "tsgo --noEmit",
-		"dev:storybook": "npx storybook dev -p 6006",
-		"build:storybook": "storybook build",
-		"deploy:storybook": "wrangler pages deploy ./storybook-static --project-name lolmath-ui --branch $CI_COMMIT_REF_NAME",
 		"docs": "node ./docs.ts"
 	},
 	"keywords": [],

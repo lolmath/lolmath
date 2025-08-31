@@ -81,6 +81,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.12
         version: 4.1.12
+      wrangler:
+        specifier: ^4.33.1
+        version: 4.33.1
 
   apps/ui-storybook:
     dependencies:

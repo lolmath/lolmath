@@ -21,8 +21,8 @@
 	},
 	"devDependencies": {
 		"@lolmath/calc": "workspace:*",
-		"@lolmath/ui": "workspace:*",
 		"@lolmath/ddragon": "workspace:*",
+		"@lolmath/ui": "workspace:*",
 		"@tailwindcss/postcss": "^4.1.12",
 		"@types/mdx": "^2.0.13",
 		"@types/node": "24.3.0",
@@ -30,6 +30,7 @@
 		"@types/react-dom": "^19.1.8",
 		"@typescript/native-preview": "7.0.0-dev.20250829.3",
 		"postcss": "^8.5.6",
-		"tailwindcss": "^4.1.12"
+		"tailwindcss": "^4.1.12",
+		"wrangler": "^4.33.1"
 	}
 }
