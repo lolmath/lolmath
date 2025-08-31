@@ -1,5 +1,11 @@
 # @lolmath/ddragon
 
+## 2.0.3
+
+### Patch Changes
+
+- 0f9e56c: Upgrade dependencies
+
 ## 2.0.2
 
 ### Patch Changes
