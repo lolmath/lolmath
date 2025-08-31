@@ -1,6 +1,7 @@
 @layer lol {
 	.textField {
-		background: var(--lol-input-background-gradient) padding-box,
+		background:
+			var(--lol-input-background-gradient) padding-box,
 			var(--lol-input-border-gradient) border-box;
 
 		--lol-input-border-gradient: var(--lol-gradient-gold);

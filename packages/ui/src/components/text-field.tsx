@@ -1,3 +1,4 @@
+import { cva } from "cva";
 import type { ComponentProps } from "react";
 import type {
 	TextFieldProps as AriaTextFieldProps,
@@ -8,8 +9,6 @@ import {
 	TextField as AriaTextField,
 	composeRenderProps,
 } from "react-aria-components";
-
-import { cva } from "cva";
 import classes from "./text-field.module.css";
 
 export const textField = cva({

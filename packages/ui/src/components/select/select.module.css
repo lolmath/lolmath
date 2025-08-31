@@ -16,7 +16,8 @@
 		letter-spacing: 0.025em;
 		text-align: left;
 
-		background: var(--lol-select-image) no-repeat right 0.5rem center,
+		background:
+			var(--lol-select-image) no-repeat right 0.5rem center,
 			var(--lol-select-background-gradient) padding-box,
 			var(--lol-select-border-gradient) border-box;
 

@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import { Button, Sonner, type SonnerProps, sonner } from "@lolmath/ui";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 function C({ title, ...rest }: { title: string; type?: string } & SonnerProps) {
 	const handleClick = () => {

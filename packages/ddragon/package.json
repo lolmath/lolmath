@@ -2,8 +2,9 @@
 	"name": "@lolmath/ddragon",
 	"private": false,
 	"repository": {
-		"url": "https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ddragon",
-		"type": "git"
+		"url": "git+https://gitlab.com/lol-math/lolmath.git",
+		"type": "git",
+		"directory": "packages/ddragon"
 	},
 	"homepage": "https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ddragon",
 	"version": "2.0.2",
@@ -15,10 +16,10 @@
 		"registry": "https://registry.npmjs.org/"
 	},
 	"scripts": {
-		"build": "tsc ",
+		"build": "tsgo",
 		"lint": "publint",
 		"test": "vitest",
-		"typedoc": "typedoc --disableSources --githubPages false --plugin typedoc-plugin-markdown --entryFileName docs.md --readme none --hideBreadcrumbs --excludePrivate --out ./docs ./src"
+		"docs": "pnpm exec typedoc"
 	},
 	"targets": {
 		"main": {
@@ -29,11 +30,12 @@
 		}
 	},
 	"devDependencies": {
-		"publint": "^0.3.6",
-		"typedoc": "^0.28.4",
-		"typedoc-plugin-markdown": "^4.4.2",
-		"typescript": "^5.7.3",
-		"vitest": "^3.0.4"
+		"@typescript/native-preview": "7.0.0-dev.20250829.3",
+		"publint": "^0.3.12",
+		"typedoc": "^0.28.11",
+		"typescript": "^5.9.2",
+		"vitest": "^3.2.4",
+		"@lolmath/typedoc": "workspace:*"
 	},
 	"files": [
 		"/dist",

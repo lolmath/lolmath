@@ -1,9 +1,9 @@
 import { cx } from "cva";
+import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
 import {
 	Switch as AriaSwitch,
 	composeRenderProps,
 } from "react-aria-components";
-import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
 import classes from "./switch.module.css";
 import textClasses from "./typography/text.module.css";
 

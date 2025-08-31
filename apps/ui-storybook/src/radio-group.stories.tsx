@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import { Label, Radio, RadioGroup } from "@lolmath/ui";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
 	title: "RadioGroup",

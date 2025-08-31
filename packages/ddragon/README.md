@@ -44,4 +44,4 @@ dd.images.splash("Cassiopeia", 0); // https://ddragon-webp.lolmath.net/img/champ
 
 ## Docs
 
-Documentation can be found in the `docs` folder.
+Documentation can be found at https://docs.lolmath.net/ddragon

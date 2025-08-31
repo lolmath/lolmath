@@ -13,7 +13,8 @@
 		height: 0.75rem;
 		border-radius: 9999px;
 		padding: 1px;
-		background: var(--lol-gradient-grey-300) padding-box,
+		background:
+			var(--lol-gradient-grey-300) padding-box,
 			var(--lol-gradient-gold) border-box;
 		border: 1px solid transparent;
 	}

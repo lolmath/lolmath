@@ -1,0 +1,95 @@
+@theme {
+	--color-lol-blue-100: var(--lol-color-blue-100);
+	--color-lol-blue-200: var(--lol-color-blue-200);
+	--color-lol-blue-300: var(--lol-color-blue-300);
+	--color-lol-blue-400: var(--lol-color-blue-400);
+	--color-lol-blue-500: var(--lol-color-blue-500);
+	--color-lol-blue-600: var(--lol-color-blue-600);
+	--color-lol-blue-700: var(--lol-color-blue-700);
+
+	--color-lol-grey-100: var(--lol-color-grey-100);
+	--color-lol-grey-150: var(--lol-color-grey-150);
+	--color-lol-grey-200: var(--lol-color-grey-200);
+	--color-lol-grey-300: var(--lol-color-grey-300);
+	--color-lol-grey-cool: var(--lol-color-grey-cool);
+
+	--color-lol-gold-100: var(--lol-color-gold-100);
+	--color-lol-gold-200: var(--lol-color-gold-200);
+	--color-lol-gold-300: var(--lol-color-gold-300);
+	--color-lol-gold-400: var(--lol-color-gold-400);
+	--color-lol-gold-500: var(--lol-color-gold-500);
+	--color-lol-gold-600: var(--lol-color-gold-600);
+	--color-lol-gold-700: var(--lol-color-gold-700);
+
+	--color-lol-hextech-black: var(--lol-color-hextech-black);
+
+	--font-lol-h1: var(--lol-font-size-h1);
+	--font-lol-h1--line-height: var(--lol-line-height-h1);
+	--font-lol-h1--letter-spacing: var(--lol-letter-spacing-h1);
+	--font-lol-h1--font-weight: var(--lol-font-weight-h1);
+
+	--font-lol-h2: var(--lol-font-size-h2);
+	--font-lol-h2--line-height: var(--lol-line-height-h2);
+	--font-lol-h2--letter-spacing: var(--lol-letter-spacing-h2);
+	--font-lol-h2--font-weight: var(--lol-font-weight-h2);
+
+	--font-lol-h3: var(--lol-font-size-h3);
+	--font-lol-h3--line-height: var(--lol-line-height-h3);
+	--font-lol-h3--letter-spacing: var(--lol-letter-spacing-h3);
+	--font-lol-h3--font-weight: var(--lol-font-weight-h3);
+
+	--font-lol-h4: var(--lol-font-size-h4);
+	--font-lol-h4--line-height: var(--lol-line-height-h4);
+	--font-lol-h4--letter-spacing: var(--lol-letter-spacing-h4);
+	--font-lol-h4--font-weight: var(--lol-font-weight-h4);
+
+	--font-lol-h5: var(--lol-font-size-h5);
+	--font-lol-h5--line-height: var(--lol-line-height-h5);
+	--font-lol-h5--letter-spacing: var(--lol-letter-spacing-h5);
+	--font-lol-h5--font-weight: var(--lol-font-weight-h5);
+
+	--font-lol-label: var(--lol-font-size-label);
+	--font-lol-label--line-height: var(--lol-line-height-label);
+	--font-lol-label--letter-spacing: var(--lol-letter-spacing-label);
+	--font-lol-label--font-weight: var(--lol-font-weight-label);
+
+	--font-lol-stat: var(--lol-font-size-stat);
+	--font-lol-stat--line-height: var(--lol-line-height-stat);
+	--font-lol-stat--letter-spacing: var(--lol-letter-spacing-stat);
+	--font-lol-stat--font-weight: var(--lol-font-weight-stat);
+
+	--font-lol-large-number: var(--lol-font-size-large-number);
+	--font-lol-large-number--line-height: var(--lol-line-height-large-number);
+	--font-lol-large-number--letter-spacing: var(
+		--lol-letter-spacing-large-number
+	);
+	--font-lol-large-number--font-weight: var(--lol-font-weight-large-number);
+
+	--font-lol-xs: var(--lol-font-size-xs);
+	--font-lol-xs--line-height: var(--lol-line-height-xs);
+	--font-lol-xs--letter-spacing: var(--lol-letter-spacing-xs);
+	--font-lol-xs--font-weight: var(--lol-font-weight-xs);
+
+	--font-lol-sm: var(--lol-font-size-sm);
+	--font-lol-sm--line-height: var(--lol-line-height-sm);
+	--font-lol-sm--letter-spacing: var(--lol-letter-spacing-sm);
+	--font-lol-sm--font-weight: var(--lol-font-weight-sm);
+
+	--font-lol-base: var(--lol-font-size-base);
+	--font-lol-base--line-height: var(--lol-line-height-base);
+	--font-lol-base--letter-spacing: var(--lol-letter-spacing-base);
+	--font-lol-base--font-weight: var(--lol-font-weight-base);
+
+	--font-lol-md: var(--lol-font-size-md);
+	--font-lol-md--line-height: var(--lol-line-height-md);
+	--font-lol-md--letter-spacing: var(--lol-letter-spacing-md);
+	--font-lol-md--font-weight: var(--lol-font-weight-md);
+
+	--font-lol-lg: var(--lol-font-size-lg);
+	--font-lol-lg--line-height: var(--lol-line-height-lg);
+	--font-lol-lg--letter-spacing: var(--lol-letter-spacing-lg);
+	--font-lol-lg--font-weight: var(--lol-font-weight-lg);
+
+	--font-lol-beaufort: var(--lol-font-family-beaufort);
+	--font-lol-spiegel: var(--lol-font-family-spiegel);
+}

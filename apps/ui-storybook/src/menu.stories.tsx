@@ -1,5 +1,3 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import {
 	Autocomplete,
 	Button,
@@ -20,9 +18,10 @@ import {
 	type Selection,
 	SubmenuTrigger,
 	Text,
-	Virtualizer,
 	useFilter,
+	Virtualizer,
 } from "@lolmath/ui";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 

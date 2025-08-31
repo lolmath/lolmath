@@ -207,8 +207,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Generated files
-apps/docs/src/pages/calc/**/*.md
-apps/docs/src/pages/ui/**/*.md
 
 doc_build
 

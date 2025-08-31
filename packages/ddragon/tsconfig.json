@@ -5,7 +5,8 @@
 		"rootDir": "src",
 		"declaration": true,
 		"strict": true,
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"moduleResolution": "bundler"
 	},
 	"include": ["src/**/*", "src/index.test.ts"],
 	"exclude": ["node_modules", "./src/**/*.test.ts"]

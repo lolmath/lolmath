@@ -1,8 +1,6 @@
 /**
  * Calculates the total movement speed of a champion.
  *
- * @category Movement Speed
- *
  * @param base The champion their base movement speed
  * @param flat From shoes and other flat movement bonuses
  * @param percent e.g. percentBonus1 + percentBonus2

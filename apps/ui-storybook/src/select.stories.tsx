@@ -1,5 +1,3 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import {
 	Autocomplete,
 	GridLayout,
@@ -13,10 +11,11 @@ import {
 	SelectValue,
 	SelectVirtualizer,
 	Size,
+	useFilter,
 	Virtualizer,
 	WaterfallLayout,
-	useFilter,
 } from "@lolmath/ui";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
 	title: "Select",

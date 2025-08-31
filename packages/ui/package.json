@@ -11,20 +11,20 @@
 		"build": "modern build",
 		"dev": "modern build --watch",
 		"lint": "publint",
-		"typecheck": "tsc --noEmit",
+		"typecheck": "tsgo --noEmit",
 		"dev:storybook": "npx storybook dev -p 6006",
 		"build:storybook": "storybook build",
 		"deploy:storybook": "wrangler pages deploy ./storybook-static --project-name lolmath-ui --branch $CI_COMMIT_REF_NAME",
-		"docs": "vite-node ./docs.ts"
+		"docs": "node ./docs.ts"
 	},
 	"keywords": [],
 	"author": "lolmath.net",
 	"license": "ISC",
 	"dependencies": {
-		"cva": "1.0.0-beta.1",
-		"react-aria": "^3.40.0",
-		"react-aria-components": "^1.9.0",
-		"sonner": "^2.0.3"
+		"cva": "1.0.0-beta.4",
+		"react-aria": "^3.43.1",
+		"react-aria-components": "^1.12.1",
+		"sonner": "^2.0.7"
 	},
 	"publishConfig": {
 		"access": "public",
@@ -33,7 +33,7 @@
 	"homepage": "https://ui.lolmath.net",
 	"repository": {
 		"type": "git",
-		"url": "https://gitlab.com/lol-math/lolmath.git",
+		"url": "git+https://gitlab.com/lol-math/lolmath.git",
 		"directory": "packages/ui"
 	},
 	"bugs": {
@@ -41,20 +41,21 @@
 		"email": "incoming+lol-math-lolmath-41959739-1qbix14106nxnde3k5iusimi8-issue@incoming.gitlab.com"
 	},
 	"devDependencies": {
-		"@modern-js/module-tools": "^2.67.6",
-		"@types/react": "^19.1.5",
-		"@types/react-dom": "^19.1.5",
+		"@modern-js/module-tools": "^2.68.11",
+		"@types/node": "^24.3.0",
+		"@types/react": "^19.1.12",
+		"@types/react-dom": "^19.1.9",
 		"publint": "^0.3.12",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
 		"tailwindcss": "^3.4.17",
-		"typescript": "^5.8.3",
-		"vite-node": "^3.1.4",
-		"vitest": "^3.1.4"
+		"@typescript/native-preview": "7.0.0-dev.20250829.3",
+		"typescript": "^5.9.2",
+		"vitest": "^3.2.4"
 	},
 	"peerDependencies": {
-		"react": ">=18",
-		"react-dom": ">=18",
+		"react": ">=19",
+		"react-dom": ">=19",
 		"tailwindcss": ">=3"
 	},
 	"peerDependenciesMeta": {
@@ -69,24 +70,15 @@
 				"default": "./dist/es/index.js"
 			},
 			"require": {
-				"types": "./dist/lib/index.d.ts",
-				"default": "./dist/lib/index.js"
+				"types": "./dist/lib/index.d.cts",
+				"default": "./dist/lib/index.cjs"
 			}
 		},
 		"./css": {
 			"import": "./dist/es/index.css",
 			"require": "./dist/lib/index.css"
 		},
-		"./plugin": {
-			"import": {
-				"types": "./dist/es/plugin.d.ts",
-				"default": "./dist/es/plugin.js"
-			},
-			"require": {
-				"types": "./dist/lib/plugin.d.ts",
-				"default": "./dist/lib/plugin.js"
-			}
-		},
+		"./tailwind": "./dist/tailwind.css",
 		"./font/beaufort": {
 			"import": "./dist/font/beaufort/beaufort.css",
 			"require": "./dist/font/beaufort/beaufort.css"

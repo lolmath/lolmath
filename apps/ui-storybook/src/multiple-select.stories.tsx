@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import {
 	MultipleSelect,
-	SelectListBoxItem,
 	type SelectedKey,
+	SelectListBoxItem,
 	Tag,
 } from "@lolmath/ui";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction

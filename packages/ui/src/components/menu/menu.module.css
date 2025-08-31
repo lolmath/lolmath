@@ -5,7 +5,8 @@
 		min-width: 150px;
 		outline: none;
 
-		background: var(--lol-button-background-gradient) padding-box,
+		background:
+			var(--lol-button-background-gradient) padding-box,
 			var(--lol-button-border-gradient) border-box;
 
 		--lol-button-border-gradient: linear-gradient(

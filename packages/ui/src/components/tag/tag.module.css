@@ -1,5 +1,6 @@
 .tag {
-	background: var(--lol-multiple-select-background-gradient) padding-box,
+	background:
+		var(--lol-multiple-select-background-gradient) padding-box,
 		var(--lol-multiple-select-border-gradient) border-box;
 
 	--lol-multiple-select-border-gradient: var(--lol-gradient-gold);

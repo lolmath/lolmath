@@ -2,8 +2,6 @@
  * Calculates the multiplier to be used for lethality to armor penetration
  * conversion.
  *
- * @category Resist
- *
  * @param lvl Current champion level
  * @returns The multiplier to be used for converting lethality to flat armor
  * penetration.

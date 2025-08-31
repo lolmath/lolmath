@@ -1,20 +1,20 @@
 import { useMemo } from "react";
 import {
 	type ExternalToast,
+	toast as sonnerToast,
 	Toaster,
 	type ToasterProps,
-	toast as sonnerToast,
 } from "sonner";
 import { button } from "../button";
 import { Spinner } from "../spinner/spinner";
 import { heading } from "../typography/heading";
 import { text } from "../typography/text";
+import classes from "./sonner.module.css";
 import sonnerError from "./sonner-error.svg";
 import sonnerInfo from "./sonner-info.svg";
 import sonnerSuccess from "./sonner-success.svg";
 import type { Toast } from "./sonner-types";
 import sonnerWarning from "./sonner-warning.svg";
-import classes from "./sonner.module.css";
 
 export type ToastVariant = "default" | "hextech";
 

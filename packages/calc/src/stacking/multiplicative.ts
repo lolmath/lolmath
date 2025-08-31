@@ -1,8 +1,6 @@
 /**
  * Computes the multiplicative stacking of two values.
  *
- * @category Stacking
- *
  * @param initial The initial value.
  * @param value The value to add.
  * @returns The result of the addition.

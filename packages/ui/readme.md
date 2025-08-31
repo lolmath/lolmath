@@ -32,46 +32,32 @@ tailwind).
 
 ### Usage with tailwind
 
-In tailwind 3, the @tailwind directives are compiled away in the final CSS. You
-can use the `@layer` directive to control the order of the CSS. Here, we put the
-tailwind `base` tailwind directive in a `tailwind-base` layer, ensuring that any
-styles in the `lol` layer are more specific than the tailwind base styles. 
+You can use the `@layer` directive to control the order of the CSS. For more
+information on using `@layer` with tailwind, see
+https://tailwindcss.com/docs/preflight
 
-We do the same for the `components` layer. The `utilities` layer is left as is.
-That way you can use tailwind utilities to style the components with
-`classNames`.
+```css
+@layer theme, base, components, lol, utilities;
 
-```css	
-@layer tailwind-base, tailwind-components, lol;
-
-@layer tailwind-base {
-	@tailwind base;
-}
-
-@layer tailwind-components {
-	@tailwind components;
-}
-
-@tailwind utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 ```
 
-## TailwindCSS Plugin
+## TailwindCSS Theme
 
-Optionally, you can use the tailwind plugin to get League of Legends colors and
+Optionally, you can use the tailwind theme to get League of Legends colors and
 fonts.
 
-```ts tailwind.config.ts
-import { lolmathui } from "@lolmath/ui/plugin";
+```css tailwind.css
+@layer theme, base, components, lol, utilities;
 
-/** @type {import('tailwindcss').Config} */
-export default {
-	content: [],
-	theme: {
-		extend: {},
-	},
-	plugins: [lolmathui],
-};
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 
+/* Import the theme */
+@import "@lolmath/ui/tailwind";
 ```
 
 ## Client-side Routing
@@ -80,7 +66,6 @@ See [react-aria-components](https://react-spectrum.adobe.com/react-aria/routing.
 
 ## Links
 
-- [Documentation](https://docs.lolmath.net).
 - [Storybook](https://ui.lolmath.net).
 - [NPM Package](https://www.npmjs.com/package/@lolmath/ui).
 - [Repository](https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ui)

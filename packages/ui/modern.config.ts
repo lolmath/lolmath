@@ -10,6 +10,7 @@ export default defineConfig({
 			outDir: "./dist/lib",
 			sourceMap: true,
 			input: ["./src/index.ts", "./src/plugin.ts"],
+			autoExtension: true,
 		},
 		{
 			format: "esm",

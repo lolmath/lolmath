@@ -19,7 +19,8 @@
 		justify-content: center;
 		align-items: center;
 
-		background: var(--lol-button-background-gradient) padding-box,
+		background:
+			var(--lol-button-background-gradient) padding-box,
 			var(--lol-button-border-gradient) border-box;
 
 		outline-style: solid;

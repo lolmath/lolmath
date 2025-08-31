@@ -10,6 +10,7 @@ import {
 	Separator as AriaSeparator,
 	SubmenuTrigger as AriaSubmenuTrigger,
 	Virtualizer as AriaVirtualizer,
+	composeRenderProps,
 	ListLayout,
 	type MenuItemProps,
 	type MenuProps,
@@ -17,7 +18,6 @@ import {
 	type PopoverProps,
 	type SeparatorProps,
 	type VirtualizerProps,
-	composeRenderProps,
 } from "react-aria-components";
 import { heading } from "../typography/heading";
 import classes from "./menu.module.css";

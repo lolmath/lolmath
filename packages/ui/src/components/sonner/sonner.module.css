@@ -2,7 +2,8 @@
 	.toast {
 		padding: 1rem;
 		border: 2px solid transparent;
-		background: var(--lol-toast-background-gradient) padding-box,
+		background:
+			var(--lol-toast-background-gradient) padding-box,
 			var(--lol-toast-border-gradient) border-box;
 
 		padding: 16px;

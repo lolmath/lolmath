@@ -12,8 +12,6 @@
  * 3. Penetration, percentage.
  * 4. Penetration, flat.
  *
- * @category Resist
- *
  * @param resist The initial magic resist or armor.
  * @param flatReduction Flat reduction of magic resist or armor.
  * @param percentReduction Percent reduction of magic resist or armor.

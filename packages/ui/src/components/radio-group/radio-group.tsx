@@ -2,8 +2,8 @@ import { cx } from "cva";
 import {
 	Radio as AriaRadio,
 	RadioGroup as AriaRadioGroup,
-	type RadioProps as AriaRadioProps,
 	type RadioGroupProps as AriaRadiogroupProps,
+	type RadioProps as AriaRadioProps,
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "./radio-group.module.css";

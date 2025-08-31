@@ -3,28 +3,33 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "rspress dev",
-		"build": "rspress build",
-		"preview": "rspress preview",
-		"docs": "vite-node copy-docs.ts",
+		"build": "next build",
+		"dev": "next dev --turbo",
+		"start": "next start",
+		"postinstall": "fumadocs-mdx",
 		"deploy": "wrangler pages deploy ./dist --project-name lolmath-docs --branch $CI_COMMIT_REF_NAME"
 	},
 	"dependencies": {
-		"@lolmath/ui": "workspace:*",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0",
-		"rspress": "^1.40.2"
+		"@orama/orama": "^3.1.12",
+		"fumadocs-core": "15.7.6",
+		"fumadocs-mdx": "11.8.1",
+		"fumadocs-ui": "15.7.6",
+		"lucide-react": "^0.542.0",
+		"next": "15.5.2",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1"
 	},
 	"devDependencies": {
 		"@lolmath/calc": "workspace:*",
-		"@rspress/plugin-api-docgen": "^1.40.2",
-		"@rspress/plugin-typedoc": "^1.40.2",
-		"@types/react": "^19.0.8",
-		"@types/react-dom": "^19.0.3",
-		"fs-extra": "^11.3.0",
-		"resolve-package-path": "^4.0.3",
-		"tailwindcss": "^3.4.17",
-		"vite-node": "^3.0.4",
-		"wrangler": "^4.16.1"
+		"@lolmath/ui": "workspace:*",
+		"@lolmath/ddragon": "workspace:*",
+		"@tailwindcss/postcss": "^4.1.12",
+		"@types/mdx": "^2.0.13",
+		"@types/node": "24.3.0",
+		"@types/react": "^19.1.12",
+		"@types/react-dom": "^19.1.8",
+		"@typescript/native-preview": "7.0.0-dev.20250829.3",
+		"postcss": "^8.5.6",
+		"tailwindcss": "^4.1.12"
 	}
 }

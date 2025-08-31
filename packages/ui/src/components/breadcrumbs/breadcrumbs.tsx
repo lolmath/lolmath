@@ -4,8 +4,8 @@ import {
 	Breadcrumbs as AriaBreadcrumbs,
 	type BreadcrumbProps,
 	type BreadcrumbsProps,
-	Link,
 	composeRenderProps,
+	Link,
 } from "react-aria-components";
 import classes from "../breadcrumbs/breadcrumbs.module.css";
 import divider from "./breadcrumbs-divider.png";
@@ -24,6 +24,8 @@ export function Breadcrumbs<T extends object>({
 
 export function Breadcrumb({
 	className,
+	children,
+	href,
 	...props
 }: BreadcrumbProps & {
 	href?: string;
@@ -35,8 +37,10 @@ export function Breadcrumb({
 				cx(classes.item, className),
 			)}
 		>
-			<Link className={classes.link} {...props} />
-			{props.href && <img src={divider} alt="" className={classes.divider} />}
+			<Link className={classes.link} href={href}>
+				{children}
+			</Link>
+			{href && <img src={divider} alt="" className={classes.divider} />}
 		</AriaBreadcrumb>
 	);
 }
