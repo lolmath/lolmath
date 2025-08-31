@@ -78,16 +78,7 @@
 			"import": "./dist/es/index.css",
 			"require": "./dist/lib/index.css"
 		},
-		"./plugin": {
-			"import": {
-				"types": "./dist/es/plugin.d.ts",
-				"default": "./dist/es/plugin.js"
-			},
-			"require": {
-				"types": "./dist/lib/plugin.d.ts",
-				"default": "./dist/lib/plugin.js"
-			}
-		},
+		"./tailwind": "./dist/tailwind.css",
 		"./font/beaufort": {
 			"import": "./dist/font/beaufort/beaufort.css",
 			"require": "./dist/font/beaufort/beaufort.css"

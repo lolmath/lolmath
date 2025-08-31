@@ -1,4 +1,4 @@
-@layer theme, base, components, utilities, lol;
+@layer theme, base, components, lol, utilities;
 
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/preflight.css" layer(base);
@@ -6,6 +6,8 @@
 
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
+
+@import "@lolmath/ui/tailwind";
 
 :root {
 	font-family: var(--lol-font-family-spiegel);

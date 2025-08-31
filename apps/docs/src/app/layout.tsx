@@ -2,6 +2,7 @@ import "@/app/global.css";
 import "@lolmath/ui/font/beaufort";
 import "@lolmath/ui/font/spiegel";
 import "@lolmath/ui/css";
+
 import { Provider } from "@/components/provider";
 
 export default function Layout({ children }: LayoutProps<"/">) {

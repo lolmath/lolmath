@@ -1,6 +1,5 @@
 {
-	"name": "docs",
-	"version": "0.0.0",
+	"name": "@lolmath/docs",
 	"private": true,
 	"scripts": {
 		"build": "next build",
