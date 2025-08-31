@@ -18,7 +18,7 @@
 		"build": "tsgo",
 		"lint": "publint",
 		"test": "vitest",
-		"typedoc": "typedoc --disableSources --githubPages false --plugin typedoc-plugin-markdown --entryFileName docs.md --readme none --hideBreadcrumbs --excludePrivate --out ./docs ./src"
+		"docs": "typedoc"
 	},
 	"targets": {
 		"main": {
@@ -32,8 +32,9 @@
 		"@typescript/native-preview": "7.0.0-dev.20250829.3",
 		"publint": "^0.3.12",
 		"typedoc": "^0.28.11",
-		"typedoc-plugin-markdown": "^4.8.1",
-		"vitest": "^3.2.4"
+		"typescript": "^5.9.2",
+		"vitest": "^3.2.4",
+		"@lolmath/typedoc": "workspace:*"
 	},
 	"files": [
 		"/dist",

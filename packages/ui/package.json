@@ -50,6 +50,7 @@
 		"react-dom": "^19.1.1",
 		"tailwindcss": "^3.4.17",
 		"@typescript/native-preview": "7.0.0-dev.20250829.3",
+		"typescript": "^5.9.2",
 		"vitest": "^3.2.4"
 	},
 	"peerDependencies": {

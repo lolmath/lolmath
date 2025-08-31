@@ -23,17 +23,14 @@ export function baseOptions(): BaseLayoutProps {
 			{
 				text: "Calc",
 				url: "/calc/",
-				activeMatch: "/calc",
 			},
 			{
 				text: "Dev",
 				url: "/dev/",
-				activeMatch: "/dev",
 			},
 			{
 				text: "UI",
 				url: "/ui/",
-				activeMatch: "/ui",
 			},
 			{
 				text: "UI Storybook",
@@ -43,6 +40,7 @@ export function baseOptions(): BaseLayoutProps {
 				type: "icon",
 				label: "Gitlab",
 				icon: <Gitlab />,
+				text: "Gitlab",
 				url: "https://gitlab.com/lol-math/lolmath",
 			},
 		],
