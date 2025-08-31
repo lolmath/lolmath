@@ -1,1 +1,2 @@
-account_id = "9fb2649bb6d06c31f80a59741612c854"
+name = "lolmath-docs"
+pages_build_output_dir = "./out"

@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "npx storybook dev -p 6006",
 		"build": "storybook build",
-		"deploy": "wrangler pages deploy ./storybook-static --project-name lolmath-ui --branch $CI_COMMIT_REF_NAME"
+		"deploy": "wrangler pages deploy --branch $CI_COMMIT_REF_NAME"
 	},
 	"dependencies": {
 		"@storybook/addon-docs": "^9.1.3",

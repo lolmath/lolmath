@@ -7,7 +7,7 @@
 		"dev": "next dev --turbo",
 		"start": "next start",
 		"postinstall": "fumadocs-mdx",
-		"deploy": "wrangler pages deploy ./dist --project-name lolmath-docs --branch $CI_COMMIT_REF_NAME"
+		"deploy": "wrangler pages deploy --branch $CI_COMMIT_REF_NAME"
 	},
 	"dependencies": {
 		"@orama/orama": "^3.1.12",
