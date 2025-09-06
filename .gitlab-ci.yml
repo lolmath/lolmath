@@ -5,11 +5,11 @@ comment:
     - merge_requests
   script: npx -y changesets-gitlab comment
 
-id_tokens:
-  NPM_ID_TOKEN:
-    aud: "npm:registry.npmjs.org"
 
 main:
+  id_tokens:
+    NPM_ID_TOKEN:
+      aud: "npm:registry.npmjs.org"
   image: node:24
   needs: []
   script:
