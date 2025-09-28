@@ -1,5 +1,11 @@
 # @lolmath/ddragon
 
+## 2.0.4
+
+### Patch Changes
+
+- 685f44b: Fix WebP image url
+
 ## 2.0.3
 
 ### Patch Changes
