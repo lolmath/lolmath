@@ -237,6 +237,7 @@ export function withWebp(
 		imageUrlTransformer: (url) =>
 			url
 				.replace(/.(png|jpg|jpeg)$/, ".webp")
+				.replace("/cdn/", "/")
 				.replaceAll(options?.version ?? defaultVersion, "latest"),
 	};
 }
