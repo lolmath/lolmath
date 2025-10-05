@@ -15,9 +15,7 @@ main:
   script:
     - corepack enable
     - pnpm i --frozen-lockfile
-    - pnpm run build
-    - pnpm run lint
-    - pnpm run test
+    - pnpm run cicd
     - bash -x ./scripts/changesets.sh
     - pnpm run deploy
   variables:

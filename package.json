@@ -9,8 +9,9 @@
 	"scripts": {
 		"docs": "turbo run docs",
 		"build": "turbo run build",
-		"test": "turbo run test",
 		"lint": "turbo run lint",
+		"test": "turbo run test",
+		"cicd": "turbo run build lint test",
 		"deploy": "turbo run deploy --env-mode=loose",
 		"typecheck": "turbo run typecheck",
 		"dev": "turbo run dev",
