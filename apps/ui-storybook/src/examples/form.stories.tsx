@@ -9,6 +9,7 @@ import {
 	SelectListBoxItem,
 	SelectPopover,
 	SelectValue,
+	MultipleSelect,
 	TextField,
 	ToggleButton,
 } from "@lolmath/ui";
@@ -41,6 +42,15 @@ export const EverythingOnOneLine: Story = {
 			<div className="flex gap-1 flex-wrap">
 				<TextField />
 				<Button>Submit</Button>
+				<MultipleSelect
+					items={[
+						{ id: "1", name: "Apple" },
+						{ id: "2", name: "Banana" },
+						{ id: "3", name: "Cherry" },
+					]}
+					selectKey={(i) => i.id}
+					selectLabel={(i) => i.name}
+				/>
 				<Select>
 					<SelectButton>
 						<SelectValue />
@@ -73,6 +83,16 @@ export const Small: Story = {
 			<div className="flex gap-1 flex-wrap">
 				<TextField size="small" />
 				<Button size="small">Submit</Button>
+				<MultipleSelect
+					items={[
+						{ id: "1", name: "Apple" },
+						{ id: "2", name: "Banana" },
+						{ id: "3", name: "Cherry" },
+					]}
+					selectKey={(i) => i.id}
+					selectLabel={(i) => i.name}
+					 size="small"
+				/>
 				<Select>
 					<SelectButton size="small">
 						<SelectValue />
@@ -107,6 +127,16 @@ export const Medium: Story = {
 			<div className="flex gap-1 flex-wrap">
 				<TextField size="medium" />
 				<Button size="medium">Submit</Button>
+				<MultipleSelect
+					items={[
+						{ id: "1", name: "Apple" },
+						{ id: "2", name: "Banana" },
+						{ id: "3", name: "Cherry" },
+					]}
+					selectKey={(i) => i.id}
+					selectLabel={(i) => i.name}
+					 size="medium"
+				/>
 				<Select>
 					<SelectButton size="medium">
 						<SelectValue />
@@ -141,6 +171,16 @@ export const Large: Story = {
 			<div className="flex gap-1 flex-wrap">
 				<TextField size="large" />
 				<Button size="large">Submit</Button>
+				<MultipleSelect
+					items={[
+						{ id: "1", name: "Apple" },
+						{ id: "2", name: "Banana" },
+						{ id: "3", name: "Cherry" },
+					]}
+					selectKey={(i) => i.id}
+					selectLabel={(i) => i.name}
+					 size="large"
+				/>
 				<Select>
 					<SelectButton size="large">
 						<SelectValue />
