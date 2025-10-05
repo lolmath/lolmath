@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 8.0.0
+
+### Major Changes
+
+- b5532cb: Changed multiple-select API and layout
+
 ## 7.0.0
 
 ### Major Changes
