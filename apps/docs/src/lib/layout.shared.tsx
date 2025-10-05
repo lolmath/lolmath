@@ -33,6 +33,10 @@ export function baseOptions(): BaseLayoutProps {
 				url: "/ui/",
 			},
 			{
+				text: "DDragon",
+				url: "/ddragon/",
+			},
+			{
 				text: "UI Storybook",
 				url: "https://ui.lolmath.net/",
 			},

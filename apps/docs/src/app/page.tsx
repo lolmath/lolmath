@@ -22,6 +22,15 @@ export default function HomePage() {
 					</div>
 					<div className="border-lol-grey-200 hover:border-lol-gold-500 hover:bg-lol-blue-700 flex flex-col items-start gap-4 border bg-lol-hextech-black p-8 pt-7">
 						<Heading preset="h4" as="h2" color="gold200">
+							DDragon
+						</Heading>
+						<Text>DDragon (Data Dragon) API npm package</Text>
+						<ButtonLink className="mt-auto" href="/ddragon">
+							Docs
+						</ButtonLink>
+					</div>
+					<div className="border-lol-grey-200 hover:border-lol-gold-500 hover:bg-lol-blue-700 flex flex-col items-start gap-4 border bg-lol-hextech-black p-8 pt-7">
+						<Heading preset="h4" as="h2" color="gold200">
 							UI
 						</Heading>
 						<Text>
