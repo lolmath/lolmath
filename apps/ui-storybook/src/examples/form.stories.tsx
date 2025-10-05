@@ -48,7 +48,7 @@ export const EverythingOnOneLine: Story = {
 						{ id: "2", name: "Banana" },
 						{ id: "3", name: "Cherry" },
 					]}
-					selectKey={(i) => i.id}
+					selectId={(i) => i.id}
 					selectLabel={(i) => i.name}
 				/>
 				<Select>
@@ -89,7 +89,7 @@ export const Small: Story = {
 						{ id: "2", name: "Banana" },
 						{ id: "3", name: "Cherry" },
 					]}
-					selectKey={(i) => i.id}
+					selectId={(i) => i.id}
 					selectLabel={(i) => i.name}
 					size="small"
 				/>
@@ -133,7 +133,7 @@ export const Medium: Story = {
 						{ id: "2", name: "Banana" },
 						{ id: "3", name: "Cherry" },
 					]}
-					selectKey={(i) => i.id}
+					selectId={(i) => i.id}
 					selectLabel={(i) => i.name}
 					size="medium"
 				/>
@@ -177,7 +177,7 @@ export const Large: Story = {
 						{ id: "2", name: "Banana" },
 						{ id: "3", name: "Cherry" },
 					]}
-					selectKey={(i) => i.id}
+					selectId={(i) => i.id}
 					selectLabel={(i) => i.name}
 					size="large"
 				/>

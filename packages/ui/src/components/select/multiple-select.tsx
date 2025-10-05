@@ -5,6 +5,7 @@ import React from "react";
 import {
 	Popover as AriaPopover,
 	Autocomplete,
+	type Key,
 	Select,
 	type SelectProps,
 	SelectValue,
@@ -32,7 +33,7 @@ export interface MultipleSelectProps<T extends object = {}>
 	emptyTags?: React.ReactNode;
 	emptyList?: React.ReactNode;
 	tagGroupLabel?: string;
-	selectKey: (item: T) => React.Key;
+	selectId: (item: T) => Key;
 	selectLabel: (item: T) => string;
 }
 
@@ -43,7 +44,7 @@ export function MultipleSelect<T extends object = {}>({
 	emptyList,
 	emptyTags = "No items selected",
 	tagGroupLabel = "Selected items",
-	selectKey,
+	selectId,
 	selectLabel,
 	...selectProps
 }: MultipleSelectProps<T>) {
@@ -86,7 +87,7 @@ export function MultipleSelect<T extends object = {}>({
 
 			<AriaPopover className={classes.popover} triggerRef={triggerContainerRef}>
 				<Autocomplete filter={contains}>
-					<SearchField className={cx()} inputProps={{ autoFocus: true }} />
+					<SearchField inputProps={{ autoFocus: true }} />
 					<SelectVirtualizer>
 						<SelectListBox
 							items={items}
@@ -94,7 +95,7 @@ export function MultipleSelect<T extends object = {}>({
 							emptyList={emptyList}
 						>
 							{(item) => (
-								<SelectListBoxItem key={selectKey(item)}>
+								<SelectListBoxItem key={selectId(item)} id={selectId(item)}>
 									{selectLabel(item)}
 								</SelectListBoxItem>
 							)}

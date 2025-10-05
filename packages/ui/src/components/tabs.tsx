@@ -13,8 +13,6 @@ import {
 } from "react-aria-components";
 import classes from "./tabs.module.css";
 
-export type { Key } from "react-aria-components";
-
 export const Tabs = AriaTabs;
 
 export function TabList<T extends object>({

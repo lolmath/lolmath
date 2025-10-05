@@ -6,6 +6,7 @@ export {
 	DialogTrigger,
 	FieldError,
 	GridLayout,
+	type Key,
 	ListBoxItem,
 	ListLayout,
 	// TODO: Maybe remove this if it is not used.

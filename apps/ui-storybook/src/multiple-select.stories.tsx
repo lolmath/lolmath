@@ -1,5 +1,6 @@
-import { MultipleSelect } from "@lolmath/ui";
+import { type Key, MultipleSelect } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import * as React from "react";
 
 type Item = { id: string; name: string };
 
@@ -21,7 +22,7 @@ const meta = {
 	argTypes: {},
 	args: {
 		items: sampleItems,
-		selectKey: (item) => item.id,
+		selectId: (item) => item.id,
 		selectLabel: (item) => item.name,
 	},
 } satisfies Meta<typeof MultipleSelect<Item>>;
@@ -40,4 +41,37 @@ export const TonsOfItems: Story = {
 			name: `Item ${i + 1}`,
 		})),
 	},
+};
+
+export const Preselected: Story = {
+	args: {
+		defaultValue: ["1", "2"],
+	},
+};
+
+export const Small: Story = {
+	args: {
+		size: "small",
+	},
+};
+
+export const Medium: Story = {
+	args: {
+		size: "medium",
+	},
+};
+
+export const Large: Story = {
+	args: {
+		size: "large",
+	},
+};
+
+export const Controlled: Story = {
+	render: (args) => {
+		const [selected, setSelected] = React.useState<Key[]>(["2", "5"]);
+
+		return <MultipleSelect value={selected} onChange={setSelected} {...args} />;
+	},
+	args: {},
 };
