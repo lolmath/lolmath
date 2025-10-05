@@ -20,10 +20,10 @@
 		"fix": "npx @biomejs/biome check --write"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.2.2",
-		"@changesets/cli": "^2.29.6",
+		"@biomejs/biome": "^2.2.5",
+		"@changesets/cli": "^2.29.7",
 		"changesets-gitlab": "^0.13.4",
-		"turbo": "^2.5.6"
+		"turbo": "^2.5.8"
 	},
 	"packageManager": "pnpm@10.15.0"
 }

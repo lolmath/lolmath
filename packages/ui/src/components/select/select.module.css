@@ -2,7 +2,7 @@
 	.button {
 		font-family: var(--lol-font-family-spiegel);
 		display: inline-block;
-		width: 200px;
+		min-width: 200px;
 		outline: none;
 
 		border: 1px solid transparent;
@@ -16,15 +16,9 @@
 		letter-spacing: 0.025em;
 		text-align: left;
 
-		background:
-			var(--lol-select-image) no-repeat right 0.5rem center,
-			var(--lol-select-background-gradient) padding-box,
-			var(--lol-select-border-gradient) border-box;
-
+		--lol-select-image: url("./select-closed.png");
 		--lol-select-border-gradient: var(--lol-gradient-gold);
 		--lol-select-background-gradient: var(--lol-gradient-hextech-black);
-
-		--lol-select-image: url("./select-closed.png");
 
 		&[data-open] {
 			--lol-select-image: url("./select-open.png");
@@ -58,6 +52,19 @@
 		&.large {
 			min-height: var(--lol-form-height-large);
 		}
+	}
+
+	.singleSelect {
+		background:
+			var(--lol-select-image) no-repeat right 0.5rem center,
+			var(--lol-select-background-gradient) padding-box,
+			var(--lol-select-border-gradient) border-box;
+	}
+
+	.multiSelect {
+		background:
+			var(--lol-select-background-gradient) padding-box,
+			var(--lol-select-border-gradient) border-box;
 	}
 
 	.listBox {
@@ -104,5 +111,10 @@
 		width: var(--trigger-width);
 		display: flex;
 		flex-direction: column;
+	}
+
+	.emptyList {
+		padding: 0.5rem 0.25rem;
+		text-align: center;
 	}
 }

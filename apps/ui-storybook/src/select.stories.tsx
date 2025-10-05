@@ -1,7 +1,5 @@
 import {
 	Autocomplete,
-	GridLayout,
-	ListLayout,
 	SearchField,
 	Select,
 	SelectButton,
@@ -10,10 +8,7 @@ import {
 	SelectPopover,
 	SelectValue,
 	SelectVirtualizer,
-	Size,
 	useFilter,
-	Virtualizer,
-	WaterfallLayout,
 } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
@@ -191,6 +186,44 @@ export const VirtualizedWithAutocomplete: Story = {
 
 		return (
 			<Select>
+				<SelectButton>
+					<SelectValue />
+				</SelectButton>
+				<SelectPopover>
+					<Autocomplete filter={contains}>
+						<SearchField aria-label="Search options" autoFocus />
+						<SelectVirtualizer>
+							<SelectListBox
+								aria-label="Virtualized Autocomplete Select"
+								selectionMode="single"
+								items={items}
+							>
+								{(item) => (
+									<SelectListBoxItem key={item.id}>
+										{item.name}
+									</SelectListBoxItem>
+								)}
+							</SelectListBox>
+						</SelectVirtualizer>
+					</Autocomplete>
+				</SelectPopover>
+			</Select>
+		);
+	},
+};
+
+export const Multiple: Story = {
+	args: {},
+	render: () => {
+		const { contains } = useFilter({ sensitivity: "base" });
+
+		const items = Array.from({ length: 5000 }, (_, i) => ({
+			id: i,
+			name: `Option ${i}`,
+		}));
+
+		return (
+			<Select selectionMode="multiple">
 				<SelectButton>
 					<SelectValue />
 				</SelectButton>

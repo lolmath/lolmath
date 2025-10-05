@@ -1,5 +1,5 @@
 import { cva } from "cva";
-import { forwardRef, type Ref } from "react";
+import type { Ref } from "react";
 import {
 	Button as AriaButton,
 	type ButtonProps as AriaButtonProps,
@@ -49,18 +49,16 @@ export const button = cva({
 	},
 });
 
-export function _Button(
-	{
-		children,
-		className,
-		preset = "secondary",
-		shape = "normal",
-		size = "medium",
-		thin = preset === "dimmed",
-		...props
-	}: ButtonProps,
-	ref: Ref<HTMLButtonElement>,
-) {
+export function Button({
+	children,
+	className,
+	preset = "secondary",
+	shape = "normal",
+	size = "medium",
+	thin = preset === "dimmed",
+	ref,
+	...props
+}: ButtonProps & { ref?: Ref<HTMLButtonElement> }) {
 	return (
 		<AriaButton
 			ref={ref}
@@ -80,6 +78,3 @@ export function _Button(
 		</AriaButton>
 	);
 }
-
-export const Button = forwardRef(_Button);
-Button.displayName = "Button";

@@ -1,79 +1,15 @@
-.multiSelect {
-	position: relative;
-	padding: 0.25rem 0.25rem;
-	display: grid;
-	grid-template-columns: 1fr auto;
+.popover {
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+}
+
+.select {
+	border-right: none;
+	display: flex;
 	align-items: center;
-
-	border: 1px solid transparent;
-
-	background:
-		var(--lol-select-background-gradient) padding-box,
-		var(--lol-select-border-gradient) border-box;
-
-	--lol-select-border-gradient: var(--lol-gradient-gold);
-	--lol-select-background-gradient: var(--lol-gradient-hextech-black);
-
-	&.focusWithin {
-		/* --lol-select-border-gradient: var(--lol-gradient-gold-press); */
-		--lol-select-background-gradient: var(--lol-gradient-grey-300);
-		--lol-select-border-gradient: var(--lol-gradient-gold-press);
-		--lol-select-border-gradient: var(--lol-gradient-gold-hover);
-	}
-
-	&.disabled {
-		--lol-select-border-gradient: var(--lol-gradient-disabled);
-	}
-
-	&.small {
-		min-height: var(--lol-form-height-small);
-	}
-
-	&.medium {
-		min-height: var(--lol-form-height-medium);
-	}
-
-	&.large {
-		min-height: var(--lol-form-height-large);
-	}
 }
 
-.tagsAndInput {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.chevronButton {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 2rem;
-}
-
-.input {
-	flex: 1;
-	padding-left: 0.5rem;
-	box-shadow: none;
-	border: none;
-	background-color: transparent;
-
-	&:focus {
-		outline: none;
-	}
-}
-
-.comboBox {
-	display: flex;
-	flex: 1;
-}
-
-.tagList {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.25rem;
-	row-gap: 0.25rem;
-}
-
-.emptyText {
-	padding: 0.5rem;
+.triggerContainer {
+	display: inline-flex;
 }

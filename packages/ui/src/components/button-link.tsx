@@ -1,4 +1,4 @@
-import { forwardRef, type Ref } from "react";
+import type { Ref } from "react";
 import {
 	Link as AriaButton,
 	composeRenderProps,
@@ -18,18 +18,16 @@ interface ButtonLinkProps extends LinkProps {
 	size?: ButtonSize;
 }
 
-export function _ButtonLink(
-	{
-		children,
-		className,
-		preset = "secondary",
-		shape = "normal",
-		size = "medium",
-		thin = preset === "dimmed",
-		...props
-	}: ButtonLinkProps,
-	ref: Ref<HTMLAnchorElement>,
-) {
+export function ButtonLink({
+	children,
+	className,
+	preset = "secondary",
+	shape = "normal",
+	size = "medium",
+	ref,
+	thin = preset === "dimmed",
+	...props
+}: ButtonLinkProps & { ref?: Ref<HTMLAnchorElement> }) {
 	return (
 		<AriaButton
 			ref={ref}
@@ -49,6 +47,3 @@ export function _ButtonLink(
 		</AriaButton>
 	);
 }
-
-export const ButtonLink = forwardRef(_ButtonLink);
-ButtonLink.displayName = "ButtonLink";

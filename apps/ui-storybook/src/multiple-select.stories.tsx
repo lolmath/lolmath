@@ -1,64 +1,30 @@
-import {
-	MultipleSelect,
-	type SelectedKey,
-	SelectListBoxItem,
-	Tag,
-} from "@lolmath/ui";
+import { MultipleSelect } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
+type Item = { id: string; name: string };
+
+const sampleItems: Item[] = [
+	{ id: "1", name: "Apple" },
+	{ id: "2", name: "Banana" },
+	{ id: "3", name: "Cherry" },
+	{ id: "4", name: "Date" },
+	{ id: "5", name: "Elderberry" },
+	{ id: "6", name: "Fig" },
+	{ id: "7", name: "Grape" },
+	{ id: "8", name: "Honeydew" },
+];
+
 const meta = {
 	title: "MultipleSelect",
-	component: MultipleSelect,
-	render: (args) => {
-		const [selectedItems, setSelectedItems] = useState<SelectedKey[]>(
-			args.selectedItems,
-		);
-
-		return (
-			<MultipleSelect
-				className="max-w-xs"
-				{...args}
-				selectedItems={selectedItems}
-				onChange={setSelectedItems}
-			/>
-		);
-	},
+	component: MultipleSelect<Item>,
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {
-		selectedItems: [{ id: "1", name: "Apple" }],
-		items: [
-			{ id: "1", name: "Apple" },
-			{ id: "2", name: "Banana" },
-			{ id: "3", name: "Cherry" },
-			{ id: "4", name: "Date" },
-			{ id: "5", name: "Elderberry" },
-			{ id: "6", name: "Fig" },
-			{ id: "7", name: "Grape" },
-			{ id: "8", name: "Honeydew" },
-			{ id: "9", name: "Kiwi" },
-			{ id: "10", name: "Lemon" },
-			{ id: "11", name: "Mango" },
-			{ id: "12", name: "Nectarine" },
-			{ id: "13", name: "Orange" },
-			{ id: "14", name: "Papaya" },
-			{ id: "15", name: "Quince" },
-			{ id: "16", name: "Raspberry" },
-			{ id: "17", name: "Strawberry" },
-			{ id: "18", name: "Tangerine" },
-			{ id: "19", name: "Ugli Fruit" },
-			{ id: "20", name: "Watermelon" },
-		],
-		tag: (item) => <Tag textValue={item.name}>{item.name}</Tag>,
-		children: (item) => {
-			return (
-				<SelectListBoxItem textValue={item.name}>{item.name}</SelectListBoxItem>
-			);
-		},
+		items: sampleItems,
+		selectKey: (item) => item.id,
+		selectLabel: (item) => item.name,
 	},
-} satisfies Meta<typeof MultipleSelect>;
+} satisfies Meta<typeof MultipleSelect<Item>>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -68,23 +34,10 @@ export const Primary: Story = {
 };
 
 export const TonsOfItems: Story = {
-	args: {},
-	render: (args) => {
-		const [selectedItems, setSelectedItems] = useState<SelectedKey[]>([
-			{ id: "1", name: "Apple" },
-		]);
-
-		return (
-			<MultipleSelect
-				{...args}
-				className="max-w-xs"
-				items={Array.from({ length: 100 }, (_, i) => ({
-					id: i.toString(),
-					name: `Item ${i}`,
-				}))}
-				selectedItems={selectedItems}
-				onChange={setSelectedItems}
-			/>
-		);
+	args: {
+		items: Array.from({ length: 100 }, (_, i) => ({
+			id: String(i + 1),
+			name: `Item ${i + 1}`,
+		})),
 	},
 };

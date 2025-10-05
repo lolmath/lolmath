@@ -14,16 +14,21 @@ import {
 	type VirtualizerProps,
 } from "react-aria-components";
 import classes from "./select.module.css";
+import { text } from "../typography/text";
 
 export { Select, SelectValue } from "react-aria-components";
 
-const select = cva({
+export const select = cva({
 	base: classes.button,
 	variants: {
 		size: {
 			small: classes.small,
 			medium: classes.medium,
 			large: classes.large,
+		},
+		selectionMode: {
+			single: classes.singleSelect,
+			multiple: classes.multiSelect,
 		},
 	},
 });
@@ -37,7 +42,7 @@ export function SelectButton({
 		<AriaButton
 			{...props}
 			className={composeRenderProps(className, (className, buttonValues) =>
-				select({ ...buttonValues, size, className }),
+				select({ ...buttonValues, size, className, selectionMode: "single" }),
 			)}
 		/>
 	);
@@ -56,11 +61,25 @@ export function SelectPopover({ className, ...props }: PopoverProps) {
 
 export function SelectListBox<T extends object>({
 	className,
+	emptyList = "No results found",
 	...props
-}: ListBoxProps<T>) {
+}: ListBoxProps<T> & {
+	emptyList?: React.ReactNode;
+}) {
 	return (
 		<AriaListBox<T>
 			{...props}
+			renderEmptyState={() => (
+				<div
+					className={text({
+						color: "grey150",
+						preset: "base",
+						className: classes.emptyList,
+					})}
+				>
+					{emptyList}
+				</div>
+			)}
 			className={composeRenderProps(className, (className) =>
 				cx(className, classes.listBox),
 			)}
