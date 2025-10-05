@@ -16,27 +16,27 @@ const sampleItems: Item[] = [
 ];
 
 const meta: Meta<typeof TagGroup> = {
-  title: "TagGroup",
-  component: TagGroup,
-  tags: ["autodocs"],
-  argTypes: {
-    selectionMode: {
-      control: { type: "select" },
-      options: ["single", "multiple", undefined],
-    },
-  },
-  args: {
-    selectionMode: "multiple",
-  },
-  render: (args) => (
-    <TagGroup aria-label="Champions" selectionMode={args.selectionMode}>
-      <TagList
-        items={sampleItems}
-        selectLabel={(item: Item) => item.name}
-        variant="hextech"
-      />
-    </TagGroup>
-  ),
+	title: "TagGroup",
+	component: TagGroup,
+	tags: ["autodocs"],
+	argTypes: {
+		selectionMode: {
+			control: { type: "select" },
+			options: ["single", "multiple", undefined],
+		},
+	},
+	args: {
+		selectionMode: "multiple",
+	},
+	render: (args) => (
+		<TagGroup aria-label="Champions" selectionMode={args.selectionMode}>
+			<TagList
+				items={sampleItems}
+				selectLabel={(item: Item) => item.name}
+				variant="hextech"
+			/>
+		</TagGroup>
+	),
 };
 
 export default meta;
@@ -45,7 +45,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = { args: {} };
 
 export const SingleSelection: Story = {
-  args: { selectionMode: "single" },
+	args: { selectionMode: "single" },
 };
 
 export const GreyVariant: Story = {
@@ -75,27 +75,30 @@ export const GoldVariant: Story = {
 };
 
 export const ManyItems: Story = {
-  render: (args) => (
-    <TagGroup aria-label="Many Champions" selectionMode={args.selectionMode}>
-      <TagList
-        items={Array.from({ length: 30 }, (_, i) => ({ id: i, name: `Champion ${i}` }))}
-        selectLabel={(item: Item) => item.name}
-        variant="hextech"
-      />
-    </TagGroup>
-  ),
-  args: {},
+	render: (args) => (
+		<TagGroup aria-label="Many Champions" selectionMode={args.selectionMode}>
+			<TagList
+				items={Array.from({ length: 30 }, (_, i) => ({
+					id: i,
+					name: `Champion ${i}`,
+				}))}
+				selectLabel={(item: Item) => item.name}
+				variant="hextech"
+			/>
+		</TagGroup>
+	),
+	args: {},
 };
 
 export const CustomRenderFunction: Story = {
-  render: (args) => (
-    <TagGroup aria-label="Champions" selectionMode={args.selectionMode}>
-      <TagList
-        items={sampleItems}
-        selectLabel={(item: Item) => item.name.toUpperCase()}
-        variant="gold"
-      />
-    </TagGroup>
-  ),
-  args: {},
+	render: (args) => (
+		<TagGroup aria-label="Champions" selectionMode={args.selectionMode}>
+			<TagList
+				items={sampleItems}
+				selectLabel={(item: Item) => item.name.toUpperCase()}
+				variant="gold"
+			/>
+		</TagGroup>
+	),
+	args: {},
 };

@@ -1,6 +1,7 @@
 import {
 	Button,
 	ButtonLink,
+	MultipleSelect,
 	NumberField,
 	SearchField,
 	Select,
@@ -9,7 +10,6 @@ import {
 	SelectListBoxItem,
 	SelectPopover,
 	SelectValue,
-	MultipleSelect,
 	TextField,
 	ToggleButton,
 } from "@lolmath/ui";
@@ -91,7 +91,7 @@ export const Small: Story = {
 					]}
 					selectKey={(i) => i.id}
 					selectLabel={(i) => i.name}
-					 size="small"
+					size="small"
 				/>
 				<Select>
 					<SelectButton size="small">
@@ -135,7 +135,7 @@ export const Medium: Story = {
 					]}
 					selectKey={(i) => i.id}
 					selectLabel={(i) => i.name}
-					 size="medium"
+					size="medium"
 				/>
 				<Select>
 					<SelectButton size="medium">
@@ -179,7 +179,7 @@ export const Large: Story = {
 					]}
 					selectKey={(i) => i.id}
 					selectLabel={(i) => i.name}
-					 size="large"
+					size="large"
 				/>
 				<Select>
 					<SelectButton size="large">

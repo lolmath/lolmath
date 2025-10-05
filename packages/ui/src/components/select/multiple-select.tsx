@@ -79,7 +79,7 @@ export function MultipleSelect<T extends object = {}>({
 					)}
 				</SelectValue>
 
-				<Button shape="square" thin>
+				<Button shape="square" thin size={size}>
 					+
 				</Button>
 			</div>
