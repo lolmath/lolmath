@@ -53,5 +53,11 @@
 			var(--lol-color-gold-200),
 			transparent
 		);
+
+		transition-property: translate, width;
+		transition-duration: 200ms;
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+		}
 	}
 }

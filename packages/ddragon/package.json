@@ -31,11 +31,11 @@
 	},
 	"devDependencies": {
 		"@lolmath/typedoc": "workspace:*",
-		"@typescript/native-preview": "7.0.0-dev.20251003.1",
-		"publint": "^0.3.13",
-		"typedoc": "^0.28.13",
+		"@typescript/native-preview": "7.0.0-dev.20251217.1",
+		"publint": "^0.3.16",
+		"typedoc": "^0.28.15",
 		"typescript": "^5.9.3",
-		"vitest": "^3.2.4"
+		"vitest": "^4.0.16"
 	},
 	"files": [
 		"/dist",

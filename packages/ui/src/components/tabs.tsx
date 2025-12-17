@@ -7,6 +7,7 @@ import {
 	TabPanel as AriaTabPanel,
 	Tabs as AriaTabs,
 	composeRenderProps,
+	SelectionIndicator,
 	type TabListProps,
 	type TabPanelProps,
 	type TabProps,
@@ -40,7 +41,9 @@ export function Tab({ children, className, ...rest }: TabProps) {
 			{(values) => (
 				<>
 					{typeof children === "function" ? children(values) : children}
-					{values.isSelected && <div className={classes.indicator} />}
+					{values.isSelected && (
+						<SelectionIndicator className={classes.indicator} />
+					)}
 				</>
 			)}
 		</AriaTab>
