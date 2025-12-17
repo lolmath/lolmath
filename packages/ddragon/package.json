@@ -17,7 +17,7 @@
 	},
 	"scripts": {
 		"build": "tsgo",
-		"lint": "publint",
+		"publint": "publint",
 		"test": "vitest",
 		"docs": "pnpm exec typedoc"
 	},

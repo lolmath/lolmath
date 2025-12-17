@@ -10,7 +10,7 @@
 	"scripts": {
 		"build": "modern build",
 		"dev": "modern build --watch",
-		"lint": "publint",
+		"publint": "publint",
 		"typecheck": "tsgo --noEmit",
 		"docs": "node ./docs.ts"
 	},

@@ -4,7 +4,7 @@
 	"private": false,
 	"type": "module",
 	"scripts": {
-		"lint": "publint"
+		"publint": "publint"
 	},
 	"publishConfig": {
 		"access": "public",

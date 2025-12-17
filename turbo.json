@@ -15,8 +15,9 @@
 			],
 			"outputs": ["dist/**", "build/**", "storybook-static/**", "out/**"]
 		},
-		"lint": {
-			"outputs": []
+		"publint": {
+			"outputs": [],
+			"dependsOn": ["build"]
 		},
 		"test": {
 			"outputs": [],
@@ -27,7 +28,7 @@
 		},
 		"deploy": {
 			"inputs": ["dist/**", "build/**", "storybook-static/**", "out/**"],
-			"dependsOn": ["build", "test", "lint"],
+			"dependsOn": ["build", "test", "publint"],
 			"outputs": []
 		},
 		"dev": {
