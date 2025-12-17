@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 8.1.0
+
+### Minor Changes
+
+- 9b468a7: Add animation for Tabs components; upgrade react-aria
+
 ## 8.0.0
 
 ### Major Changes
