@@ -1,6 +1,6 @@
 "use client";
 import { RouterProvider } from "@lolmath/ui";
-import { RootProvider } from "fumadocs-ui/provider";
+import { RootProvider } from "fumadocs-ui/provider/next";
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
 import SearchDialog from "@/components/search";
