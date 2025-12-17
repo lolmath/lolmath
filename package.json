@@ -9,14 +9,14 @@
 	"scripts": {
 		"docs": "turbo run docs",
 		"build": "turbo run build",
-		"lint": "turbo run lint",
+		"publint": "turbo run publint",
 		"test": "turbo run test",
-		"cicd": "turbo run build lint test",
+		"cicd": "turbo run build publint test",
 		"deploy": "turbo run deploy --env-mode=loose",
 		"typecheck": "turbo run typecheck",
 		"dev": "turbo run dev",
 		"dev:ui:storybook": "turbo run dev --filter @lolmath/ui-storybook",
-		"publish-packages": "turbo run build lint test && changeset version && changeset publish",
+		"publish-packages": "turbo run build publint test && changeset version && changeset publish",
 		"changeset": "changeset",
 		"fix": "npx @biomejs/biome check --write"
 	},
