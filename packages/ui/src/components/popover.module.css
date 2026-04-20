@@ -27,6 +27,14 @@
 	}
 
 	.arrow {
+		.outer {
+			fill: var(--lol-color-gold-600);
+		}
+
+		.inner {
+			fill: var(--lol-color-grey-300);
+		}
+
 		&.top {
 			transform: translateX(-1.5px);
 		}
@@ -45,14 +53,6 @@
 
 		&.right {
 			transform: translateY(-2px) translateX(5px) rotate(90deg);
-		}
-
-		.outer {
-			fill: var(--lol-color-gold-600);
-		}
-
-		.inner {
-			fill: var(--lol-color-grey-300);
 		}
 	}
 }

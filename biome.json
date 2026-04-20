@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"linter": {
 		"enabled": true,
@@ -7,6 +7,10 @@
 			"recommended": true,
 			"suspicious": {
 				"noArrayIndexKey": "off"
+			},
+			"complexity": {
+				"noImportantStyles": "off",
+				"noBannedTypes": "off"
 			}
 		}
 	},
@@ -18,5 +22,10 @@
 		"useIgnoreFile": true,
 		"clientKind": "git",
 		"defaultBranch": "main"
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
 	}
 }

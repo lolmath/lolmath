@@ -19,8 +19,8 @@
 	"license": "ISC",
 	"dependencies": {
 		"cva": "1.0.0-beta.4",
-		"react-aria": "^3.45.0",
-		"react-aria-components": "^1.14.0",
+		"react-aria": "^3.48.0",
+		"react-aria-components": "^1.17.0",
 		"sonner": "^2.0.7"
 	},
 	"publishConfig": {
@@ -38,17 +38,17 @@
 		"email": "incoming+lol-math-lolmath-41959739-1qbix14106nxnde3k5iusimi8-issue@incoming.gitlab.com"
 	},
 	"devDependencies": {
-		"@modern-js/module-tools": "^2.69.4",
-		"@types/node": "^25.0.3",
-		"@types/react": "^19.2.7",
+		"@modern-js/module-tools": "^2.70.4",
+		"@types/node": "^25.6.0",
+		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
-		"@typescript/native-preview": "7.0.0-dev.20251217.1",
-		"publint": "^0.3.16",
-		"react": "^19.2.3",
-		"react-dom": "^19.2.3",
-		"tailwindcss": "^4.1.18",
-		"typescript": "^5.9.3",
-		"vitest": "^4.0.16"
+		"@typescript/native-preview": "7.0.0-dev.20260420.1",
+		"publint": "^0.3.18",
+		"react": "^19.2.5",
+		"react-dom": "^19.2.5",
+		"tailwindcss": "^4.2.2",
+		"typescript": "^6.0.3",
+		"vitest": "^4.1.4"
 	},
 	"peerDependencies": {
 		"react": ">=19",
@@ -63,11 +63,11 @@
 	"exports": {
 		".": {
 			"import": {
-				"types": "./dist/es/index.d.ts",
+				"types": "./dist/index.d.ts",
 				"default": "./dist/es/index.js"
 			},
 			"require": {
-				"types": "./dist/lib/index.d.cts",
+				"types": "./dist/index.d.ts",
 				"default": "./dist/lib/index.cjs"
 			}
 		},

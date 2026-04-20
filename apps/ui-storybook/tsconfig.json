@@ -23,8 +23,7 @@
 			"@lolmath/ui/font": ["../../packages/ui/public/*"],
 			"@lolmath/ui/plugin": ["../../packages/ui/src/plugin"],
 			"@lolmath/ui/css": ["../../packages/ui/src/style.css"]
-		},
-		"baseUrl": "."
+		}
 	},
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

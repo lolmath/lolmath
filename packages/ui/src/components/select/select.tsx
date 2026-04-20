@@ -13,8 +13,8 @@ import {
 	type PopoverProps,
 	type VirtualizerProps,
 } from "react-aria-components";
-import classes from "./select.module.css";
 import { text } from "../typography/text";
+import classes from "./select.module.css";
 
 export { Select, SelectValue } from "react-aria-components";
 

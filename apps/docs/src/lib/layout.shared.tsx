@@ -1,5 +1,5 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-import { Gitlab } from "lucide-react";
+import { SquareCode } from "lucide-react";
 
 /**
  * Shared layout configurations
@@ -43,7 +43,7 @@ export function baseOptions(): BaseLayoutProps {
 			{
 				type: "icon",
 				label: "Gitlab",
-				icon: <Gitlab />,
+				icon: <SquareCode />,
 				text: "Gitlab",
 				url: "https://gitlab.com/lol-math/lolmath",
 			},

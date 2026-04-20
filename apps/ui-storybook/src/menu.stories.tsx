@@ -19,7 +19,6 @@ import {
 	SubmenuTrigger,
 	Text,
 	useFilter,
-	Virtualizer,
 } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";

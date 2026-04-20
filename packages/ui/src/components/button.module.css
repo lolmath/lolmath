@@ -1,4 +1,19 @@
 @layer lol {
+	.round {
+		border-radius: 9999px;
+	}
+
+	.round,
+	.square {
+		aspect-ratio: 1 / 1;
+		padding: 0px;
+		font-weight: 900;
+	}
+
+	.thin {
+		border-width: 1px;
+	}
+
 	.button {
 		border-radius: 0px;
 		border: 2px solid transparent;
@@ -203,20 +218,5 @@
 	.primary:focus-visible,
 	.secondary:focus-visible {
 		outline-color: var(--lol-color-gold-400);
-	}
-
-	.round {
-		border-radius: 9999px;
-	}
-
-	.round,
-	.square {
-		aspect-ratio: 1 / 1;
-		padding: 0px;
-		font-weight: 900;
-	}
-
-	.thin {
-		border-width: 1px;
 	}
 }

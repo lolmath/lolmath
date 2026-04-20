@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"outDir": "../../out-tsc/packages/champion",
 		"types": []
 	},
 	"include": ["**/*.ts"],

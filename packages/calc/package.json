@@ -9,7 +9,7 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "tsup",
+		"build": "tsup && tsc -p tsconfig.build.json",
 		"dev": "tsup --watch",
 		"test": "vitest --coverage",
 		"coverage": "vitest run --coverage",
@@ -35,14 +35,14 @@
 	},
 	"devDependencies": {
 		"@lolmath/typedoc": "workspace:*",
-		"@types/node": "^25.0.3",
-		"@typescript/native-preview": "7.0.0-dev.20251217.1",
-		"@vitest/coverage-v8": "^4.0.16",
-		"publint": "^0.3.16",
+		"@types/node": "^25.6.0",
+		"@typescript/native-preview": "7.0.0-dev.20260420.1",
+		"@vitest/coverage-v8": "^4.1.4",
+		"publint": "^0.3.18",
 		"tsup": "^8.5.1",
-		"turbo": "^2.6.3",
-		"typedoc": "^0.28.15",
-		"typescript": "^5.9.3",
-		"vitest": "^4.0.16"
+		"turbo": "^2.9.6",
+		"typedoc": "^0.28.19",
+		"typescript": "^6.0.3",
+		"vitest": "^4.1.4"
 	}
 }

@@ -61,7 +61,7 @@ Defined in: [index.ts:30](https://gitlab.com/lol-math/lolmath/-/blob/main/packag
 ##### dataBaseUrl?
 
 ```ts
-optional dataBaseUrl: string;
+optional dataBaseUrl?: string;
 ```
 
 Defined in: [index.ts:34](https://gitlab.com/lol-math/lolmath/-/blob/main/packages/ddragon/src/index.ts#L34)
@@ -69,15 +69,15 @@ Defined in: [index.ts:34](https://gitlab.com/lol-math/lolmath/-/blob/main/packag
 ##### imageBaseUrl?
 
 ```ts
-optional imageBaseUrl: string;
+optional imageBaseUrl?: string;
 ```
 
 Defined in: [index.ts:33](https://gitlab.com/lol-math/lolmath/-/blob/main/packages/ddragon/src/index.ts#L33)
 
-##### imageUrlTransformer()?
+##### imageUrlTransformer?
 
 ```ts
-optional imageUrlTransformer: (url) => string;
+optional imageUrlTransformer?: (url) => string;
 ```
 
 Defined in: [index.ts:35](https://gitlab.com/lol-math/lolmath/-/blob/main/packages/ddragon/src/index.ts#L35)
@@ -95,7 +95,7 @@ Defined in: [index.ts:35](https://gitlab.com/lol-math/lolmath/-/blob/main/packag
 ##### language?
 
 ```ts
-optional language: Language;
+optional language?: Language;
 ```
 
 Defined in: [index.ts:32](https://gitlab.com/lol-math/lolmath/-/blob/main/packages/ddragon/src/index.ts#L32)
@@ -103,7 +103,7 @@ Defined in: [index.ts:32](https://gitlab.com/lol-math/lolmath/-/blob/main/packag
 ##### version?
 
 ```ts
-optional version: string;
+optional version?: string;
 ```
 
 Defined in: [index.ts:31](https://gitlab.com/lol-math/lolmath/-/blob/main/packages/ddragon/src/index.ts#L31)

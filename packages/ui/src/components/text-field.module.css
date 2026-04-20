@@ -13,7 +13,6 @@
 		margin: 0;
 		font-size: 0.75rem;
 		line-height: 1rem;
-		color: var(--field-text-color);
 		outline: none;
 		font-family: var(--lol-font-family-spiegel);
 		font-weight: 500;

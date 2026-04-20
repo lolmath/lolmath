@@ -6,7 +6,6 @@
 			var(--lol-toast-background-gradient) padding-box,
 			var(--lol-toast-border-gradient) border-box;
 
-		padding: 16px;
 		width: var(--width);
 		font-size: 13px;
 		display: flex;
