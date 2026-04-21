@@ -16,6 +16,7 @@
 	},
 	"keywords": [],
 	"author": "lolmath.net",
+	"sideEffects": false,
 	"license": "ISC",
 	"dependencies": {
 		"cva": "1.0.0-beta.4",
@@ -40,10 +41,12 @@
 	"devDependencies": {
 		"@tsdown/css": "^0.21.9",
 		"@types/node": "^25.6.0",
+		"@types/postcss-url": "^10.0.4",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"@typescript/native-preview": "7.0.0-dev.20260420.1",
 		"lightningcss": "^1.30.2",
+		"postcss-url": "^10.1.3",
 		"publint": "^0.3.18",
 		"react": "^19.2.5",
 		"react-dom": "^19.2.5",
@@ -69,9 +72,22 @@
 				"default": "./dist/index.mjs"
 			}
 		},
-		"./css": "./dist/index.css",
-		"./tailwind": "./dist/tailwind.css",
-		"./font/beaufort": "./dist/font/beaufort/beaufort.css",
-		"./font/spiegel": "./dist/font/spiegel/spiegel.css"
+		"./css": {
+			"types": "./dist/css.d.ts",
+			"default": "./dist/index.css"
+		},
+		"./tailwind": {
+			"types": "./dist/css.d.ts",
+			"default": "./dist/tailwind.css"
+		},
+		"./font/beaufort": {
+			"types": "./dist/css.d.ts",
+			"default": "./dist/font/beaufort/beaufort.css"
+		},
+		"./font/spiegel": {
+			"types": "./dist/css.d.ts",
+			"default": "./dist/font/spiegel/spiegel.css"
+		},
+		"./css.d.ts": "./dist/css.d.ts"
 	}
 }

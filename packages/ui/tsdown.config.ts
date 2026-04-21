@@ -1,3 +1,4 @@
+import postcssUrl from "postcss-url";
 import { defineConfig } from "tsdown";
 
 export default defineConfig({
@@ -15,6 +16,14 @@ export default defineConfig({
 	},
 	css: {
 		fileName: "index.css",
+		transformer: "postcss",
+		postcss: {
+			plugins: [
+				postcssUrl({
+					url: "inline",
+				}),
+			],
+		},
 	},
 	copy: [{ from: "public/**/*", to: "dist", flatten: false }],
 });
