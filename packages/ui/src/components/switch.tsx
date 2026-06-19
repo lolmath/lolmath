@@ -1,22 +1,23 @@
 import { cx } from "cva";
-import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
+import type {
+	SwitchButtonProps,
+	SwitchFieldProps,
+} from "react-aria-components";
 import {
-	Switch as AriaSwitch,
+	SwitchButton as AriaSwitchButton,
+	SwitchField as AriaSwitchField,
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "./switch.module.css";
 import textClasses from "./typography/text.module.css";
 
-export function Switch({
+export function SwitchButton({
 	className,
-	placeholder,
 	children,
 	...props
-}: AriaSwitchProps & {
-	placeholder?: string;
-}) {
+}: SwitchButtonProps) {
 	return (
-		<AriaSwitch
+		<AriaSwitchButton
 			{...props}
 			className={composeRenderProps(className, (className) =>
 				cx(
@@ -36,6 +37,23 @@ export function Switch({
 					{typeof children === "function" ? children(values) : children}
 				</>
 			)}
-		</AriaSwitch>
+		</AriaSwitchButton>
+	);
+}
+
+export function SwitchField({ className, ...props }: SwitchFieldProps) {
+	return <AriaSwitchField {...props} className={className} />;
+}
+
+export function Switch({
+	children,
+	className,
+	...props
+}: Omit<SwitchFieldProps, "children" | "className"> &
+	Pick<SwitchButtonProps, "children" | "className">) {
+	return (
+		<SwitchField {...props}>
+			<SwitchButton className={className}>{children}</SwitchButton>
+		</SwitchField>
 	);
 }

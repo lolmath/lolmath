@@ -1,4 +1,12 @@
-import { Label, Radio, RadioGroup } from "@lolmath/ui";
+import {
+	FieldError,
+	Label,
+	Radio,
+	RadioButton,
+	RadioField,
+	RadioGroup,
+	Text,
+} from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -33,4 +41,21 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
+};
+
+export const WithDescriptionAndError: Story = {
+	render: () => (
+		<RadioGroup isInvalid defaultValue="dogs">
+			<Label>Favorite pet</Label>
+			<RadioField value="dogs">
+				<RadioButton>Dog</RadioButton>
+				<Text slot="description">Loyal and friendly.</Text>
+			</RadioField>
+			<RadioField value="cats">
+				<RadioButton>Cat</RadioButton>
+				<Text slot="description">Independent and quiet.</Text>
+			</RadioField>
+			<FieldError>Please select a valid pet.</FieldError>
+		</RadioGroup>
+	),
 };

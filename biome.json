@@ -23,6 +23,9 @@
 		"clientKind": "git",
 		"defaultBranch": "main"
 	},
+	"files": {
+		"includes": ["**", "!**/*.svg"]
+	},
 	"css": {
 		"parser": {
 			"tailwindDirectives": true

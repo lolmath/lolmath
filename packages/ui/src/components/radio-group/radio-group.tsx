@@ -1,9 +1,13 @@
 import { cx } from "cva";
+import type {
+	RadioGroupProps as AriaRadiogroupProps,
+	RadioButtonProps,
+	RadioFieldProps,
+} from "react-aria-components";
 import {
-	Radio as AriaRadio,
+	RadioButton as AriaRadioButton,
+	RadioField as AriaRadioField,
 	RadioGroup as AriaRadioGroup,
-	type RadioGroupProps as AriaRadiogroupProps,
-	type RadioProps as AriaRadioProps,
 	composeRenderProps,
 } from "react-aria-components";
 import classes from "./radio-group.module.css";
@@ -19,13 +23,36 @@ export function RadioGroup({ className, ...props }: AriaRadiogroupProps) {
 	);
 }
 
-export function Radio({ className, ...props }: AriaRadioProps) {
+export function RadioButton({ className, ...props }: RadioButtonProps) {
 	return (
-		<AriaRadio
+		<AriaRadioButton
 			{...props}
 			className={composeRenderProps(className, (className) =>
 				cx(classes.radio, className),
 			)}
 		/>
+	);
+}
+
+export function RadioField({ className, ...props }: RadioFieldProps) {
+	return <AriaRadioField {...props} className={className} />;
+}
+
+export function Radio({
+	children,
+	className,
+	...props
+}: Omit<RadioFieldProps, "children" | "className"> &
+	Pick<RadioButtonProps, "children" | "className">) {
+	return (
+		<AriaRadioField {...props}>
+			<AriaRadioButton
+				className={composeRenderProps(className, (className) =>
+					cx(classes.radio, className),
+				)}
+			>
+				{children}
+			</AriaRadioButton>
+		</AriaRadioField>
 	);
 }
