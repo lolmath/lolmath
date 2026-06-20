@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "npx storybook dev -p 6006",
 		"build": "storybook build",
+		"test:visual": "playwright test",
 		"deploy": "wrangler pages deploy --branch $CI_COMMIT_REF_NAME"
 	},
 	"dependencies": {
@@ -18,6 +19,7 @@
 	},
 	"devDependencies": {
 		"@lolmath/ui": "workspace:*",
+		"@playwright/test": "^1.61.0",
 		"@storybook/addon-links": "^10.4.6",
 		"@storybook/addon-themes": "^10.4.6",
 		"@storybook/cli": "^10.4.6",

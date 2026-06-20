@@ -350,4 +350,11 @@ dist
 
 storybook-static
 
+# Playwright: commit the baseline screenshots under */visual/__screenshots__,
+# but ignore per-run output and reports.
+test-results
+/playwright-report
+/blob-report
+/playwright/.cache
+
 .npmrc

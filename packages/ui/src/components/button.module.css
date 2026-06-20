@@ -10,13 +10,13 @@
 		font-weight: 900;
 	}
 
-	.thin {
-		border-width: 1px;
-	}
-
 	.button {
 		border-radius: 0px;
 		border: 2px solid transparent;
+
+		&.thin {
+			border-width: 1px;
+		}
 
 		transition: all;
 		transition-duration: 0.3s;
