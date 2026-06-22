@@ -1,4 +1,10 @@
-import { Checkbox } from "@lolmath/ui";
+import {
+	Checkbox,
+	CheckboxButton,
+	CheckboxField,
+	FieldError,
+	Text,
+} from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -52,4 +58,14 @@ export const DynamicClassname: Story = {
 		className: (values) =>
 			values.isSelected ? "text-green-700" : "text-red-700",
 	},
+};
+
+export const WithDescriptionAndError: Story = {
+	render: () => (
+		<CheckboxField isInvalid defaultSelected>
+			<CheckboxButton>Enable notifications</CheckboxButton>
+			<Text slot="description">Get notified about updates.</Text>
+			<FieldError>You must enable notifications to continue.</FieldError>
+		</CheckboxField>
+	),
 };

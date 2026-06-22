@@ -46,7 +46,11 @@ const meta = {
 					<SubmenuTrigger>
 						<MenuItem key="Email">Email</MenuItem>
 						<MenuPopover>
-							<Menu onAction={(key) => alert(`Email menu ${key} action`)}>
+							<Menu
+								onAction={(key, value) =>
+									alert(`Email menu ${key} (${value}) action`)
+								}
+							>
 								<MenuItem key="Attachment">Email as Attachment</MenuItem>
 								<MenuItem key="Link">Email as Link</MenuItem>
 							</Menu>

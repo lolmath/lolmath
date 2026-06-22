@@ -1,6 +1,7 @@
 import { cva, cx } from "cva";
 import type {
 	SliderProps as AriaSliderProps,
+	SliderFillRenderProps,
 	SliderOutputProps,
 	SliderThumbProps,
 	SliderTrackProps,
@@ -8,6 +9,7 @@ import type {
 } from "react-aria-components";
 import {
 	Slider as AriaSlider,
+	SliderFill as AriaSliderFill,
 	SliderOutput as AriaSliderOutput,
 	SliderThumb as AriaSliderThumb,
 	SliderTrack as AriaSliderTrack,
@@ -16,7 +18,7 @@ import {
 import textClasses from "../typography/text.module.css";
 import classes from "./slider.module.css";
 
-const sliderTrackForeground = cva({
+const sliderFill = cva({
 	base: classes.foreground,
 	variants: {
 		isDisabled: {
@@ -59,7 +61,7 @@ export function Slider<T extends number | number[]>({
 		| ((values: SliderTrackRenderProps) => string);
 	sliderTrackForegroundClassName?:
 		| string
-		| ((values: SliderTrackRenderProps) => string);
+		| ((values: SliderFillRenderProps) => string);
 }) {
 	return (
 		<AriaSlider<T> {...props} className={className}>
@@ -72,73 +74,58 @@ export function Slider<T extends number | number[]>({
 							cx(classes.track, className),
 						)}
 					>
-						{(values) => {
-							const left =
-								values.state.values.length === 1
-									? 0
-									: values.state.getThumbPercent(0) * 100;
+						{(values) => (
+							<>
+								<div
+									className={composeRenderProps(
+										sliderTrackBackgroundClassName,
+										(className) => cx(className, classes.background),
+									)(values)}
+								/>
+								<AriaSliderFill
+									className={composeRenderProps(
+										sliderTrackForegroundClassName,
+										(className, fillValues) =>
+											sliderFill({
+												isDisabled: fillValues.isDisabled,
+												className,
+											}),
+									)}
+								/>
+								{values.state.values.map((_, i) => {
+									const zIndex =
+										values.state.getThumbPercent(i === 1 ? 0 : 1) ===
+										(i === 1 ? 0 : 1)
+											? 2
+											: undefined;
 
-							const width =
-								values.state.values.length === 1
-									? values.state.getThumbPercent(0) * 100
-									: (values.state.getThumbPercent(1) -
-											values.state.getThumbPercent(0)) *
-										100;
-
-							return (
-								<>
-									<div
-										className={composeRenderProps(
-											sliderTrackBackgroundClassName,
-											(className) => cx(className, classes.background),
-										)(values)}
-									/>
-									<div
-										className={composeRenderProps(
-											sliderTrackForegroundClassName,
-											(className) =>
-												sliderTrackForeground({
-													...values.state,
-													className,
-												}),
-										)(values)}
-										style={{ left: `${left}%`, width: `${width}%` }}
-									/>
-									{values.state.values.map((_, i) => {
-										const zIndex =
-											values.state.getThumbPercent(i === 1 ? 0 : 1) ===
-											(i === 1 ? 0 : 1)
-												? 2
-												: undefined;
-
-										return (
-											<AriaSliderThumb
-												key={i}
-												index={i}
-												style={{
-													zIndex,
-												}}
-												{...sliderThumbProps}
-												className={composeRenderProps(
-													sliderThumbProps.className,
-													(className, sliderThumbRenderProps) =>
-														sliderThumb({
-															isDisabled: sliderThumbRenderProps.isDisabled,
-															isThumbDragging:
-																sliderThumbRenderProps.state.isThumbDragging(i),
-															isOtherThumbDragging:
-																sliderThumbRenderProps.state.isThumbDragging(
-																	i === 1 ? 0 : 1,
-																),
-															className,
-														}),
-												)}
-											/>
-										);
-									})}
-								</>
-							);
-						}}
+									return (
+										<AriaSliderThumb
+											key={i}
+											index={i}
+											style={{
+												zIndex,
+											}}
+											{...sliderThumbProps}
+											className={composeRenderProps(
+												sliderThumbProps.className,
+												(className, sliderThumbRenderProps) =>
+													sliderThumb({
+														isDisabled: sliderThumbRenderProps.isDisabled,
+														isThumbDragging:
+															sliderThumbRenderProps.state.isThumbDragging(i),
+														isOtherThumbDragging:
+															sliderThumbRenderProps.state.isThumbDragging(
+																i === 1 ? 0 : 1,
+															),
+														className,
+													}),
+											)}
+										/>
+									);
+								})}
+							</>
+						)}
 					</AriaSliderTrack>
 				</>
 			)}
