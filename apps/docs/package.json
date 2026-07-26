@@ -6,8 +6,7 @@
 		"build": "next build",
 		"dev": "next dev --turbo",
 		"start": "next start",
-		"postinstall": "fumadocs-mdx",
-		"deploy": "wrangler pages deploy --branch $CI_COMMIT_REF_NAME"
+		"postinstall": "fumadocs-mdx"
 	},
 	"dependencies": {
 		"@orama/orama": "^3.1.18",

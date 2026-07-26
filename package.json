@@ -10,6 +10,7 @@
 		"docs": "turbo run docs",
 		"build": "turbo run build",
 		"build:ui-storybook": "turbo run build --filter @lolmath/ui-storybook",
+		"build:docs": "turbo run build --filter @lolmath/docs",
 		"publint": "turbo run publint",
 		"test": "turbo run test",
 		"cicd": "turbo run build publint test",
@@ -24,7 +25,6 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.0",
 		"@changesets/cli": "^2.31.0",
-		"changesets-gitlab": "^0.13.4",
 		"turbo": "^2.9.18"
 	},
 	"packageManager": "pnpm@11.8.0"

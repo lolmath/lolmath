@@ -1,0 +1,67 @@
+name: Release
+
+on:
+  push:
+    # changeset-release/** only carries the version bump; it is checked by the
+    # pull request changesets opens for it, and published once that merges.
+    branches-ignore:
+      - "changeset-release/**"
+
+concurrency:
+  # Never publish two releases of the same branch at once, and never cancel one
+  # half way through.
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+# Every publish in this file authenticates to npm with trusted publishing, so
+# npm's trusted publisher for each package must point at this workflow file.
+# Only one workflow file can be registered per package, which is why the canary
+# and stable releases both live here.
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # changesets needs the tags to work out what has already shipped.
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      # Trusted publishing needs npm >= 11.5.1.
+      - run: npm install --global npm@latest
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm run cicd
+
+      # Snapshot release of every branch that is not main, so changes can be
+      # tried out before they are versioned.
+      - name: Publish canary
+        if: github.ref != 'refs/heads/main'
+        run: |
+          pnpm run changeset version --snapshot
+          pnpm run changeset publish --tag canary --no-git-tag
+
+      # Opens (or updates) the "chore: version packages" pull request while
+      # changesets are pending, and publishes to npm once that PR is merged.
+      - name: Version or publish
+        if: github.ref == 'refs/heads/main'
+        uses: changesets/action@v1
+        with:
+          version: pnpm run changeset version
+          publish: pnpm run changeset publish
+          title: "chore: version packages"
+          commit: "chore: version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
