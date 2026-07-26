@@ -16,7 +16,7 @@ const sampleItems: Item[] = [
 ];
 
 const meta: Meta<typeof TagGroup> = {
-	title: "TagGroup",
+	title: "Data Display/TagGroup",
 	component: TagGroup,
 	tags: ["autodocs"],
 	argTypes: {

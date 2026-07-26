@@ -2,7 +2,7 @@ import { Divider, Heading } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-	title: "Divider",
+	title: "Layout/Divider",
 	component: Divider,
 	tags: ["autodocs"],
 	argTypes: {},

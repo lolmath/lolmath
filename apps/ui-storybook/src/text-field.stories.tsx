@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-	title: "TextField",
+	title: "Inputs/TextField",
 	component: TextField,
 	tags: ["autodocs"],
 	argTypes: {},

@@ -33,6 +33,21 @@ const preview: Preview = {
 		initialGlobals: {
 			backgrounds: { value: "hextechBlack" },
 		},
+		options: {
+			storySort: {
+				order: [
+					"Inputs",
+					"Buttons",
+					"Navigation",
+					"Overlays",
+					"Feedback",
+					"Data Display",
+					"Typography",
+					"Layout",
+					"Examples",
+				],
+			},
+		},
 	},
 };
 

@@ -16,7 +16,7 @@ const sampleItems: Item[] = [
 ];
 
 const meta = {
-	title: "MultipleSelect",
+	title: "Inputs/MultipleSelect",
 	component: MultipleSelect<Item>,
 	tags: ["autodocs"],
 	argTypes: {},
