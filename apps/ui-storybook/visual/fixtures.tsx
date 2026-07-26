@@ -27,6 +27,12 @@ import {
 	Switch,
 	Tab,
 	TabList,
+	Table,
+	TableBody,
+	TableCell,
+	TableColumn,
+	TableHeader,
+	TableRow,
 	TabPanel,
 	Tabs,
 	TagGroup,
@@ -45,6 +51,37 @@ export interface Fixture {
 }
 
 const wide: CSSProperties = { width: 260 };
+const table: CSSProperties = { width: 420 };
+
+const players = [
+	{ id: 1, rank: 1, summoner: "Faker", tier: "Challenger", lp: 1842 },
+	{ id: 2, rank: 2, summoner: "Chovy", tier: "Challenger", lp: 1735 },
+	{ id: 3, rank: 3, summoner: "Ruler", tier: "Grandmaster", lp: 1204 },
+];
+
+const playerColumns = (
+	<>
+		<TableColumn id="rank" align="center">
+			#
+		</TableColumn>
+		<TableColumn id="summoner" isRowHeader>
+			Summoner
+		</TableColumn>
+		<TableColumn id="tier">Tier</TableColumn>
+		<TableColumn id="lp" align="end">
+			LP
+		</TableColumn>
+	</>
+);
+
+const playerRows = (player: (typeof players)[number]) => (
+	<TableRow>
+		<TableCell align="center">{player.rank}</TableCell>
+		<TableCell>{player.summoner}</TableCell>
+		<TableCell>{player.tier}</TableCell>
+		<TableCell align="end">{player.lp}</TableCell>
+	</TableRow>
+);
 
 /**
  * Registry of components -> fixtures for visual regression. Each fixture id is
@@ -279,6 +316,101 @@ export const fixtures: Record<string, Fixture[]> = {
 				<Switch isDisabled defaultSelected>
 					Low Power Mode
 				</Switch>
+			),
+		},
+	],
+	table: [
+		{
+			id: "table-default",
+			node: (
+				<Table aria-label="Players" style={table}>
+					<TableHeader>{playerColumns}</TableHeader>
+					<TableBody items={players}>{playerRows}</TableBody>
+				</Table>
+			),
+		},
+		{
+			id: "table-sorted",
+			node: (
+				<Table
+					aria-label="Players"
+					style={table}
+					sortDescriptor={{ column: "lp", direction: "descending" }}
+				>
+					<TableHeader>
+						<TableColumn id="summoner" isRowHeader allowsSorting>
+							Summoner
+						</TableColumn>
+						<TableColumn id="tier" allowsSorting>
+							Tier
+						</TableColumn>
+						<TableColumn id="lp" align="end" allowsSorting>
+							LP
+						</TableColumn>
+					</TableHeader>
+					<TableBody items={players}>
+						{(player) => (
+							<TableRow>
+								<TableCell>{player.summoner}</TableCell>
+								<TableCell>{player.tier}</TableCell>
+								<TableCell align="end">{player.lp}</TableCell>
+							</TableRow>
+						)}
+					</TableBody>
+				</Table>
+			),
+		},
+		{
+			id: "table-single-selection",
+			node: (
+				<Table
+					aria-label="Players"
+					style={table}
+					selectionMode="single"
+					defaultSelectedKeys={[2]}
+				>
+					<TableHeader>{playerColumns}</TableHeader>
+					<TableBody items={players}>{playerRows}</TableBody>
+				</Table>
+			),
+		},
+		{
+			id: "table-multiple-selection",
+			node: (
+				<Table
+					aria-label="Players"
+					style={table}
+					selectionMode="multiple"
+					defaultSelectedKeys={[1, 3]}
+				>
+					<TableHeader>{playerColumns}</TableHeader>
+					<TableBody items={players}>{playerRows}</TableBody>
+				</Table>
+			),
+		},
+		{
+			id: "table-disabled-rows",
+			node: (
+				<Table
+					aria-label="Players"
+					style={table}
+					selectionMode="multiple"
+					disabledKeys={[2]}
+				>
+					<TableHeader>{playerColumns}</TableHeader>
+					<TableBody items={players}>{playerRows}</TableBody>
+				</Table>
+			),
+		},
+		{
+			id: "table-empty",
+			node: (
+				<Table aria-label="Players" style={table}>
+					<TableHeader>{playerColumns}</TableHeader>
+					<TableBody items={[]} emptyState="No ranked players yet">
+						{playerRows}
+					</TableBody>
+				</Table>
 			),
 		},
 	],
