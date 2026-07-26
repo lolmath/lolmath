@@ -46,5 +46,7 @@ export * from "./components/tag-group/tag-group";
 export * from "./components/text-area";
 export * from "./components/text-field";
 export * from "./components/toggle-button";
+export * from "./components/toggle-button-group";
+export * from "./components/toolbar";
 export * from "./components/typography/heading";
 export * from "./components/typography/text";
