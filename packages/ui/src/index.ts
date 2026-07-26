@@ -48,5 +48,6 @@ export * from "./components/text-field";
 export * from "./components/toggle-button";
 export * from "./components/toggle-button-group";
 export * from "./components/toolbar";
+export * from "./components/tree/tree";
 export * from "./components/typography/heading";
 export * from "./components/typography/text";

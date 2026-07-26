@@ -30,9 +30,6 @@ const preview: Preview = {
 		docs: {
 			theme: themes.dark,
 		},
-		initialGlobals: {
-			backgrounds: { value: "hextechBlack" },
-		},
 		options: {
 			storySort: {
 				order: [
@@ -48,6 +45,9 @@ const preview: Preview = {
 				],
 			},
 		},
+	},
+	initialGlobals: {
+		backgrounds: { value: "hextechBlack" },
 	},
 };
 

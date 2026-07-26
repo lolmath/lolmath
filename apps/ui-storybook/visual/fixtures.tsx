@@ -45,6 +45,9 @@ import {
 	ToggleButtonGroup,
 	Toolbar,
 	ToolbarSeparator,
+	Tree,
+	TreeItem,
+	TreeItemContent,
 } from "@lolmath/ui";
 import type { CSSProperties, ReactNode } from "react";
 
@@ -86,6 +89,34 @@ const playerRows = (player: (typeof players)[number]) => (
 		<TableCell align="end">{player.lp}</TableCell>
 	</TableRow>
 );
+
+const runeTree = (
+	<>
+		<TreeItem id="precision" textValue="Precision">
+			<TreeItemContent>Precision</TreeItemContent>
+			<TreeItem id="keystone" textValue="Keystone">
+				<TreeItemContent>Keystone</TreeItemContent>
+				<TreeItem id="conqueror" textValue="Conqueror">
+					<TreeItemContent>Conqueror</TreeItemContent>
+				</TreeItem>
+				<TreeItem id="fleet-footwork" textValue="Fleet Footwork">
+					<TreeItemContent>Fleet Footwork</TreeItemContent>
+				</TreeItem>
+			</TreeItem>
+			<TreeItem id="triumph" textValue="Triumph">
+				<TreeItemContent>Triumph</TreeItemContent>
+			</TreeItem>
+		</TreeItem>
+		<TreeItem id="domination" textValue="Domination">
+			<TreeItemContent>Domination</TreeItemContent>
+			<TreeItem id="electrocute" textValue="Electrocute">
+				<TreeItemContent>Electrocute</TreeItemContent>
+			</TreeItem>
+		</TreeItem>
+	</>
+);
+
+const expandedRunes = ["precision", "keystone"];
 
 /**
  * Registry of components -> fixtures for visual regression. Each fixture id is
@@ -595,6 +626,97 @@ export const fixtures: Record<string, Fixture[]> = {
 					<ToolbarSeparator orientation="horizontal" />
 					<Checkbox>Ranked</Checkbox>
 				</Toolbar>
+			),
+		},
+	],
+	tree: [
+		{
+			id: "tree-default",
+			node: (
+				<Tree
+					aria-label="Rune paths"
+					defaultExpandedKeys={expandedRunes}
+					style={wide}
+				>
+					{runeTree}
+				</Tree>
+			),
+		},
+		{
+			id: "tree-collapsed",
+			node: (
+				<Tree aria-label="Rune paths" style={wide}>
+					{runeTree}
+				</Tree>
+			),
+		},
+		{
+			id: "tree-single-selection",
+			node: (
+				<Tree
+					aria-label="Rune paths"
+					defaultExpandedKeys={expandedRunes}
+					defaultSelectedKeys={["conqueror"]}
+					selectionMode="single"
+					style={wide}
+				>
+					{runeTree}
+				</Tree>
+			),
+		},
+		{
+			id: "tree-multiple-selection",
+			node: (
+				<Tree
+					aria-label="Rune paths"
+					defaultExpandedKeys={expandedRunes}
+					defaultSelectedKeys={["conqueror", "triumph"]}
+					selectionMode="multiple"
+					style={wide}
+				>
+					{runeTree}
+				</Tree>
+			),
+		},
+		{
+			id: "tree-highlight-selection",
+			node: (
+				<Tree
+					aria-label="Rune paths"
+					defaultExpandedKeys={expandedRunes}
+					defaultSelectedKeys={["conqueror"]}
+					selectionBehavior="replace"
+					selectionMode="multiple"
+					style={wide}
+				>
+					{runeTree}
+				</Tree>
+			),
+		},
+		{
+			id: "tree-disabled-items",
+			node: (
+				<Tree
+					aria-label="Rune paths"
+					defaultExpandedKeys={expandedRunes}
+					disabledKeys={["fleet-footwork", "domination"]}
+					selectionMode="multiple"
+					style={wide}
+				>
+					{runeTree}
+				</Tree>
+			),
+		},
+		{
+			id: "tree-empty",
+			node: (
+				<Tree
+					aria-label="Rune paths"
+					emptyState="No runes match this filter"
+					style={wide}
+				>
+					{[]}
+				</Tree>
 			),
 		},
 	],

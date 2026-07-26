@@ -26,6 +26,7 @@ const componentNames = [
 	"toggle-button",
 	"toggle-button-group",
 	"toolbar",
+	"tree",
 ];
 
 async function fixtureIds(page: Page): Promise<string[]> {
