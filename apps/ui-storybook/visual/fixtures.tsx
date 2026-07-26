@@ -606,6 +606,43 @@ export const fixtures: Record<string, Fixture[]> = {
 				</ToggleButtonGroup>
 			),
 		},
+		{
+			// Thin buttons collapse by 1px instead of 2px.
+			id: "toggle-button-group-thin",
+			node: (
+				<ToggleButtonGroup aria-label="Lane" defaultSelectedKeys={["top"]}>
+					<ToggleButton id="top" preset="dimmed">
+						Top
+					</ToggleButton>
+					<ToggleButton id="jungle" preset="dimmed">
+						Jungle
+					</ToggleButton>
+					<ToggleButton id="mid" preset="dimmed">
+						Mid
+					</ToggleButton>
+				</ToggleButtonGroup>
+			),
+		},
+		{
+			id: "toggle-button-group-squares",
+			node: (
+				<ToggleButtonGroup
+					aria-label="Text style"
+					selectionMode="multiple"
+					defaultSelectedKeys={["bold"]}
+				>
+					<ToggleButton id="bold" shape="square" aria-label="Bold">
+						B
+					</ToggleButton>
+					<ToggleButton id="italic" shape="square" aria-label="Italic">
+						I
+					</ToggleButton>
+					<ToggleButton id="underline" shape="square" aria-label="Underline">
+						U
+					</ToggleButton>
+				</ToggleButtonGroup>
+			),
+		},
 	],
 	toolbar: [
 		{
@@ -625,6 +662,30 @@ export const fixtures: Record<string, Fixture[]> = {
 					<Button>Copy</Button>
 					<ToolbarSeparator orientation="horizontal" />
 					<Checkbox>Ranked</Checkbox>
+				</Toolbar>
+			),
+		},
+		{
+			// A vertical toolbar must not stretch its controls: square buttons are
+			// sized by aspect ratio and would grow to the toolbar's full width.
+			id: "toolbar-vertical-with-group",
+			node: (
+				<Toolbar aria-label="Text formatting" orientation="vertical">
+					<ToggleButtonGroup
+						aria-label="Text style"
+						selectionMode="multiple"
+						defaultSelectedKeys={["bold"]}
+						orientation="vertical"
+					>
+						<ToggleButton id="bold" shape="square" aria-label="Bold">
+							B
+						</ToggleButton>
+						<ToggleButton id="italic" shape="square" aria-label="Italic">
+							I
+						</ToggleButton>
+					</ToggleButtonGroup>
+					<ToolbarSeparator orientation="horizontal" />
+					<Button>Paste</Button>
 				</Toolbar>
 			),
 		},

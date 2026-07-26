@@ -81,6 +81,48 @@
 		}
 	}
 
+	/*
+	 * ToggleButtonGroup. Lives here rather than in its own module because it has
+	 * to reach into the button's border model: adjacent buttons are pulled
+	 * together by exactly one border width so their two gradient borders read as
+	 * a single seam instead of a double-thick one.
+	 */
+	.toggleButtonGroup {
+		display: inline-flex;
+
+		& > .button + .button {
+			margin-left: -2px;
+		}
+
+		/* Must follow the rule above: thin buttons only need a 1px overlap. */
+		& > .thin + .thin {
+			margin-left: -1px;
+		}
+
+		/* Whichever button is highlighted owns the seams next to it. */
+		& > .button:hover,
+		& > .button:focus-visible,
+		& > .button[data-selected] {
+			position: relative;
+			z-index: 1;
+		}
+
+		&[data-orientation="vertical"] {
+			flex-direction: column;
+			/* Equal widths keep the collapsed seams lined up. */
+			align-items: stretch;
+
+			& > .button + .button {
+				margin-left: 0;
+				margin-top: -2px;
+			}
+
+			& > .thin + .thin {
+				margin-top: -1px;
+			}
+		}
+	}
+
 	.primary,
 	.secondary,
 	.hextech,

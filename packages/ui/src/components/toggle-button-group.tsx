@@ -6,7 +6,7 @@ import {
 	type ToggleButtonGroupProps as AriaToggleButtonGroupProps,
 	composeRenderProps,
 } from "react-aria-components";
-import classes from "./toggle-button-group.module.css";
+import classes from "./button.module.css";
 
 export interface ToggleButtonGroupProps extends AriaToggleButtonGroupProps {}
 
