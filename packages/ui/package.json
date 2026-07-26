@@ -11,7 +11,7 @@
 		"build": "tsdown",
 		"dev": "tsdown --watch",
 		"publint": "publint",
-		"typecheck": "tsgo --noEmit",
+		"typecheck": "tsc --noEmit",
 		"docs": "node ./docs.ts"
 	},
 	"keywords": [],
@@ -19,10 +19,10 @@
 	"sideEffects": false,
 	"license": "ISC",
 	"dependencies": {
-		"cva": "1.0.0-beta.4",
-		"react-aria": "^3.50.0",
-		"react-aria-components": "^1.19.0",
-		"sonner": "^2.0.7"
+		"cva": "catalog:",
+		"react-aria": "catalog:",
+		"react-aria-components": "catalog:",
+		"sonner": "catalog:"
 	},
 	"publishConfig": {
 		"access": "public",
@@ -38,21 +38,20 @@
 		"url": "https://github.com/lolmath/lolmath/issues"
 	},
 	"devDependencies": {
-		"@tsdown/css": "^0.22.3",
-		"@types/node": "^26.0.0",
-		"@types/postcss-url": "^10.0.4",
-		"@types/react": "^19.2.17",
-		"@types/react-dom": "^19.2.3",
-		"@typescript/native-preview": "7.0.0-dev.20260619.1",
-		"lightningcss": "^1.32.0",
-		"postcss-url": "^10.1.4",
-		"publint": "^0.3.21",
-		"react": "^19.2.7",
-		"react-dom": "^19.2.7",
-		"tailwindcss": "^4.3.1",
-		"tsdown": "^0.22.3",
-		"typescript": "^6.0.3",
-		"vitest": "^4.1.9"
+		"@tsdown/css": "catalog:",
+		"@types/node": "catalog:",
+		"@types/postcss-url": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"lightningcss": "catalog:",
+		"postcss-url": "catalog:",
+		"publint": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"tailwindcss": "catalog:",
+		"tsdown": "catalog:",
+		"typescript": "catalog:",
+		"vitest": "catalog:"
 	},
 	"peerDependencies": {
 		"react": ">=19",

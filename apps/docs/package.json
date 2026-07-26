@@ -9,27 +9,27 @@
 		"postinstall": "fumadocs-mdx"
 	},
 	"dependencies": {
-		"@orama/orama": "^3.1.18",
-		"fumadocs-core": "16.10.4",
-		"fumadocs-mdx": "15.0.12",
-		"fumadocs-ui": "16.10.4",
-		"lucide-react": "^1.21.0",
-		"next": "16.2.9",
-		"react": "^19.2.7",
-		"react-dom": "^19.2.7"
+		"@orama/orama": "catalog:",
+		"fumadocs-core": "catalog:",
+		"fumadocs-mdx": "catalog:",
+		"fumadocs-ui": "catalog:",
+		"lucide-react": "catalog:",
+		"next": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:"
 	},
 	"devDependencies": {
 		"@lolmath/calc": "workspace:*",
 		"@lolmath/ddragon": "workspace:*",
 		"@lolmath/ui": "workspace:*",
-		"@tailwindcss/postcss": "^4.3.1",
-		"@types/mdx": "^2.0.14",
-		"@types/node": "26.0.0",
-		"@types/react": "^19.2.17",
-		"@types/react-dom": "^19.2.3",
-		"@typescript/native-preview": "7.0.0-dev.20260619.1",
-		"postcss": "^8.5.15",
-		"tailwindcss": "^4.3.1",
-		"wrangler": "^4.103.0"
+		"@tailwindcss/postcss": "catalog:",
+		"@types/mdx": "catalog:",
+		"@types/node": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"typescript": "catalog:",
+		"postcss": "catalog:",
+		"tailwindcss": "catalog:",
+		"wrangler": "catalog:"
 	}
 }

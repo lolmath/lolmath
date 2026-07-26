@@ -1,15 +1,64 @@
 packages:
   - apps/*
   - packages/*
-
 allowBuilds:
-  '@biomejs/biome': true
-  '@parcel/watcher': true
-  '@swc/core': true
-  '@tailwindcss/oxide': true
+  "@biomejs/biome": true
+  "@parcel/watcher": true
+  "@swc/core": true
+  "@tailwindcss/oxide": true
   core-js: true
   esbuild: true
   sharp: true
   workerd: true
-
 minimumReleaseAge: 0
+catalogMode: strict
+catalog:
+  "@biomejs/biome": ^2.5.5
+  "@changesets/cli": ^2.31.1
+  "@orama/orama": ^3.1.18
+  "@playwright/test": ^1.62.0
+  "@storybook/addon-docs": ^10.5.4
+  "@storybook/addon-links": ^10.5.4
+  "@storybook/addon-themes": ^10.5.4
+  "@storybook/cli": ^10.5.4
+  "@storybook/react-vite": ^10.5.4
+  "@tailwindcss/postcss": ^4.3.3
+  "@tailwindcss/vite": ^4.3.3
+  "@tsdown/css": ^0.22.14
+  "@types/mdx": ^2.0.14
+  '@types/node': ^26.1.1
+  "@types/postcss-url": ^10.0.4
+  "@types/react": ^19.2.17
+  "@types/react-dom": ^19.2.3
+  "@vitejs/plugin-react-swc": ^4.3.2
+  "@vitest/coverage-v8": ^4.1.10
+  autoprefixer: ^10.5.4
+  cva: 1.0.0-beta.4
+  fumadocs-core: 16.12.1
+  fumadocs-mdx: 15.2.0
+  fumadocs-ui: 16.12.1
+  lightningcss: ^1.33.0
+  lucide-react: ^1.27.0
+  next: 16.2.12
+  postcss: ^8.5.23
+  postcss-url: ^10.1.4
+  prop-types: ^15.8.1
+  publint: ^0.3.22
+  react: ^19.2.8
+  react-aria: ^3.50.0
+  react-aria-components: ^1.19.0
+  react-dom: ^19.2.8
+  react-icons: ^5.7.0
+  sonner: ^2.0.7
+  storybook: ^10.5.4
+  tailwindcss: ^4.3.3
+  tsdown: ^0.22.14
+  tsup: ^8.5.1
+  turbo: ^2.10.7
+  typedoc: ^0.28.20
+  typedoc-plugin-frontmatter: ^1.3.1
+  typedoc-plugin-markdown: ^4.12.0
+  typescript: ^6.0.3
+  vite: ^8.1.5
+  vitest: ^4.1.10
+  wrangler: ^4.114.0

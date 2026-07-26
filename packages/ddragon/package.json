@@ -16,7 +16,7 @@
 		"registry": "https://registry.npmjs.org/"
 	},
 	"scripts": {
-		"build": "tsgo",
+		"build": "tsc",
 		"publint": "publint",
 		"test": "vitest",
 		"docs": "pnpm exec typedoc"
@@ -31,11 +31,10 @@
 	},
 	"devDependencies": {
 		"@lolmath/typedoc": "workspace:*",
-		"@typescript/native-preview": "7.0.0-dev.20260619.1",
-		"publint": "^0.3.21",
-		"typedoc": "^0.28.19",
-		"typescript": "^6.0.3",
-		"vitest": "^4.1.9"
+		"typescript": "catalog:",
+		"publint": "catalog:",
+		"typedoc": "catalog:",
+		"vitest": "catalog:"
 	},
 	"files": [
 		"/dist",

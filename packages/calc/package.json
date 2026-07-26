@@ -15,7 +15,7 @@
 		"coverage": "vitest run --coverage",
 		"docs": "pnpm exec typedoc",
 		"publint": "publint",
-		"typecheck": "tsgo --noEmit"
+		"typecheck": "tsc --noEmit"
 	},
 	"publishConfig": {
 		"access": "public",
@@ -35,14 +35,14 @@
 	},
 	"devDependencies": {
 		"@lolmath/typedoc": "workspace:*",
-		"@types/node": "^26.0.0",
-		"@typescript/native-preview": "7.0.0-dev.20260619.1",
-		"@vitest/coverage-v8": "^4.1.9",
-		"publint": "^0.3.21",
-		"tsup": "^8.5.1",
-		"turbo": "^2.9.18",
-		"typedoc": "^0.28.19",
-		"typescript": "^6.0.3",
-		"vitest": "^4.1.9"
-	}
+		"@vitest/coverage-v8": "catalog:",
+		"publint": "catalog:",
+		"tsup": "catalog:",
+		"turbo": "catalog:",
+		"typedoc": "catalog:",
+		"typescript": "catalog:",
+		"vitest": "catalog:",
+		"@types/node": "catalog:"
+	},
+	"dependencies": {}
 }
