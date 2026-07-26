@@ -31,12 +31,11 @@
 	"homepage": "https://ui.lolmath.net",
 	"repository": {
 		"type": "git",
-		"url": "git+https://gitlab.com/lol-math/lolmath.git",
+		"url": "git+https://github.com/lolmath/lolmath.git",
 		"directory": "packages/ui"
 	},
 	"bugs": {
-		"url": "https://gitlab.com/lol-math/lolmath/-/issues",
-		"email": "incoming+lol-math-lolmath-41959739-1qbix14106nxnde3k5iusimi8-issue@incoming.gitlab.com"
+		"url": "https://github.com/lolmath/lolmath/issues"
 	},
 	"devDependencies": {
 		"@tsdown/css": "^0.22.3",
