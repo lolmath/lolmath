@@ -81,7 +81,7 @@ const topSoloDuoPlayers: Player[] = [
 ];
 
 const meta: Meta<typeof Table> = {
-	title: "Table",
+	title: "Data Display/Table",
 	component: Table,
 	tags: ["autodocs"],
 	argTypes: {

@@ -25,7 +25,7 @@ import { useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 
 const meta = {
-	title: "Menu",
+	title: "Overlays/Menu",
 	component: Menu,
 	tags: ["autodocs"],
 	argTypes: {},

@@ -10,7 +10,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-	title: "Modal",
+	title: "Overlays/Modal",
 	component: Modal,
 	subcomponents: { DialogButtons, DialogHeading, DialogTrigger },
 	tags: ["autodocs"],

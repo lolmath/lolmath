@@ -11,7 +11,7 @@ function C({ title, ...rest }: { title: string; type?: string } & SonnerProps) {
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-	title: "Sonner",
+	title: "Feedback/Sonner",
 	component: C,
 	tags: ["autodocs"],
 	argTypes: {

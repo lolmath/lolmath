@@ -13,7 +13,7 @@ import {
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-	title: "Select",
+	title: "Inputs/Select",
 	component: Select,
 	render: (args) => (
 		<Select isDisabled={args.isDisabled}>

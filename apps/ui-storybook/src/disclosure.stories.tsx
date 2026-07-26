@@ -8,7 +8,7 @@ import {
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-	title: "Disclosure",
+	title: "Overlays/Disclosure",
 	component: Disclosure,
 	subcomponents: {
 		Disclosure,
