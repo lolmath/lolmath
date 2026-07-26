@@ -14,6 +14,8 @@ export {
 	RouterProvider,
 	type Selection,
 	Size,
+	type SortDescriptor,
+	type SortDirection,
 	TableLayout,
 	Virtualizer,
 	WaterfallLayout,
@@ -38,6 +40,7 @@ export * from "./components/slider/slider";
 export * from "./components/sonner/sonner";
 export * from "./components/spinner/spinner";
 export * from "./components/switch";
+export * from "./components/table";
 export * from "./components/tabs";
 export * from "./components/tag-group/tag-group";
 export * from "./components/text-area";

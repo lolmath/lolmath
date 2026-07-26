@@ -18,6 +18,7 @@ const componentNames = [
 	"slider",
 	"spinner",
 	"switch",
+	"table",
 	"tabs",
 	"tag-group",
 	"text-area",

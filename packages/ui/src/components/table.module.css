@@ -1,0 +1,231 @@
+@layer lol {
+	.resizableContainer {
+		overflow: auto;
+		position: relative;
+	}
+
+	.table {
+		border-collapse: collapse;
+		border-spacing: 0;
+		width: 100%;
+		outline: none;
+
+		font-family: var(--lol-font-family-spiegel);
+		font-size: var(--lol-font-size-sm);
+		line-height: var(--lol-line-height-sm);
+		letter-spacing: var(--lol-letter-spacing-sm);
+		font-weight: var(--lol-font-weight-sm);
+
+		&[data-focus-visible] {
+			outline: 1px solid var(--lol-color-gold-400);
+			outline-offset: 0.25rem;
+		}
+	}
+
+	.row {
+		color: var(--lol-color-grey-100);
+		outline: none;
+		transition: color 0.3s ease;
+
+		/* Every decoration is a background layer: a pseudo element on a table row
+		   is laid out as an anonymous cell and would shift the columns. */
+		--lol-table-row-spine: none;
+		--lol-table-row-hover: none;
+		--lol-table-row-highlight: none;
+
+		background-image:
+			var(--lol-table-row-spine), var(--lol-table-row-hover),
+			var(--lol-table-row-highlight);
+		background-repeat: no-repeat;
+
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+		}
+
+		&[data-href] {
+			cursor: pointer;
+		}
+
+		&[data-hovered] {
+			color: var(--lol-color-gold-100);
+			--lol-table-row-hover: linear-gradient(
+				90deg,
+				rgb(from var(--lol-color-gold-100) r g b / 0.08),
+				transparent
+			);
+		}
+
+		&[data-selected] {
+			color: var(--lol-color-gold-100);
+			/* Gold spine on the selected row, matching the client's "current" row. */
+			--lol-table-row-spine: linear-gradient(
+				90deg,
+				var(--lol-color-gold-500) 0 0.25rem,
+				transparent 0.25rem
+			);
+			--lol-table-row-highlight: linear-gradient(
+				90deg,
+				rgb(from var(--lol-color-blue-400) r g b / 0.55),
+				rgb(from var(--lol-color-blue-300) r g b / 0.1)
+			);
+		}
+
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+			cursor: default;
+		}
+
+		&[data-focus-visible] {
+			outline: 1px solid var(--lol-color-gold-400);
+			outline-offset: -1px;
+		}
+	}
+
+	.cell {
+		padding: 0.375rem 0.75rem;
+		vertical-align: middle;
+		outline: none;
+
+		&[data-focus-visible] {
+			outline: 1px solid var(--lol-color-gold-400);
+			outline-offset: -1px;
+		}
+	}
+
+	.resizer {
+		position: absolute;
+		inset-block: 0;
+		inset-inline-end: 0;
+		width: 0.75rem;
+		box-sizing: border-box;
+		border-inline: 0.3125rem solid transparent;
+		background-color: rgb(from var(--lol-color-gold-500) r g b / 0.6);
+		background-clip: content-box;
+		touch-action: none;
+		outline: none;
+		cursor: col-resize;
+
+		&[data-resizable-direction="left"] {
+			cursor: e-resize;
+		}
+
+		&[data-resizable-direction="right"] {
+			cursor: w-resize;
+		}
+
+		&[data-hovered],
+		&[data-resizing] {
+			background-color: var(--lol-color-gold-400);
+		}
+
+		&[data-focus-visible] {
+			background-color: var(--lol-color-gold-200);
+		}
+	}
+
+	/* Fixed footprint so toggling the sort direction never shifts the header. */
+	.sortIndicator {
+		display: inline-block;
+		vertical-align: middle;
+		width: 0.5rem;
+		margin-left: 0.375rem;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+		}
+
+		&::after {
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-color: transparent;
+			border-width: 0 0.25rem 0.375rem;
+			border-bottom-color: currentColor;
+		}
+	}
+
+	.column {
+		position: relative;
+		font-family: var(--lol-font-family-beaufort);
+		color: var(--lol-color-gold-100);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.075em;
+		line-height: 1rem;
+		text-transform: uppercase;
+		white-space: nowrap;
+		padding: 0.375rem 0.75rem;
+		/* The client separates the header from the rows with a faint hairline
+		   rather than a full border. */
+		border-bottom: 1px solid rgb(from var(--lol-color-grey-100) r g b / 0.25);
+		outline: none;
+
+		/* Only sortable columns are interactive, so they are the only ones react
+		   aria marks as hovered or pressed. */
+		&[data-allows-sorting] {
+			cursor: pointer;
+			user-select: none;
+			transition: color 0.3s ease;
+
+			@media (prefers-reduced-motion: reduce) {
+				transition: none;
+			}
+		}
+
+		&[data-hovered] {
+			color: var(--lol-color-gold-200);
+		}
+
+		&[data-pressed] {
+			color: var(--lol-color-gold-500);
+		}
+
+		&[data-hovered] .sortIndicator {
+			opacity: 0.5;
+		}
+
+		&[data-sort-direction] .sortIndicator {
+			opacity: 1;
+		}
+
+		&[data-sort-direction="descending"] .sortIndicator::after {
+			border-width: 0.375rem 0.25rem 0;
+			border-top-color: currentColor;
+			border-bottom-color: transparent;
+		}
+
+		&[data-focus-visible] {
+			outline: 1px solid var(--lol-color-gold-400);
+			outline-offset: -1px;
+		}
+	}
+
+	.footer {
+		color: var(--lol-color-gold-300);
+
+		& .cell {
+			border-top: 1px solid rgb(from var(--lol-color-grey-100) r g b / 0.25);
+		}
+	}
+
+	.empty {
+		padding: 1rem 0.75rem;
+		text-align: center;
+	}
+
+	.start {
+		text-align: start;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	.end {
+		text-align: end;
+	}
+}
