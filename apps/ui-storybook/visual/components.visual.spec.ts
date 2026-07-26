@@ -24,6 +24,7 @@ const componentNames = [
 	"text-area",
 	"text-field",
 	"toggle-button",
+	"tree",
 ];
 
 async function fixtureIds(page: Page): Promise<string[]> {
