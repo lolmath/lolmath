@@ -2,11 +2,11 @@
 	"name": "@lolmath/ddragon",
 	"private": false,
 	"repository": {
-		"url": "git+https://gitlab.com/lol-math/lolmath.git",
+		"url": "git+https://github.com/lolmath/lolmath.git",
 		"type": "git",
 		"directory": "packages/ddragon"
 	},
-	"homepage": "https://gitlab.com/lol-math/lolmath/-/tree/main/packages/ddragon",
+	"homepage": "https://github.com/lolmath/lolmath/tree/main/packages/ddragon",
 	"version": "2.0.4",
 	"description": "Get data from League of Legends Ddragon API.",
 	"license": "MIT",
