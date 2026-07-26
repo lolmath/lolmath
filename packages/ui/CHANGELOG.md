@@ -1,5 +1,38 @@
 # @lolmath/ui
 
+## 9.0.0
+
+### Major Changes
+
+- 68e95dc: Move to tsdown
+
+### Minor Changes
+
+- 9ddab57: Add a `Table` built on `react-aria-components`, styled after the ranked ladder
+  in the League client (`rcp-fe-lol-leagues`).
+
+  - `Table`, `TableHeader`, `TableColumn`, `TableBody`, `TableRow`, `TableCell`,
+    `TableFooter`, plus `ResizableTableContainer` and `TableColumnResizer`.
+  - Selected rows are marked with the client's gold spine and hextech highlight.
+    Selection adds no checkbox column, so turning it on never shifts the layout.
+  - `TableColumn` and `TableCell` take an `align` prop (`start`/`center`/`end`)
+    for stat columns, and sortable columns get a hextech sort indicator.
+  - `TableBody` takes an `emptyState` node, defaulting to "No results found".
+  - Re-exports the `SortDescriptor` and `SortDirection` types.
+
+- 61a81f4: Upgrade react-aria-components to 1.19 and react-aria to 3.50.
+
+  - Added `SwitchField`/`SwitchButton`, `CheckboxField`/`CheckboxButton`, and `RadioField`/`RadioButton` built on the new react-aria field model, enabling description and `<FieldError>` slots on individual switches, checkboxes, and radios. The existing `Switch`, `Checkbox`, and `Radio` components are now `Field` + `Button` combos so they keep working standalone.
+  - `Slider` now renders its fill with `SliderFill` instead of hand-rolled left/width math (single and range thumbs both supported).
+  - `Menu`'s `onAction` now passes both the item key and value: `onAction(key, value)`.
+  - `Autocomplete` now also re-exports `AutocompleteContext` and `AutocompleteStateContext` for inline-completion flows.
+
+### Patch Changes
+
+- 4627763: Fix dimmed (thin) buttons rendering with a 2px border instead of 1px.
+
+  A prior refactor moved the `.thin { border-width: 1px }` rule above `.button`, and `.button`'s `border` shorthand (equal specificity, later source order) silently overrode it. The override is now scoped as `.button.thin` so it wins regardless of ordering.
+
 ## 8.1.0
 
 ### Minor Changes
