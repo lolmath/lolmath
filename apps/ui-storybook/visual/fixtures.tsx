@@ -1,6 +1,7 @@
 import {
 	Breadcrumb,
 	Breadcrumbs,
+	Button,
 	ButtonLink,
 	Checkbox,
 	Disclosure,
@@ -41,6 +42,9 @@ import {
 	TextArea,
 	TextField,
 	ToggleButton,
+	ToggleButtonGroup,
+	Toolbar,
+	ToolbarSeparator,
 	Tree,
 	TreeItem,
 	TreeItemContent,
@@ -546,6 +550,143 @@ export const fixtures: Record<string, Fixture[]> = {
 				<ToggleButton isDisabled defaultSelected>
 					Toggle
 				</ToggleButton>
+			),
+		},
+	],
+	"toggle-button-group": [
+		{
+			id: "toggle-button-group-single",
+			node: (
+				<ToggleButtonGroup aria-label="Lane" defaultSelectedKeys={["top"]}>
+					<ToggleButton id="top">Top</ToggleButton>
+					<ToggleButton id="jungle">Jungle</ToggleButton>
+					<ToggleButton id="mid">Mid</ToggleButton>
+				</ToggleButtonGroup>
+			),
+		},
+		{
+			id: "toggle-button-group-multiple",
+			node: (
+				<ToggleButtonGroup
+					aria-label="Lane"
+					selectionMode="multiple"
+					defaultSelectedKeys={["top", "mid"]}
+				>
+					<ToggleButton id="top">Top</ToggleButton>
+					<ToggleButton id="jungle">Jungle</ToggleButton>
+					<ToggleButton id="mid">Mid</ToggleButton>
+				</ToggleButtonGroup>
+			),
+		},
+		{
+			id: "toggle-button-group-vertical",
+			node: (
+				<ToggleButtonGroup
+					aria-label="Lane"
+					orientation="vertical"
+					defaultSelectedKeys={["top"]}
+				>
+					<ToggleButton id="top">Top</ToggleButton>
+					<ToggleButton id="jungle">Jungle</ToggleButton>
+					<ToggleButton id="mid">Mid</ToggleButton>
+				</ToggleButtonGroup>
+			),
+		},
+		{
+			id: "toggle-button-group-disabled",
+			node: (
+				<ToggleButtonGroup
+					aria-label="Lane"
+					isDisabled
+					defaultSelectedKeys={["top"]}
+				>
+					<ToggleButton id="top">Top</ToggleButton>
+					<ToggleButton id="jungle">Jungle</ToggleButton>
+					<ToggleButton id="mid">Mid</ToggleButton>
+				</ToggleButtonGroup>
+			),
+		},
+		{
+			// Thin buttons collapse by 1px instead of 2px.
+			id: "toggle-button-group-thin",
+			node: (
+				<ToggleButtonGroup aria-label="Lane" defaultSelectedKeys={["top"]}>
+					<ToggleButton id="top" preset="dimmed">
+						Top
+					</ToggleButton>
+					<ToggleButton id="jungle" preset="dimmed">
+						Jungle
+					</ToggleButton>
+					<ToggleButton id="mid" preset="dimmed">
+						Mid
+					</ToggleButton>
+				</ToggleButtonGroup>
+			),
+		},
+		{
+			id: "toggle-button-group-squares",
+			node: (
+				<ToggleButtonGroup
+					aria-label="Text style"
+					selectionMode="multiple"
+					defaultSelectedKeys={["bold"]}
+				>
+					<ToggleButton id="bold" shape="square" aria-label="Bold">
+						B
+					</ToggleButton>
+					<ToggleButton id="italic" shape="square" aria-label="Italic">
+						I
+					</ToggleButton>
+					<ToggleButton id="underline" shape="square" aria-label="Underline">
+						U
+					</ToggleButton>
+				</ToggleButtonGroup>
+			),
+		},
+	],
+	toolbar: [
+		{
+			id: "toolbar-horizontal",
+			node: (
+				<Toolbar aria-label="Match actions">
+					<Button>Copy</Button>
+					<ToolbarSeparator />
+					<Checkbox>Ranked</Checkbox>
+				</Toolbar>
+			),
+		},
+		{
+			id: "toolbar-vertical",
+			node: (
+				<Toolbar aria-label="Match actions" orientation="vertical">
+					<Button>Copy</Button>
+					<ToolbarSeparator orientation="horizontal" />
+					<Checkbox>Ranked</Checkbox>
+				</Toolbar>
+			),
+		},
+		{
+			// A vertical toolbar must not stretch its controls: square buttons are
+			// sized by aspect ratio and would grow to the toolbar's full width.
+			id: "toolbar-vertical-with-group",
+			node: (
+				<Toolbar aria-label="Text formatting" orientation="vertical">
+					<ToggleButtonGroup
+						aria-label="Text style"
+						selectionMode="multiple"
+						defaultSelectedKeys={["bold"]}
+						orientation="vertical"
+					>
+						<ToggleButton id="bold" shape="square" aria-label="Bold">
+							B
+						</ToggleButton>
+						<ToggleButton id="italic" shape="square" aria-label="Italic">
+							I
+						</ToggleButton>
+					</ToggleButtonGroup>
+					<ToolbarSeparator orientation="horizontal" />
+					<Button>Paste</Button>
+				</Toolbar>
 			),
 		},
 	],

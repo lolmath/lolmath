@@ -24,6 +24,8 @@ const componentNames = [
 	"text-area",
 	"text-field",
 	"toggle-button",
+	"toggle-button-group",
+	"toolbar",
 	"tree",
 ];
 

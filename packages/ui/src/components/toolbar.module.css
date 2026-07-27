@@ -1,0 +1,42 @@
+@layer lol {
+	.toolbar {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+
+		/*
+		 * Controls keep their own width in a vertical toolbar; stretching them
+		 * blows up anything sized by aspect ratio, like square/round buttons.
+		 */
+		&[data-orientation="vertical"] {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
+	.separator {
+		border: none;
+		margin: 0;
+		flex: none;
+		align-self: stretch;
+		height: 1px;
+		background-image: linear-gradient(
+			to right,
+			rgba(0, 0, 0, 0),
+			var(--lol-color-gold-600),
+			rgba(0, 0, 0, 0)
+		);
+
+		/* A vertical separator renders as a <div>, so it has no implicit size. */
+		&[aria-orientation="vertical"] {
+			height: auto;
+			width: 1px;
+			background-image: linear-gradient(
+				to bottom,
+				rgba(0, 0, 0, 0),
+				var(--lol-color-gold-600),
+				rgba(0, 0, 0, 0)
+			);
+		}
+	}
+}
