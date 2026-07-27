@@ -17,19 +17,38 @@ concurrency:
 # npm's trusted publisher for each package must point at this workflow file.
 # Only one workflow file can be registered per package, which is why the canary
 # and stable releases both live here.
+#
+# Writes to the repository go through the GitHub App token below rather than
+# GITHUB_TOKEN, so GITHUB_TOKEN itself only needs to read the checkout, and
+# id-token for npm.
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
   id-token: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      # GitHub never triggers a workflow run from an event caused by
+      # GITHUB_TOKEN, so the version pull request changesets opens would sit
+      # without any CI on it. A GitHub App token is a distinct actor, so the
+      # pull request it opens (and every commit it later pushes to the branch)
+      # is checked like anyone else's. Only the main branch writes anything
+      # back, so canary releases keep running on GITHUB_TOKEN alone.
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        if: github.ref == 'refs/heads/main'
+        with:
+          app-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - uses: actions/checkout@v7
         with:
           # changesets needs the tags to work out what has already shipped.
           fetch-depth: 0
+          # Persist the app token, so the branch and tag pushes changesets
+          # makes are attributed to the app too, not just its API calls.
+          token: ${{ steps.app-token.outputs.token || github.token }}
 
       - uses: pnpm/action-setup@v6
 
@@ -64,4 +83,4 @@ jobs:
           title: "chore: version packages"
           commit: "chore: version packages"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
