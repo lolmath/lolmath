@@ -1,5 +1,37 @@
 # @lolmath/ui
 
+## 9.1.0
+
+### Minor Changes
+
+- 188be70: Add a `Tree` built on `react-aria-components`, styled after the collapsible
+  lists in the League client.
+
+  - `Tree`, `TreeItem`, `TreeItemContent` and `TreeLoadMoreItem`.
+  - `TreeItemContent` adds the expand chevron for items with children and the
+    selection checkbox for `selectionMode="multiple"`; leaves keep the chevron's
+    footprint so their labels stay aligned. `selectionBehavior="replace"` drops
+    the checkboxes in favour of highlighting the row.
+  - Selected rows get the same gold spine and hextech highlight as `Table` rows.
+  - Branch rows are set in uppercase Beaufort like the client's section headers,
+    leaves in Spiegel, and top-level items are separated by a gold hairline.
+  - Indentation comes from the level react aria exposes on each row, tunable per
+    tree with the `--lol-tree-indent` custom property.
+  - `Tree` takes an `emptyState` node, defaulting to "No results found", and
+    `TreeLoadMoreItem` renders the spinner while `isLoading`.
+
+- a1240e1: Add `ToggleButtonGroup` and `Toolbar`.
+
+  - `ToggleButtonGroup` wraps a set of `ToggleButton`s with single or multiple
+    selection, roving focus, and a shared `isDisabled`. Give each button an `id`
+    to address it through `selectedKeys`/`onSelectionChange`. Adjacent buttons
+    overlap by one border width so the group reads as a single segmented control
+    rather than a row of separate buttons. Supports `orientation="vertical"`.
+  - `Toolbar` groups related controls (buttons, toggle button groups, checkboxes)
+    behind arrow key navigation, with `ToolbarSeparator` for the gold divider
+    between groups. `ToolbarSeparator` defaults to `orientation="vertical"` for a
+    horizontal toolbar; pass `orientation="horizontal"` inside a vertical one.
+
 ## 9.0.0
 
 ### Major Changes
