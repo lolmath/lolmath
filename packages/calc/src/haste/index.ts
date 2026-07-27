@@ -6,4 +6,7 @@
  *
  */
 
+export * from "./cdr";
 export * from "./cdx";
+export * from "./cooldown";
+export * from "./haste-total";
