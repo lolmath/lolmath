@@ -205,7 +205,6 @@
 		--lol-button-background-gradient: var(--lol-gradient-hextech-black);
 		--lol-button-border-gradient: var(--lol-gradient-grey-300);
 
-		&.selected,
 		&:focus-visible {
 			--lol-button-border-gradient: var(--lol-gradient-gold);
 		}
@@ -254,6 +253,25 @@
 	.secondary:active,
 	.dimmed:active {
 		--lol-button-border-gradient: var(--lol-gradient-gold-press);
+	}
+
+	/*
+	 * A selected toggle takes the hextech background from `.button`, so the
+	 * dimmed border follows it there: a hextech body inside the resting grey
+	 * frame reads as an unfinished button. Must stay after the gold `:hover`
+	 * and `:active` rules above so the resting selected border wins, and
+	 * before `:disabled` below so a disabled toggle still greys out.
+	 */
+	.dimmed[data-selected] {
+		--lol-button-border-gradient: var(--lol-gradient-hextech);
+
+		&:hover {
+			--lol-button-border-gradient: var(--lol-gradient-hextech-hover);
+		}
+
+		&:active {
+			--lol-button-border-gradient: var(--lol-gradient-hextech-press);
+		}
 	}
 
 	.primary:disabled,
