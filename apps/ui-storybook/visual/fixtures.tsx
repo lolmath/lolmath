@@ -50,6 +50,7 @@ import {
 	TreeItemContent,
 } from "@lolmath/ui";
 import type { CSSProperties, ReactNode } from "react";
+import { FaGear } from "react-icons/fa6";
 
 export interface Fixture {
 	id: string;
@@ -156,6 +157,35 @@ export const fixtures: Record<string, Fixture[]> = {
 					Disabled
 				</ButtonLink>
 			),
+		},
+	],
+	/*
+	 * Shape variants of Button. Not in the screenshot spec's component list —
+	 * button-shape.visual.spec.ts asserts their geometry (radius, 1:1 box)
+	 * numerically instead, which is what a regression here actually breaks.
+	 */
+	"button-shape": [
+		...(["small", "medium", "large"] as const).flatMap((size) => [
+			{
+				id: `button-shape-round-${size}`,
+				node: (
+					<Button shape="round" size={size} aria-label={`Round ${size}`}>
+						<FaGear />
+					</Button>
+				),
+			},
+			{
+				id: `button-shape-square-${size}`,
+				node: (
+					<Button shape="square" size={size} aria-label={`Square ${size}`}>
+						<FaGear />
+					</Button>
+				),
+			},
+		]),
+		{
+			id: "button-shape-normal",
+			node: <Button shape="normal">Normal</Button>,
 		},
 	],
 	checkbox: [
