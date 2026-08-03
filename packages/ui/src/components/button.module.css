@@ -1,15 +1,4 @@
 @layer lol {
-	.round {
-		border-radius: 9999px;
-	}
-
-	.round,
-	.square {
-		aspect-ratio: 1 / 1;
-		padding: 0px;
-		font-weight: 900;
-	}
-
 	.button {
 		border-radius: 0px;
 		border: 2px solid transparent;
@@ -58,6 +47,22 @@
 		&.large {
 			font-size: var(--lol-font-size-base);
 			min-height: var(--lol-form-height-large);
+		}
+
+		/*
+		 * Nested so the shape wins on specificity: as a bare `.round` it ties with
+		 * `.button` and loses the border-radius and font-weight to whichever rule
+		 * is written last.
+		 */
+		&.round,
+		&.square {
+			aspect-ratio: 1 / 1;
+			padding: 0px;
+			font-weight: 900;
+		}
+
+		&.round {
+			border-radius: 9999px;
 		}
 
 		&:hover {
