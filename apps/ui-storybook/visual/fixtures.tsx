@@ -582,6 +582,26 @@ export const fixtures: Record<string, Fixture[]> = {
 				</ToggleButton>
 			),
 		},
+		{
+			id: "toggle-button-dimmed-off",
+			node: <ToggleButton preset="dimmed">Toggle</ToggleButton>,
+		},
+		{
+			id: "toggle-button-dimmed-on",
+			node: (
+				<ToggleButton preset="dimmed" defaultSelected>
+					Toggle
+				</ToggleButton>
+			),
+		},
+		{
+			id: "toggle-button-dimmed-disabled",
+			node: (
+				<ToggleButton preset="dimmed" isDisabled defaultSelected>
+					Toggle
+				</ToggleButton>
+			),
+		},
 	],
 	"toggle-button-group": [
 		{

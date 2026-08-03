@@ -55,6 +55,14 @@ export const Dimmed: Story = {
 	},
 };
 
+export const DimmedSelected: Story = {
+	args: {
+		children: "some text",
+		preset: "dimmed",
+		defaultSelected: true,
+	},
+};
+
 export const Disabled: Story = {
 	args: {
 		children: "some text",
