@@ -11,8 +11,8 @@ export default defineConfig({
 	sourcemap: true,
 	dts: true,
 	loader: {
-		".png": "base64",
-		".svg": "base64",
+		".png": "dataurl",
+		".svg": "dataurl",
 	},
 	css: {
 		fileName: "index.css",
