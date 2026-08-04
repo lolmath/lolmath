@@ -1,5 +1,24 @@
 # @lolmath/ui
 
+## 9.1.2
+
+### Patch Changes
+
+- 20f0406: Fix every JS-imported image shipping as a bare payload with no `data:` prefix, which made the checkbox icons, spinner and breadcrumb divider broken images in consumers. `tsdown.config.ts` used the `base64` loader, which emits only the encoded bytes; it now uses `dataurl`, which emits a complete `data:image/png;base64,…` (or url-encoded `data:image/svg+xml,…`) URI. Failed image requests are never cached, so each broken asset was also re-requested on every render.
+- a2ef20e: Give a selected `dimmed` `ToggleButton` a hextech border. Selecting a toggle
+  swaps its body to the hextech gradient, so leaving the dimmed preset's resting
+  grey frame around it read as an unfinished button; the border now follows the
+  body, with the hextech hover and press gradients on top of it. Disabled toggles
+  still grey out.
+
+  The rule that was meant to cover this state matched a `.selected` class the
+  component never renders — the selected state comes from react aria's
+  `data-selected` — so it never applied.
+
+- b754b84: Stop depending on Tailwind's preflight. Components rendered differently in an app with no CSS reset: the popover arrow floated off the popover because its `<svg>` sat on a text baseline, the bare buttons we never paint (`SearchField`'s clear, `NumberField`'s steppers, `TagGroup`'s remove, `Tree`'s chevron, `DisclosureButton`) fell back to the UA's `buttonface` slab — grey under `color-scheme: dark` — and `Heading`, `Divider`, `Breadcrumbs`, `NumberField`'s input and the empty `Table` cell kept UA margins, padding and borders. `Button` also picked up the UA's `1px 6px` padding for `preset="text"`, and `TextArea` could be dragged in both axes.
+
+  Every one of those is now set on the library's own elements inside `@layer lol`, so a host's own CSS still outranks it and nothing is applied globally. `TagGroup` and `MultipleSelect` were also missing the `lol` layer the readme promises for every module, and are now wrapped like the rest.
+
 ## 9.1.1
 
 ### Patch Changes
