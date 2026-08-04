@@ -24,14 +24,14 @@ const meta = {
 				<Disclosure id="item-1">
 					<DisclosureButton>Title A</DisclosureButton>
 					<DisclosurePanel>
-						<Text className="py-4">test</Text>
+						<Text style={{ paddingBlock: "1rem" }}>test</Text>
 					</DisclosurePanel>
 				</Disclosure>
 
 				<Disclosure id="item-2">
 					<DisclosureButton>Title B</DisclosureButton>
 					<DisclosurePanel>
-						<Text className="py-4">
+						<Text style={{ paddingBlock: "1rem" }}>
 							Yes. It's unstyled by default, giving you freedom over the look
 							and feel.
 						</Text>
@@ -41,7 +41,7 @@ const meta = {
 				<Disclosure id="item-3">
 					<DisclosureButton>Title C</DisclosureButton>
 					<DisclosurePanel>
-						<Text className="py-4">
+						<Text style={{ paddingBlock: "1rem" }}>
 							Yes! You can animate the Disclosure with CSS or JavaScript.
 						</Text>
 					</DisclosurePanel>
@@ -69,7 +69,7 @@ export const WithOneItem: Story = {
 				<Disclosure id="item-1">
 					<DisclosureButton>Title A</DisclosureButton>
 					<DisclosurePanel>
-						<Text className="py-4">test</Text>
+						<Text style={{ paddingBlock: "1rem" }}>test</Text>
 					</DisclosurePanel>
 				</Disclosure>
 			</DisclosureGroup>

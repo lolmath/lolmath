@@ -57,8 +57,8 @@ export const Bottom: Story = {
 export const LongText: Story = {
 	args: {
 		children: (
-			<div className="p-2">
-				<Heading preset="h3" as="h3" className="mb-2">
+			<div style={{ padding: "0.5rem" }}>
+				<Heading preset="h3" as="h3" style={{ marginBottom: "0.5rem" }}>
 					Lorum Ipsum
 				</Heading>
 				<Text>
@@ -76,7 +76,7 @@ export const LongText: Story = {
 				</Text>
 			</div>
 		),
-		className: "w-[400px]",
+		style: { width: 400 },
 	},
 };
 

@@ -3,6 +3,9 @@
 		height: 1px;
 		flex-grow: 1;
 		border: none;
+		/* An <hr>: the UA gives it 0.5em block margins and a grey `color`. */
+		margin: 0;
+		color: inherit;
 		display: flex;
 	}
 

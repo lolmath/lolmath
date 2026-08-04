@@ -36,6 +36,9 @@
 	}
 
 	.input {
+		/* The group draws the border as its own 1px gradient padding. */
+		border: 0;
+		margin: 0;
 		background-color: var(--lol-color-hextech-black);
 		color: var(--lol-color-gold-100);
 		font-family: var(--lol-font-family-spiegel);
@@ -56,6 +59,14 @@
 	}
 
 	.button {
+		/* A <button> we never paint: without this it falls back to the UA's
+		   `buttonface` slab, which is grey under `color-scheme: dark`. */
+		appearance: none;
+		border: 0;
+		margin: 0;
+		font: inherit;
+		letter-spacing: inherit;
+
 		color: var(--lol-color-gold-100);
 		background-color: var(--lol-color-hextech-black);
 		padding: 0 0.625rem;

@@ -31,7 +31,7 @@ export const Disabled: Story = {
 
 export const Multiple: Story = {
 	render: () => (
-		<div className="inline-grid grid-cols-2">
+		<div style={{ display: "inline-grid", gridTemplateColumns: "1fr 1fr" }}>
 			<Switch />
 			<Switch />
 			<Switch />

@@ -1,5 +1,8 @@
 @layer lol {
 	.button {
+		/* A <button>; the trigger's whole look is drawn below. */
+		appearance: none;
+		margin: 0;
 		font-family: var(--lol-font-family-spiegel);
 		display: inline-block;
 		min-width: 200px;

@@ -1,5 +1,13 @@
 @layer lol {
 	.button {
+		appearance: none;
+		margin: 0;
+		/* Presets that want horizontal padding add it back further down. Without a
+		   zero here, `text` (which wants none) picks up the UA's `1px 6px`. */
+		padding: 0;
+		/* Also rendered on the <a> of ButtonLink, which the UA underlines. */
+		text-decoration: none;
+
 		border-radius: 0px;
 		border: 2px solid transparent;
 

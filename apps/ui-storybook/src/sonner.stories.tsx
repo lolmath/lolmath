@@ -66,7 +66,7 @@ const meta = {
 		(Story) => (
 			<>
 				<Sonner />
-				<div className="h-80 grid place-items-center">
+				<div style={{ height: "20rem", display: "grid", placeItems: "center" }}>
 					<Story />
 				</div>
 			</>

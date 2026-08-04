@@ -87,7 +87,7 @@ export const TextInline: Story = {
 		preset: "text",
 	},
 	render: (args) => (
-		<div className="bg-black p-4 text-white">
+		<div style={{ background: "black", padding: "1rem", color: "white" }}>
 			This is a <ButtonLink {...args} /> button. There is also a lot of text
 			here. Multiline text even. It's pretty cool. I like it. I like it a lot. I
 			like it so much that I'm going to keep typing. I'm going to keep typing
@@ -225,7 +225,7 @@ export const SquaredImage: Story = {
 		children: (
 			<img
 				src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
-				className="w-full"
+				style={{ width: "100%" }}
 				alt="Item Icon"
 			/>
 		),
@@ -235,17 +235,17 @@ export const SquaredImage: Story = {
 export const SquaredInsideFlex: Story = {
 	args: {
 		shape: "square",
-		className: "h-full",
+		style: { height: "100%" },
 		children: (
 			<img
 				src="https://ddragon-webp.lolmath.net/latest/img/item/223184.webp"
-				className="w-full"
+				style={{ width: "100%" }}
 				alt="Item Icon"
 			/>
 		),
 	},
 	render: (args) => (
-		<div className="flex h-24 w-36">
+		<div style={{ display: "flex", height: "6rem", width: "9rem" }}>
 			<ButtonLink {...args} />
 		</div>
 	),

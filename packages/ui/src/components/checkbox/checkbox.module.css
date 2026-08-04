@@ -20,6 +20,9 @@
 	}
 
 	.icon {
+		/* Off the text baseline, so the box is the glyph. */
+		display: block;
+		max-width: 100%;
 		width: 0.875rem;
 		height: 0.875rem;
 	}

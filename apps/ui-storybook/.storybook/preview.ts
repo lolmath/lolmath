@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react-vite";
 import { themes } from "storybook/theming";
-import "../src/tailwind.css";
+import "../src/stories.css";
 import "@lolmath/ui/font/beaufort";
 import "@lolmath/ui/font/spiegel";
 import "@lolmath/ui/css";

@@ -1,5 +1,7 @@
 @layer lol {
 	.heading {
+		/* Rendered as h1-h5, which the UA gives block margins scaled to the font. */
+		margin: 0;
 		font-family: var(--lol-font-family-beaufort);
 		scroll-margin-top: 5rem;
 		text-transform: uppercase;

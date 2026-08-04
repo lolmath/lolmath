@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 export const TextfieldWithButton: Story = {
 	render: () => {
 		return (
-			<div className="flex gap-1">
+			<div style={{ display: "flex", gap: "0.25rem" }}>
 				<TextField />
 				<Button>Submit</Button>
 			</div>
@@ -39,7 +39,7 @@ export const TextfieldWithButton: Story = {
 export const EverythingOnOneLine: Story = {
 	render: () => {
 		return (
-			<div className="flex gap-1 flex-wrap">
+			<div style={{ display: "flex", gap: "0.25rem", flexWrap: "wrap" }}>
 				<TextField />
 				<Button>Submit</Button>
 				<MultipleSelect
@@ -80,7 +80,7 @@ export const EverythingOnOneLine: Story = {
 export const Small: Story = {
 	render: () => {
 		return (
-			<div className="flex gap-1 flex-wrap">
+			<div style={{ display: "flex", gap: "0.25rem", flexWrap: "wrap" }}>
 				<TextField size="small" />
 				<Button size="small">Submit</Button>
 				<MultipleSelect
@@ -124,7 +124,7 @@ export const Small: Story = {
 export const Medium: Story = {
 	render: () => {
 		return (
-			<div className="flex gap-1 flex-wrap">
+			<div style={{ display: "flex", gap: "0.25rem", flexWrap: "wrap" }}>
 				<TextField size="medium" />
 				<Button size="medium">Submit</Button>
 				<MultipleSelect
@@ -168,7 +168,7 @@ export const Medium: Story = {
 export const Large: Story = {
 	render: () => {
 		return (
-			<div className="flex gap-1 flex-wrap">
+			<div style={{ display: "flex", gap: "0.25rem", flexWrap: "wrap" }}>
 				<TextField size="large" />
 				<Button size="large">Submit</Button>
 				<MultipleSelect

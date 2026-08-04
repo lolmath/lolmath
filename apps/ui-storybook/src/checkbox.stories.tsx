@@ -38,7 +38,7 @@ export const Indeterminate: Story = {
 
 export const Multiple: Story = {
 	render: () => (
-		<div className="inline-grid grid-cols-2">
+		<div style={{ display: "inline-grid", gridTemplateColumns: "1fr 1fr" }}>
 			<Checkbox />
 			<Checkbox />
 			<Checkbox />
@@ -56,7 +56,7 @@ export const DynamicChildren: Story = {
 export const DynamicClassname: Story = {
 	args: {
 		className: (values) =>
-			values.isSelected ? "text-green-700" : "text-red-700",
+			values.isSelected ? "story-valid" : "story-invalid",
 	},
 };
 

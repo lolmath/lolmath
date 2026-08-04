@@ -123,26 +123,44 @@ export const AccountMenu: Story = {
 					<img
 						alt=""
 						src="https://i.imgur.com/xIe7Wlb.png"
-						className="w-7 h-7 rounded-full"
+						style={{
+							width: "1.75rem",
+							height: "1.75rem",
+							borderRadius: "9999px",
+						}}
 					/>
 				</Button>
-				<Popover placement="bottom end" className="p-0">
-					<Dialog className="outline-none">
-						<div className="flex gap-2 items-center mx-3 my-2">
+				<Popover placement="bottom end" style={{ padding: 0 }}>
+					<Dialog style={{ outline: "none" }}>
+						<div
+							style={{
+								display: "flex",
+								gap: "0.5rem",
+								alignItems: "center",
+								margin: "0.5rem 0.75rem",
+							}}
+						>
 							<img
 								alt=""
 								src="https://i.imgur.com/xIe7Wlb.png"
-								className="w-16 h-16 rounded-full"
+								style={{
+									width: "4rem",
+									height: "4rem",
+									borderRadius: "9999px",
+								}}
 							/>
-							<div className="flex flex-col">
-								<Heading as="h5" className="text-lol-md">
+							<div style={{ display: "flex", flexDirection: "column" }}>
+								<Heading
+									as="h5"
+									style={{ fontSize: "var(--lol-font-size-md)" }}
+								>
 									Marissa Whitaker
 								</Heading>
 								<Text>user@example.com</Text>
 								<Checkbox>Dark Mode</Checkbox>
 							</div>
 						</div>
-						<Menu className="border-0">
+						<Menu style={{ border: 0 }}>
 							<MenuItem id="new">Account Settings</MenuItem>
 							<MenuItem id="open">Support</MenuItem>
 							<MenuItem id="save">Legal notices</MenuItem>
