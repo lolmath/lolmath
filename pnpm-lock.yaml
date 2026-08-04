@@ -36,9 +36,6 @@ catalogs:
     '@tailwindcss/postcss':
       specifier: ^4.3.3
       version: 4.3.3
-    '@tailwindcss/vite':
-      specifier: ^4.3.3
-      version: 4.3.3
     '@tsdown/css':
       specifier: ^0.22.14
       version: 0.22.14
@@ -237,9 +234,6 @@ importers:
       '@storybook/addon-docs':
         specifier: 'catalog:'
         version: 10.5.4(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.4(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0))
-      '@tailwindcss/vite':
-        specifier: 'catalog:'
-        version: 4.3.3(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0))
       react:
         specifier: 'catalog:'
         version: 19.2.8
@@ -249,9 +243,6 @@ importers:
       react-icons:
         specifier: 'catalog:'
         version: 5.7.0(react@19.2.8)
-      tailwindcss:
-        specifier: 'catalog:'
-        version: 4.3.3
     devDependencies:
       '@lolmath/ui':
         specifier: workspace:*
@@ -292,6 +283,9 @@ importers:
       storybook:
         specifier: 'catalog:'
         version: 10.5.4(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8)
+      tailwindcss:
+        specifier: 'catalog:'
+        version: 4.3.3
       typescript:
         specifier: 'catalog:'
         version: 6.0.3
@@ -3463,11 +3457,6 @@ packages:
 
   '@tailwindcss/postcss@4.3.3':
     resolution: {integrity: sha512-JTSZZGQi1AyKirbLN3azmjVzef92tcX7h+iSqPdaeStyFpGpDlKvvpxeOE8njhbUanbRwr3z8DyzhICWnMtQeg==}
-
-  '@tailwindcss/vite@4.3.3':
-    resolution: {integrity: sha512-yYU8cogLeSh/ms2jh8Fj7jaba/EWa7Ja6GoUqYZaraEuCI5YS6ms6ObZgjjedm+jm6XZjdNRWBpPP6Z86oOxcw==}
-    peerDependencies:
-      vite: ^5.2.0 || ^6 || ^7 || ^8
 
   '@testing-library/dom@10.4.1':
     resolution: {integrity: sha512-o4PXJQidqJl82ckFaXUeoAW+XysPLauYI43Abki5hABd853iMhitooc6znOnczgbTYmEP6U6/y1ZyKAIsvMKGg==}
@@ -9340,13 +9329,6 @@ snapshots:
       '@tailwindcss/oxide': 4.3.3
       postcss: 8.5.23
       tailwindcss: 4.3.3
-
-  '@tailwindcss/vite@4.3.3(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0))':
-    dependencies:
-      '@tailwindcss/node': 4.3.3
-      '@tailwindcss/oxide': 4.3.3
-      tailwindcss: 4.3.3
-      vite: 8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0)
 
   '@testing-library/dom@10.4.1':
     dependencies:

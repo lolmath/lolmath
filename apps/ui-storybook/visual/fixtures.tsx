@@ -4,6 +4,9 @@ import {
 	Button,
 	ButtonLink,
 	Checkbox,
+	DialogButtons,
+	DialogHeading,
+	DialogTrigger,
 	Disclosure,
 	DisclosureButton,
 	DisclosureGroup,
@@ -11,7 +14,17 @@ import {
 	Divider,
 	Heading,
 	Label,
+	Menu,
+	MenuHeader,
+	MenuItem,
+	MenuPopover,
+	MenuSection,
+	MenuSeparator,
+	MenuTrigger,
+	Modal,
+	MultipleSelect,
 	NumberField,
+	Popover,
 	ProgressBar,
 	Radio,
 	RadioGroup,
@@ -24,8 +37,11 @@ import {
 	SelectValue,
 	Slider,
 	SliderOutput,
+	Sonner,
 	Spinner,
+	SubmenuTrigger,
 	Switch,
+	sonner,
 	Tab,
 	TabList,
 	Table,
@@ -49,13 +65,20 @@ import {
 	TreeItem,
 	TreeItemContent,
 } from "@lolmath/ui";
-import type { CSSProperties, ReactNode } from "react";
+import { type CSSProperties, type ReactNode, useEffect } from "react";
 import { FaGear } from "react-icons/fa6";
 
 export interface Fixture {
 	id: string;
 	node: ReactNode;
 	style?: CSSProperties;
+	/**
+	 * Screenshot the whole page instead of the fixture box. Overlays (popover,
+	 * menu, modal, toast) render into a portal on `document.body`, so they are
+	 * not inside the fixture element at all — and their position relative to the
+	 * trigger is exactly what a regression breaks.
+	 */
+	fullPage?: boolean;
 }
 
 const wide: CSSProperties = { width: 260 };
@@ -119,6 +142,32 @@ const runeTree = (
 
 const expandedRunes = ["precision", "keystone"];
 
+const champions = [
+	{ id: "aatrox", name: "Aatrox" },
+	{ id: "braum", name: "Braum" },
+	{ id: "caitlyn", name: "Caitlyn" },
+];
+
+/** Centres an overlay trigger in the viewport so the overlay has room on every side. */
+const centred: CSSProperties = { marginTop: 170, marginLeft: 150 };
+
+function Toast({ variant }: { variant: "default" | "success" | "error" }) {
+	useEffect(() => {
+		// A fixed id, so React's development double-mount updates this toast
+		// instead of racing a second one into the stack.
+		const options = {
+			id: variant,
+			description: "Recalculated with the latest patch.",
+			duration: Number.POSITIVE_INFINITY,
+		};
+		if (variant === "success") sonner.success("Build saved", options);
+		else if (variant === "error") sonner.error("Build failed", options);
+		else sonner("Build saved", options);
+	}, [variant]);
+
+	return <Sonner position="top-left" />;
+}
+
 /**
  * Registry of components -> fixtures for visual regression. Each fixture id is
  * unique across the whole registry. The harness renders one component's
@@ -128,8 +177,10 @@ export const fixtures: Record<string, Fixture[]> = {
 	breadcrumbs: [
 		{
 			id: "breadcrumbs-default",
+			// Wide enough that the trail is not shrunk: flex shrinking would make
+			// the box, not the styles, decide where the dividers land.
 			node: (
-				<Breadcrumbs style={wide}>
+				<Breadcrumbs style={{ width: 340 }}>
 					<Breadcrumb href="#">Home</Breadcrumb>
 					<Breadcrumb href="#">React Aria</Breadcrumb>
 					<Breadcrumb>Breadcrumbs</Breadcrumb>
@@ -248,6 +299,134 @@ export const fixtures: Record<string, Fixture[]> = {
 			),
 		},
 	],
+	heading: [
+		...(["h1", "h2", "h3", "h4", "h5"] as const).map((preset) => ({
+			id: `heading-${preset}`,
+			node: <Heading preset={preset}>Baron</Heading>,
+		})),
+		{
+			id: "heading-colors",
+			node: (
+				<div style={{ display: "flex", flexDirection: "column" }}>
+					{(["gold100", "gold200", "gold400", "grey100"] as const).map(
+						(color) => (
+							<Heading key={color} preset="h5" color={color}>
+								{color}
+							</Heading>
+						),
+					)}
+				</div>
+			),
+		},
+	],
+	menu: [
+		{
+			id: "menu-default",
+			fullPage: true,
+			style: centred,
+			node: (
+				<MenuTrigger defaultOpen>
+					<Button>Actions</Button>
+					<MenuPopover>
+						<Menu>
+							<MenuItem>Copy build</MenuItem>
+							<MenuItem>Share</MenuItem>
+							<MenuItem isDisabled>Delete</MenuItem>
+						</Menu>
+					</MenuPopover>
+				</MenuTrigger>
+			),
+		},
+		{
+			id: "menu-sections",
+			fullPage: true,
+			style: centred,
+			node: (
+				<MenuTrigger defaultOpen>
+					<Button>Actions</Button>
+					<MenuPopover>
+						<Menu>
+							<MenuSection>
+								<MenuHeader>Build</MenuHeader>
+								<MenuItem>Copy</MenuItem>
+								<MenuItem>Share</MenuItem>
+							</MenuSection>
+							<MenuSeparator />
+							<MenuSection>
+								<MenuHeader>Danger</MenuHeader>
+								<MenuItem>Delete</MenuItem>
+							</MenuSection>
+						</Menu>
+					</MenuPopover>
+				</MenuTrigger>
+			),
+		},
+		{
+			id: "menu-submenu",
+			fullPage: true,
+			style: centred,
+			node: (
+				<MenuTrigger defaultOpen>
+					<Button>Actions</Button>
+					<MenuPopover>
+						<Menu>
+							<MenuItem>Copy build</MenuItem>
+							<SubmenuTrigger>
+								<MenuItem>Export</MenuItem>
+								<MenuPopover>
+									<Menu>
+										<MenuItem>As image</MenuItem>
+										<MenuItem>As link</MenuItem>
+									</Menu>
+								</MenuPopover>
+							</SubmenuTrigger>
+						</Menu>
+					</MenuPopover>
+				</MenuTrigger>
+			),
+		},
+	],
+	modal: [
+		{
+			id: "modal-default",
+			fullPage: true,
+			node: (
+				<Modal isOpen>
+					<DialogHeading>Reset build</DialogHeading>
+					<Text>This clears every item and rune.</Text>
+					<DialogButtons>
+						<Button preset="primary">Reset</Button>
+						<Button preset="dimmed">Cancel</Button>
+					</DialogButtons>
+				</Modal>
+			),
+		},
+	],
+	"multiple-select": [
+		{
+			id: "multiple-select-empty",
+			node: (
+				<MultipleSelect
+					aria-label="Champions"
+					items={champions}
+					selectId={(item) => item.id}
+					selectLabel={(item) => item.name}
+				/>
+			),
+		},
+		{
+			id: "multiple-select-selected",
+			node: (
+				<MultipleSelect
+					aria-label="Champions"
+					items={champions}
+					defaultValue={["aatrox", "braum"]}
+					selectId={(item) => item.id}
+					selectLabel={(item) => item.name}
+				/>
+			),
+		},
+	],
 	"number-field": [
 		{
 			id: "number-field-default",
@@ -266,6 +445,24 @@ export const fixtures: Record<string, Fixture[]> = {
 			),
 		},
 	],
+	/*
+	 * One fixture per placement: the arrow is absolutely positioned against the
+	 * matching edge of the popover, so a regression in its box shows up as a gap
+	 * (or an overlap) on that edge only.
+	 */
+	popover: (["bottom", "top", "left", "right"] as const).map((placement) => ({
+		id: `popover-${placement}`,
+		fullPage: true,
+		style: centred,
+		node: (
+			<DialogTrigger defaultOpen>
+				<Button>Info</Button>
+				<Popover placement={placement}>
+					<Text>Scales with AP.</Text>
+				</Popover>
+			</DialogTrigger>
+		),
+	})),
 	"progress-bar": [
 		{ id: "progress-bar-empty", node: <ProgressBar value={0} style={wide} /> },
 		{
@@ -333,6 +530,25 @@ export const fixtures: Record<string, Fixture[]> = {
 			),
 		},
 		{
+			id: "select-open",
+			fullPage: true,
+			style: centred,
+			node: (
+				<Select defaultOpen style={wide}>
+					<SelectButton>
+						<SelectValue />
+					</SelectButton>
+					<SelectPopover>
+						<SelectListBox>
+							<SelectListBoxItem>Cat</SelectListBoxItem>
+							<SelectListBoxItem>Dog</SelectListBoxItem>
+							<SelectListBoxItem>Panda</SelectListBoxItem>
+						</SelectListBox>
+					</SelectPopover>
+				</Select>
+			),
+		},
+		{
 			id: "select-disabled",
 			node: (
 				<Select isDisabled style={wide}>
@@ -368,6 +584,11 @@ export const fixtures: Record<string, Fixture[]> = {
 			),
 		},
 	],
+	sonner: (["default", "success", "error"] as const).map((variant) => ({
+		id: `sonner-${variant}`,
+		fullPage: true,
+		node: <Toast variant={variant} />,
+	})),
 	spinner: [{ id: "spinner-default", node: <Spinner /> }],
 	switch: [
 		{ id: "switch-off", node: <Switch>Low Power Mode</Switch> },
@@ -528,6 +749,34 @@ export const fixtures: Record<string, Fixture[]> = {
 				</TagGroup>
 			),
 		},
+	],
+	text: [
+		...(
+			[
+				["sm", "sm"],
+				["base", "base"],
+				["md", "md"],
+				["lg", "lg"],
+				["stat", "stat"],
+				["largeNumber", "large-number"],
+			] as const
+		).map(([preset, id]) => ({
+			id: `text-${id}`,
+			node: <Text preset={preset}>1250</Text>,
+		})),
+		{
+			id: "text-colors",
+			node: (
+				<div style={{ display: "flex", flexDirection: "column" }}>
+					{(["grey100", "grey150", "gold100"] as const).map((color) => (
+						<Text key={color} color={color}>
+							{color}
+						</Text>
+					))}
+				</div>
+			),
+		},
+		{ id: "text-label", node: <Label>Attack damage</Label> },
 	],
 	"text-area": [
 		{

@@ -2,6 +2,10 @@
 	.breadcrumbs {
 		display: flex;
 		gap: 0.25rem;
+		/* An <ol>: the UA gives it block margins and a 40px marker gutter. */
+		margin: 0;
+		padding: 0;
+		list-style: none;
 	}
 
 	.item {
@@ -10,6 +14,7 @@
 	}
 
 	.link {
+		text-decoration: none;
 		font-family: var(--lol-font-family-beaufort);
 		color: var(--lol-color-gold-300);
 		position: relative;
@@ -25,6 +30,10 @@
 	}
 
 	.divider {
+		/* Off the text baseline, so the row's height is the glyph's, and never
+		   wider than the row. */
+		display: block;
+		max-width: 100%;
 		height: 11px;
 	}
 }

@@ -1,5 +1,8 @@
 @layer lol {
 	.spinner {
+		/* Off the text baseline, so the box is the glyph. */
+		display: block;
+		max-width: 100%;
 		aspect-ratio: 1 / 1;
 		width: 3rem;
 		animation: spin 1s linear infinite;

@@ -1,15 +1,17 @@
-.popover {
-	width: 250px;
-	display: flex;
-	flex-direction: column;
-}
+@layer lol {
+	.popover {
+		width: 250px;
+		display: flex;
+		flex-direction: column;
+	}
 
-.select {
-	border-right: none;
-	display: flex;
-	align-items: center;
-}
+	.select {
+		border-right: none;
+		display: flex;
+		align-items: center;
+	}
 
-.triggerContainer {
-	display: inline-flex;
+	.triggerContainer {
+		display: inline-flex;
+	}
 }

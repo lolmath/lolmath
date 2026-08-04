@@ -82,6 +82,13 @@
 	}
 
 	.cell {
+		/*
+		 * Collapsed borders are resolved between neighbours, and Chrome paints the
+		 * winning hairline once per edge when the losing side is styled `none`. The
+		 * header's 25%-opacity line then blends twice and comes out twice as
+		 * bright; a zero-width `solid` border on the cell below keeps it single.
+		 */
+		border: 0 solid;
 		padding: 0.375rem 0.75rem;
 		vertical-align: middle;
 		outline: none;
@@ -215,6 +222,12 @@
 	.empty {
 		padding: 1rem 0.75rem;
 		text-align: center;
+	}
+
+	/* React aria renders the empty state in a row it builds itself, so that cell
+	   never gets `.cell` and keeps the UA's 1px padding. */
+	.table [data-empty] > tr > td {
+		padding: 0;
 	}
 
 	.start {

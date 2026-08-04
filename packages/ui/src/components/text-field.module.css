@@ -50,6 +50,9 @@
 		&.textArea {
 			padding-top: 0.5rem;
 			padding-bottom: 0.5rem;
+			/* The UA lets a textarea be resized in both axes, which breaks the
+			   field's layout; only the height is safe to drag. */
+			resize: vertical;
 		}
 	}
 }

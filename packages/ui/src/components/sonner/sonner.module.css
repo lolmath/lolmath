@@ -42,6 +42,11 @@
 		& > * {
 			flex-shrink: 0;
 		}
+		/* Off the text baseline, so the box is the glyph. */
+		& > img {
+			display: block;
+			max-width: 100%;
+		}
 		& svg {
 			margin-left: var(--toast-svg-margin-start);
 			margin-right: var(--toast-svg-margin-end);

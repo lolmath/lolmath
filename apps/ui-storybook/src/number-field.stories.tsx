@@ -41,7 +41,7 @@ export const Dimmed: Story = {
 
 export const AlignStart: Story = {
 	render: (args) => (
-		<div className="flex items-start">
+		<div style={{ display: "flex", alignItems: "flex-start" }}>
 			<NumberField {...args} />
 		</div>
 	),

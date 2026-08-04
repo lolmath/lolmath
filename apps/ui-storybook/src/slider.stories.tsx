@@ -53,7 +53,7 @@ export const WithOutput: Story = {
 	args: {
 		defaultValue: 20,
 		children: (
-			<div className="flex justify-between">
+			<div style={{ display: "flex", justifyContent: "space-between" }}>
 				<Label>Some label</Label>
 				<SliderOutput />
 			</div>
@@ -65,7 +65,7 @@ export const DoubleSliderWithOutput: Story = {
 	args: {
 		defaultValue: [20, 80],
 		children: (
-			<div className="flex justify-between">
+			<div style={{ display: "flex", justifyContent: "space-between" }}>
 				<Label>Some label</Label>
 				<SliderOutput />
 			</div>

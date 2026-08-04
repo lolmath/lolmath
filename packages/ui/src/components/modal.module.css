@@ -70,6 +70,8 @@
 	}
 
 	.dialogHeading {
+		/* React aria renders an <h3>, which the UA gives block margins. */
+		margin: 0;
 		color: var(--lol-color-gold-100);
 		font-family: var(--lol-font-family-beaufort);
 		text-transform: uppercase;

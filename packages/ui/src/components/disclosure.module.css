@@ -1,5 +1,14 @@
 @layer lol {
 	.disclosureButton {
+		/* A <button> we never paint: without this it falls back to the UA's
+		   `buttonface` slab, which is grey under `color-scheme: dark`. */
+		appearance: none;
+		background: none;
+		border: 0;
+		margin: 0;
+		font: inherit;
+		letter-spacing: inherit;
+
 		color: var(--lol-color-grey-100);
 		font-family: var(--lol-font-family-beaufort);
 

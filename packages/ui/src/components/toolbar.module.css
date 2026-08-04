@@ -16,7 +16,10 @@
 
 	.separator {
 		border: none;
+		/* An <hr> when horizontal: the UA gives it block margins and a grey
+		   `color`. */
 		margin: 0;
+		color: inherit;
 		flex: none;
 		align-self: stretch;
 		height: 1px;

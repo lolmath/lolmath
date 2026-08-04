@@ -19,6 +19,16 @@ import "@lolmath/ui/font/spiegel";
 import "@lolmath/ui/css";
 ```
 
+## No CSS Reset Required
+
+The components look the same with or without a reset — they set whatever they
+need on their own elements rather than assuming a normalized baseline. Tailwind's
+preflight, another reset, or none at all all render identically.
+
+`apps/ui-storybook` deliberately ships no reset so this stays true, and
+`visual/preflight.visual.spec.ts` renders every component twice — bare and with
+preflight applied — and fails if a single pixel differs.
+
 ## CSS Layer
 
 All CSS modules have the `lol` layer. You can use `@layer` to control the

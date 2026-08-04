@@ -1,0 +1,21 @@
+/*
+ * The storybook is deliberately a bare consumer: no Tailwind, no CSS reset, so
+ * whatever @lolmath/ui needs to look right it has to bring itself. Anything a
+ * story needs for layout goes in an inline `style` instead.
+ *
+ * These few classes only exist for the stories that demonstrate passing a
+ * `className` through to a component. They are unlayered, so — like a host
+ * app's own CSS — they outrank the library's `lol` layer.
+ */
+
+.story-wide {
+	max-width: 36rem;
+}
+
+.story-valid {
+	color: #15803d;
+}
+
+.story-invalid {
+	color: #b91c1c;
+}

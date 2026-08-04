@@ -24,9 +24,18 @@ const meta = {
 			<Modal {...args}>
 				{({ close }) => (
 					<>
-						<div className="flex flex-col gap-2 p-6">
-							<DialogHeading className="text-center">Exit Now?</DialogHeading>
-							<Text preset="sm" className="text-center">
+						<div
+							style={{
+								display: "flex",
+								flexDirection: "column",
+								gap: "0.5rem",
+								padding: "1.5rem",
+							}}
+						>
+							<DialogHeading style={{ textAlign: "center" }}>
+								Exit Now?
+							</DialogHeading>
+							<Text preset="sm" style={{ textAlign: "center" }}>
 								Do you want to exit League of Legends or sign out?
 							</Text>
 						</div>
@@ -50,7 +59,7 @@ export const Primary: Story = {
 
 export const ClassName: Story = {
 	args: {
-		className: "max-w-xl",
+		className: "story-wide",
 	},
 };
 

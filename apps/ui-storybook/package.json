@@ -10,11 +10,9 @@
 	},
 	"dependencies": {
 		"@storybook/addon-docs": "catalog:",
-		"@tailwindcss/vite": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"react-icons": "catalog:",
-		"tailwindcss": "catalog:"
+		"react-icons": "catalog:"
 	},
 	"devDependencies": {
 		"@lolmath/ui": "workspace:*",
@@ -31,6 +29,7 @@
 		"postcss": "catalog:",
 		"prop-types": "catalog:",
 		"storybook": "catalog:",
+		"tailwindcss": "catalog:",
 		"vite": "catalog:",
 		"wrangler": "catalog:"
 	}
