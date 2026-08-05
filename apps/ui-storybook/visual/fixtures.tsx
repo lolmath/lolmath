@@ -239,6 +239,24 @@ export const fixtures: Record<string, Fixture[]> = {
 			node: <Button shape="normal">Normal</Button>,
 		},
 	],
+	/*
+	 * checkbox.module.css's .icon used to shrink like any other flex item, so a
+	 * label too long for its container squished the glyph's width while its
+	 * fixed height held still. checkbox-shape.visual.spec.ts asserts the icon's
+	 * box stays 14x14 regardless of the space the container gives it.
+	 */
+	"checkbox-shape": [
+		{
+			id: "checkbox-shape-cramped",
+			node: (
+				<div style={{ width: 12, overflow: "hidden" }}>
+					<Checkbox>
+						A label far too long to fit in this narrow container
+					</Checkbox>
+				</div>
+			),
+		},
+	],
 	checkbox: [
 		{ id: "checkbox-default", node: <Checkbox>Enable Low Spec Mode</Checkbox> },
 		{

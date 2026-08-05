@@ -22,7 +22,7 @@
 	.icon {
 		/* Off the text baseline, so the box is the glyph. */
 		display: block;
-		max-width: 100%;
+		flex-shrink: 0;
 		width: 0.875rem;
 		height: 0.875rem;
 	}
