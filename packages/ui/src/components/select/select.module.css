@@ -118,6 +118,6 @@
 
 	.emptyList {
 		padding: 0.5rem 0.25rem;
-		text-align: center;
+		text-align: left;
 	}
 }
