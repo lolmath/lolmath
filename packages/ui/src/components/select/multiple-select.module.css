@@ -5,13 +5,20 @@
 		flex-direction: column;
 	}
 
-	.select {
+	.triggerContainer {
+		display: inline-flex;
+	}
+
+	/* Descendant selector, not just `.select`: needs higher specificity than
+	   `.button`'s `display: inline-block` (select.module.css), since equal-
+	   specificity rules would otherwise resolve by CSS source order — which
+	   depends on unrelated bundling details, not intent. Losing that race
+	   blockifies to `display: block` (this is a flex item) and silently
+	   drops `align-items`, so tags/empty text stick to the top instead of
+	   centering. */
+	.triggerContainer .select {
 		border-right: none;
 		display: flex;
 		align-items: center;
-	}
-
-	.triggerContainer {
-		display: inline-flex;
 	}
 }
