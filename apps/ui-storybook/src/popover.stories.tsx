@@ -1,4 +1,12 @@
-import { Button, DialogTrigger, Heading, Popover, Text } from "@lolmath/ui";
+import {
+	Button,
+	DialogTrigger,
+	Divider,
+	Heading,
+	Popover,
+	PopoverBody,
+	Text,
+} from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -57,7 +65,7 @@ export const Bottom: Story = {
 export const LongText: Story = {
 	args: {
 		children: (
-			<div style={{ padding: "0.5rem" }}>
+			<PopoverBody>
 				<Heading preset="h3" as="h3" style={{ marginBottom: "0.5rem" }}>
 					Lorum Ipsum
 				</Heading>
@@ -74,9 +82,38 @@ export const LongText: Story = {
 					looks reasonable. The generated Lorem Ipsum is therefore always free
 					from repetition, injected humour, or non-characteristic words etc.
 				</Text>
-			</div>
+			</PopoverBody>
 		),
 		style: { width: 400 },
+	},
+};
+
+export const Composed: Story = {
+	name: "Composing PopoverBody with edge-to-edge content",
+	args: {
+		children: (
+			<>
+				<img
+					alt=""
+					src="https://i.imgur.com/xIe7Wlb.png"
+					style={{ display: "block", width: "100%", height: "auto" }}
+				/>
+				<PopoverBody>
+					<Heading preset="h4" as="h3" style={{ marginBottom: "0.25rem" }}>
+						Marissa Whitaker
+					</Heading>
+					<Text>Summoner since Season 3.</Text>
+				</PopoverBody>
+				<Divider />
+				<PopoverBody>
+					<Text>
+						An image or a divider already runs edge to edge on its own, so only
+						text needs `PopoverBody` for its padding.
+					</Text>
+				</PopoverBody>
+			</>
+		),
+		style: { width: 320 },
 	},
 };
 

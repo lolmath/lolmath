@@ -1,4 +1,4 @@
-import { cva } from "cva";
+import { cva, cx } from "cva";
 import type { PopoverProps } from "react-aria-components";
 import {
 	Popover as AriaPopover,
@@ -78,4 +78,16 @@ export function Popover({ children, className, ...props }: PopoverProps) {
 			)}
 		</AriaPopover>
 	);
+}
+
+// The popover itself carries no content padding, since text needs breathing
+// room from the popover's edge while other content (a divider, an image)
+// should run edge to edge already. Wrap text content in this instead of
+// reaching for a one-off inline style.
+
+export function PopoverBody({
+	className,
+	...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+	return <div {...props} className={cx(classes.body, className)} />;
 }

@@ -26,6 +26,10 @@
 		}
 	}
 
+	.body {
+		padding: 1rem;
+	}
+
 	.arrow {
 		/*
 		 * React aria anchors the arrow's wrapper with `bottom: 100%`, so the
