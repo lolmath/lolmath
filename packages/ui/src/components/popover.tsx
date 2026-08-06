@@ -6,7 +6,6 @@ import {
 	Dialog,
 	OverlayArrow,
 } from "react-aria-components";
-import { Divider } from "./divider";
 import classes from "./popover.module.css";
 
 // Note: there is no tooltip component. Tooltips do not work on mobile devices.
@@ -81,29 +80,14 @@ export function Popover({ children, className, ...props }: PopoverProps) {
 	);
 }
 
-// The popover itself carries no content padding, since the right amount
-// differs by what's inside: text needs breathing room from the popover's
-// edge, while a divider or image should run edge to edge. Compose a popover's
-// body from these instead of reaching for one-off inline styles.
+// The popover itself carries no content padding, since text needs breathing
+// room from the popover's edge while other content (a divider, an image)
+// should run edge to edge already. Wrap text content in this instead of
+// reaching for a one-off inline style.
 
 export function PopoverBody({
 	className,
 	...props
 }: React.HTMLAttributes<HTMLDivElement>) {
 	return <div {...props} className={cx(classes.body, className)} />;
-}
-
-// Re-exported so a popover's content can be composed entirely from
-// `Popover*` parts. A plain `Divider` already renders edge to edge (it has no
-// padding or margin of its own), so this simply forwards to it.
-export function PopoverDivider(props: React.ComponentProps<typeof Divider>) {
-	return <Divider {...props} />;
-}
-
-export function PopoverImage({
-	className,
-	alt,
-	...props
-}: React.ImgHTMLAttributes<HTMLImageElement> & { alt: string }) {
-	return <img {...props} alt={alt} className={cx(classes.image, className)} />;
 }

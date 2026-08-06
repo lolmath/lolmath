@@ -1,11 +1,10 @@
 import {
 	Button,
 	DialogTrigger,
+	Divider,
 	Heading,
 	Popover,
 	PopoverBody,
-	PopoverDivider,
-	PopoverImage,
 	Text,
 } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
@@ -90,23 +89,26 @@ export const LongText: Story = {
 };
 
 export const Composed: Story = {
-	name: "Composing PopoverBody, PopoverDivider, PopoverImage",
+	name: "Composing PopoverBody with edge-to-edge content",
 	args: {
 		children: (
 			<>
-				<PopoverImage alt="" src="https://i.imgur.com/xIe7Wlb.png" />
+				<img
+					alt=""
+					src="https://i.imgur.com/xIe7Wlb.png"
+					style={{ display: "block", width: "100%", height: "auto" }}
+				/>
 				<PopoverBody>
 					<Heading preset="h4" as="h3" style={{ marginBottom: "0.25rem" }}>
 						Marissa Whitaker
 					</Heading>
-					<Text>Summoner since Season 3. No custom CSS was used here.</Text>
+					<Text>Summoner since Season 3.</Text>
 				</PopoverBody>
-				<PopoverDivider />
+				<Divider />
 				<PopoverBody>
 					<Text>
-						A divider and image run edge to edge, while this text keeps its own
-						padding — each `Popover*` part supplies the right spacing for its
-						own kind of content.
+						An image or a divider already runs edge to edge on its own, so only
+						text needs `PopoverBody` for its padding.
 					</Text>
 				</PopoverBody>
 			</>
