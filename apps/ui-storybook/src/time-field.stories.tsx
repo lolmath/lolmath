@@ -31,7 +31,17 @@ export const TwentyFourHour: Story = {
 	args: { hourCycle: 24 },
 };
 
+/**
+ * Granularity controls which segments a `TimeField` shows. `Primary`, above,
+ * shows the default (`"minute"`): hour, minute, and the AM/PM segment.
+ */
+export const HourOnly: Story = {
+	name: "Hour-only granularity",
+	args: { granularity: "hour" },
+};
+
 export const WithSeconds: Story = {
+	name: "Second granularity",
 	args: { granularity: "second", defaultValue: new Time(14, 30, 5) },
 };
 
