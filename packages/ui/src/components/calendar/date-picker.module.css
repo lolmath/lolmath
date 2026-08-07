@@ -49,6 +49,15 @@
 		background-color: var(--lol-color-hextech-black);
 		color: var(--lol-color-grey-100);
 		padding: 0 0.125rem;
+		/*
+		 * `.group`'s `gap` is what shows its gold background between every
+		 * pair of children — including the two 1px slivers flanking this
+		 * dash, which reads as the dash sitting in its own gold-bordered box
+		 * rather than as a plain separator between the two dates. Negative
+		 * margin pulls it 1px into each neighboring gap, so its own opaque
+		 * fill covers those two slivers instead.
+		 */
+		margin: 0 -1px;
 	}
 
 	.button {
