@@ -37,6 +37,7 @@
 		background-color: var(--lol-color-hextech-black);
 		padding: 0 0.75rem;
 		outline: none;
+		font-family: var(--lol-font-family-spiegel);
 
 		&[data-disabled] {
 			background-color: var(--lol-color-grey-300);
@@ -49,6 +50,7 @@
 		background-color: var(--lol-color-hextech-black);
 		color: var(--lol-color-grey-100);
 		padding: 0 0.125rem;
+		font-family: var(--lol-font-family-spiegel);
 		/*
 		 * `.group`'s `gap` is what shows its gold background between every
 		 * pair of children — including the two 1px slivers flanking this
