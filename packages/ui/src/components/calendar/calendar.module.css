@@ -5,6 +5,18 @@
 
 		display: flex;
 		flex-direction: column;
+		/*
+		 * A flex column is still a normal block box for its own sizing: with
+		 * no explicit width it fills its parent (a popover, a wide form)
+		 * rather than shrinking to its content. `fit-content` makes the
+		 * calendar itself only as wide as its widest child (the grid), and
+		 * `align-items: stretch` (the default, kept intentionally) then
+		 * stretches every other child — including the `header="picker"` nav
+		 * row, which sits directly in this container rather than inside
+		 * `.month` — to match that same width, instead of each shrinking
+		 * independently to its own content.
+		 */
+		width: fit-content;
 		gap: 0.75rem;
 		outline: none;
 
@@ -69,9 +81,15 @@
 		 * (a popover, a wide form), dragging the popover along with it and
 		 * spacing the 7 columns far enough apart that `.cell`'s fixed size
 		 * reads as small islands with visible gaps instead of a tight grid.
+		 *
+		 * `border-spacing` is 0 horizontally (columns within a week must
+		 * touch, or the continuous selection border above breaks into
+		 * islands again) but 3px vertically: with no gap between rows, two
+		 * consecutive fully-selected weeks touch top-border-to-bottom-border
+		 * and read as one tall block instead of two separate rounded bars.
 		 */
 		border-collapse: separate;
-		border-spacing: 0;
+		border-spacing: 0 3px;
 		table-layout: fixed;
 		width: calc(var(--lol-calendar-cell-size) * 7);
 	}
