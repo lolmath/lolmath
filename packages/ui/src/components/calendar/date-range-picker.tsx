@@ -28,6 +28,9 @@ export function DateRangePicker<T extends DateValue>({
 	popoverProps = {},
 	calendarProps = {},
 	size = "medium",
+	// Picking a range takes two clicks (start, then end); closing after the
+	// first would make it look like the second one never registered.
+	shouldCloseOnSelect = false,
 	...props
 }: AriaDateRangePickerProps<T> & {
 	groupProps?: ComponentProps<typeof AriaGroup>;
@@ -42,7 +45,7 @@ export function DateRangePicker<T extends DateValue>({
 	size?: "small" | "medium" | "large";
 }) {
 	return (
-		<AriaDateRangePicker {...props}>
+		<AriaDateRangePicker {...props} shouldCloseOnSelect={shouldCloseOnSelect}>
 			{(values) => (
 				<>
 					{typeof children === "function" ? children(values) : children}

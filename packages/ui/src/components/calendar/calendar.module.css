@@ -198,7 +198,10 @@
 	 * running the length of the range, across as many rows as it spans.
 	 * `z-index: -1` keeps it behind the day number: an absolutely-positioned
 	 * box otherwise paints above plain in-flow text regardless of source
-	 * order, which would bury the digit under it.
+	 * order, which would bury the digit under it. No inset `box-shadow` here
+	 * (unlike the selected `ToggleButton` it borrows the fill from): a
+	 * per-cell shadow is a per-cell seam, visible at every date within a
+	 * selected run instead of once around the whole shape.
 	 */
 	.calendar .cell[data-selected],
 	.rangeCalendar .cell[data-selected] {
@@ -215,7 +218,6 @@
 			left: 0;
 			right: 0;
 			background: var(--lol-gradient-hextech);
-			box-shadow: inset 0 2px 4px 0 var(--lol-color-grey-300);
 			border-radius: inherit;
 		}
 	}
