@@ -3,7 +3,7 @@ import { DatePicker, Label } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-	title: "Inputs/DatePicker",
+	title: "Inputs/Temporal inputs/DatePicker",
 	component: DatePicker,
 	tags: ["autodocs"],
 	argTypes: { onChange: { action: "onChange" } },

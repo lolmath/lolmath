@@ -3,7 +3,7 @@ import { Label, TimeField } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-	title: "Inputs/TimeField",
+	title: "Inputs/Temporal inputs/TimeField",
 	component: TimeField,
 	tags: ["autodocs"],
 	argTypes: { onChange: { action: "onChange" } },

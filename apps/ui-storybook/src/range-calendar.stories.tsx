@@ -3,7 +3,7 @@ import { RangeCalendar } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-	title: "Inputs/RangeCalendar",
+	title: "Inputs/Temporal inputs/RangeCalendar",
 	component: RangeCalendar,
 	tags: ["autodocs"],
 	argTypes: { onChange: { action: "onChange" } },

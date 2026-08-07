@@ -2,15 +2,11 @@ import { parseDate, Time } from "@internationalized/date";
 import {
 	Button,
 	ButtonLink,
-	Checkbox,
 	DateField,
 	DatePicker,
 	DateRangePicker,
-	Label,
 	MultipleSelect,
 	NumberField,
-	Radio,
-	RadioGroup,
 	SearchField,
 	Select,
 	SelectButton,
@@ -18,9 +14,6 @@ import {
 	SelectListBoxItem,
 	SelectPopover,
 	SelectValue,
-	Slider,
-	Switch,
-	TextArea,
 	TextField,
 	TimeField,
 	ToggleButton,
@@ -84,15 +77,6 @@ export const EverythingOnOneLine: Story = {
 				<Button shape="round">
 					<FaGear />
 				</Button>
-				<Checkbox>Remember me</Checkbox>
-				<Switch>Notifications</Switch>
-				<RadioGroup defaultValue="cats">
-					<Label>Favorite pet</Label>
-					<Radio value="cats">Cat</Radio>
-					<Radio value="dogs">Dog</Radio>
-				</RadioGroup>
-				<Slider defaultValue={50} style={{ width: 150 }} />
-				<TextArea />
 				<DateField defaultValue={parseDate("2026-08-15")} />
 				<TimeField defaultValue={new Time(14, 30)} />
 				<DatePicker defaultValue={parseDate("2026-08-15")} />
@@ -146,15 +130,6 @@ export const Small: Story = {
 				<Button size="small" shape="round">
 					<FaGear />
 				</Button>
-				<Checkbox>Remember me</Checkbox>
-				<Switch>Notifications</Switch>
-				<RadioGroup defaultValue="cats">
-					<Label>Favorite pet</Label>
-					<Radio value="cats">Cat</Radio>
-					<Radio value="dogs">Dog</Radio>
-				</RadioGroup>
-				<Slider defaultValue={50} style={{ width: 150 }} />
-				<TextArea />
 				<DateField size="small" defaultValue={parseDate("2026-08-15")} />
 				<TimeField size="small" defaultValue={new Time(14, 30)} />
 				<DatePicker size="small" defaultValue={parseDate("2026-08-15")} />
@@ -209,15 +184,6 @@ export const Medium: Story = {
 				<Button size="medium" shape="round">
 					<FaGear />
 				</Button>
-				<Checkbox>Remember me</Checkbox>
-				<Switch>Notifications</Switch>
-				<RadioGroup defaultValue="cats">
-					<Label>Favorite pet</Label>
-					<Radio value="cats">Cat</Radio>
-					<Radio value="dogs">Dog</Radio>
-				</RadioGroup>
-				<Slider defaultValue={50} style={{ width: 150 }} />
-				<TextArea />
 				<DateField size="medium" defaultValue={parseDate("2026-08-15")} />
 				<TimeField size="medium" defaultValue={new Time(14, 30)} />
 				<DatePicker size="medium" defaultValue={parseDate("2026-08-15")} />
@@ -272,15 +238,6 @@ export const Large: Story = {
 				<Button size="large" shape="round">
 					<FaGear />
 				</Button>
-				<Checkbox>Remember me</Checkbox>
-				<Switch>Notifications</Switch>
-				<RadioGroup defaultValue="cats">
-					<Label>Favorite pet</Label>
-					<Radio value="cats">Cat</Radio>
-					<Radio value="dogs">Dog</Radio>
-				</RadioGroup>
-				<Slider defaultValue={50} style={{ width: 150 }} />
-				<TextArea />
 				<DateField size="large" defaultValue={parseDate("2026-08-15")} />
 				<TimeField size="large" defaultValue={new Time(14, 30)} />
 				<DatePicker size="large" defaultValue={parseDate("2026-08-15")} />

@@ -3,7 +3,7 @@ import { Calendar } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-	title: "Inputs/Calendar",
+	title: "Inputs/Temporal inputs/Calendar",
 	component: Calendar,
 	tags: ["autodocs"],
 	argTypes: { onChange: { action: "onChange" } },
