@@ -185,21 +185,26 @@
 	 * regardless, which is exactly wrong for a rounded pill. So the ring is
 	 * drawn the other way around: the cell's own `background` is the gold
 	 * gradient, filling its full (possibly rounded) shape, and a `::before`
-	 * sits on top with the hextech-black fill, inset by the ring's 2px
-	 * thickness. `border-radius: inherit` copies whatever radius the cell
-	 * itself ends up with, so the black layer's corners always match the gold
-	 * shape's. Where the black layer's inset is 0 on a given side, it covers
-	 * that side's gold completely — which is how a RangeCalendar's row-interior
-	 * cells (below) suppress the ring on their left/right and stay open into
-	 * their neighbors. `z-index: -1` keeps it behind the day number: an
-	 * absolutely-positioned box otherwise paints above plain in-flow text
-	 * regardless of source order, which would bury the digit under it.
+	 * sits on top with the hextech fill, inset by the ring's 2px thickness —
+	 * the same `--lol-gradient-hextech` a selected `ToggleButton` fills itself
+	 * with, so a selected date reads as the same "active" surface as
+	 * everywhere else in the library. `border-radius: inherit` copies
+	 * whatever radius the cell itself ends up with, so the hextech layer's
+	 * corners always match the gold shape's. Where its inset is 0 on a given
+	 * side, it covers that side's gold completely — which is how a
+	 * RangeCalendar's row-interior cells (below) suppress the ring on their
+	 * left/right and stay open into their neighbors, so the hextech fill
+	 * (identical in every selected cell) reads as one continuous surface
+	 * running the length of the range, across as many rows as it spans.
+	 * `z-index: -1` keeps it behind the day number: an absolutely-positioned
+	 * box otherwise paints above plain in-flow text regardless of source
+	 * order, which would bury the digit under it.
 	 */
 	.calendar .cell[data-selected],
 	.rangeCalendar .cell[data-selected] {
 		position: relative;
 		background: var(--lol-gradient-gold);
-		color: var(--lol-color-gold-100);
+		color: var(--lol-color-blue-100);
 
 		&::before {
 			content: "";
@@ -209,7 +214,8 @@
 			bottom: 2px;
 			left: 0;
 			right: 0;
-			background-color: var(--lol-color-hextech-black);
+			background: var(--lol-gradient-hextech);
+			box-shadow: inset 0 2px 4px 0 var(--lol-color-grey-300);
 			border-radius: inherit;
 		}
 	}

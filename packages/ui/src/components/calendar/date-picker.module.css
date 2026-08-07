@@ -81,25 +81,18 @@
 	}
 
 	/*
-	 * The gold border + hextech gradient fill are drawn once, on the popover
+	 * The gold border + hextech-black fill are drawn once, on the popover
 	 * itself, and cover it edge to edge — the header and grid inside stay
-	 * transparent so the gradient reads as one continuous surface rather than
-	 * a stack of separately-filled sections. `--lol-gradient-hextech-black`
-	 * is a flat fill (both stops are the same color) everywhere else it's
-	 * used in this library, which reads as solid black rather than a
-	 * gradient — so this popover gets its own two-tone version instead.
+	 * transparent so it reads as one continuous surface rather than a stack
+	 * of separately-filled sections. The visible "hextech" gradient lives on
+	 * selected dates themselves (see calendar.module.css), not the popover.
 	 */
 	.popover {
 		padding: 0.75rem;
 		border: 2px solid transparent;
 		box-shadow: 0 2px 4px 0 var(--lol-color-grey-300);
 		background:
-			linear-gradient(
-				to top,
-				var(--lol-color-hextech-black),
-				var(--lol-color-blue-500)
-			)
-			padding-box,
+			var(--lol-gradient-hextech-black) padding-box,
 			var(--lol-gradient-gold) border-box;
 	}
 }
