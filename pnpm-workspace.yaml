@@ -13,6 +13,7 @@ allowBuilds:
 minimumReleaseAge: 0
 catalogMode: strict
 catalog:
+  "@internationalized/date": ^3.12.2
   "@biomejs/biome": ^2.5.5
   "@changesets/cli": ^2.31.1
   "@orama/orama": ^3.1.18

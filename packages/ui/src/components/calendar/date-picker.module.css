@@ -1,0 +1,97 @@
+@layer lol {
+	.group {
+		display: flex;
+		align-items: stretch;
+		gap: 1px;
+		padding: 1px;
+		outline: none;
+
+		background-image: var(--lol-gradient-gold);
+
+		&[data-disabled] {
+			background-image: var(--lol-gradient-disabled);
+		}
+
+		&[data-focus-within] {
+			background-image: var(--lol-gradient-gold-hover);
+		}
+
+		&.small {
+			min-height: var(--lol-form-height-small);
+		}
+
+		&.medium {
+			min-height: var(--lol-form-height-medium);
+		}
+
+		&.large {
+			min-height: var(--lol-form-height-large);
+		}
+	}
+
+	.input {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		min-width: 0;
+		background-color: var(--lol-color-hextech-black);
+		padding: 0 0.75rem;
+		outline: none;
+
+		&[data-disabled] {
+			background-color: var(--lol-color-grey-300);
+		}
+	}
+
+	.separator {
+		display: flex;
+		align-items: center;
+		background-color: var(--lol-color-hextech-black);
+		color: var(--lol-color-grey-100);
+		padding: 0 0.125rem;
+	}
+
+	.button {
+		/* A <button> we never paint: without this it falls back to the UA's
+		   `buttonface` slab, which is grey under `color-scheme: dark`. */
+		appearance: none;
+		border: 0;
+		margin: 0;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 0.625rem;
+
+		color: var(--lol-color-gold-300);
+		background-color: var(--lol-color-hextech-black);
+
+		&[data-hovered] {
+			color: var(--lol-color-gold-100);
+		}
+
+		&[data-pressed] {
+			color: var(--lol-color-gold-600);
+		}
+
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+			background-color: var(--lol-color-grey-300);
+		}
+	}
+
+	/*
+	 * The gold border + hextech-black fill are drawn once, on the popover
+	 * itself, and cover it edge to edge — the header and grid inside stay
+	 * transparent so the gradient reads as one continuous surface rather than
+	 * a stack of separately-filled sections.
+	 */
+	.popover {
+		padding: 0.75rem;
+		border: 2px solid transparent;
+		box-shadow: 0 2px 4px 0 var(--lol-color-grey-300);
+		background:
+			var(--lol-gradient-hextech-black) padding-box,
+			var(--lol-gradient-gold) border-box;
+	}
+}

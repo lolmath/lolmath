@@ -1,9 +1,14 @@
+import { parseDate, Time } from "@internationalized/date";
 import {
 	Breadcrumb,
 	Breadcrumbs,
 	Button,
 	ButtonLink,
+	Calendar,
 	Checkbox,
+	DateField,
+	DatePicker,
+	DateRangePicker,
 	DialogButtons,
 	DialogHeading,
 	DialogTrigger,
@@ -28,6 +33,7 @@ import {
 	ProgressBar,
 	Radio,
 	RadioGroup,
+	RangeCalendar,
 	SearchField,
 	Select,
 	SelectButton,
@@ -57,6 +63,7 @@ import {
 	Text,
 	TextArea,
 	TextField,
+	TimeField,
 	ToggleButton,
 	ToggleButtonGroup,
 	Toolbar,
@@ -239,6 +246,34 @@ export const fixtures: Record<string, Fixture[]> = {
 			node: <Button shape="normal">Normal</Button>,
 		},
 	],
+	calendar: [
+		{
+			id: "calendar-default",
+			node: (
+				<Calendar aria-label="Date" defaultValue={parseDate("2026-08-15")} />
+			),
+		},
+		{
+			id: "calendar-month-year-picker",
+			node: (
+				<Calendar
+					aria-label="Date"
+					header="picker"
+					defaultValue={parseDate("2026-08-15")}
+				/>
+			),
+		},
+		{
+			id: "calendar-disabled",
+			node: (
+				<Calendar
+					aria-label="Date"
+					isDisabled
+					defaultValue={parseDate("2026-08-15")}
+				/>
+			),
+		},
+	],
 	/*
 	 * checkbox.module.css's .icon used to shrink like any other flex item, so a
 	 * label too long for its container squished the glyph's width while its
@@ -273,6 +308,85 @@ export const fixtures: Record<string, Fixture[]> = {
 				<Checkbox isDisabled defaultSelected>
 					Enable Low Spec Mode
 				</Checkbox>
+			),
+		},
+	],
+	"date-field": [
+		{
+			id: "date-field-default",
+			node: (
+				<DateField defaultValue={parseDate("2026-08-15")} style={wide}>
+					<Label>Date of birth</Label>
+				</DateField>
+			),
+		},
+		{
+			id: "date-field-disabled",
+			node: (
+				<DateField
+					defaultValue={parseDate("2026-08-15")}
+					isDisabled
+					style={wide}
+				>
+					<Label>Date of birth</Label>
+				</DateField>
+			),
+		},
+	],
+	"date-picker": [
+		{
+			id: "date-picker-default",
+			node: (
+				<DatePicker defaultValue={parseDate("2026-08-15")} style={wide}>
+					<Label>Match date</Label>
+				</DatePicker>
+			),
+		},
+		{
+			id: "date-picker-open",
+			fullPage: true,
+			style: centred,
+			node: (
+				<DatePicker
+					defaultValue={parseDate("2026-08-15")}
+					defaultOpen
+					style={wide}
+				>
+					<Label>Match date</Label>
+				</DatePicker>
+			),
+		},
+	],
+	"date-range-picker": [
+		{
+			id: "date-range-picker-default",
+			node: (
+				<DateRangePicker
+					defaultValue={{
+						start: parseDate("2026-08-10"),
+						end: parseDate("2026-08-16"),
+					}}
+					style={wide}
+				>
+					<Label>Event dates</Label>
+				</DateRangePicker>
+			),
+		},
+		{
+			id: "date-range-picker-open",
+			fullPage: true,
+			style: centred,
+			node: (
+				<DateRangePicker
+					defaultValue={{
+						start: parseDate("2026-08-10"),
+						end: parseDate("2026-08-16"),
+					}}
+					defaultOpen
+					style={wide}
+				>
+					<Label>Event dates</Label>
+				</DateRangePicker>
 			),
 		},
 	],
@@ -508,6 +622,50 @@ export const fixtures: Record<string, Fixture[]> = {
 					<Radio value="cat">Cat</Radio>
 					<Radio value="dog">Dog</Radio>
 				</RadioGroup>
+			),
+		},
+	],
+	"range-calendar": [
+		{
+			id: "range-calendar-default",
+			node: (
+				<RangeCalendar
+					aria-label="Date range"
+					defaultValue={{
+						start: parseDate("2026-08-10"),
+						end: parseDate("2026-08-16"),
+					}}
+				/>
+			),
+		},
+		{
+			/*
+			 * A range spanning multiple weeks: the continuous border must cap
+			 * off at the start/end of every row it wraps through, not just at
+			 * the true start/end of the selection.
+			 */
+			id: "range-calendar-spanning-weeks",
+			node: (
+				<RangeCalendar
+					aria-label="Date range"
+					defaultValue={{
+						start: parseDate("2026-08-04"),
+						end: parseDate("2026-09-02"),
+					}}
+				/>
+			),
+		},
+		{
+			id: "range-calendar-disabled",
+			node: (
+				<RangeCalendar
+					aria-label="Date range"
+					isDisabled
+					defaultValue={{
+						start: parseDate("2026-08-10"),
+						end: parseDate("2026-08-16"),
+					}}
+				/>
 			),
 		},
 	],
@@ -829,6 +987,24 @@ export const fixtures: Record<string, Fixture[]> = {
 				<TextField defaultValue="The quick brown fox." isDisabled style={wide}>
 					<Label>Name</Label>
 				</TextField>
+			),
+		},
+	],
+	"time-field": [
+		{
+			id: "time-field-default",
+			node: (
+				<TimeField defaultValue={new Time(14, 30)} style={wide}>
+					<Label>Start time</Label>
+				</TimeField>
+			),
+		},
+		{
+			id: "time-field-disabled",
+			node: (
+				<TimeField defaultValue={new Time(14, 30)} isDisabled style={wide}>
+					<Label>Start time</Label>
+				</TimeField>
 			),
 		},
 	],

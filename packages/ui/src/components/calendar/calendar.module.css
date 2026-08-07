@@ -1,0 +1,202 @@
+@layer lol {
+	.calendar,
+	.rangeCalendar {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		outline: none;
+
+		&[data-disabled] {
+			opacity: 0.6;
+		}
+	}
+
+	.months {
+		display: flex;
+		gap: 1.5rem;
+	}
+
+	.month {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+
+	.pickerGroup {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.375rem;
+		flex: 1;
+	}
+
+	.chevronFlipped {
+		transform: rotate(180deg);
+	}
+
+	.heading {
+		flex: 1;
+		margin: 0;
+		text-align: center;
+		color: var(--lol-color-gold-100);
+		font-family: var(--lol-font-family-beaufort);
+		text-transform: uppercase;
+		font-size: var(--lol-font-size-sm);
+		font-weight: var(--lol-font-weight-h5);
+		letter-spacing: var(--lol-letter-spacing-h5);
+	}
+
+	.grid {
+		/*
+		 * `separate` (not `collapse`) is what makes the continuous-selection
+		 * border below work at all: `collapse` merges each pair of adjacent
+		 * cells' touching borders into one, picking a winner between a
+		 * selected row's colored edge and its unselected neighbor's
+		 * transparent one — which silently erases every other segment of the
+		 * "continuous" line. `separate` keeps each cell's border independent.
+		 */
+		border-collapse: separate;
+		border-spacing: 0;
+		table-layout: fixed;
+		width: 100%;
+	}
+
+	.gridHeader {
+		/* thead: no visual treatment of its own beyond the cells within it. */
+	}
+
+	.headerCell {
+		padding: 0 0 0.5rem 0;
+		font-family: var(--lol-font-family-spiegel);
+		font-size: var(--lol-font-size-xs);
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		text-align: center;
+		color: var(--lol-color-grey-100);
+	}
+
+	.cell {
+		position: relative;
+		z-index: 0;
+		width: 2.25rem;
+		height: 2.25rem;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		font-family: var(--lol-font-family-spiegel);
+		font-size: var(--lol-font-size-sm);
+		font-weight: 500;
+		color: var(--lol-color-gold-100);
+
+		border: 2px solid transparent;
+		border-radius: 9999px;
+		outline: none;
+		cursor: default;
+		-webkit-tap-highlight-color: transparent;
+
+		&[data-outside-month] {
+			color: var(--lol-color-grey-150);
+		}
+
+		&[data-outside-visible-range] {
+			visibility: hidden;
+		}
+
+		&[data-unavailable] {
+			color: var(--lol-color-grey-150);
+			text-decoration: line-through;
+		}
+
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+		}
+
+		&[data-hovered]:not([data-disabled], [data-selected]) {
+			background-color: var(--lol-color-grey-300);
+		}
+
+		&[data-pressed]:not([data-disabled]) {
+			background-color: var(--lol-color-grey-200);
+		}
+
+		&[data-focus-visible] {
+			z-index: 2;
+			outline: 2px solid var(--lol-color-gold-400);
+			outline-offset: 2px;
+		}
+
+		&[data-invalid] {
+			color: var(--lol-color-gold-400);
+		}
+
+		&[data-today]:not([data-selected]) {
+			color: var(--lol-color-gold-400);
+			font-weight: 700;
+
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0.25rem;
+				width: 3px;
+				height: 3px;
+				border-radius: 9999px;
+				background-color: var(--lol-color-gold-400);
+			}
+		}
+	}
+
+	/*
+	 * Single-selection Calendar: exactly one date can be selected, so it's
+	 * always drawn as a standalone rounded pill — there's no row to stay
+	 * continuous with.
+	 */
+	.calendar .cell[data-selected] {
+		border-radius: 9999px;
+		border-color: var(--lol-color-gold-400);
+		background-color: var(--lol-color-hextech-black);
+		color: var(--lol-color-gold-100);
+	}
+
+	/*
+	 * RangeCalendar: the selection is a run of adjacent cells, and the border
+	 * needs to read as one continuous gold outline around that whole shape
+	 * rather than a stack of separate pills. Every selected cell gets a
+	 * colored top/bottom edge only — with the side edges left transparent, the
+	 * background (which paints under a transparent border same as a colored
+	 * one) carries the fill from one cell straight into the next, so the
+	 * top/bottom lines read as unbroken. Only the actual start/end of the
+	 * range, or a cell sitting at the edge of its own week row (the range
+	 * wraps there), gets a colored side edge and a rounded corner — capping
+	 * the bar at the true ends and at every row break.
+	 */
+	.rangeCalendar .cell[data-selected] {
+		border-radius: 0;
+		border-top-color: var(--lol-color-gold-400);
+		border-bottom-color: var(--lol-color-gold-400);
+		background-color: var(--lol-color-hextech-black);
+	}
+
+	.rangeCalendar .cell[data-selected][data-selection-start],
+	.rangeCalendar td:first-child > .cell[data-selected] {
+		border-left-color: var(--lol-color-gold-400);
+		border-top-left-radius: 9999px;
+		border-bottom-left-radius: 9999px;
+	}
+
+	.rangeCalendar .cell[data-selected][data-selection-end],
+	.rangeCalendar td:last-child > .cell[data-selected] {
+		border-right-color: var(--lol-color-gold-400);
+		border-top-right-radius: 9999px;
+		border-bottom-right-radius: 9999px;
+	}
+}
