@@ -1,6 +1,8 @@
 @layer lol {
 	.calendar,
 	.rangeCalendar {
+		--lol-calendar-cell-size: 2.5rem;
+
 		display: flex;
 		flex-direction: column;
 		gap: 0.75rem;
@@ -61,11 +63,17 @@
 		 * selected row's colored edge and its unselected neighbor's
 		 * transparent one — which silently erases every other segment of the
 		 * "continuous" line. `separate` keeps each cell's border independent.
+		 *
+		 * The table is sized to exactly 7 cells wide rather than `100%`: with
+		 * no intrinsic width, it stretches to fill whatever it's placed in
+		 * (a popover, a wide form), dragging the popover along with it and
+		 * spacing the 7 columns far enough apart that `.cell`'s fixed size
+		 * reads as small islands with visible gaps instead of a tight grid.
 		 */
 		border-collapse: separate;
 		border-spacing: 0;
 		table-layout: fixed;
-		width: 100%;
+		width: calc(var(--lol-calendar-cell-size) * 7);
 	}
 
 	.gridHeader {
@@ -86,9 +94,8 @@
 	.cell {
 		position: relative;
 		z-index: 0;
-		width: 2.25rem;
-		height: 2.25rem;
-		margin: 0 auto;
+		width: 100%;
+		height: var(--lol-calendar-cell-size);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -98,7 +105,6 @@
 		font-weight: 500;
 		color: var(--lol-color-gold-100);
 
-		border: 2px solid transparent;
 		border-radius: 9999px;
 		outline: none;
 		cursor: default;
@@ -156,47 +162,88 @@
 	}
 
 	/*
+	 * `border-color` can't be a gradient, and `border-image` (which can) turns
+	 * out not to clip to `border-radius` — it paints a sharp rectangular frame
+	 * regardless, which is exactly wrong for a rounded pill. So the ring is
+	 * drawn the other way around: the cell's own `background` is the gold
+	 * gradient, filling its full (possibly rounded) shape, and a `::before`
+	 * sits on top with the hextech-black fill, inset by the ring's 2px
+	 * thickness. `border-radius: inherit` copies whatever radius the cell
+	 * itself ends up with, so the black layer's corners always match the gold
+	 * shape's. Where the black layer's inset is 0 on a given side, it covers
+	 * that side's gold completely — which is how a RangeCalendar's row-interior
+	 * cells (below) suppress the ring on their left/right and stay open into
+	 * their neighbors. `z-index: -1` keeps it behind the day number: an
+	 * absolutely-positioned box otherwise paints above plain in-flow text
+	 * regardless of source order, which would bury the digit under it.
+	 */
+	.calendar .cell[data-selected],
+	.rangeCalendar .cell[data-selected] {
+		position: relative;
+		background: var(--lol-gradient-gold);
+		color: var(--lol-color-gold-100);
+
+		&::before {
+			content: "";
+			position: absolute;
+			z-index: -1;
+			top: 2px;
+			bottom: 2px;
+			left: 0;
+			right: 0;
+			background-color: var(--lol-color-hextech-black);
+			border-radius: inherit;
+		}
+	}
+
+	/*
 	 * Single-selection Calendar: exactly one date can be selected, so it's
 	 * always drawn as a standalone rounded pill — there's no row to stay
 	 * continuous with.
 	 */
 	.calendar .cell[data-selected] {
 		border-radius: 9999px;
-		border-color: var(--lol-color-gold-400);
-		background-color: var(--lol-color-hextech-black);
-		color: var(--lol-color-gold-100);
+
+		&::before {
+			left: 2px;
+			right: 2px;
+		}
 	}
 
 	/*
-	 * RangeCalendar: the selection is a run of adjacent cells, and the border
+	 * RangeCalendar: the selection is a run of adjacent cells, and the ring
 	 * needs to read as one continuous gold outline around that whole shape
-	 * rather than a stack of separate pills. Every selected cell gets a
-	 * colored top/bottom edge only — with the side edges left transparent, the
-	 * background (which paints under a transparent border same as a colored
-	 * one) carries the fill from one cell straight into the next, so the
-	 * top/bottom lines read as unbroken. Only the actual start/end of the
+	 * rather than a stack of separate pills. By default a selected cell is
+	 * square and open on both sides (the black layer covers left/right
+	 * completely), so the gold shows only along the top/bottom and one cell's
+	 * fill runs straight into the next. Only the actual start/end of the
 	 * range, or a cell sitting at the edge of its own week row (the range
-	 * wraps there), gets a colored side edge and a rounded corner — capping
-	 * the bar at the true ends and at every row break.
+	 * wraps there), opens up a side and rounds that corner — capping the bar
+	 * at the true ends and at every row break. The two rules below only ever
+	 * touch their own side, so a single-day range (both start and end) still
+	 * gets both sides capped.
 	 */
 	.rangeCalendar .cell[data-selected] {
 		border-radius: 0;
-		border-top-color: var(--lol-color-gold-400);
-		border-bottom-color: var(--lol-color-gold-400);
-		background-color: var(--lol-color-hextech-black);
 	}
 
 	.rangeCalendar .cell[data-selected][data-selection-start],
 	.rangeCalendar td:first-child > .cell[data-selected] {
-		border-left-color: var(--lol-color-gold-400);
 		border-top-left-radius: 9999px;
 		border-bottom-left-radius: 9999px;
+
+		&::before {
+			left: 2px;
+		}
 	}
 
 	.rangeCalendar .cell[data-selected][data-selection-end],
 	.rangeCalendar td:last-child > .cell[data-selected] {
-		border-right-color: var(--lol-color-gold-400);
 		border-top-right-radius: 9999px;
 		border-bottom-right-radius: 9999px;
+
+		&::before {
+			right: 2px;
+		}
 	}
 }
