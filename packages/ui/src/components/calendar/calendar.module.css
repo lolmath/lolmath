@@ -248,13 +248,29 @@
 	 * at the true ends and at every row break. The two rules below only ever
 	 * touch their own side, so a single-day range (both start and end) still
 	 * gets both sides capped.
+	 *
+	 * A multi-month display (`visibleDuration: {months: 2+}`) adds a second
+	 * way a row can "break": when one calendar week straddles two displayed
+	 * months, each month's own grid still renders all 7 columns for that
+	 * week, but the days that belong to the *other* grid are hidden there
+	 * (`data-outside-visible-range`, to avoid showing the same date twice)
+	 * rather than removed from the DOM — so `td:last-child`/`td:first-child`
+	 * still land on those invisible cells, not on the last/first *visible*
+	 * one. Without the extra `:has()` rules below, the visible edge cell
+	 * (e.g. the 31st, immediately before a hidden 1st) never matches either
+	 * selector and is left square — a hard corner where a rounded cap was
+	 * expected.
 	 */
 	.rangeCalendar .cell[data-selected] {
 		border-radius: 0;
 	}
 
 	.rangeCalendar .cell[data-selected][data-selection-start],
-	.rangeCalendar td:first-child > .cell[data-selected] {
+	.rangeCalendar td:first-child > .cell[data-selected],
+	.rangeCalendar
+		td:has([data-outside-visible-range])
+		+ td
+		> .cell[data-selected] {
 		border-top-left-radius: 9999px;
 		border-bottom-left-radius: 9999px;
 
@@ -264,7 +280,10 @@
 	}
 
 	.rangeCalendar .cell[data-selected][data-selection-end],
-	.rangeCalendar td:last-child > .cell[data-selected] {
+	.rangeCalendar td:last-child > .cell[data-selected],
+	.rangeCalendar
+		td:has(+ td [data-outside-visible-range])
+		> .cell[data-selected] {
 		border-top-right-radius: 9999px;
 		border-bottom-right-radius: 9999px;
 
