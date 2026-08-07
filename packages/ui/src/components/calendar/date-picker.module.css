@@ -58,6 +58,11 @@
 		 * fill covers those two slivers instead.
 		 */
 		margin: 0 -1px;
+
+		&[data-disabled] {
+			background-color: var(--lol-color-grey-300);
+			color: var(--lol-color-grey-150);
+		}
 	}
 
 	.button {

@@ -57,7 +57,11 @@ export function DateRangePicker<T extends DateValue>({
 						)}
 					>
 						<PickerDateInput {...startInputProps} slot="start" />
-						<span className={classes.separator} aria-hidden="true">
+						<span
+							className={classes.separator}
+							aria-hidden="true"
+							data-disabled={values.isDisabled || undefined}
+						>
 							–
 						</span>
 						<PickerDateInput {...endInputProps} slot="end" />
