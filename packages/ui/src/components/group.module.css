@@ -74,6 +74,9 @@
 		font-family: var(--lol-font-family-spiegel);
 		font-weight: 700;
 		font-size: 0.75rem;
+		/* Match `.input`'s line-height so flex-centering both glyphs against
+		   the same line-box height keeps them optically level. */
+		line-height: 1rem;
 		padding: 0 0.5rem;
 
 		&[data-disabled] {

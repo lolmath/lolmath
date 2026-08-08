@@ -51,6 +51,10 @@
 		color: var(--lol-color-grey-100);
 		padding: 0 0.125rem;
 		font-family: var(--lol-font-family-spiegel);
+		/* Match the date segments' line-height so flex-centering the dash
+		   against the same line-box height keeps it optically level. */
+		font-size: 0.75rem;
+		line-height: 1rem;
 		/*
 		 * `.group`'s `gap` is what shows its gold background between every
 		 * pair of children — including the two 1px slivers flanking this
