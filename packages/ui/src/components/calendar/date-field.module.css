@@ -1,0 +1,82 @@
+@layer lol {
+	.dateInput {
+		background:
+			var(--lol-input-background-gradient) padding-box,
+			var(--lol-input-border-gradient) border-box;
+
+		--lol-input-border-gradient: var(--lol-gradient-gold);
+		--lol-input-background-gradient: var(--lol-gradient-hextech-black);
+
+		border: 1px solid transparent;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin: 0;
+		padding: 0 0.75rem;
+		outline: none;
+
+		font-family: var(--lol-font-family-spiegel);
+
+		&[data-disabled] {
+			--lol-input-border-gradient: var(--lol-gradient-disabled);
+		}
+
+		&[data-focus-within] {
+			--lol-input-border-gradient: var(--lol-gradient-gold-hover);
+			--lol-input-background-gradient: var(--lol-gradient-grey-focus);
+		}
+
+		&.small {
+			min-height: var(--lol-form-height-small);
+		}
+
+		&.medium {
+			min-height: var(--lol-form-height-medium);
+		}
+
+		&.large {
+			min-height: var(--lol-form-height-large);
+		}
+	}
+
+	.segment {
+		padding: 0 0.125rem;
+		border-radius: 2px;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 500;
+		letter-spacing: 0.025em;
+		color: var(--lol-color-gold-100);
+		font-variant-numeric: tabular-nums;
+		outline: none;
+		caret-color: transparent;
+
+		/* Literal separators ("/", ":", ",") sit between segments; they are not
+		   editable so they shouldn't pick up hover/focus affordances. */
+		&[data-type="literal"] {
+			padding: 0 0.125rem;
+			color: var(--lol-color-grey-100);
+		}
+
+		&[data-placeholder] {
+			color: var(--lol-color-grey-100);
+		}
+
+		&[data-hovered]:not([data-type="literal"]) {
+			background-color: var(--lol-color-grey-300);
+		}
+
+		&[data-focused]:not([data-type="literal"]) {
+			background-color: var(--lol-color-gold-600);
+			color: var(--lol-color-gold-100);
+		}
+
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+		}
+
+		&[data-readonly] {
+			color: var(--lol-color-grey-100);
+		}
+	}
+}

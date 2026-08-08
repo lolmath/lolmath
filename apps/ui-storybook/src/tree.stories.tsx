@@ -94,7 +94,7 @@ function renderRune(rune: RuneNode) {
 }
 
 const meta: Meta<typeof Tree> = {
-	title: "Tree",
+	title: "Data Display/Tree",
 	component: Tree,
 	tags: ["autodocs"],
 	argTypes: {

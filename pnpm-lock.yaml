@@ -12,6 +12,9 @@ catalogs:
     '@changesets/cli':
       specifier: ^2.31.1
       version: 2.31.1
+    '@internationalized/date':
+      specifier: ^3.12.2
+      version: 3.12.2
     '@orama/orama':
       specifier: ^3.1.18
       version: 3.1.18
@@ -231,6 +234,9 @@ importers:
 
   apps/ui-storybook:
     dependencies:
+      '@internationalized/date':
+        specifier: 'catalog:'
+        version: 3.12.2
       '@storybook/addon-docs':
         specifier: 'catalog:'
         version: 10.5.4(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.4(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0))

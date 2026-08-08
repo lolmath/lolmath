@@ -9,6 +9,7 @@
 		"test:visual": "playwright test"
 	},
 	"dependencies": {
+		"@internationalized/date": "catalog:",
 		"@storybook/addon-docs": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",

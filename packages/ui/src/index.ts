@@ -2,6 +2,7 @@ import "./style.css";
 
 export {
 	Collection,
+	type DateValue,
 	Dialog,
 	DialogTrigger,
 	FieldError,
@@ -17,6 +18,7 @@ export {
 	type SortDescriptor,
 	type SortDirection,
 	TableLayout,
+	type TimeValue,
 	Virtualizer,
 	WaterfallLayout,
 } from "react-aria-components";
@@ -24,6 +26,11 @@ export * from "./components/autocomplete";
 export * from "./components/breadcrumbs/breadcrumbs";
 export * from "./components/button";
 export * from "./components/button-link";
+export * from "./components/calendar/calendar";
+export * from "./components/calendar/date-field";
+export * from "./components/calendar/date-picker";
+export * from "./components/calendar/date-range-picker";
+export * from "./components/calendar/time-field";
 export * from "./components/checkbox/checkbox";
 export * from "./components/disclosure";
 export * from "./components/divider";
