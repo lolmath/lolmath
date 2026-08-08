@@ -1,5 +1,17 @@
 # @lolmath/ui
 
+## 9.2.0
+
+### Minor Changes
+
+- 684aacc: Add `Calendar`, `RangeCalendar`, `DateField`, `TimeField`, `DatePicker`, and `DateRangePicker`. Selected dates get a continuous gold border with a hextech-black fill, rounded at the true start/end of a selection and at the start/end of every row it wraps through. `Calendar`/`RangeCalendar` support a `header="picker"` mode with Select-driven month and year dropdowns.
+- 60f49cc: Add `PopoverBody` for composing a `Popover`'s text content. The popover itself carries no content padding, since text needs breathing room from the edge while other content (a divider, an image) already runs edge to edge on its own — `PopoverBody` supplies that padding without reaching for a one-off inline style.
+
+### Patch Changes
+
+- 4a6e3bf: Fix `Checkbox`'s glyph squishing when the label text next to it left too little room. The icon is a flex item with no `flex-shrink: 0`, so long labels or narrow containers shrank its width while its fixed height stayed put, distorting the box. The icon now holds its size in both dimensions regardless of its sibling's length.
+- 8f0484f: Fix multiple select layout: left-align tags and empty text
+
 ## 9.1.2
 
 ### Patch Changes
