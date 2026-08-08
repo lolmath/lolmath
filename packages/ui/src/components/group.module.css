@@ -2,19 +2,29 @@
 	.group {
 		display: flex;
 		align-items: stretch;
-		gap: 1px;
-		padding: 1px;
-		margin: 0;
 		outline: none;
 
-		background-image: var(--lol-gradient-gold);
+		/*
+		 * Unlike NumberField's Group, the pieces here (name + tag, start date +
+		 * end date, ...) read as one field, not separately-boxed controls — so
+		 * the border and fill are drawn once, on the group itself, instead of
+		 * per-child with gaps between them.
+		 */
+		background:
+			var(--lol-input-background-gradient) padding-box,
+			var(--lol-input-border-gradient) border-box;
+
+		--lol-input-border-gradient: var(--lol-gradient-gold);
+		--lol-input-background-gradient: var(--lol-gradient-hextech-black);
+
+		border: 1px solid transparent;
 
 		&[data-disabled] {
-			background-image: var(--lol-gradient-disabled);
+			--lol-input-border-gradient: var(--lol-gradient-disabled);
 		}
 
 		&[data-focus-within] {
-			background-image: var(--lol-gradient-gold-hover);
+			--lol-input-border-gradient: var(--lol-gradient-gold-hover);
 		}
 
 		&.small {
@@ -31,12 +41,12 @@
 	}
 
 	.input {
-		/* The group draws the border as its own 1px gradient padding. */
+		/* Transparent so the group's own fill shows through with no seam. */
 		border: 0;
 		margin: 0;
 		flex: 1;
 		min-width: 0;
-		background-color: var(--lol-color-hextech-black);
+		background-color: transparent;
 		color: var(--lol-color-gold-100);
 		font-family: var(--lol-font-family-spiegel);
 		font-weight: 500;
@@ -60,11 +70,14 @@
 		display: flex;
 		align-items: center;
 		flex: none;
-		background-color: var(--lol-color-hextech-black);
 		color: var(--lol-color-gold-300);
 		font-family: var(--lol-font-family-spiegel);
 		font-weight: 700;
 		font-size: 0.75rem;
 		padding: 0 0.5rem;
+
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+		}
 	}
 }
