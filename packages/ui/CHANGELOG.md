@@ -1,5 +1,11 @@
 # @lolmath/ui
 
+## 9.3.0
+
+### Minor Changes
+
+- 4766cf1: Add `Group`, for visually merging several focusable controls into a single bordered field (e.g. a summoner name plus its `#`-prefixed tag), along with the borderless `GroupInput` and `GroupSeparator` segments meant to sit inside it.
+
 ## 9.2.0
 
 ### Minor Changes
