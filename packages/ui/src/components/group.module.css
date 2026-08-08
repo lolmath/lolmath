@@ -1,0 +1,70 @@
+@layer lol {
+	.group {
+		display: flex;
+		align-items: stretch;
+		gap: 1px;
+		padding: 1px;
+		margin: 0;
+		outline: none;
+
+		background-image: var(--lol-gradient-gold);
+
+		&[data-disabled] {
+			background-image: var(--lol-gradient-disabled);
+		}
+
+		&[data-focus-within] {
+			background-image: var(--lol-gradient-gold-hover);
+		}
+
+		&.small {
+			min-height: var(--lol-form-height-small);
+		}
+
+		&.medium {
+			min-height: var(--lol-form-height-medium);
+		}
+
+		&.large {
+			min-height: var(--lol-form-height-large);
+		}
+	}
+
+	.input {
+		/* The group draws the border as its own 1px gradient padding. */
+		border: 0;
+		margin: 0;
+		flex: 1;
+		min-width: 0;
+		background-color: var(--lol-color-hextech-black);
+		color: var(--lol-color-gold-100);
+		font-family: var(--lol-font-family-spiegel);
+		font-weight: 500;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		letter-spacing: 0.025em;
+		padding: 0 0.75rem;
+		outline: none;
+
+		&[data-disabled] {
+			background-color: var(--lol-color-grey-300);
+			color: var(--lol-color-grey-100);
+		}
+
+		&[data-focused] {
+			background-image: var(--lol-gradient-grey-focus);
+		}
+	}
+
+	.separator {
+		display: flex;
+		align-items: center;
+		flex: none;
+		background-color: var(--lol-color-hextech-black);
+		color: var(--lol-color-gold-300);
+		font-family: var(--lol-font-family-spiegel);
+		font-weight: 700;
+		font-size: 0.75rem;
+		padding: 0 0.5rem;
+	}
+}

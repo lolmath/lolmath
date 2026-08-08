@@ -34,6 +34,7 @@ export * from "./components/calendar/time-field";
 export * from "./components/checkbox/checkbox";
 export * from "./components/disclosure";
 export * from "./components/divider";
+export * from "./components/group";
 export * from "./components/menu/menu";
 export * from "./components/modal";
 export * from "./components/number-field";
