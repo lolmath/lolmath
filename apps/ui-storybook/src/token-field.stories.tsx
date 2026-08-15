@@ -15,13 +15,18 @@ import { useState } from "react";
 
 // A field value is a list of `text` and `token` segments rather than a string.
 // Subclassing it is how tokenizing-as-you-type works: `tokenize` runs over every
-// run of text the field edits, so `@summoner` and `#patch` become tokens the
-// moment they are typed, pasted, or undone back into existence.
+// run of text the field edits, so `@summoner` and `#patch` become tokens as they
+// are typed, pasted, or undone back into existence.
+//
+// The trailing `(?=\s)` is what makes that bearable to type into: without it the
+// pattern matches the moment a single character follows the `@`, the word is
+// frozen into a token, and the rest of the name lands in the text after it. A
+// token forms once the word is finished instead.
 class MentionValue extends TokenFieldValue {
 	protected tokenize(text: string) {
 		if (!text.length) return [{ type: "text" as const, text }];
 
-		const pattern = /(?<=^|\s)[@#]\S+/g;
+		const pattern = /(?<=^|\s)[@#]\S+(?=\s)/g;
 		const segments: Array<{ type: "text" | "token"; text: string }> = [];
 		let start = 0;
 		let match: RegExpExecArray | null = pattern.exec(text);
