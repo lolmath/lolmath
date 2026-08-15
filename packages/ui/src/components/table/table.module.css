@@ -37,6 +37,20 @@
 	div.table {
 		overflow: auto;
 		position: relative;
+
+		/* That also makes the header stick over the rows as they scroll past. The
+		   header cells tile the full width of the row, so frosting each one covers
+		   the strip; without it the rows read straight through the labels. The
+		   tint is the client's page black, which is what any surface the table
+		   sits on is a shade of. */
+		& .column {
+			background-color: color-mix(
+				in srgb,
+				var(--lol-color-hextech-black),
+				transparent 4%
+			);
+			backdrop-filter: blur(12px);
+		}
 	}
 
 	.row {

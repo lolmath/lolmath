@@ -19,7 +19,8 @@ scroll; and drag and drop, with `useTableDragAndDrop` returning the
 
 `ResizableTableContainer` is now the styled component it always claimed to be —
 it was re-exported unstyled, so its scroll container never had the overflow it
-needs — and a `Table` inside a `Virtualizer` scrolls its own rows.
+needs — and a `Table` inside a `Virtualizer` scrolls its own rows under a frosted
+sticky header.
 
 `useAsyncList`, `useListData`, `useDragAndDrop` and `isTextDropItem` are
 re-exported for the lists these features are fed from.
