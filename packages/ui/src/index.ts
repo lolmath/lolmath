@@ -6,12 +6,17 @@ export {
 	Dialog,
 	DialogTrigger,
 	FieldError,
+	// Wrappers that make an arbitrary element usable as a trigger: `Focusable`
+	// for a `PreviewTrigger`, `Pressable` for a context `MenuTrigger`. Both
+	// still need a role of their own — see the notes on those components.
+	Focusable,
 	GridLayout,
 	type Key,
 	ListBoxItem,
 	ListLayout,
 	// TODO: Maybe remove this if it is not used.
 	Popover as UnstyledPopover,
+	Pressable,
 	RouterProvider,
 	type Selection,
 	Size,
@@ -39,6 +44,7 @@ export * from "./components/menu/menu";
 export * from "./components/modal";
 export * from "./components/number-field";
 export * from "./components/popover";
+export * from "./components/preview-trigger";
 export * from "./components/progress-bar";
 export * from "./components/radio-group/radio-group";
 export * from "./components/search-field/search-field";
@@ -55,6 +61,7 @@ export * from "./components/text-area";
 export * from "./components/text-field";
 export * from "./components/toggle-button";
 export * from "./components/toggle-button-group";
+export * from "./components/token-field/token-field";
 export * from "./components/toolbar";
 export * from "./components/tree/tree";
 export * from "./components/typography/heading";

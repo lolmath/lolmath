@@ -46,8 +46,8 @@ catalog:
   prop-types: ^15.8.1
   publint: ^0.3.22
   react: ^19.2.8
-  react-aria: ^3.50.0
-  react-aria-components: ^1.19.0
+  react-aria: ^3.51.0
+  react-aria-components: ^1.20.0
   react-dom: ^19.2.8
   react-icons: ^5.7.0
   sonner: ^2.0.7

@@ -1,4 +1,5 @@
 import {
+	Button,
 	ResizableTableContainer,
 	type SortDescriptor,
 	Table,
@@ -9,6 +10,7 @@ import {
 	TableFooter,
 	TableHeader,
 	TableRow,
+	TextField,
 } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useMemo, useState } from "react";
@@ -285,6 +287,59 @@ export const Resizable: Story = {
 		</ResizableTableContainer>
 	),
 	args: {},
+};
+
+/**
+ * A table's arrow keys normally move between cells, which leaves no way to move
+ * the caret inside a textfield in one. `keyboardNavigationBehavior="tab"` hands
+ * the arrows back to the cell's own content — left and right move the caret
+ * through the note below rather than jumping to the next cell — and moves focus
+ * between the row's controls with Tab instead.
+ */
+export const EditableCells: Story = {
+	args: { keyboardNavigationBehavior: "tab" },
+	render: (args) => (
+		<Table {...args} aria-label="Runes">
+			<TableHeader>
+				<TableColumn id="rune" isRowHeader>
+					Rune
+				</TableColumn>
+				<TableColumn id="note">Note</TableColumn>
+				<TableColumn id="actions" align="end">
+					Actions
+				</TableColumn>
+			</TableHeader>
+			<TableBody
+				items={[
+					{ id: 1, rune: "Conqueror" },
+					{ id: 2, rune: "Electrocute" },
+					{ id: 3, rune: "Grasp of the Undying" },
+				]}
+			>
+				{(item) => (
+					<TableRow>
+						<TableCell>{item.rune}</TableCell>
+						<TableCell>
+							<TextField
+								size="small"
+								aria-label={`Note for ${item.rune}`}
+								defaultValue="Try the arrow keys in here"
+							/>
+						</TableCell>
+						<TableCell align="end">
+							<Button
+								size="small"
+								preset="dimmed"
+								onPress={() => alert(`reset ${item.rune}`)}
+							>
+								Reset
+							</Button>
+						</TableCell>
+					</TableRow>
+				)}
+			</TableBody>
+		</Table>
+	),
 };
 
 export const Empty: Story = {

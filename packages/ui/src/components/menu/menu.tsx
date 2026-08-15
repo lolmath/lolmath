@@ -24,6 +24,14 @@ import classes from "./menu.module.css";
 
 export type { MenuItemProps, MenuProps } from "react-aria-components";
 
+// `trigger` decides what opens the menu: the default `"press"`, `"longPress"`,
+// or `"contextMenu"` for a right click (long press on touch, and the platform's
+// context-menu key or screen reader gesture on a keyboard). A context menu is
+// never the only way to reach an action — the same items belong somewhere a
+// pointer can find them too.
+//
+// Whatever opens it, the trigger child must be a `Button` or wrapped in
+// `Pressable` so that it is announced as interactive.
 export const MenuTrigger = AriaMenuTrigger;
 export const SubmenuTrigger = AriaSubmenuTrigger;
 
