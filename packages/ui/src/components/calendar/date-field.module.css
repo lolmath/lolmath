@@ -17,8 +17,12 @@
 
 		font-family: var(--lol-font-family-spiegel);
 
+		/* Matches the fill DatePicker/DateRangePicker's own date input takes when
+		   disabled, so a standalone DateField/TimeField greys out the same way as
+		   the pickers it sits next to in a form. */
 		&[data-disabled] {
 			--lol-input-border-gradient: var(--lol-gradient-disabled);
+			--lol-input-background-gradient: var(--lol-gradient-grey-300);
 		}
 
 		&[data-focus-within] {
