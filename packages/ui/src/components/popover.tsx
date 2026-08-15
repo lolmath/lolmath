@@ -10,7 +10,9 @@ import classes from "./popover.module.css";
 
 // Note: there is no tooltip component. Tooltips do not work on mobile devices.
 // Use a text on the page instead, or use a toggle tip (which is a popover that
-// is used only for informational purposes).
+// is used only for informational purposes). For hover-revealed content that a
+// touch user can still reach, wrap this popover in a `PreviewTrigger`: it opens
+// on long press as well as on hover and focus.
 
 const popover = cva({
 	base: classes.popover,

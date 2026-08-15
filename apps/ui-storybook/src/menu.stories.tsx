@@ -14,6 +14,7 @@ import {
 	MenuTrigger,
 	MenuVirtualizer,
 	Popover,
+	Pressable,
 	SearchField,
 	type Selection,
 	SubmenuTrigger,
@@ -285,6 +286,106 @@ export const WithSingleSelect = () => {
 		</MenuTrigger>
 	);
 };
+
+// `trigger="contextMenu"` opens on right click, on long press for touch, and on
+// the platform's context-menu key. The trigger below is a real `Button` so it is
+// focusable and announced; the same items should also be reachable from a
+// visible menu, since a context menu alone is not discoverable.
+export function ContextMenu() {
+	return (
+		<MenuTrigger trigger="contextMenu">
+			<Button
+				preset="dimmed"
+				style={{
+					width: 250,
+					height: 150,
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+				}}
+			>
+				Right click here
+			</Button>
+			<MenuPopover>
+				<Menu>
+					<MenuItem onAction={() => alert("open")}>Open</MenuItem>
+					<SubmenuTrigger>
+						<MenuItem key="open-with">Open with</MenuItem>
+						<MenuPopover>
+							<Menu onAction={(key) => alert(`open with ${key}`)}>
+								<MenuItem key="client">League Client</MenuItem>
+								<MenuItem key="browser">Browser</MenuItem>
+							</Menu>
+						</MenuPopover>
+					</SubmenuTrigger>
+					<MenuSeparator />
+					<MenuItem onAction={() => alert("rename")}>Rename…</MenuItem>
+					<MenuItem onAction={() => alert("duplicate")}>Duplicate</MenuItem>
+					<MenuItem onAction={() => alert("delete")}>Delete…</MenuItem>
+				</Menu>
+			</MenuPopover>
+		</MenuTrigger>
+	);
+}
+
+// Anything that is not already a React Aria component needs `Pressable` to pick
+// up the trigger's press handling, and has to be interactive in its own right —
+// a real `<button>` here, rather than a div wearing `role="button"` — or it is
+// silent to a screen reader.
+export function ContextMenuOnCustomElement() {
+	return (
+		<MenuTrigger trigger="contextMenu">
+			<Pressable>
+				<button
+					type="button"
+					style={{
+						appearance: "none",
+						background: "none",
+						width: 250,
+						height: 150,
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						border: "1px dashed var(--lol-color-gold-500)",
+						color: "var(--lol-color-gold-100)",
+						font: "inherit",
+						fontFamily: "var(--lol-font-family-spiegel)",
+					}}
+				>
+					A rune page
+				</button>
+			</Pressable>
+			<MenuPopover>
+				<Menu>
+					<MenuItem onAction={() => alert("edit")}>Edit page</MenuItem>
+					<MenuItem onAction={() => alert("duplicate")}>
+						Duplicate page
+					</MenuItem>
+					<MenuItem onAction={() => alert("delete")}>Delete page</MenuItem>
+				</Menu>
+			</MenuPopover>
+		</MenuTrigger>
+	);
+}
+
+// `trigger="longPress"` is the other non-default: the menu opens only after the
+// pointer is held down, leaving a plain press free to do something else.
+export function LongPressMenu() {
+	return (
+		<MenuTrigger trigger="longPress">
+			<Button onPress={() => alert("locked in")}>
+				Lock in (hold for options)
+			</Button>
+			<MenuPopover>
+				<Menu>
+					<MenuItem onAction={() => alert("lock in")}>Lock in</MenuItem>
+					<MenuItem onAction={() => alert("trade")}>Trade champion</MenuItem>
+					<MenuItem onAction={() => alert("swap")}>Swap position</MenuItem>
+				</Menu>
+			</MenuPopover>
+		</MenuTrigger>
+	);
+}
 
 export const WithoutPopover: Story = {
 	args: {},

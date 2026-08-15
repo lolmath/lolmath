@@ -1,0 +1,117 @@
+@layer lol {
+	.tokenField {
+		display: grid;
+		grid-template-areas:
+			"label"
+			"input"
+			"help";
+
+		color: var(--lol-color-gold-100);
+	}
+
+	.input {
+		background:
+			var(--lol-token-field-background-gradient) padding-box,
+			var(--lol-token-field-border-gradient) border-box;
+
+		--lol-token-field-border-gradient: var(--lol-gradient-gold);
+		--lol-token-field-background-gradient: var(--lol-gradient-hextech-black);
+
+		border: 1px solid transparent;
+		grid-area: input;
+		margin: 0;
+		padding: 0.375rem 0.75rem;
+		outline: none;
+
+		font-family: var(--lol-font-family-spiegel);
+		font-size: 0.75rem;
+		font-weight: 500;
+		letter-spacing: 0.025em;
+		line-height: 1.25rem;
+		color: var(--lol-color-gold-100);
+
+		/* The editable area is a contenteditable box holding a mix of text nodes
+		   and token spans, so it has to stay a block formatting context: a flex
+		   container would wrap each run of text in an anonymous box and the caret
+		   would no longer move across the boundaries between them. */
+		display: block;
+		white-space: pre-wrap;
+		overflow-wrap: anywhere;
+
+		&[data-disabled] {
+			--lol-token-field-border-gradient: var(--lol-gradient-disabled);
+			color: var(--lol-color-grey-150);
+		}
+
+		&[data-focused] {
+			--lol-token-field-border-gradient: var(--lol-gradient-gold-hover);
+			--lol-token-field-background-gradient: var(--lol-gradient-grey-focus);
+		}
+
+		/* The field holds no value of its own to hang a `::placeholder` on — its
+		   content is the editable DOM — so an empty box paints the hint itself. */
+		&:empty::before {
+			content: attr(data-placeholder);
+			color: var(--lol-color-grey-150);
+		}
+
+		&.small {
+			min-height: var(--lol-form-height-small);
+		}
+
+		&.medium {
+			min-height: var(--lol-form-height-medium);
+		}
+
+		&.large {
+			min-height: var(--lol-form-height-large);
+		}
+	}
+
+	.token {
+		background:
+			var(--lol-token-background-gradient) padding-box,
+			var(--lol-token-border-gradient) border-box;
+
+		--lol-token-border-gradient: var(--lol-gradient-hextech);
+		--lol-token-background-gradient: var(--lol-gradient-grey-300);
+
+		border: 1px solid transparent;
+		border-radius: 9999px;
+		padding: 0 0.4rem;
+
+		/* Inline, so a token flows with the text it sits between and wraps with
+		   it; inline-block would still be one atom but cannot break onto the next
+		   line as a run of text does around it. */
+		display: inline;
+		color: var(--lol-color-blue-100);
+		white-space: nowrap;
+
+		&.hextech {
+			--lol-token-border-gradient: var(--lol-gradient-hextech);
+			color: var(--lol-color-blue-100);
+		}
+
+		&.gold {
+			--lol-token-border-gradient: var(--lol-gradient-gold);
+			color: var(--lol-color-gold-300);
+		}
+
+		&.grey {
+			--lol-token-border-gradient: var(--lol-color-grey-100);
+			color: var(--lol-color-gold-100);
+		}
+
+		/* `userSelect: all` makes a token select as one atom, so the selected
+		   state is all-or-nothing and can be painted as such. */
+		&[data-selected] {
+			--lol-token-background-gradient: var(--lol-gradient-gold-hover);
+			color: var(--lol-color-hextech-black);
+		}
+
+		&[data-disabled] {
+			--lol-token-border-gradient: var(--lol-gradient-disabled);
+			color: var(--lol-color-grey-150);
+		}
+	}
+}

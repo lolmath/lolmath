@@ -34,6 +34,9 @@ export const table = cva({
 	base: classes.table,
 });
 
+// A table whose cells hold their own controls (a textfield, a slider) needs
+// `keyboardNavigationBehavior="tab"`: the arrow keys then belong to the control
+// instead of moving between cells, and Tab walks the row's controls.
 export interface TableProps extends AriaTableProps {}
 
 export function Table({ className, ...props }: TableProps) {
