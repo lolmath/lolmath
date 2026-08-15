@@ -213,7 +213,10 @@
 		white-space: nowrap;
 		padding: 0.375rem 0.75rem;
 		/* The client separates the header from the rows with a faint hairline
-		   rather than a full border. */
+		   rather than a full border. The zero-width `solid` on the other three
+		   edges is the same guard `.cell` carries: a collapsed border resolved
+		   against a neighbour styled `none` is painted twice over. */
+		border: 0 solid;
 		border-bottom: 1px solid rgb(from var(--lol-color-grey-100) r g b / 0.25);
 		outline: none;
 
@@ -255,6 +258,59 @@
 			outline: 1px solid var(--lol-color-gold-400);
 			outline-offset: -1px;
 		}
+	}
+
+	/*
+	 * The transposed table: each row is a field and each column a record, so the
+	 * header the eye follows down is the leading column and the hairline that
+	 * separates it from the data runs down the table rather than across it.
+	 *
+	 * Nothing about the table's structure changes — react aria's collection is
+	 * row major either way, and the caller is the one feeding it the data the
+	 * other way round. What marks the header column is `isRowHeader`, which is
+	 * already how a table names its rows: react aria gives its cells
+	 * `role="rowheader"`, and `TableColumn` puts `.headerColumn` on the heading
+	 * above them, so the rule is unbroken from the top of the table down.
+	 */
+	.vertical {
+		& .headerColumn,
+		& .cell[role="rowheader"] {
+			border-inline-end: 1px solid
+				rgb(from var(--lol-color-grey-100) r g b / 0.25);
+			/* Shrink to the field names, as the checkbox column does below. */
+			width: 1%;
+			white-space: nowrap;
+		}
+
+		/* The field names are a heading like any other, so they are set like the
+		   column headings rather than like the data beside them. */
+		& .cell[role="rowheader"] {
+			font-family: var(--lol-font-family-beaufort);
+			color: var(--lol-color-gold-100);
+			font-size: 0.75rem;
+			font-weight: 700;
+			letter-spacing: 0.075em;
+			line-height: 1rem;
+			text-transform: uppercase;
+		}
+	}
+
+	/*
+	 * `TableHeader isVisuallyHidden`: clipped rather than removed, so a screen
+	 * reader still has the column headers that name every cell. The cells are
+	 * taken out of flow one by one instead of the header as a whole, which
+	 * leaves `<thead>` and its row in the table box — at no height, since
+	 * nothing is left in them — rather than blockifying them out of it.
+	 */
+	.table .visuallyHiddenHeader .column {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		border: 0;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
 	}
 
 	/* The checkbox and the drag handle sit in columns of their own, added by

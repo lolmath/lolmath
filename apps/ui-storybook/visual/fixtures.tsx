@@ -6,6 +6,7 @@ import {
 	ButtonLink,
 	Calendar,
 	Checkbox,
+	Collection,
 	DateField,
 	DatePicker,
 	DateRangePicker,
@@ -120,6 +121,12 @@ const playerRows = (player: (typeof players)[number]) => (
 		<TableCell align="end">{player.lp}</TableCell>
 	</TableRow>
 );
+
+/** The fields a transposed table lays out as its rows. */
+const playerFields = [
+	{ id: "tier", name: "Tier" },
+	{ id: "lp", name: "LP" },
+] as const;
 
 const runeTree = (
 	<>
@@ -871,6 +878,75 @@ export const fixtures: Record<string, Fixture[]> = {
 					<TableHeader>{playerColumns}</TableHeader>
 					<TableBody items={[]} emptyState="No ranked players yet">
 						{playerRows}
+					</TableBody>
+				</Table>
+			),
+		},
+	],
+	// Not in `componentNames`, so these are never screenshotted: the orientation
+	// is asserted as geometry by table-orientation.visual.spec.ts instead.
+	"table-orientation": [
+		{
+			id: "table-orientation-horizontal",
+			node: (
+				<Table aria-label="Players" style={table}>
+					<TableHeader>{playerColumns}</TableHeader>
+					<TableBody items={players}>{playerRows}</TableBody>
+				</Table>
+			),
+		},
+		{
+			id: "table-orientation-vertical",
+			node: (
+				<Table
+					aria-label="Players compared"
+					orientation="vertical"
+					style={table}
+				>
+					<TableHeader>
+						<TableColumn id="field" isRowHeader>
+							Stat
+						</TableColumn>
+						<Collection items={players}>
+							{(player) => (
+								<TableColumn align="end">{player.summoner}</TableColumn>
+							)}
+						</Collection>
+					</TableHeader>
+					<TableBody items={playerFields}>
+						{(field) => (
+							<TableRow>
+								<TableCell>{field.name}</TableCell>
+								<Collection items={players}>
+									{(player) => (
+										<TableCell align="end">{player[field.id]}</TableCell>
+									)}
+								</Collection>
+							</TableRow>
+						)}
+					</TableBody>
+				</Table>
+			),
+		},
+		{
+			id: "table-orientation-hidden-header",
+			node: (
+				<Table aria-label="Faker" orientation="vertical" style={table}>
+					<TableHeader isVisuallyHidden>
+						<TableColumn id="field" isRowHeader>
+							Stat
+						</TableColumn>
+						<TableColumn id="value" align="end">
+							Faker
+						</TableColumn>
+					</TableHeader>
+					<TableBody items={playerFields}>
+						{(field) => (
+							<TableRow>
+								<TableCell>{field.name}</TableCell>
+								<TableCell align="end">{players[0][field.id]}</TableCell>
+							</TableRow>
+						)}
 					</TableBody>
 				</Table>
 			),
