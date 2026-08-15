@@ -5,6 +5,8 @@
 	}
 
 	.table {
+		--lol-table-indent: 1.125rem;
+
 		border-collapse: collapse;
 		border-spacing: 0;
 		width: 100%;
@@ -19,6 +21,35 @@
 		&[data-focus-visible] {
 			outline: 1px solid var(--lol-color-gold-400);
 			outline-offset: 0.25rem;
+		}
+
+		/* The whole table is the drop target when a drag is dropped on it rather
+		   than between two of its rows. */
+		&[data-drop-target] {
+			outline: 1px solid var(--lol-color-gold-400);
+			outline-offset: 0.25rem;
+		}
+	}
+
+	/* Inside a `Virtualizer` the table is a <div> whose rows are placed by the
+	   layout, and it scrolls them itself — which is what the virtualizer measures
+	   against, so it is the one table that needs a height of its own. */
+	div.table {
+		overflow: auto;
+		position: relative;
+
+		/* That also makes the header stick over the rows as they scroll past. The
+		   header cells tile the full width of the row, so frosting each one covers
+		   the strip; without it the rows read straight through the labels. The
+		   tint is the client's page black, which is what any surface the table
+		   sits on is a shade of. */
+		& .column {
+			background-color: color-mix(
+				in srgb,
+				var(--lol-color-hextech-black),
+				transparent 4%
+			);
+			backdrop-filter: blur(12px);
 		}
 	}
 
@@ -75,9 +106,24 @@
 			cursor: default;
 		}
 
+		&[data-dragging] {
+			opacity: 0.4;
+		}
+
 		&[data-focus-visible] {
 			outline: 1px solid var(--lol-color-gold-400);
 			outline-offset: -1px;
+		}
+
+		/* A row is only its own drop target when the table takes drops onto rows;
+		   reordering draws the `.dropIndicator` between them instead. */
+		&[data-drop-target] {
+			color: var(--lol-color-gold-100);
+			--lol-table-row-highlight: linear-gradient(
+				90deg,
+				rgb(from var(--lol-color-gold-400) r g b / 0.35),
+				rgb(from var(--lol-color-gold-400) r g b / 0.1)
+			);
 		}
 	}
 
@@ -209,6 +255,142 @@
 			outline: 1px solid var(--lol-color-gold-400);
 			outline-offset: -1px;
 		}
+	}
+
+	/* The checkbox and the drag handle sit in columns of their own, added by
+	   `TableHeader` and `TableRow`. Both shrink to their content: a percentage
+	   width smaller than the content is the table layout's way of saying "as
+	   narrow as this can go". */
+	.selectionColumn,
+	.selectionCell,
+	.gripColumn,
+	.gripCell {
+		width: 1%;
+		white-space: nowrap;
+	}
+
+	.selectionCell,
+	.gripCell {
+		padding-inline-end: 0;
+	}
+
+	.grip {
+		/* A <button> we never paint: without this it falls back to the UA's
+		   `buttonface` slab, which is grey under `color-scheme: dark`. */
+		appearance: none;
+		border: 0;
+		margin: 0;
+		padding: 0;
+		font: inherit;
+		color: inherit;
+
+		display: block;
+		width: 0.625rem;
+		height: 0.75rem;
+		outline: none;
+		/* Three hairlines, the client's drag affordance. */
+		background: repeating-linear-gradient(
+			to bottom,
+			currentColor 0 1px,
+			transparent 1px 0.25rem
+		);
+	}
+
+	/* React aria drags the row itself and leaves the handle inert, so the cursor
+	   has to come from the row. */
+	.table[data-allows-dragging] .row {
+		cursor: grab;
+	}
+
+	/* The indicator is a row of its own with a single full-width cell, so the
+	   line is drawn by a pseudo element that takes up no space of its own. */
+	.dropIndicator {
+		& > td,
+		& > th {
+			position: relative;
+		}
+
+		&[data-drop-target] > td::after,
+		&[data-drop-target] > th::after {
+			content: "";
+			position: absolute;
+			inset-inline: 0;
+			top: -1px;
+			height: 2px;
+			background-color: var(--lol-color-gold-400);
+		}
+	}
+
+	/* The expand chevron of a `treeColumn` cell, and the indent that puts a
+	   nested row under its parent. React aria sets `--table-row-level` on every
+	   row, starting at 1. */
+	.treeContent {
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+		padding-inline-start: calc(
+			(var(--table-row-level, 1) - 1) *
+			var(--lol-table-indent)
+		);
+	}
+
+	.chevron {
+		appearance: none;
+		border: 0;
+		margin: 0;
+		padding: 0;
+		font: inherit;
+		letter-spacing: inherit;
+		color: inherit;
+
+		flex: none;
+		width: 0.5rem;
+		height: 0.75rem;
+		outline: none;
+		cursor: pointer;
+
+		--lol-table-chevron: url("./table-chevron.png");
+		background: var(--lol-table-chevron) no-repeat center / contain;
+		transition: rotate 0.15s ease;
+
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+		}
+
+		&[data-focus-visible] {
+			outline: 1px solid var(--lol-color-gold-400);
+			outline-offset: 0.125rem;
+		}
+	}
+
+	.chevronSpacer {
+		flex: none;
+		width: 0.5rem;
+	}
+
+	.row[data-expanded] .chevron {
+		rotate: 90deg;
+	}
+
+	.row[data-hovered] .chevron,
+	.chevron[data-hovered],
+	.chevron[data-focus-visible] {
+		--lol-table-chevron: url("./table-chevron-hover.png");
+	}
+
+	.row[data-disabled] .chevron {
+		cursor: default;
+		filter: grayscale(100%);
+	}
+
+	.loadMore > td,
+	.loadMore > th {
+		padding: 0.5rem;
+	}
+
+	.spinner {
+		width: 1.5rem;
+		margin-inline: auto;
 	}
 
 	.footer {

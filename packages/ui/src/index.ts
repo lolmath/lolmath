@@ -1,18 +1,26 @@
 import "./style.css";
 
 export {
+	type AsyncListData,
+	type AsyncListOptions,
 	Collection,
 	type DateValue,
 	Dialog,
 	DialogTrigger,
+	type DragAndDropHooks,
+	type DragAndDropOptions,
+	type DropItem,
+	type DropTarget,
 	FieldError,
 	// Wrappers that make an arbitrary element usable as a trigger: `Focusable`
 	// for a `PreviewTrigger`, `Pressable` for a context `MenuTrigger`. Both
 	// still need a role of their own — see the notes on those components.
 	Focusable,
 	GridLayout,
+	isTextDropItem,
 	type Key,
 	ListBoxItem,
+	type ListData,
 	ListLayout,
 	// TODO: Maybe remove this if it is not used.
 	Popover as UnstyledPopover,
@@ -23,7 +31,11 @@ export {
 	type SortDescriptor,
 	type SortDirection,
 	TableLayout,
+	type TextDropItem,
 	type TimeValue,
+	useAsyncList,
+	useDragAndDrop,
+	useListData,
 	Virtualizer,
 	WaterfallLayout,
 } from "react-aria-components";
@@ -54,7 +66,7 @@ export * from "./components/slider/slider";
 export * from "./components/sonner/sonner";
 export * from "./components/spinner/spinner";
 export * from "./components/switch";
-export * from "./components/table";
+export * from "./components/table/table";
 export * from "./components/tabs";
 export * from "./components/tag-group/tag-group";
 export * from "./components/text-area";
