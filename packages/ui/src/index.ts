@@ -78,3 +78,4 @@ export * from "./components/toolbar";
 export * from "./components/tree/tree";
 export * from "./components/typography/heading";
 export * from "./components/typography/text";
+export * from "./components/vertical-table/vertical-table";

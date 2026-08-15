@@ -45,9 +45,6 @@ const alignVariants = {
 	end: classes.end,
 };
 
-/** Which way round a `Table` is read. */
-export type TableOrientation = "horizontal" | "vertical";
-
 /**
  * A `TableRow` inside a `TableFooter` still has to line up with the columns
  * above it, but it owns no selection checkbox and nothing to drag: the footer
@@ -61,44 +58,19 @@ const TableFooterContext = createContext(false);
 
 export const table = cva({
 	base: classes.table,
-	variants: {
-		orientation: {
-			horizontal: "",
-			vertical: classes.vertical,
-		},
-	},
-	defaultVariants: { orientation: "horizontal" },
 });
 
 // A table whose cells hold their own controls (a textfield, a slider) needs
 // `keyboardNavigationBehavior="tab"`: the arrow keys then belong to the control
 // instead of moving between cells, and Tab walks the row's controls.
-export interface TableProps extends AriaTableProps {
-	/**
-	 * Which way round the table is read. Defaults to `"horizontal"`: a header row
-	 * over rows that each hold one record.
-	 *
-	 * `"vertical"` is the transposed table, the one that compares a handful of
-	 * records field by field — each row is a field, each column a record, and the
-	 * header the eye follows is the leading column rather than the top row. It is
-	 * a presentation, not a structure: the rows and the cells stay what they are
-	 * to react aria, so it is the data that is fed in the other way round and the
-	 * rules that are drawn down the table rather than across it. Mark the column
-	 * holding the field names `isRowHeader` and it becomes that header column.
-	 */
-	orientation?: TableOrientation;
-}
+export interface TableProps extends AriaTableProps {}
 
-export function Table({
-	className,
-	orientation = "horizontal",
-	...props
-}: TableProps) {
+export function Table({ className, ...props }: TableProps) {
 	return (
 		<AriaTable
 			{...props}
 			className={composeRenderProps(className, (className) =>
-				table({ orientation, className }),
+				table({ className }),
 			)}
 		/>
 	);
@@ -124,17 +96,7 @@ export function ResizableTableContainer({
 }
 
 export interface TableHeaderProps<T extends object>
-	extends AriaTableHeaderProps<T> {
-	/**
-	 * Takes the header row out of the layout while leaving it in the
-	 * accessibility tree, for the table that has nothing to call its columns —
-	 * an `orientation="vertical"` table of one record, whose columns are that
-	 * record. The header cannot simply be left out: react aria builds the
-	 * table's columns from it, and they are what names every cell to a screen
-	 * reader.
-	 */
-	isVisuallyHidden?: boolean;
-}
+	extends AriaTableHeaderProps<T> {}
 
 /**
  * The header row of a `Table`.
@@ -148,19 +110,13 @@ export function TableHeader<T extends object>({
 	className,
 	columns,
 	dependencies,
-	isVisuallyHidden,
 	...props
 }: TableHeaderProps<T>) {
 	const { allowsDragging, selectionBehavior, selectionMode } =
 		useTableOptions();
 
 	return (
-		<AriaTableHeader
-			{...props}
-			className={composeRenderProps(className, (className) =>
-				cx(isVisuallyHidden && classes.visuallyHiddenHeader, className),
-			)}
-		>
+		<AriaTableHeader {...props} className={className}>
 			{allowsDragging && (
 				<AriaColumn
 					className={tableColumn({ className: classes.gripColumn })}
@@ -182,11 +138,7 @@ export function TableHeader<T extends object>({
 
 export const tableColumn = cva({
 	base: classes.column,
-	variants: {
-		align: alignVariants,
-		/* The column an `orientation="vertical"` table is headed by. */
-		isRowHeader: { true: classes.headerColumn },
-	},
+	variants: { align: alignVariants },
 	defaultVariants: { align: "start" },
 });
 
@@ -198,15 +150,13 @@ export function TableColumn({
 	align = "start",
 	children,
 	className,
-	isRowHeader,
 	...props
 }: TableColumnProps) {
 	return (
 		<AriaColumn
 			{...props}
-			isRowHeader={isRowHeader}
 			className={composeRenderProps(className, (className) =>
-				tableColumn({ align, isRowHeader, className }),
+				tableColumn({ align, className }),
 			)}
 		>
 			{composeRenderProps(children, (children, { allowsSorting }) => (

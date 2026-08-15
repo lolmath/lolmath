@@ -6,7 +6,6 @@ import {
 	ButtonLink,
 	Calendar,
 	Checkbox,
-	Collection,
 	DateField,
 	DatePicker,
 	DateRangePicker,
@@ -72,6 +71,8 @@ import {
 	Tree,
 	TreeItem,
 	TreeItemContent,
+	VerticalTable,
+	type VerticalTableField,
 } from "@lolmath/ui";
 import { type CSSProperties, type ReactNode, useEffect } from "react";
 import { FaGear } from "react-icons/fa6";
@@ -122,11 +123,11 @@ const playerRows = (player: (typeof players)[number]) => (
 	</TableRow>
 );
 
-/** The fields a transposed table lays out as its rows. */
-const playerFields = [
-	{ id: "tier", name: "Tier" },
-	{ id: "lp", name: "LP" },
-] as const;
+/** The same players, as the fields a `VerticalTable` lays out down its rows. */
+const playerFields: VerticalTableField<(typeof players)[number]>[] = [
+	{ id: "tier", name: "Tier", value: (player) => player.tier },
+	{ id: "lp", name: "LP", value: (player) => player.lp },
+];
 
 const runeTree = (
 	<>
@@ -883,72 +884,35 @@ export const fixtures: Record<string, Fixture[]> = {
 			),
 		},
 	],
-	// Not in `componentNames`, so these are never screenshotted: the orientation
-	// is asserted as geometry by table-orientation.visual.spec.ts instead.
-	"table-orientation": [
+	// Not in `componentNames`, so these are never screenshotted: which edge of a
+	// vertical table carries the hairline is asserted as geometry by
+	// vertical-table.visual.spec.ts instead.
+	"vertical-table": [
 		{
-			id: "table-orientation-horizontal",
+			id: "vertical-table-compared",
 			node: (
-				<Table aria-label="Players" style={table}>
-					<TableHeader>{playerColumns}</TableHeader>
-					<TableBody items={players}>{playerRows}</TableBody>
-				</Table>
-			),
-		},
-		{
-			id: "table-orientation-vertical",
-			node: (
-				<Table
+				<VerticalTable
 					aria-label="Players compared"
-					orientation="vertical"
+					align="end"
+					fields={playerFields}
+					recordHeader={(player) => player.summoner}
+					recordKey={(player) => player.id}
+					records={players}
 					style={table}
-				>
-					<TableHeader>
-						<TableColumn id="field" isRowHeader>
-							Stat
-						</TableColumn>
-						<Collection items={players}>
-							{(player) => (
-								<TableColumn align="end">{player.summoner}</TableColumn>
-							)}
-						</Collection>
-					</TableHeader>
-					<TableBody items={playerFields}>
-						{(field) => (
-							<TableRow>
-								<TableCell>{field.name}</TableCell>
-								<Collection items={players}>
-									{(player) => (
-										<TableCell align="end">{player[field.id]}</TableCell>
-									)}
-								</Collection>
-							</TableRow>
-						)}
-					</TableBody>
-				</Table>
+				/>
 			),
 		},
 		{
-			id: "table-orientation-hidden-header",
+			id: "vertical-table-stat-card",
 			node: (
-				<Table aria-label="Faker" orientation="vertical" style={table}>
-					<TableHeader isVisuallyHidden>
-						<TableColumn id="field" isRowHeader>
-							Stat
-						</TableColumn>
-						<TableColumn id="value" align="end">
-							Faker
-						</TableColumn>
-					</TableHeader>
-					<TableBody items={playerFields}>
-						{(field) => (
-							<TableRow>
-								<TableCell>{field.name}</TableCell>
-								<TableCell align="end">{players[0][field.id]}</TableCell>
-							</TableRow>
-						)}
-					</TableBody>
-				</Table>
+				<VerticalTable
+					aria-label="Faker"
+					align="end"
+					fields={playerFields}
+					recordKey={(player) => player.id}
+					records={players.slice(0, 1)}
+					style={table}
+				/>
 			),
 		},
 	],
