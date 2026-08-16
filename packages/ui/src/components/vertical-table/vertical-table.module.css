@@ -1,0 +1,87 @@
+@layer lol {
+	.table {
+		border-collapse: collapse;
+		border-spacing: 0;
+		width: 100%;
+
+		font-family: var(--lol-font-family-spiegel);
+		font-size: var(--lol-font-size-sm);
+		line-height: var(--lol-line-height-sm);
+		letter-spacing: var(--lol-letter-spacing-sm);
+		font-weight: var(--lol-font-weight-sm);
+		color: var(--lol-color-grey-100);
+	}
+
+	/*
+	 * Both headings are set the same way — the client's heading face, in gold
+	 * over the grey of the data. What tells them apart is only which edge of the
+	 * table they run along.
+	 *
+	 * The zero-width `solid` on the edges each one leaves alone is the guard the
+	 * table's own cells carry: collapsed borders are resolved between
+	 * neighbours, and Chrome paints the winning hairline once per edge when the
+	 * losing side is styled `none`, so a 25%-opacity line blends twice and comes
+	 * out twice as bright.
+	 */
+	.fieldHeader,
+	.recordHeader,
+	.corner {
+		border: 0 solid;
+	}
+
+	.fieldHeader,
+	.recordHeader {
+		font-family: var(--lol-font-family-beaufort);
+		color: var(--lol-color-gold-100);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.075em;
+		line-height: 1rem;
+		text-transform: uppercase;
+		white-space: nowrap;
+		padding: 0.375rem 0.75rem;
+	}
+
+	/* The field names head their rows, so the hairline that separates the
+	   heading from the data runs down the table rather than across it. */
+	.fieldHeader {
+		text-align: start;
+		border-inline-end: 1px solid
+			rgb(from var(--lol-color-grey-100) r g b / 0.25);
+		/* Shrink to the names: a percentage under the content width is the table
+		   layout's way of saying "as narrow as this can go". */
+		width: 1%;
+	}
+
+	.recordHeader {
+		border-bottom: 1px solid rgb(from var(--lol-color-grey-100) r g b / 0.25);
+	}
+
+	/* The blank corner over the field names carries both hairlines, so the one
+	   under the record names and the one beside the field names meet instead of
+	   stopping short of each other. */
+	.corner {
+		padding: 0;
+		border-bottom: 1px solid rgb(from var(--lol-color-grey-100) r g b / 0.25);
+		border-inline-end: 1px solid
+			rgb(from var(--lol-color-grey-100) r g b / 0.25);
+	}
+
+	.cell {
+		border: 0 solid;
+		padding: 0.375rem 0.75rem;
+		vertical-align: middle;
+	}
+
+	.start {
+		text-align: start;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	.end {
+		text-align: end;
+	}
+}

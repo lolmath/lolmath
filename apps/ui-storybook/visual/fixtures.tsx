@@ -71,6 +71,8 @@ import {
 	Tree,
 	TreeItem,
 	TreeItemContent,
+	VerticalTable,
+	type VerticalTableField,
 } from "@lolmath/ui";
 import { type CSSProperties, type ReactNode, useEffect } from "react";
 import { FaGear } from "react-icons/fa6";
@@ -120,6 +122,12 @@ const playerRows = (player: (typeof players)[number]) => (
 		<TableCell align="end">{player.lp}</TableCell>
 	</TableRow>
 );
+
+/** The same players, as the fields a `VerticalTable` lays out down its rows. */
+const playerFields: VerticalTableField<(typeof players)[number]>[] = [
+	{ id: "tier", name: "Tier", value: (player) => player.tier },
+	{ id: "lp", name: "LP", value: (player) => player.lp },
+];
 
 const runeTree = (
 	<>
@@ -873,6 +881,38 @@ export const fixtures: Record<string, Fixture[]> = {
 						{playerRows}
 					</TableBody>
 				</Table>
+			),
+		},
+	],
+	// Not in `componentNames`, so these are never screenshotted: which edge of a
+	// vertical table carries the hairline is asserted as geometry by
+	// vertical-table.visual.spec.ts instead.
+	"vertical-table": [
+		{
+			id: "vertical-table-compared",
+			node: (
+				<VerticalTable
+					aria-label="Players compared"
+					align="end"
+					fields={playerFields}
+					recordHeader={(player) => player.summoner}
+					recordKey={(player) => player.id}
+					records={players}
+					style={table}
+				/>
+			),
+		},
+		{
+			id: "vertical-table-stat-card",
+			node: (
+				<VerticalTable
+					aria-label="Faker"
+					align="end"
+					fields={playerFields}
+					recordKey={(player) => player.id}
+					records={players.slice(0, 1)}
+					style={table}
+				/>
 			),
 		},
 	],
