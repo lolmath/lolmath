@@ -1,5 +1,68 @@
 # @lolmath/ui
 
+## 9.5.0
+
+### Minor Changes
+
+- 191abb3: Round out `Table` with the rest of what React Aria's table can do.
+
+  Selection now looks like selection: `TableHeader` adds the select-all checkbox
+  and `TableRow` the per-row one, so `selectionMode="multiple"` no longer needs the
+  checkbox column to be written out by hand. `selectionBehavior="replace"` still
+  drops them for a highlighted row, and a `TableFooter` row leaves the column blank
+  rather than repeating the checkbox.
+
+  New alongside it: expandable rows, where a `TableRow` nested in another indents
+  under it in the table's `treeColumn` and grows an expand chevron;
+  `TableLoadMoreItem`, the spinner row that doubles as the sentinel of an infinite
+  scroll; and drag and drop, with `useTableDragAndDrop` returning the
+  `dragAndDropHooks` a `Table` takes together with the gold line
+  (`TableDropIndicator`) drawn between the rows a drop would land between.
+
+  `ResizableTableContainer` is now the styled component it always claimed to be —
+  it was re-exported unstyled, so its scroll container never had the overflow it
+  needs — and a `Table` inside a `Virtualizer` scrolls its own rows under a frosted
+  sticky header.
+
+  `useAsyncList`, `useListData`, `useDragAndDrop` and `isTextDropItem` are
+  re-exported for the lists these features are fed from.
+
+- cc85bf4: Add `VerticalTable`, the table read down rather than across.
+
+  A row per field, a column per record, and the field names heading the rows from
+  the leading column — the table for comparing a handful of records field by
+  field, and, with a single record and no `recordHeader`, for the stat card that
+  is a table underneath. The data goes in the way it comes, one object per record,
+  and the component does the flip:
+
+  ```tsx
+  <VerticalTable
+    aria-label="Players compared"
+    align="end"
+    records={players}
+    recordHeader={(player) => player.summoner}
+    fields={[
+      {
+        id: "tier",
+        name: "Tier",
+        value: (player) => player.tier,
+        align: "start",
+      },
+      { id: "lp", name: "LP", value: (player) => player.lp },
+    ]}
+  />
+  ```
+
+  It is a component of its own rather than a mode of `Table` because the two are
+  not the same thing underneath. `Table` is React Aria's grid, whose collection is
+  row major and cannot be transposed; everything it offers — selection, sorting,
+  resizing, dragging, keyboard navigation — acts on rows, and a row here is a
+  _field_, so all of it would act on the wrong axis. `VerticalTable` is markup and
+  no more: a `<table>` whose field names are real `<th scope="row">`s and whose
+  record headings are real `<th scope="col">`s, which is what ties every value to
+  both without an `aria-*` in sight. Reach for `Table` the moment the rows have to
+  be interacted with.
+
 ## 9.4.0
 
 ### Minor Changes
