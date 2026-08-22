@@ -12,7 +12,8 @@
 		"dev": "tsdown --watch",
 		"publint": "publint",
 		"typecheck": "tsc --noEmit",
-		"docs": "node ./docs.ts"
+		"docs": "node ./docs.ts",
+		"test": "vitest run"
 	},
 	"keywords": [],
 	"author": "lolmath.net",
@@ -38,11 +39,14 @@
 		"url": "https://github.com/lolmath/lolmath/issues"
 	},
 	"devDependencies": {
+		"@tanstack/charts": "catalog:",
 		"@tsdown/css": "catalog:",
+		"@types/d3-shape": "catalog:",
 		"@types/node": "catalog:",
 		"@types/postcss-url": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
+		"d3-shape": "catalog:",
 		"lightningcss": "catalog:",
 		"postcss-url": "catalog:",
 		"publint": "catalog:",
@@ -56,10 +60,14 @@
 	"peerDependencies": {
 		"react": ">=19",
 		"react-dom": ">=19",
-		"tailwindcss": ">=3"
+		"tailwindcss": ">=3",
+		"@tanstack/charts": ">=0.14.0"
 	},
 	"peerDependenciesMeta": {
 		"tailwindcss": {
+			"optional": true
+		},
+		"@tanstack/charts": {
 			"optional": true
 		}
 	},
@@ -68,6 +76,12 @@
 			"import": {
 				"types": "./dist/index.d.mts",
 				"default": "./dist/index.mjs"
+			}
+		},
+		"./charts": {
+			"import": {
+				"types": "./dist/charts.d.mts",
+				"default": "./dist/charts.mjs"
 			}
 		},
 		"./css": {

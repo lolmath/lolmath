@@ -22,15 +22,16 @@
 		"@storybook/addon-themes": "catalog:",
 		"@storybook/cli": "catalog:",
 		"@storybook/react-vite": "catalog:",
+		"@tanstack/charts": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
-		"typescript": "catalog:",
 		"@vitejs/plugin-react-swc": "catalog:",
 		"autoprefixer": "catalog:",
 		"postcss": "catalog:",
 		"prop-types": "catalog:",
 		"storybook": "catalog:",
 		"tailwindcss": "catalog:",
+		"typescript": "catalog:",
 		"vite": "catalog:",
 		"wrangler": "catalog:"
 	}

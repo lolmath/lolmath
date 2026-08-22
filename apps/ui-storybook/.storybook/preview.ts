@@ -39,6 +39,7 @@ const preview: Preview = {
 					"Overlays",
 					"Feedback",
 					"Data Display",
+					"Charts",
 					"Typography",
 					"Layout",
 					"Examples",

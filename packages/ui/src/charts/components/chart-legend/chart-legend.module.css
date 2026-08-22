@@ -1,0 +1,45 @@
+@layer lol {
+	.legend {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.375rem 1.25rem;
+		/* A <ul>: the UA gives it block margins and a list marker. */
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		/* Never the series colour. Identity comes from the swatch beside the
+		 * label; a light teal or gold set as text would not clear contrast. */
+		color: var(--lol-chart-muted);
+		font-size: var(--lol-font-size-sm, 0.875rem);
+		line-height: var(--lol-line-height-sm, 1.1025rem);
+		letter-spacing: var(--lol-letter-spacing-sm, 0.02em);
+	}
+
+	/* The diamond again, at series scale, lit by the hue it stands for. */
+	.swatch {
+		width: 0.5rem;
+		height: 0.5rem;
+		flex-shrink: 0;
+		rotate: 45deg;
+		background: var(--lol-chart-legend-color);
+		box-shadow: 0 0 5px var(--lol-chart-legend-color);
+	}
+
+	.square {
+		rotate: none;
+	}
+
+	.line {
+		width: 0.875rem;
+		height: 2px;
+		rotate: none;
+		box-shadow: none;
+	}
+}
