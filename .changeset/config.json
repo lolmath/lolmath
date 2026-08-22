@@ -7,9 +7,5 @@
 	"access": "restricted",
 	"baseBranch": "main",
 	"updateInternalDependencies": "patch",
-	"ignore": [
-		"@lolmath/docs",
-		"@lolmath/ui-storybook",
-		"@lolmath/charts-storybook"
-	]
+	"ignore": ["@lolmath/docs", "@lolmath/ui-storybook"]
 }

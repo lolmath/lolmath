@@ -1,8 +1,8 @@
-import { ChartLegend } from "@lolmath/charts";
+import { ChartLegend } from "@lolmath/ui/charts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-	title: "Building Blocks/ChartLegend",
+	title: "Charts/Building Blocks/ChartLegend",
 	component: ChartLegend,
 	tags: ["autodocs"],
 	parameters: {

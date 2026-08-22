@@ -1,4 +1,4 @@
-import { RankingChart } from "@lolmath/charts";
+import { RankingChart } from "@lolmath/ui/charts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { type ChampionDamage, formatShortGold, scoreboard } from "./data";
 

@@ -10,7 +10,7 @@ import {
 	scaleLinear,
 	scalePoint,
 	tooltip,
-} from "@lolmath/charts";
+} from "@lolmath/ui/charts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { formatShortGold, goldTimeline, scoreboard } from "./data";
 
@@ -35,7 +35,7 @@ const blueGoldChart = defineChart({
 });
 
 const meta = {
-	title: "Building Blocks/HextechChart",
+	title: "Charts/Building Blocks/HextechChart",
 	component: HextechChart,
 	tags: ["autodocs"],
 	parameters: {

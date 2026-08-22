@@ -1,10 +1,10 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 
-<Meta title="Hextech/The visual language" />
+<Meta title="Charts/The Hextech language" />
 
 # Charts in the Hextech language
 
-`@lolmath/charts` draws [TanStack Charts](https://tanstack.com/charts) in the
+`@lolmath/ui/charts` draws [TanStack Charts](https://tanstack.com/charts) in the
 visual language Riot built for the League client, described in
 [The Visual Language of Hextech](https://nexus.leagueoflegends.com/en-us/2016/12/the-visual-language-of-hextech/).
 
@@ -119,8 +119,21 @@ so the fonts have to be loaded for the layout to be right:
 import "@lolmath/ui/font/beaufort";
 import "@lolmath/ui/font/spiegel";
 import "@lolmath/ui/css";
-import "@lolmath/charts/css";
 ```
 
-`@lolmath/charts` works on its own — every token falls back to a literal — but
-it is built to sit next to `@lolmath/ui`.
+There is no second stylesheet: the chart tokens live in `@lolmath/ui/css`
+alongside the rest of the design tokens.
+
+## Installing
+
+The charts are their own entrypoint, and `@tanstack/charts` is an **optional
+peer dependency** — install it only if you import from `/charts`, and nothing
+changes for anyone else using `@lolmath/ui`.
+
+```bash
+npm install @lolmath/ui @tanstack/charts
+```
+
+```ts
+import { LineChart } from "@lolmath/ui/charts";
+```

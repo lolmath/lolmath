@@ -1,4 +1,4 @@
-import { BarChart } from "@lolmath/charts";
+import { BarChart } from "@lolmath/ui/charts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
 	formatPercent,

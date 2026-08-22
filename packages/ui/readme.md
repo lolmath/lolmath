@@ -70,6 +70,162 @@ fonts.
 @import "@lolmath/ui/tailwind";
 ```
 
+## Charts
+
+`@lolmath/ui/charts` draws [TanStack Charts](https://tanstack.com/charts) in the
+same visual language as the rest of the library.
+
+It is a separate entrypoint because `@tanstack/charts` is an **optional peer
+dependency**: install it only if you import from `/charts`, and nothing changes
+for anyone who does not.
+
+```bash
+npm install @tanstack/charts
+```
+
+```tsx
+import { LineChart } from "@lolmath/ui/charts";
+
+<LineChart
+	title="Team gold"
+	subtitle="Ranked solo queue · patch 14.7"
+	data={timeline}
+	x={(row) => row.minute}
+	series={[
+		{ key: "blue", label: "Blue side", value: (row) => row.blueGold },
+		{ key: "red", label: "Red side", value: (row) => row.redGold },
+	]}
+	xLabel="Minute"
+	yLabel="Gold"
+	formatY={(gold) => `${Math.round(gold / 1000)}k`}
+/>;
+```
+
+The chart styles ship inside `@lolmath/ui/css`, so there is no second
+stylesheet to import. The fonts matter for more than looks here: the chart
+engine measures text against the computed font of its own container, so axis
+layout is only right once Beaufort and Spiegel have loaded.
+
+| Component | For |
+| --- | --- |
+| `LineChart` | A measure read left to right. `curve`, `points`, `area`. |
+| `AreaChart` | A composition over time. `stacked`, `normalize`. |
+| `BarChart` | Columns over categories. `layout="grouped" \| "stacked"`. |
+| `RankingChart` | The leaderboard shape: ranked horizontal bars, values at the tip. |
+| `HextechChart` | Your own `defineChart` definition, themed. |
+| `ChartFrame` | The panel: gold hairline, diamond corners, Beaufort title. |
+| `ChartLegend` | Diamond swatches and text in ink. |
+
+Every chart takes its data wide — one row per x position — plus a `series`
+array that reads each measure out of a row, so nothing has to be reshaped
+before it is plotted.
+
+### What they do without being asked
+
+- **A legend for two or more series, never for one.** Colour is never the only
+  way to tell two series apart; a lone swatch would only restate the title.
+- **A tooltip, and a crosshair on line and area charts.** An HTML chart is
+  interactive, so the hover layer is not opt-in.
+- **Formatters reach everywhere.** `formatY` lands on the axis, the crosshair
+  label and the tooltip from one place.
+- **Gaps, not outlines.** Bars are separated by a two-pixel channel of surface
+  and dots carry a two-pixel surface ring — a stroke around a mark is ink that
+  carries no data.
+
+### Writing your own
+
+`defineChart`, the marks, the scales and the tooltip extension are re-exported
+from `@lolmath/ui/charts`, so a chart shape the library does not ship still
+needs only one import path. Wrap the result in `HextechChart` for the theme and
+`ChartFrame` for the panel.
+
+```tsx
+import {
+	barY,
+	ChartFrame,
+	defineChart,
+	HextechChart,
+	ruleY,
+	scaleBand,
+	scaleLinear,
+	tooltip,
+} from "@lolmath/ui/charts";
+
+const chart = defineChart({
+	marks: [
+		barY(rows, {
+			x: (row) => row.minute,
+			y: (row) => row.lead,
+			fill: (row) =>
+				row.lead >= 0
+					? "var(--lol-chart-positive)"
+					: "var(--lol-chart-negative)",
+		}),
+		ruleY([0]),
+	],
+	x: { scale: () => scaleBand<number>().domain(minutes) },
+	y: { scale: scaleLinear, nice: true, grid: true },
+	tooltip,
+});
+
+<ChartFrame title="Gold lead">
+	<HextechChart definition={chart} height={260} ariaLabel="Gold lead by minute" />
+</ChartFrame>;
+```
+
+`withHextechTheme` does the same for a definition you render yourself.
+
+### The Hextech mapping
+
+The look follows the rules Riot set out in
+[The Visual Language of Hextech](https://nexus.leagueoflegends.com/en-us/2016/12/the-visual-language-of-hextech/):
+metal linework *frames* information and hextech magic *is* the information. So
+gold carries the frame, the axes and the grid at low opacity, and the marks are
+the only saturated thing on the panel. The square, the diamond and the circle
+keep their stated jobs — square bar ends and a rectangular frame, diamonds at
+the corners and in the legend, a circle for the focused reading. The storybook's
+**Charts → The Hextech language** page walks through it in full.
+
+### The palette
+
+Six categorical slots, assigned in order and never cycled:
+
+| Slot | Name | Value |
+| --- | --- | --- |
+| 1 | Hextech teal | `#0aa89b` |
+| 2 | Piltover gold | `#ba8c2e` |
+| 3 | Arcane violet | `#8e6be8` |
+| 4 | Ruin red | `#e8574f` |
+| 5 | Rift azure | `#1e8fd5` |
+| 6 | Chemtech green | `#4fa83a` |
+
+Slots 1 and 2 are the Hextech signature; the rest reach further into Runeterra,
+because a palette that stayed inside gold and teal could not be told apart.
+
+The set is checked against the hextech-black surface for the OKLCH lightness
+band, the chroma floor, protanopia and deuteranopia separation between
+neighbouring slots, and 3:1 contrast. It clears all four for bars, lines and
+areas. Scatter and bubble forms are held to the harder all-pairs test and clear
+it for the **first three slots only** — past three series there, facet rather
+than reach for a fourth colour. Re-run those checks before changing a value.
+
+`--lol-chart-positive` and `--lol-chart-negative` sit outside the categorical
+set and stay reserved for series that *mean* good or bad.
+
+Everything is a `--lol-chart-*` custom property alongside the rest of the
+design tokens, and TanStack's own `--ts-chart-*` variables are bridged to them,
+so a hand-written definition that never sets a theme still picks up the palette
+and the tooltip styling.
+
+### Limits worth knowing
+
+- **No time scale.** TanStack Charts ships band, point, linear and ordinal
+  scales. Map a date to a number or to a pre-formatted label before it reaches
+  a chart; `ChartXValue` is `string | number` for that reason.
+- **Never a dual axis.** Two measures of different scale are two charts, small
+  multiples, or one series indexed to a common base.
+- **Overlaid areas stop being honest past three series.** Stack them, or facet.
+
 ## Client-side Routing
 
 See [react-aria-components](https://react-spectrum.adobe.com/react-aria/routing.html#app-router)

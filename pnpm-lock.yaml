@@ -177,61 +177,6 @@ importers:
         specifier: 'catalog:'
         version: 2.10.7
 
-  apps/charts-storybook:
-    dependencies:
-      '@storybook/addon-docs':
-        specifier: 'catalog:'
-        version: 10.5.4(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.4(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0))
-      react:
-        specifier: 'catalog:'
-        version: 19.2.8
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.2.8(react@19.2.8)
-    devDependencies:
-      '@lolmath/charts':
-        specifier: workspace:*
-        version: link:../../packages/charts
-      '@lolmath/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      '@storybook/addon-links':
-        specifier: 'catalog:'
-        version: 10.5.4(@types/react@19.2.17)(react@19.2.8)(storybook@10.5.4(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8))
-      '@storybook/addon-themes':
-        specifier: 'catalog:'
-        version: 10.5.4(storybook@10.5.4(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8))
-      '@storybook/cli':
-        specifier: 'catalog:'
-        version: 10.5.4(@babel/preset-env@7.27.2(@babel/core@7.29.7))(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8)
-      '@storybook/react-vite':
-        specifier: 'catalog:'
-        version: 10.5.4(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rollup@4.62.2)(storybook@10.5.4(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8))(typescript@6.0.3)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0))
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.2.17
-      '@types/react-dom':
-        specifier: 'catalog:'
-        version: 19.2.3(@types/react@19.2.17)
-      '@vitejs/plugin-react-swc':
-        specifier: 'catalog:'
-        version: 4.3.2(@swc/helpers@0.5.23)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0))
-      prop-types:
-        specifier: 'catalog:'
-        version: 15.8.1
-      storybook:
-        specifier: 'catalog:'
-        version: 10.5.4(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8)
-      typescript:
-        specifier: 'catalog:'
-        version: 6.0.3
-      vite:
-        specifier: 'catalog:'
-        version: 8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0)
-      wrangler:
-        specifier: 'catalog:'
-        version: 4.114.0
-
   apps/docs:
     dependencies:
       '@orama/orama':
@@ -332,6 +277,9 @@ importers:
       '@storybook/react-vite':
         specifier: 'catalog:'
         version: 10.5.4(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rollup@4.62.2)(storybook@10.5.4(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.8))(typescript@6.0.3)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.91.0)(sass@1.91.0)(terser@5.46.1)(yaml@2.9.0))
+      '@tanstack/charts':
+        specifier: 'catalog:'
+        version: 0.14.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.17
@@ -398,49 +346,6 @@ importers:
 
   packages/champion: {}
 
-  packages/charts:
-    dependencies:
-      '@tanstack/charts':
-        specifier: 'catalog:'
-        version: 0.14.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      cva:
-        specifier: 'catalog:'
-        version: 1.0.0-beta.4(typescript@6.0.3)
-      d3-shape:
-        specifier: 'catalog:'
-        version: 3.2.0
-    devDependencies:
-      '@tsdown/css':
-        specifier: 'catalog:'
-        version: 0.22.14(jiti@2.7.0)(postcss-import@16.1.1(postcss@8.5.23))(postcss-modules@6.0.1(postcss@8.5.23))(postcss@8.5.23)(sass-embedded@1.91.0)(sass@1.91.0)(tsdown@0.22.14)(yaml@2.9.0)
-      '@types/d3-shape':
-        specifier: 'catalog:'
-        version: 3.2.0
-      '@types/node':
-        specifier: 'catalog:'
-        version: 26.1.1
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.2.17
-      '@types/react-dom':
-        specifier: 'catalog:'
-        version: 19.2.3(@types/react@19.2.17)
-      publint:
-        specifier: 'catalog:'
-        version: 0.3.22
-      react:
-        specifier: 'catalog:'
-        version: 19.2.8
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.2.8(react@19.2.8)
-      tsdown:
-        specifier: 'catalog:'
-        version: 0.22.14(@tsdown/css@0.22.14)(oxc-resolver@11.24.2)(publint@0.3.22)(typescript@6.0.3)(unrun@0.2.36)
-      typescript:
-        specifier: 'catalog:'
-        version: 6.0.3
-
   packages/ddragon:
     devDependencies:
       '@lolmath/typedoc':
@@ -493,9 +398,15 @@ importers:
         specifier: 'catalog:'
         version: 2.0.7(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
+      '@tanstack/charts':
+        specifier: 'catalog:'
+        version: 0.14.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@tsdown/css':
         specifier: 'catalog:'
         version: 0.22.14(jiti@2.7.0)(postcss-import@16.1.1(postcss@8.5.23))(postcss-modules@6.0.1(postcss@8.5.23))(postcss@8.5.23)(sass-embedded@1.91.0)(sass@1.91.0)(tsdown@0.22.14)(yaml@2.9.0)
+      '@types/d3-shape':
+        specifier: 'catalog:'
+        version: 3.2.0
       '@types/node':
         specifier: 'catalog:'
         version: 26.1.1
@@ -508,6 +419,9 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.2.3(@types/react@19.2.17)
+      d3-shape:
+        specifier: 'catalog:'
+        version: 3.2.0
       lightningcss:
         specifier: 'catalog:'
         version: 1.33.0

@@ -1,4 +1,4 @@
-import { LineChart } from "@lolmath/charts";
+import { LineChart } from "@lolmath/ui/charts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
 	formatGold,

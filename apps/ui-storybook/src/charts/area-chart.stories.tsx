@@ -1,4 +1,4 @@
-import { AreaChart } from "@lolmath/charts";
+import { AreaChart } from "@lolmath/ui/charts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
 	type DamageMinute,

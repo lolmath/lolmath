@@ -1,18 +1,16 @@
 import type {
 	ChartAxisOptions,
 	ChartAxisPresentationOptions,
-	ChartCurve,
 	ChartTooltipItem,
 	ChartTooltipOptions,
 	ChartValue,
 } from "@tanstack/charts";
-import { d3Curve } from "@tanstack/charts";
 import { scaleBand } from "@tanstack/charts/scales/band";
 import { scaleLinear } from "@tanstack/charts/scales/linear";
 import { scalePoint } from "@tanstack/charts/scales/point";
 import { tooltip } from "@tanstack/charts/tooltip";
-import { curveLinear, curveMonotoneX, curveStepAfter } from "d3-shape";
 import type { HTMLAttributes, ReactNode } from "react";
+import { type ChartCurveName, resolveCurve } from "../curves";
 import { hextechSeriesColor } from "../theme/theme";
 import type { ChartLegendItem } from "./chart-legend/chart-legend";
 
@@ -37,9 +35,6 @@ export interface ChartSeries<TDatum> {
 	 */
 	color?: string;
 }
-
-/** How a line or an area gets from one point to the next. */
-export type ChartCurveName = "linear" | "smooth" | "step";
 
 /** Props every cartesian chart in this package accepts. */
 export interface CartesianChartProps<TDatum> {
@@ -88,15 +83,7 @@ export interface CartesianChartProps<TDatum> {
 	>;
 }
 
-const CURVES: Record<ChartCurveName, ChartCurve> = {
-	linear: d3Curve(curveLinear),
-	smooth: d3Curve(curveMonotoneX),
-	step: d3Curve(curveStepAfter),
-};
-
-export function resolveCurve(name: ChartCurveName): ChartCurve {
-	return CURVES[name];
-}
+export { type ChartCurveName, resolveCurve };
 
 /** The colour a series is drawn in: its own, or its slot in the palette. */
 export function seriesColor<TDatum>(
