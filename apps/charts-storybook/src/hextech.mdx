@@ -1,0 +1,126 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Hextech/The visual language" />
+
+# Charts in the Hextech language
+
+`@lolmath/charts` draws [TanStack Charts](https://tanstack.com/charts) in the
+visual language Riot built for the League client, described in
+[The Visual Language of Hextech](https://nexus.leagueoflegends.com/en-us/2016/12/the-visual-language-of-hextech/).
+
+That article is worth reading before changing anything here, because the
+language is not a colour scheme. It is a set of rules about what each material
+in the interface is *for* — and a chart happens to map onto those rules almost
+exactly.
+
+## Metal frames, magic informs
+
+Riot describe the metal linework as "a framing element to support and draw focus
+towards key pieces of information", and hextech magic as an "intelligent
+partner" that guides you through it. Split a chart the same way and every
+decision falls out:
+
+| Hextech material | What it becomes |
+| --- | --- |
+| Gold metal linework | The frame, the axes, the grid, the rule under the title |
+| Hextech magic | The marks — lines, areas, bars, dots |
+| Parchment gold ink | Labels, tick values, legends |
+
+So the frame is a one-pixel hairline and the grid is painted at 11% opacity,
+while the marks are the only saturated thing on the panel. Ornament frames the
+data; it never competes with it.
+
+## Square, diamond, circle
+
+The language is built on three shapes: the square "to establish stability and
+reinforce our grid", the diamond as "an accent piece guiding attention toward
+key information", and the circle "to draw focus towards primary items that
+require a reaction".
+
+- The **square** is why bars have square corners by default and why the frame is
+  a rectangle rather than a rounded card. `radius` exists on `BarChart`, but it
+  is off unless you ask.
+- The **diamond** pins the frame's four corners, terminates the rule under the
+  title, and is the default legend swatch.
+- The **circle** is the focus dot and the crosshair marker — the thing that
+  appears when you point at a reading.
+
+## Magic has weight and direction
+
+Hextech magic is described as viscous — "somewhere between water and smoke" —
+always moving in a direction, and with "its brightest executions reserved for
+pivotal moments".
+
+The bloom on lines and areas is that, kept deliberately faint. It is on for
+lines and areas, off for bars (a glow on twenty columns is haze, not magic), and
+you can turn it off anywhere with `glow={false}`.
+
+## The palette
+
+Six categorical slots, assigned in order and never cycled. Slots 1 and 2 are the
+Hextech signature; the rest reach further into Runeterra, because a palette that
+stayed inside gold and teal could not be told apart.
+
+<div style={{ display: "grid", gap: "0.75rem", gridTemplateColumns: "repeat(auto-fit, minmax(9rem, 1fr))", margin: "1.5rem 0" }}>
+	{[
+		["1", "Hextech teal", "#0aa89b"],
+		["2", "Piltover gold", "#ba8c2e"],
+		["3", "Arcane violet", "#8e6be8"],
+		["4", "Ruin red", "#e8574f"],
+		["5", "Rift azure", "#1e8fd5"],
+		["6", "Chemtech green", "#4fa83a"],
+	].map(([slot, name, hex]) => (
+		<div key={slot} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+			<span style={{ width: "1.25rem", height: "1.25rem", rotate: "45deg", background: hex, boxShadow: `0 0 8px ${hex}`, flexShrink: 0 }} />
+			<span style={{ display: "flex", flexDirection: "column", lineHeight: 1.3 }}>
+				<strong style={{ fontSize: "0.8125rem" }}>{name}</strong>
+				<code style={{ fontSize: "0.75rem", opacity: 0.7 }}>{hex}</code>
+			</span>
+		</div>
+	))}
+</div>
+
+Every slot is a CSS custom property — `--lol-chart-series-1` through `-6` — so a
+host page retunes the whole library without threading colours through props.
+
+The set is checked against the `#010a13` surface for the OKLCH lightness band,
+the chroma floor, protanopia and deuteranopia separation between neighbouring
+slots, and 3:1 contrast. It clears all four for bars, lines and areas. Scatter
+and bubble forms are held to the harder all-pairs test and clear it for the
+**first three slots only** — past three series there, facet rather than reach
+for a fourth colour.
+
+`--lol-chart-positive` and `--lol-chart-negative` sit outside the categorical
+set and stay reserved. A series that *means* good or bad — a win rate, a gold
+lead — wears them. A series that is merely the third one does not.
+
+## What the charts do without being asked
+
+- **A legend for two or more series, never for one.** Colour is never the only
+  way to tell two series apart; a lone swatch would only restate the title.
+- **A tooltip and a crosshair.** An HTML chart is interactive, so line and area
+  charts ship the hover layer rather than making you opt in.
+- **Formatters reach everywhere.** `formatY` lands on the axis, the crosshair
+  label and the tooltip from one place.
+- **Gaps, not outlines.** Bars are separated by a two-pixel channel of surface,
+  and dots carry a two-pixel surface ring so they stay legible where they cross
+  a line.
+
+## Typography
+
+Beaufort for anything that names a thing — panel titles, uppercased and letter-
+spaced, the way the client sets them. Spiegel for anything that measures one:
+labels, ticks, legends, tooltips.
+
+The chart engine reads the computed font off its own container to measure text,
+so the fonts have to be loaded for the layout to be right:
+
+```ts
+import "@lolmath/ui/font/beaufort";
+import "@lolmath/ui/font/spiegel";
+import "@lolmath/ui/css";
+import "@lolmath/charts/css";
+```
+
+`@lolmath/charts` works on its own — every token falls back to a literal — but
+it is built to sit next to `@lolmath/ui`.

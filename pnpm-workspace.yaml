@@ -23,9 +23,11 @@ catalog:
   "@storybook/addon-themes": ^10.5.4
   "@storybook/cli": ^10.5.4
   "@storybook/react-vite": ^10.5.4
+  "@tanstack/charts": ^0.14.0
   "@tailwindcss/postcss": ^4.3.3
   "@tailwindcss/vite": ^4.3.3
   "@tsdown/css": ^0.22.14
+  "@types/d3-shape": ^3.1.8
   "@types/mdx": ^2.0.14
   '@types/node': ^26.1.1
   "@types/postcss-url": ^10.0.4
@@ -35,6 +37,7 @@ catalog:
   "@vitest/coverage-v8": ^4.1.10
   autoprefixer: ^10.5.4
   cva: 1.0.0-beta.4
+  d3-shape: ^3.2.0
   fumadocs-core: 16.12.1
   fumadocs-mdx: 15.2.0
   fumadocs-ui: 16.12.1

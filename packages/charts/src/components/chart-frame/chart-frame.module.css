@@ -1,0 +1,156 @@
+@layer lol {
+	/*
+	 * "Metal linework as a framing element to support and draw focus towards
+	 * key pieces of information." The frame is a one-pixel hairline and nothing
+	 * more: a gradient painted into the border box, the plot painted into the
+	 * padding box. Anything heavier would compete with the data.
+	 */
+	.frame {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		border: 1px solid transparent;
+		background:
+			var(--lol-chart-frame-fill) padding-box,
+			var(--lol-chart-frame-border) border-box;
+		color: var(--lol-chart-foreground);
+		font-family: var(--lol-chart-font-body);
+		/* A <figure>: the UA gives it 1em block and 40px inline margins. */
+		margin: 0;
+		padding: 1rem 1.125rem 1.125rem;
+		gap: 0.75rem;
+	}
+
+	/* Unframed: the same type and colours, no metal. For charts that already
+	 * sit inside a panel of their own. */
+	.bare {
+		border-color: transparent;
+		background: none;
+		padding: 0;
+	}
+
+	/*
+	 * The diamond is the language's accent piece — it "guides attention toward
+	 * key information". Four of them pin the frame's corners to the grid the
+	 * square establishes. They are decoration, so they are hidden from the
+	 * accessibility tree by the component.
+	 */
+	.corner {
+		position: absolute;
+		width: 5px;
+		height: 5px;
+		rotate: 45deg;
+		border: 1px solid var(--lol-chart-frame-accent);
+		background: var(--lol-chart-surface);
+	}
+
+	.bare .corner {
+		display: none;
+	}
+
+	.cornerTopLeft {
+		top: -3px;
+		left: -3px;
+	}
+
+	.cornerTopRight {
+		top: -3px;
+		right: -3px;
+	}
+
+	.cornerBottomLeft {
+		bottom: -3px;
+		left: -3px;
+	}
+
+	.cornerBottomRight {
+		bottom: -3px;
+		right: -3px;
+	}
+
+	.header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.headings {
+		display: flex;
+		flex-direction: column;
+		gap: 0.125rem;
+		min-width: 0;
+	}
+
+	/* Beaufort, spaced and uppercased — the client's voice for anything that
+	 * names a thing rather than measures it. */
+	.title {
+		margin: 0;
+		font-family: var(--lol-chart-font-display);
+		font-size: var(--lol-font-size-h5, 1.1667rem);
+		line-height: var(--lol-line-height-h5, 1.5);
+		letter-spacing: var(--lol-letter-spacing-h5, 0.075em);
+		font-weight: var(--lol-font-weight-h5, 700);
+		text-transform: uppercase;
+		color: var(--lol-chart-foreground);
+	}
+
+	.subtitle {
+		margin: 0;
+		font-size: var(--lol-font-size-sm, 0.875rem);
+		line-height: var(--lol-line-height-sm, 1.1025rem);
+		letter-spacing: var(--lol-letter-spacing-sm, 0.02em);
+		color: var(--lol-chart-muted);
+	}
+
+	.actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		flex-shrink: 0;
+	}
+
+	/* A rule terminated at both ends by a diamond: the same figure the client
+	 * draws under every panel heading. */
+	.rule {
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+	}
+
+	.ruleLine {
+		height: 1px;
+		flex-grow: 1;
+		border: none;
+		margin: 0;
+		background-image: linear-gradient(
+			to right,
+			transparent,
+			var(--lol-chart-frame-rule) 15%,
+			var(--lol-chart-frame-rule) 85%,
+			transparent
+		);
+	}
+
+	.ruleDiamond {
+		width: 4px;
+		height: 4px;
+		rotate: 45deg;
+		border: 1px solid var(--lol-chart-frame-rule);
+		flex-shrink: 0;
+	}
+
+	.body {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	.footer {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem 1rem;
+	}
+}
