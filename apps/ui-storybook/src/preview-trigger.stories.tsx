@@ -11,7 +11,6 @@ import {
 	Text,
 } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { ReactNode } from "react";
 
 // A preview is the hover affordance this library does have: unlike a tooltip it
 // also opens on long press, so a touch user can reach it, and its content may
@@ -91,9 +90,8 @@ export const Interactive: Story = {
 	},
 };
 
-// The trigger for a term inside a sentence. `PreviewButton` inherits the type
-// it sits in and marks itself with a dashed underline, so the sentence still
-// reads as one line of prose while the term stays a real, focusable button.
+// A term inside running text gets `PreviewButton`, which is a trigger of its
+// own — see Buttons/PreviewButton.
 export const InlineTerm: Story = {
 	name: "Inline term via PreviewButton",
 	args: {
@@ -114,44 +112,6 @@ export const InlineTerm: Story = {
 		),
 	},
 };
-
-function ItemPreview({
-	name,
-	children,
-}: {
-	name: string;
-	children: ReactNode;
-}) {
-	return (
-		<PreviewTrigger>
-			<PreviewButton>{name}</PreviewButton>
-			<Popover style={{ width: 260 }}>
-				<PopoverBody>
-					<Heading preset="h5" as="h3" style={{ marginBottom: "0.25rem" }}>
-						{name}
-					</Heading>
-					<Text>{children}</Text>
-				</PopoverBody>
-			</Popover>
-		</PreviewTrigger>
-	);
-}
-
-// The point of inheriting the type: the terms sit in the paragraph at its size
-// and leading, wrap with it, and only the underline sets them apart.
-export function InlineTermsInProse() {
-	return (
-		<Text elementType="p" preset="md" style={{ maxWidth: "30rem" }}>
-			Most bruisers open on{" "}
-			<ItemPreview name="Doran's Blade">
-				450 gold — 80 health, 10 attack damage, 3.5% life steal.
-			</ItemPreview>{" "}
-			or{" "}
-			<ItemPreview name="Long Sword">350 gold — 10 attack damage.</ItemPreview>,
-			which is enough sustain to hold the wave until the first back.
-		</Text>
-	);
-}
 
 // A trigger that is not already a React Aria component has to forward its ref
 // and props to a DOM element, which `Focusable` does. It also has to be

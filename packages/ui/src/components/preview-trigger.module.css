@@ -5,7 +5,14 @@
 		padding: 0;
 		border: 0;
 		background: none;
-		cursor: pointer;
+
+		/*
+		 * Not `pointer`: the preview opens on hover, so a hand would promise a
+		 * click that does nothing, and the term is not a link. This is the arrow
+		 * a `<button>` gets from the browser anyway, spelled out because a host's
+		 * CSS reset may have decided otherwise.
+		 */
+		cursor: default;
 
 		/*
 		 * The term belongs to the sentence around it, so everything but the face
@@ -65,7 +72,6 @@
 		&:disabled {
 			color: var(--lol-color-grey-150);
 			--lol-preview-underline-color: var(--lol-color-grey-150);
-			cursor: default;
 		}
 	}
 }
