@@ -13,7 +13,8 @@ export {
 	type DropTarget,
 	FieldError,
 	// Wrappers that make an arbitrary element usable as a trigger: `Focusable`
-	// for a `PreviewTrigger`, `Pressable` for a context `MenuTrigger`. Both
+	// for a `PreviewTrigger` whose trigger is not text (an icon, a portrait —
+	// text has `PreviewButton`), `Pressable` for a context `MenuTrigger`. Both
 	// still need a role of their own — see the notes on those components.
 	Focusable,
 	GridLayout,

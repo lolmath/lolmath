@@ -6,6 +6,7 @@ import {
 	Heading,
 	Popover,
 	PopoverBody,
+	PreviewButton,
 	PreviewTrigger,
 	Text,
 } from "@lolmath/ui";
@@ -89,33 +90,14 @@ export const Interactive: Story = {
 	},
 };
 
-// A trigger that is not already a React Aria component has to forward its ref
-// and props to a DOM element, which `Focusable` does. It also has to be
-// something a screen reader announces as actionable on its own — a real
-// `<button>` here, rather than a span wearing `role="button"`.
-export const CustomTrigger: Story = {
-	name: "Custom trigger via Focusable",
+// A term inside running text gets `PreviewButton`, which is a trigger of its
+// own — see Buttons/PreviewButton.
+export const InlineTerm: Story = {
+	name: "Inline term via PreviewButton",
 	args: {
 		children: (
 			<>
-				<Focusable>
-					<button
-						type="button"
-						style={{
-							appearance: "none",
-							background: "none",
-							border: 0,
-							borderBottom: "1px dashed var(--lol-color-gold-400)",
-							padding: 0,
-							color: "var(--lol-color-gold-100)",
-							cursor: "pointer",
-							font: "inherit",
-							fontFamily: "var(--lol-font-family-spiegel)",
-						}}
-					>
-						Doran's Blade
-					</button>
-				</Focusable>
+				<PreviewButton>Doran's Blade</PreviewButton>
 				<Popover style={{ width: 260 }}>
 					<PopoverBody>
 						<Heading preset="h5" as="h3" style={{ marginBottom: "0.25rem" }}>
@@ -124,6 +106,51 @@ export const CustomTrigger: Story = {
 						<Text>
 							450 gold — 80 health, 10 attack damage, 3.5% life steal.
 						</Text>
+					</PopoverBody>
+				</Popover>
+			</>
+		),
+	},
+};
+
+// A trigger that is not already a React Aria component has to forward its ref
+// and props to a DOM element, which `Focusable` does. It also has to be
+// something a screen reader announces as actionable on its own — a real
+// `<button>` with a label here, rather than a span wearing `role="button"`.
+export const CustomTrigger: Story = {
+	name: "Custom trigger via Focusable",
+	args: {
+		children: (
+			<>
+				<Focusable>
+					<button
+						type="button"
+						aria-label="Ahri"
+						style={{
+							appearance: "none",
+							background: "none",
+							border: "1px solid var(--lol-color-gold-400)",
+							borderRadius: "9999px",
+							padding: 0,
+							cursor: "pointer",
+							lineHeight: 0,
+						}}
+					>
+						<img
+							alt=""
+							src="https://i.imgur.com/xIe7Wlb.png"
+							width={48}
+							height={48}
+							style={{ borderRadius: "9999px", objectFit: "cover" }}
+						/>
+					</button>
+				</Focusable>
+				<Popover style={{ width: 260 }}>
+					<PopoverBody>
+						<Heading preset="h5" as="h3" style={{ marginBottom: "0.25rem" }}>
+							Ahri
+						</Heading>
+						<Text>The Nine-Tailed Fox — Mage, Assassin.</Text>
 					</PopoverBody>
 				</Popover>
 			</>
