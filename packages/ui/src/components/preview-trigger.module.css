@@ -1,0 +1,71 @@
+@layer lol {
+	.previewButton {
+		appearance: none;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+		cursor: pointer;
+
+		/*
+		 * The term belongs to the sentence around it, so everything but the face
+		 * is inherited: size, weight, leading and colour come from the paragraph.
+		 * `font: inherit` also resets the family, hence the override after it.
+		 */
+		font: inherit;
+		font-family: var(--lol-font-family-spiegel);
+		/* A button is an inline-block; without this it rides above the text. */
+		vertical-align: baseline;
+		text-align: inherit;
+
+		color: var(--lol-color-gold-100);
+
+		/*
+		 * An underline rather than a border-bottom: it follows the term when it
+		 * wraps, sits under the descenders instead of clipping them, and can go
+		 * from dashed to solid without moving anything on the line.
+		 */
+		text-decoration: underline dashed var(--lol-preview-underline-color);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.25em;
+
+		--lol-preview-underline-color: var(--lol-color-gold-400);
+
+		transition: color, text-decoration-color;
+		transition-duration: 0.3s;
+
+		outline-style: solid;
+		outline-color: var(--lol-color-gold-400);
+		outline-offset: 2px;
+
+		&:not(:focus-visible) {
+			outline: none;
+		}
+
+		&:hover,
+		&:focus-visible {
+			--lol-preview-underline-color: var(--lol-color-gold-200);
+		}
+
+		/*
+		 * Once the preview is open the dashes have done their job — they hint that
+		 * there is more to read, and there now is — so they close up into a rule.
+		 * `aria-expanded` is set by whichever trigger wraps the button, so this
+		 * also covers a `DialogTrigger` used as a toggle tip.
+		 */
+		&[aria-expanded="true"] {
+			--lol-preview-underline-color: var(--lol-color-gold-200);
+			text-decoration-style: solid;
+		}
+
+		&:active {
+			color: var(--lol-color-gold-300);
+		}
+
+		&:disabled {
+			color: var(--lol-color-grey-150);
+			--lol-preview-underline-color: var(--lol-color-grey-150);
+			cursor: default;
+		}
+	}
+}

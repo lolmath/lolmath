@@ -6,10 +6,12 @@ import {
 	Heading,
 	Popover,
 	PopoverBody,
+	PreviewButton,
 	PreviewTrigger,
 	Text,
 } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { ReactNode } from "react";
 
 // A preview is the hover affordance this library does have: unlike a tooltip it
 // also opens on long press, so a touch user can reach it, and its content may
@@ -89,33 +91,15 @@ export const Interactive: Story = {
 	},
 };
 
-// A trigger that is not already a React Aria component has to forward its ref
-// and props to a DOM element, which `Focusable` does. It also has to be
-// something a screen reader announces as actionable on its own — a real
-// `<button>` here, rather than a span wearing `role="button"`.
-export const CustomTrigger: Story = {
-	name: "Custom trigger via Focusable",
+// The trigger for a term inside a sentence. `PreviewButton` inherits the type
+// it sits in and marks itself with a dashed underline, so the sentence still
+// reads as one line of prose while the term stays a real, focusable button.
+export const InlineTerm: Story = {
+	name: "Inline term via PreviewButton",
 	args: {
 		children: (
 			<>
-				<Focusable>
-					<button
-						type="button"
-						style={{
-							appearance: "none",
-							background: "none",
-							border: 0,
-							borderBottom: "1px dashed var(--lol-color-gold-400)",
-							padding: 0,
-							color: "var(--lol-color-gold-100)",
-							cursor: "pointer",
-							font: "inherit",
-							fontFamily: "var(--lol-font-family-spiegel)",
-						}}
-					>
-						Doran's Blade
-					</button>
-				</Focusable>
+				<PreviewButton>Doran's Blade</PreviewButton>
 				<Popover style={{ width: 260 }}>
 					<PopoverBody>
 						<Heading preset="h5" as="h3" style={{ marginBottom: "0.25rem" }}>
@@ -124,6 +108,89 @@ export const CustomTrigger: Story = {
 						<Text>
 							450 gold — 80 health, 10 attack damage, 3.5% life steal.
 						</Text>
+					</PopoverBody>
+				</Popover>
+			</>
+		),
+	},
+};
+
+function ItemPreview({
+	name,
+	children,
+}: {
+	name: string;
+	children: ReactNode;
+}) {
+	return (
+		<PreviewTrigger>
+			<PreviewButton>{name}</PreviewButton>
+			<Popover style={{ width: 260 }}>
+				<PopoverBody>
+					<Heading preset="h5" as="h3" style={{ marginBottom: "0.25rem" }}>
+						{name}
+					</Heading>
+					<Text>{children}</Text>
+				</PopoverBody>
+			</Popover>
+		</PreviewTrigger>
+	);
+}
+
+// The point of inheriting the type: the terms sit in the paragraph at its size
+// and leading, wrap with it, and only the underline sets them apart.
+export function InlineTermsInProse() {
+	return (
+		<Text elementType="p" preset="md" style={{ maxWidth: "30rem" }}>
+			Most bruisers open on{" "}
+			<ItemPreview name="Doran's Blade">
+				450 gold — 80 health, 10 attack damage, 3.5% life steal.
+			</ItemPreview>{" "}
+			or{" "}
+			<ItemPreview name="Long Sword">350 gold — 10 attack damage.</ItemPreview>,
+			which is enough sustain to hold the wave until the first back.
+		</Text>
+	);
+}
+
+// A trigger that is not already a React Aria component has to forward its ref
+// and props to a DOM element, which `Focusable` does. It also has to be
+// something a screen reader announces as actionable on its own — a real
+// `<button>` with a label here, rather than a span wearing `role="button"`.
+export const CustomTrigger: Story = {
+	name: "Custom trigger via Focusable",
+	args: {
+		children: (
+			<>
+				<Focusable>
+					<button
+						type="button"
+						aria-label="Ahri"
+						style={{
+							appearance: "none",
+							background: "none",
+							border: "1px solid var(--lol-color-gold-400)",
+							borderRadius: "9999px",
+							padding: 0,
+							cursor: "pointer",
+							lineHeight: 0,
+						}}
+					>
+						<img
+							alt=""
+							src="https://i.imgur.com/xIe7Wlb.png"
+							width={48}
+							height={48}
+							style={{ borderRadius: "9999px", objectFit: "cover" }}
+						/>
+					</button>
+				</Focusable>
+				<Popover style={{ width: 260 }}>
+					<PopoverBody>
+						<Heading preset="h5" as="h3" style={{ marginBottom: "0.25rem" }}>
+							Ahri
+						</Heading>
+						<Text>The Nine-Tailed Fox — Mage, Assassin.</Text>
 					</PopoverBody>
 				</Popover>
 			</>
