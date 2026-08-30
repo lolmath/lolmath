@@ -1,6 +1,6 @@
 {
 	"name": "@lolmath/ui",
-	"version": "9.6.0",
+	"version": "9.7.0",
 	"private": false,
 	"description": "lolmath.net UI",
 	"type": "module",
