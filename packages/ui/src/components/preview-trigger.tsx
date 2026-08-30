@@ -51,12 +51,14 @@ export type PreviewButtonProps = AriaButtonProps & {
  * somewhere, use a `ButtonLink` or apply the exported `previewButton` styles
  * to a `Link` instead — a preview is never the only way to reach content.
  *
- *   <PreviewTrigger>
- *     <PreviewButton>Doran's Blade</PreviewButton>
- *     <Popover>
- *       <PopoverBody>…</PopoverBody>
- *     </Popover>
- *   </PreviewTrigger>
+ * ```tsx
+ * <PreviewTrigger>
+ *   <PreviewButton>Doran's Blade</PreviewButton>
+ *   <Popover>
+ *     <PopoverBody>…</PopoverBody>
+ *   </Popover>
+ * </PreviewTrigger>
+ * ```
  */
 export function PreviewButton({
 	children,
