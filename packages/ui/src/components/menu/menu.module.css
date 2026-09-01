@@ -81,4 +81,19 @@
 		background: rgb(from var(--lol-color-gold-100) r g b / 0.25);
 		margin: 0.4rem 0.5rem;
 	}
+
+	.empty {
+		padding: 0.75rem 0.5rem;
+		text-align: center;
+	}
+
+	.loadMore {
+		display: flex;
+		justify-content: center;
+		padding: 0.5rem;
+	}
+
+	.spinner {
+		width: 1.5rem;
+	}
 }

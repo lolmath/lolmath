@@ -150,8 +150,17 @@ export const Multiline: Story = {
 	),
 };
 
-// Tokens do not have to come from typing. Here a menu inserts one at the caret,
-// which is the shape a mention picker or a multi-select combobox takes.
+// Tokens do not have to come from typing. Here a menu inserts one where the
+// user left off, which is the shape a mention picker or a multi-select combobox
+// takes.
+//
+// The value carries its whole selection as `selectedRange`, and `caretPosition`
+// is now just its `current` end, so the range is what to edit against:
+// `start` and `end` bracket a selection and collapse onto each other into a
+// caret, and one `replaceRangeWithSegments` covers both. Opening this menu
+// takes focus off the field, and React Aria collapses the selection on blur, so
+// the range here is always the caret — an insertion from something that keeps
+// focus (a shortcut, a toolbar) is what overwrites selected text.
 export function InsertFromMenu() {
 	const [value, setValue] = useState(() => new MentionValue([]));
 
@@ -176,8 +185,8 @@ export function InsertFromMenu() {
 								onAction={() =>
 									setValue((previous) =>
 										previous.replaceRangeWithSegments(
-											previous.caretPosition,
-											previous.caretPosition,
+											previous.selectedRange.start,
+											previous.selectedRange.end,
 											[
 												{ type: "token", text: `@${summoner}` },
 												{ type: "text", text: " " },

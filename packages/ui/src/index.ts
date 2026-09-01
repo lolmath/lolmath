@@ -17,12 +17,20 @@ export {
 	// text has `PreviewButton`), `Pressable` for a context `MenuTrigger`. Both
 	// still need a role of their own — see the notes on those components.
 	Focusable,
+	// The element and event types React Aria hands to the props of the
+	// components here: a ref that only has to be focusable, and the events
+	// `onHoverStart`/`onKeyDown` are called with — neither of which is the DOM
+	// type of the same name.
+	type FocusableElement,
 	GridLayout,
+	type HoverEvent,
 	isTextDropItem,
 	type Key,
+	type KeyboardEvent,
 	ListBoxItem,
 	type ListData,
 	ListLayout,
+	type Modality,
 	// TODO: Maybe remove this if it is not used.
 	Popover as UnstyledPopover,
 	Pressable,
@@ -31,6 +39,10 @@ export {
 	Size,
 	type SortDescriptor,
 	type SortDirection,
+	// Says which modality the focus ring should follow — call it with
+	// `"keyboard"` before moving focus yourself, so the moved-to element shows a
+	// focus ring even though no key was pressed on it.
+	setInteractionModality,
 	TableLayout,
 	type TextDropItem,
 	type TimeValue,
@@ -55,6 +67,7 @@ export * from "./components/divider";
 export * from "./components/group";
 export * from "./components/menu/menu";
 export * from "./components/modal";
+export * from "./components/navigation-tree/navigation-tree";
 export * from "./components/number-field";
 export * from "./components/popover";
 export * from "./components/preview-trigger";
