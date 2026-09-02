@@ -29,6 +29,35 @@ preflight, another reset, or none at all all render identically.
 `visual/preflight.visual.spec.ts` renders every component twice — bare and with
 preflight applied — and fails if a single pixel differs.
 
+## Trimmed Text Boxes
+
+A line of type reserves room for every ascender and descender the face can
+draw, plus the leading the preset asks for — in Beaufort, 1.27em of box around
+0.69em of capitals. Where a box is sized by its own text and something is
+measured from its edge, it is trimmed down to the caps with
+`text-box: trim-both cap alphabetic`:
+
+| Component | What it buys |
+| --- | --- |
+| `Heading` | The box is the height of the capitals, so the margin or gap you set around a heading is the space you get. |
+| `ChartFrame` | The title's caps sit exactly the frame's padding below the hairline, and level with the top of anything in `actions`. |
+| `ProgressBar` | The `0.25rem` between the reading and the bar runs from the label's baseline. |
+
+Two things follow from it:
+
+- **A heading no longer brings its own breathing room.** Half the leading used
+  to sit above the caps and half under the baseline, which read as padding.
+  Set the space you want.
+- **Accented capitals and descenders reach past the box.** `cap alphabetic`
+  measures to the cap height and the baseline, so an `Ö` and a `g` overflow it.
+  Nothing is clipped, but a gap of zero is a gap of zero.
+
+Everything else keeps its leading. Running text — `Text`, `Label`,
+`PreviewButton` — is inline, where the leading is what keeps lines apart, and a
+control whose padding *is* its leading (a button, a tab, a menu item) would
+only get shorter. An engine without `text-box` support drops the declaration
+and keeps the leading, which is the spacing this library shipped before.
+
 ## CSS Layer
 
 All CSS modules have the `lol` layer. You can use `@layer` to control the

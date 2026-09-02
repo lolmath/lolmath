@@ -5,6 +5,21 @@
 		font-family: var(--lol-font-family-beaufort);
 		scroll-margin-top: 5rem;
 		text-transform: uppercase;
+
+		/*
+		 * The box is the caps, not the em box. Beaufort reserves 1.27em for
+		 * ascenders and descenders where an uppercased heading only ever draws
+		 * 0.69em of caps, and the presets below add leading on top of that: an
+		 * h5 spends 11 of its 24 pixels on space no glyph reaches. Trimmed, the
+		 * margin or gap set around a heading is the space that shows up, and a
+		 * heading set next to something else lines up on its caps.
+		 *
+		 * `cap alphabetic` rather than the font's own text edges because the
+		 * type is uppercased — there is nothing under the baseline to lose. An
+		 * engine without `text-box` drops the line and keeps the leading, which
+		 * is only the spacing this library has always had.
+		 */
+		text-box: trim-both cap alphabetic;
 	}
 
 	.h1 {

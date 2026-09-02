@@ -78,8 +78,27 @@
 	.headings {
 		display: flex;
 		flex-direction: column;
-		gap: 0.125rem;
+		/*
+		 * Title baseline to subtitle cap, both boxes being trimmed. The 0.125rem
+		 * this replaces read as eleven pixels while the title still carried its
+		 * descender space and the subtitle its ascender space.
+		 */
+		gap: 0.375rem;
 		min-width: 0;
+	}
+
+	/*
+	 * Trimmed to the caps, because every measurement on this panel is set right
+	 * here — the frame's 1rem of padding, the gap above, the 0.75rem down to the
+	 * rule — and a box that reserves room for glyphs its line never draws makes
+	 * each of them larger than it says. Trimmed, the title's caps sit exactly
+	 * 1rem under the hairline and level with the top of anything in `actions`,
+	 * which `flex-start` up there could not do while the box started six pixels
+	 * above the type.
+	 */
+	.title,
+	.subtitle {
+		text-box: trim-both cap alphabetic;
 	}
 
 	/* Beaufort, spaced and uppercased — the client's voice for anything that

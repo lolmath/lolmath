@@ -1,7 +1,16 @@
 import { Heading } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
+// The client's voice for anything that names a thing: Beaufort, uppercased and
+// spaced, in five sizes.
+//
+// The box is trimmed to the capitals with `text-box: trim-both cap alphabetic`,
+// so a heading is exactly as tall as the type you can see — none of the
+// ascender, descender or leading space the face reserves. That makes the margin
+// or gap you set around a heading the space you actually get, and lines a
+// heading up on its caps with whatever sits beside it, but it also means a
+// heading brings no breathing room of its own: the half-leading that used to sit
+// above the caps and under the baseline is gone, so set the space you want.
 const meta = {
 	title: "Typography/Heading",
 	component: Heading,

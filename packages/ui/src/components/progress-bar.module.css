@@ -36,5 +36,17 @@
 		text-transform: uppercase;
 		font-family: var(--lol-font-family-beaufort);
 		color: var(--lol-color-gold-100);
+
+		/*
+		 * The label and the value, not the row: text sitting directly in a flex
+		 * container is an anonymous item, so the row itself has no line box to
+		 * trim. Both are uppercased, so trimming to the caps loses no glyph and
+		 * takes eight pixels of reserved ascender and descender space off the
+		 * row — which leaves the wrapper's 0.25rem running from the baseline of
+		 * the reading to the top of the bar.
+		 */
+		& > * {
+			text-box: trim-both cap alphabetic;
+		}
 	}
 }
