@@ -303,6 +303,12 @@ export const RowActions: Story = {
 	args: {},
 };
 
+/**
+ * A key in `disabledKeys` greys its row out and takes it out of service: the
+ * label stops being a link, so there is nothing to tab to, nothing to press and
+ * no pointer cursor over it, the arrow keys walk past the row, and a disabled
+ * branch will not open.
+ */
 export const DisabledItems: Story = {
 	args: { disabledKeys: ["ddragon", "resist"] },
 };

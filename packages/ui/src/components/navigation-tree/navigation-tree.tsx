@@ -105,6 +105,11 @@ export interface NavigationTreeItemContentProps
  * The children become the row's link, so they are the label and nothing else;
  * an expand chevron is added for items that have children. A branch with no
  * `href` of its own expands when its label is pressed instead of navigating.
+ *
+ * A row in the tree's `disabledKeys` is inert down to its link. React Aria
+ * feeds that link its `href` through context but not the item's disabled
+ * state, so this passes it on: the link drops to a plain span with nothing to
+ * tab to, nothing to press, and no pointer cursor over it.
  */
 export function NavigationTreeItemContent({
 	actions,
@@ -112,18 +117,23 @@ export function NavigationTreeItemContent({
 }: NavigationTreeItemContentProps) {
 	return (
 		<AriaNavigationTreeItemContent>
-			{composeRenderProps(children, (children, { hasChildItems }) => (
-				<>
-					{hasChildItems ? (
-						<AriaButton className={classes.chevron} slot="chevron" />
-					) : (
-						/* Leaves keep the chevron's footprint so labels stay aligned. */
-						<span aria-hidden="true" className={classes.chevronSpacer} />
-					)}
-					<AriaLink className={classes.link}>{children}</AriaLink>
-					{actions}
-				</>
-			))}
+			{composeRenderProps(
+				children,
+				(children, { hasChildItems, isDisabled }) => (
+					<>
+						{hasChildItems ? (
+							<AriaButton className={classes.chevron} slot="chevron" />
+						) : (
+							/* Leaves keep the chevron's footprint so labels stay aligned. */
+							<span aria-hidden="true" className={classes.chevronSpacer} />
+						)}
+						<AriaLink className={classes.link} isDisabled={isDisabled}>
+							{children}
+						</AriaLink>
+						{actions}
+					</>
+				),
+			)}
 		</AriaNavigationTreeItemContent>
 	);
 }
