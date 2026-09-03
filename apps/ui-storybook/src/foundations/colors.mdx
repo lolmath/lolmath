@@ -1,0 +1,143 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+Every color in `@lolmath/ui` is a CSS custom property named `--lol-color-<family>-<shade>`,
+exposed to Tailwind as `lol-<family>-<shade>` (e.g. `bg-lol-grey-400`). There is no
+semantic layer on top — no `--surface`, no `--card` — so picking the right token
+means knowing what each shade is *for*, not just what it looks like. That's what
+this page is for.
+
+The palette has four families: **blue** (the hextech current), **grey**
+(neutral surfaces and secondary text), **gold** (metal linework and ink), and a
+single **hextech black**. Within a family, the shade number tracks how far the
+color sits from where it started — it isn't a strict lightness ramp, so always
+check the swatch rather than assuming.
+
+## Hextech black — the floor
+
+<div style={{ display: "flex", alignItems: "center", gap: "0.875rem", margin: "1.25rem 0" }}>
+	<span style={{ width: "3rem", height: "3rem", background: "#010a13", border: "1px solid rgb(240 230 210 / 0.15)", flexShrink: 0 }} />
+	<span style={{ display: "flex", flexDirection: "column", lineHeight: 1.4 }}>
+		<strong>hextech-black</strong>{" "}
+		<code>#010a13</code>
+		<span style={{ opacity: 0.75, fontSize: "0.875rem" }}>
+			The deepest color in the system. It's the League client's page background,
+			and it's also the recessed background of anything that reads as "cut into"
+			the page — modal dialogs, open dropdowns and listboxes, text and number
+			inputs, sticky table headers.
+		</span>
+	</span>
+</div>
+
+Everything else in the palette is designed to sit on top of `hextech-black`, so
+it's the one color you should reach for first when something needs to look like
+the base layer rather than a layer above it.
+
+## Grey — neutral surfaces and secondary ink
+
+<div style={{ display: "grid", gap: "0.75rem", margin: "1.25rem 0" }}>
+	{[
+		["grey-100", "#a09b8c", "Secondary body text — the muted, warmer alternative to gold ink. Used by Text/Heading's `grey100` color."],
+		["grey-150", "#5b5a56", "Dimmer text and the fill for disabled controls (`--lol-gradient-disabled`)."],
+		["grey-200", "#3c3c41", "A step up in emphasis for interactive neutrals — the focus-state gradient stop and the inset shadow on a selected toggle button."],
+		["grey-300", "#1e2328", "The workhorse interactive surface: hover and focus backgrounds on menu items, calendar days and date segments; disabled field backgrounds; the unfilled slider track; borders and drop shadows on popovers and dropdowns. If something reacts to your cursor, it's probably grey-300."],
+		["grey-cool", "#1e282d", "Same depth as grey-300 with a cooler cast. Reserved for a surface that needs to read as neutral-cool rather than neutral-warm without changing depth."],
+		["grey-400", "#111318", "New. Sits between grey-300 and hextech-black — darker and quieter than either. Use it as the resting background for a static elevated surface, most notably cards and panels, so they read as raised content rather than as the page floor (hextech-black) or an interactive row (grey-300)."],
+	].map(([name, hex, desc]) => (
+		<div key={name} style={{ display: "flex", alignItems: "flex-start", gap: "0.875rem" }}>
+			<span style={{ width: "3rem", height: "3rem", background: hex, border: "1px solid rgb(240 230 210 / 0.15)", flexShrink: 0 }} />
+			<span style={{ display: "flex", flexDirection: "column", lineHeight: 1.4 }}>
+				<strong>{name}</strong>{" "}
+				<code>{hex}</code>
+				<span style={{ opacity: 0.75, fontSize: "0.875rem" }}>{desc}</span>
+			</span>
+		</div>
+	))}
+</div>
+
+That ordering is also the one to reach for when stacking surfaces: `hextech-black`
+for the page, `grey-400` for a card or panel resting on it, `grey-300` for the
+moment someone interacts with something inside that card. Keeping those three
+distinct is what lets a hover state still read as "reacting" once it's sitting
+on a card background instead of directly on the page.
+
+## Blue — the hextech current
+
+<div style={{ display: "grid", gap: "0.75rem", margin: "1.25rem 0" }}>
+	{[
+		["blue-100", "#cdfafa", "Brightest stop of the hover gradient (`--lol-gradient-hextech-hover`) on primary buttons."],
+		["blue-200", "#0ac8b9", "Top stop of the resting hextech button gradient (`--lol-gradient-hextech`)."],
+		["blue-300", "#0397ab", "Bottom stop of the hover gradient."],
+		["blue-400", "#005a82", "Bottom stop of both the resting and pressed button gradients — the anchor of the family."],
+		["blue-500", "#0a323c", "Top stop of the pressed gradient (`--lol-gradient-hextech-press`)."],
+		["blue-600", "#091428", "Backdrop stop for the chart frame gradient (`--lol-chart-frame-fill`) — a dark blue panel background, not an accent."],
+		["blue-700", "#0a1428", "Reserved for the same kind of dark panel backdrop as blue-600; not yet wired into a component."],
+	].map(([name, hex, desc]) => (
+		<div key={name} style={{ display: "flex", alignItems: "flex-start", gap: "0.875rem" }}>
+			<span style={{ width: "3rem", height: "3rem", background: hex, border: "1px solid rgb(240 230 210 / 0.15)", flexShrink: 0 }} />
+			<span style={{ display: "flex", flexDirection: "column", lineHeight: 1.4 }}>
+				<strong>{name}</strong>{" "}
+				<code>{hex}</code>
+				<span style={{ opacity: 0.75, fontSize: "0.875rem" }}>{desc}</span>
+			</span>
+		</div>
+	))}
+</div>
+
+Blue is spent almost entirely on the primary button's energy — it's a gradient,
+not a set of flat fills, so 100–500 only make sense as the five stops of
+"resting → hover → pressed". Reach for 600/700 when you need a dark, faintly
+blue panel backdrop rather than a neutral one (that's what the chart frame
+does); reach for grey when you just need "dark and quiet."
+
+## Gold — metal linework and ink
+
+<div style={{ display: "grid", gap: "0.75rem", margin: "1.25rem 0" }}>
+	{[
+		["gold-100", "#f0e6d2", "Primary parchment ink — headings and the brightest body text."],
+		["gold-200", "#c8aa6e", "Secondary ink and metal accents; the chart grid is painted from this at low opacity."],
+		["gold-300", "#cdbe91", "Muted ink, used where text needs to recede without losing the gold family (e.g. chart axis labels)."],
+		["gold-400", "#c89b3c", "The saturated gold accent — chart frame accents, the brightest metal detail."],
+		["gold-500", "#785a28", "Metal linework: borders, rules, the chart frame's rule color, the gold gradient's darkest resting stop."],
+		["gold-600", "#463714", "Darker metal, used in pressed-state gradients and the chart frame border's midtone."],
+		["gold-700", "#32281e", "The darkest gold, for the quietest metal edges."],
+	].map(([name, hex, desc]) => (
+		<div key={name} style={{ display: "flex", alignItems: "flex-start", gap: "0.875rem" }}>
+			<span style={{ width: "3rem", height: "3rem", background: hex, border: "1px solid rgb(240 230 210 / 0.15)", flexShrink: 0 }} />
+			<span style={{ display: "flex", flexDirection: "column", lineHeight: 1.4 }}>
+				<strong>{name}</strong>{" "}
+				<code>{hex}</code>
+				<span style={{ opacity: 0.75, fontSize: "0.875rem" }}>{desc}</span>
+			</span>
+		</div>
+	))}
+</div>
+
+Gold is ink and metal, never a background — see "Charts / The Hextech
+language" for the fuller argument, made for charts but true everywhere: gold
+*frames* and *labels* content, it doesn't sit behind it.
+
+## Picking a background
+
+| You're building | Use |
+| --- | --- |
+| The page itself | `hextech-black` |
+| A recessed field — text input, dropdown, open listbox | `hextech-black` |
+| A static elevated surface — a card, a panel | `grey-400` |
+| A hover, focus or selected state | `grey-300` |
+| A disabled control's fill | `grey-300` or `grey-150`, matching the surface it disables |
+
+## Using a token
+
+```css
+.card {
+	background: var(--lol-color-grey-400);
+}
+```
+
+```tsx
+<div className="bg-lol-grey-400">...</div>
+```
