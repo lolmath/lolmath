@@ -304,11 +304,31 @@ export const RowActions: Story = {
 };
 
 /**
- * A key in `disabledKeys` greys its row out and takes it out of service: the
- * label stops being a link, so there is nothing to tab to, nothing to press and
- * no pointer cursor over it, the arrow keys walk past the row, and a disabled
- * branch will not open.
+ * A key in `disabledKeys` takes the whole row out of service, not just its
+ * label. Nothing to tab to, nothing to press, no pointer cursor, the arrow keys
+ * walk past it — and the chevron is out too, so a disabled branch will not
+ * open. React Aria decides that last part: its expand button checks the row
+ * before toggling.
+ *
+ * That makes `disabledKeys` the wrong tool for "this branch is a heading, not a
+ * page". Leave the `href` off instead — see **Branch without route** — and the
+ * label opens the branch rather than navigating, with the children below it
+ * still reachable.
  */
 export const DisabledItems: Story = {
 	args: { disabledKeys: ["ddragon", "resist"] },
+};
+
+/**
+ * Disabling a branch freezes it rather than closing it: a branch that was open
+ * when it went into `disabledKeys` stays open, since the chevron that would
+ * collapse it is disabled too. Its children are rows of their own and are not
+ * disabled with it, so everything under it stays live — `disabledKeys` is about
+ * one row, never a subtree.
+ */
+export const DisabledOpenBranch: Story = {
+	args: {
+		defaultExpandedKeys: ["calc", "scaling"],
+		disabledKeys: ["calc"],
+	},
 };
