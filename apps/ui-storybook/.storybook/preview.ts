@@ -33,6 +33,7 @@ const preview: Preview = {
 		options: {
 			storySort: {
 				order: [
+					"Foundations",
 					"Inputs",
 					"Buttons",
 					"Navigation",
