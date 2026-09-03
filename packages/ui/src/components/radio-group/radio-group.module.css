@@ -6,6 +6,13 @@
 	}
 
 	.radio {
+		/*
+		 * Not trimmed, and measurably so: react aria puts a real
+		 * `<input type="radio">` in the label, `display: inline-block` and in
+		 * flow, and at 13px it is taller than the trimmed capitals beside it. So
+		 * the line box here is the input's, the trim has nothing to take, and
+		 * the dot keeps centring on a box the type does not set.
+		 */
 		font-family: var(--lol-font-family-spiegel);
 		background-size: 18px;
 		background-position: left;

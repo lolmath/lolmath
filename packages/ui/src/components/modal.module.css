@@ -72,6 +72,17 @@
 	.dialogHeading {
 		/* React aria renders an <h3>, which the UA gives block margins. */
 		margin: 0;
+
+		/*
+		 * The dialog draws no padding of its own — `DialogButtons` straddles its
+		 * bottom border, so its content is meant to reach the frame — which left
+		 * the caption's only breathing room to the leading inside its box.
+		 * Trimmed, that room has to be asked for: 0.375rem is what Beaufort was
+		 * reserving over the caps at this size, now spelled out.
+		 */
+		text-box: trim-both cap alphabetic;
+		padding: 0.375rem 0;
+
 		color: var(--lol-color-gold-100);
 		font-family: var(--lol-font-family-beaufort);
 		text-transform: uppercase;

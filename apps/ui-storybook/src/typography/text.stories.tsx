@@ -1,7 +1,15 @@
 import { Text } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
+// Spiegel, in the sizes the client reads in, plus the two presets for a figure
+// rather than a sentence: `stat` and `largeNumber`.
+//
+// `Text` renders inline, and `text-box: trim-both cap alphabetic` only reaches a
+// box — which is exactly the behaviour to want. A reading inside a sentence
+// keeps the leading that holds the sentence's lines apart; the same component
+// laid out as a flex or grid item of its own, which is how a field label, a help
+// line or a stat gets placed, is trimmed to its capitals, so the gap set against
+// it is the gap that shows up.
 const meta = {
 	title: "Typography/Text",
 	component: Text,

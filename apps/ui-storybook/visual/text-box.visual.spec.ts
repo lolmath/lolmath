@@ -44,6 +44,53 @@ test.describe("text-box", () => {
 		}
 	});
 
+	test("a reading in a line keeps its leading, a reading in a box does not", async ({
+		page,
+	}) => {
+		// The same component, `Label`, in the two places it gets used. The trim
+		// only reaches a box, and that is the whole point: leading is what holds
+		// the lines of a sentence apart, and a label laid out as an item of its
+		// own is a box whose edge something else is measured from.
+		await page.goto("/?component=date-field");
+		await page.evaluate(() => document.fonts.ready);
+		const inALine = await boxOf(
+			page
+				.getByTestId("fixture-date-field-default")
+				.locator("label, span[class]")
+				.first(),
+		);
+		expect(inALine.height).toBeGreaterThan(inALine.fontSize);
+
+		await page.goto("/?component=search-field");
+		await page.evaluate(() => document.fonts.ready);
+		const inABox = await boxOf(
+			page.getByTestId("fixture-search-field-default").getByText("Search"),
+		);
+		expect(inABox.height).toBeLessThan(inABox.fontSize);
+	});
+
+	test("tree rows stay level once their labels are trimmed", async ({
+		page,
+	}) => {
+		await page.goto("/?component=tree");
+		await page.evaluate(() => document.fonts.ready);
+
+		// A row used to be as tall as Spiegel's em box, which was taller than the
+		// chevron and the checkbox in every row. Trimmed, the label no longer
+		// sets that height, so `.item` states it — and a branch has to come out
+		// the same height as a leaf.
+		const heights = await page
+			.getByTestId("fixture-tree-default")
+			.locator('[role="row"]')
+			.evaluateAll((rows) =>
+				rows.map(
+					(row) => Math.round(row.getBoundingClientRect().height * 100) / 100,
+				),
+			);
+		expect(heights.length).toBeGreaterThan(1);
+		expect([...new Set(heights)]).toHaveLength(1);
+	});
+
 	test("the progress bar's reading sits its own gap above the bar", async ({
 		page,
 	}) => {

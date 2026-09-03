@@ -1,6 +1,18 @@
 @layer lol {
 	.text {
 		font-family: var(--lol-font-family-spiegel);
+
+		/*
+		 * Trimmed like `Heading`, but with a twist worth knowing: `Text` and
+		 * `Label` render inline, and the trim only reaches a box. So a reading
+		 * inside a sentence keeps the leading that holds the sentence's lines
+		 * apart, and the same component used as a box of its own — a flex or
+		 * grid item, which is how a label, a help line, a stat or a toast's
+		 * description are laid out — is trimmed to its caps, and the gap set
+		 * against it is the gap that shows up. Which is the right answer in
+		 * both places.
+		 */
+		text-box: trim-both cap alphabetic;
 	}
 
 	.label {

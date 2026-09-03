@@ -14,6 +14,11 @@
 	}
 
 	.link {
+		/* The trail is a flex row, so the link is a box: trimmed to the caps, the
+		   divider beside it centres on the capitals of the crumb rather than on
+		   Beaufort's em box, which is the same reason `.divider` is a block. */
+		text-box: trim-both cap alphabetic;
+
 		text-decoration: none;
 		font-family: var(--lol-font-family-beaufort);
 		color: var(--lol-color-gold-300);

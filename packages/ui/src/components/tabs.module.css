@@ -5,12 +5,18 @@
 	}
 
 	.tab {
+		/* Trimmed to the caps: the label is uppercased, so the box is the whole
+		   glyph, and the 0.5rem below it is what separates the baseline from the
+		   indicator — the job Beaufort's descender space was doing for half of
+		   the 0.25rem this replaces. Same strip height, same rule position. */
+		text-box: trim-both cap alphabetic;
+
 		font-family: var(--lol-font-family-beaufort);
 		color: var(--lol-color-gold-300);
 		position: relative;
 		cursor: pointer;
 		user-select: none;
-		padding: 0.25rem 1rem;
+		padding: 0.5rem 1rem;
 		font-size: 0.75rem;
 		font-weight: 500;
 		text-transform: uppercase;

@@ -26,6 +26,16 @@
 		   aria exposes on each row rather than from the DOM. */
 		padding: 0.375rem 0.75rem 0.375rem
 			calc(0.5rem + (var(--tree-item-level) - 1) * var(--lol-tree-indent));
+
+		/*
+		 * A row is 1.875rem tall, said out loud. Until the label was trimmed the
+		 * height came from Spiegel's em box, which happened to be taller than
+		 * the chevron and the checkbox in every row — so trimming handed the job
+		 * to whichever control a row happened to carry, and branches came out
+		 * taller than leaves. The rows are level again, and a row that grows a
+		 * taller control later stays level too.
+		 */
+		min-height: 1.875rem;
 		color: var(--lol-color-grey-100);
 		outline: none;
 		cursor: default;
@@ -156,7 +166,13 @@
 		filter: grayscale(100%);
 	}
 
+	/* The row's own text is an anonymous flex item, which is why the label has
+	   this span to itself. Trimmed to the caps, the row's padding runs from the
+	   baseline and the chevron centres on the capitals beside it — and, since
+	   trimming takes 8px off the label's box, `.item` pays that back above. */
 	.label {
+		text-box: trim-both cap alphabetic;
+
 		flex: 1;
 		min-width: 0;
 		overflow: hidden;

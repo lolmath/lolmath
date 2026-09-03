@@ -44,7 +44,9 @@ export function ChartLegend({
 						)}
 						style={{ "--lol-chart-legend-color": item.color } as CSSProperties}
 					/>
-					{item.label ?? item.key}
+					{/* A box for the label: the entry's text would otherwise be an
+					    anonymous flex item, which the trim cannot reach. */}
+					<span className={classes.label}>{item.label ?? item.key}</span>
 				</li>
 			))}
 		</ul>

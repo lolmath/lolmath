@@ -78,13 +78,18 @@
 	}
 
 	.item {
+		/* As MenuItem: trimmed to the caps, with the leading it used to lean on
+		   written out as padding, so the option is the height it always was and
+		   the hairline under it sits a stated distance from the baseline. */
+		text-box: trim-both cap alphabetic;
+
 		border-bottom: 1px solid var(--lol-color-grey-300);
 		color: var(--lol-color-gold-300);
 		font-size: var(--lol-font-size-sm);
 		font-weight: var(--lol-font-weight-sm);
 		line-height: var(--lol-line-height-sm);
 		letter-spacing: var(--lol-letter-spacing-sm);
-		padding: 0.375rem 0.5rem;
+		padding: 0.625rem 0.5rem;
 		outline: none;
 		cursor: pointer;
 

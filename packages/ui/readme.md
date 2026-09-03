@@ -33,17 +33,23 @@ preflight applied — and fails if a single pixel differs.
 
 A line of type reserves room for every ascender and descender the face can
 draw, plus the leading the preset asks for — in Beaufort, 1.27em of box around
-0.69em of capitals. Where a box is sized by its own text and something is
-measured from its edge, it is trimmed down to the caps with
-`text-box: trim-both cap alphabetic`:
+0.69em of capitals; in Spiegel, 1.11em around 0.66em. So every margin, gap and
+padding set against a text box was quietly larger than it said, by an amount
+only the font knew.
 
-| Component | What it buys |
+Every box in this library that is sized by its own text is therefore trimmed to
+its capitals with `text-box: trim-both cap alphabetic`:
+
+| | |
 | --- | --- |
-| `Heading` | The box is the height of the capitals, so the margin or gap you set around a heading is the space you get. |
+| `Heading`, `DialogHeading`, `Text`, `Label` | The box is the height of the capitals, so the margin or gap you set around it is the space you get. |
+| `MenuItem`, `SelectListBoxItem`, `Tab`, `TreeItem` | The row's block padding is measured from the baseline, not from the descender space under it. Every one of these rows is the height it always was — the padding was restated to say so out loud. |
+| `Breadcrumb`, `Tag`, `Calendar`, `ChartLegend`, `Disclosure` | Whatever sits beside the type — a divider, a remove control, a swatch, a chevron — centres on its capitals. |
 | `ChartFrame` | The title's caps sit exactly the frame's padding below the hairline, and level with the top of anything in `actions`. |
 | `ProgressBar` | The `0.25rem` between the reading and the bar runs from the label's baseline. |
+| `DateField`, `TimeField` | The segment's highlight is centred on the number rather than on the em box around it. |
 
-Two things follow from it:
+Three things follow from it:
 
 - **A heading no longer brings its own breathing room.** Half the leading used
   to sit above the caps and half under the baseline, which read as padding.
@@ -51,12 +57,34 @@ Two things follow from it:
 - **Accented capitals and descenders reach past the box.** `cap alphabetic`
   measures to the cap height and the baseline, so an `Ö` and a `g` overflow it.
   Nothing is clipped, but a gap of zero is a gap of zero.
+- **`Text` and `Label` render inline, and the trim only reaches a box.** A
+  reading inside a sentence keeps the leading that holds the sentence's lines
+  apart; the same component laid out as a flex or grid item of its own — a
+  field label, a help line, a stat, a toast's description — is trimmed. Which
+  is the right answer in both places.
 
-Everything else keeps its leading. Running text — `Text`, `Label`,
-`PreviewButton` — is inline, where the leading is what keeps lines apart, and a
-control whose padding *is* its leading (a button, a tab, a menu item) would
-only get shorter. An engine without `text-box` support drops the declaration
-and keeps the leading, which is the spacing this library shipped before.
+Four things are **not** trimmed, and for measured reasons rather than caution:
+
+- **Table cells.** `text-box-edge` does not apply to a `display: table-cell`
+  box, so `Table` and `VerticalTable` headers would trim their leading without
+  reaching their caps — an inconsistent trim, and reaching them would mean an
+  extra element inside every cell of every row.
+- **Text sitting straight inside a flex row**, which is an anonymous item CSS
+  cannot select. Where the box was worth having, the component grew one
+  (`ChartLegend`, `Disclosure`, `TreeItem`). `Button` did not: a wrapper would
+  take an icon-only button's glyph off the flex line, and with `min-height`
+  setting the box and Beaufort's metrics near symmetric around the cap box
+  (0.32em over the caps, 0.26em under the baseline) there is under half a pixel
+  in it.
+- **`Checkbox` and `Switch` labels**, for the same half-pixel: the icon beside
+  them is taller than their trimmed capitals, so it, not the type, sets the
+  row.
+- **`Radio`**, where react aria puts a real in-flow `<input>` in the label. At
+  13px it is taller than the trimmed capitals, so the line box is the input's
+  and the trim has nothing to take.
+
+An engine without `text-box` support drops the declaration and keeps the
+leading, which is the spacing this library shipped before.
 
 ## CSS Layer
 

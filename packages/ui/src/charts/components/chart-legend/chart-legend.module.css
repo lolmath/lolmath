@@ -3,7 +3,10 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 0.375rem 1.25rem;
+		/* 0.5rem between rows, not 0.375rem: with the entries trimmed to their
+		   caps that row gap is all there is, and a wrapped legend hangs its
+		   descenders into it. */
+		gap: 0.5rem 1.25rem;
 		/* A <ul>: the UA gives it block margins and a list marker. */
 		margin: 0;
 		padding: 0;
@@ -20,6 +23,13 @@
 		font-size: var(--lol-font-size-sm, 0.875rem);
 		line-height: var(--lol-line-height-sm, 1.1025rem);
 		letter-spacing: var(--lol-letter-spacing-sm, 0.02em);
+	}
+
+	/* Trimmed to the caps, so the swatch centres on the capitals of the series
+	   it stands for, and the 0.75rem the frame leaves between the plot and its
+	   footer is 0.75rem. */
+	.label {
+		text-box: trim-both cap alphabetic;
 	}
 
 	/* The diamond again, at series scale, lit by the hue it stands for. */

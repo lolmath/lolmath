@@ -32,7 +32,10 @@ export function DisclosureButton({
 			{composeRenderProps(children, (children) => (
 				<>
 					<span className={classes.icon}>❯</span>
-					{children}
+					{/* A box for the label, so the trim has something to land on:
+					    text sitting straight in the flex row is an anonymous item
+					    CSS cannot reach. */}
+					<span className={classes.label}>{children}</span>
 				</>
 			))}
 		</Button>

@@ -44,7 +44,15 @@
 	}
 
 	.segment {
-		padding: 0 0.125rem;
+		/*
+		 * Trimmed to the caps, which for the digits here is the whole glyph, and
+		 * paid back as block padding — because what the hover and focus rules
+		 * below fill is this box, and Spiegel reserves more room over a digit
+		 * than under it. Trimmed and padded evenly, the highlight is centred on
+		 * the number instead of on the em box around it.
+		 */
+		text-box: trim-both cap alphabetic;
+		padding: 0.25rem 0.125rem;
 		border-radius: 2px;
 		font-size: 0.75rem;
 		line-height: 1rem;
@@ -56,9 +64,10 @@
 		caret-color: transparent;
 
 		/* Literal separators ("/", ":", ",") sit between segments; they are not
-		   editable so they shouldn't pick up hover/focus affordances. */
+		   editable so they shouldn't pick up hover/focus affordances. They keep
+		   the padding above: nothing fills it, but it holds them on the same
+		   box as the numbers they separate. */
 		&[data-type="literal"] {
-			padding: 0 0.125rem;
 			color: var(--lol-color-grey-100);
 		}
 

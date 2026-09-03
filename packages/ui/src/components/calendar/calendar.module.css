@@ -56,6 +56,10 @@
 	}
 
 	.heading {
+		/* Trimmed to the caps, so the month name centres against the arrows on
+		   its capitals. */
+		text-box: trim-both cap alphabetic;
+
 		flex: 1;
 		margin: 0;
 		text-align: center;

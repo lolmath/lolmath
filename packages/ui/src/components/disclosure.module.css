@@ -26,6 +26,12 @@
 		text-align: left;
 	}
 
+	/* Trimmed to the caps, so the button's block padding is measured from the
+	   type and the chevron centres on the capitals of the section's name. */
+	.label {
+		text-box: trim-both cap alphabetic;
+	}
+
 	.icon {
 		margin-left: 0.125rem;
 		margin-right: 0.5rem;
