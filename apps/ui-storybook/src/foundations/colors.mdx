@@ -122,14 +122,29 @@ language" for the fuller argument, made for charts but true everywhere: gold
 
 ## Picking a background
 
-| You're building | Use |
-| --- | --- |
-| The page itself | `hextech-black` |
-| A recessed field — text input, dropdown, open listbox | `hextech-black` |
-| A static elevated surface — a card, a panel | `grey-400` |
-| A hover, focus or selected state | `grey-300` |
-| A disabled field's background — input, stepper button | `grey-300` |
-| A disabled button's fill | the `--lol-gradient-disabled` gradient (built from `grey-150`), not a flat background |
+<table style={{ width: "100%", borderCollapse: "collapse", margin: "1.25rem 0" }}>
+	<thead>
+		<tr>
+			<th style={{ textAlign: "left", padding: "0.5rem 0.75rem 0.5rem 0", borderBottom: "1px solid rgb(240 230 210 / 0.25)" }}>You're building</th>
+			<th style={{ textAlign: "left", padding: "0.5rem 0", borderBottom: "1px solid rgb(240 230 210 / 0.25)" }}>Use</th>
+		</tr>
+	</thead>
+	<tbody>
+		{[
+			["The page itself", <code>hextech-black</code>],
+			["A recessed field — text input, dropdown, open listbox", <code>hextech-black</code>],
+			["A static elevated surface — a card, a panel", <code>grey-400</code>],
+			["A hover, focus or selected state", <code>grey-300</code>],
+			["A disabled field's background — input, stepper button", <code>grey-300</code>],
+			["A disabled button's fill", <>the <code>--lol-gradient-disabled</code> gradient (built from <code>grey-150</code>), not a flat background</>],
+		].map(([need, use], i) => (
+			<tr key={i}>
+				<td style={{ padding: "0.5rem 0.75rem 0.5rem 0", borderBottom: "1px solid rgb(240 230 210 / 0.1)", verticalAlign: "top" }}>{need}</td>
+				<td style={{ padding: "0.5rem 0", borderBottom: "1px solid rgb(240 230 210 / 0.1)", verticalAlign: "top" }}>{use}</td>
+			</tr>
+		))}
+	</tbody>
+</table>
 
 ## Using a token
 
