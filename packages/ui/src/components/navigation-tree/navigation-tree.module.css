@@ -1,0 +1,208 @@
+@layer lol {
+	.tree {
+		--lol-navigation-tree-indent: 1.125rem;
+
+		box-sizing: border-box;
+		overflow: auto;
+		outline: none;
+
+		font-family: var(--lol-font-family-spiegel);
+		font-size: var(--lol-font-size-sm);
+		line-height: var(--lol-line-height-sm);
+		letter-spacing: var(--lol-letter-spacing-sm);
+		font-weight: var(--lol-font-weight-sm);
+	}
+
+	.item {
+		display: flex;
+		/* The link and the chevron stretch to the row's full height so the whole
+		   row is the target, not just the text. */
+		align-items: stretch;
+		gap: 0.25rem;
+		/* Rows are flattened siblings, so the nesting comes from the level react
+		   aria exposes on each row rather than from the DOM. */
+		padding-inline: calc(
+				0.25rem +
+				(var(--tree-item-level) - 1) *
+				var(--lol-navigation-tree-indent)
+			)
+			0.75rem;
+		color: var(--lol-color-grey-100);
+		outline: none;
+		transition: color 0.3s ease;
+
+		/* Every decoration is a background layer so the row keeps a single box:
+		   the chevron already owns the inline start. */
+		--lol-navigation-tree-item-spine: none;
+		--lol-navigation-tree-item-hover: none;
+		--lol-navigation-tree-item-highlight: none;
+
+		background-image:
+			var(--lol-navigation-tree-item-spine),
+			var(--lol-navigation-tree-item-hover),
+			var(--lol-navigation-tree-item-highlight);
+		background-repeat: no-repeat;
+
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+		}
+
+		&[data-hovered] {
+			color: var(--lol-color-gold-100);
+			--lol-navigation-tree-item-hover: linear-gradient(
+				90deg,
+				rgb(from var(--lol-color-gold-100) r g b / 0.08),
+				transparent
+			);
+		}
+
+		/* The row for the route being viewed: gold spine and hextech wash, the
+		   client's "you are here". */
+		&[data-current] {
+			color: var(--lol-color-gold-100);
+			--lol-navigation-tree-item-spine: linear-gradient(
+				90deg,
+				var(--lol-color-gold-500) 0 0.25rem,
+				transparent 0.25rem
+			);
+			--lol-navigation-tree-item-highlight: linear-gradient(
+				90deg,
+				rgb(from var(--lol-color-blue-400) r g b / 0.55),
+				rgb(from var(--lol-color-blue-300) r g b / 0.1)
+			);
+		}
+
+		/* A branch the current route sits under keeps the trail visible. Once it
+		   is collapsed the current row is gone from the list, so the branch takes
+		   over the wash and stands in for it. */
+		&[data-current-ancestor]:not([data-current]) {
+			color: var(--lol-color-gold-300);
+
+			&:not([data-expanded]) {
+				--lol-navigation-tree-item-highlight: linear-gradient(
+					90deg,
+					rgb(from var(--lol-color-blue-400) r g b / 0.25),
+					transparent
+				);
+			}
+		}
+
+		&[data-disabled] {
+			color: var(--lol-color-grey-150);
+		}
+
+		&[data-focus-visible] {
+			outline: 1px solid var(--lol-color-gold-400);
+			outline-offset: -1px;
+		}
+	}
+
+	.link {
+		flex: 1;
+		min-width: 0;
+		padding-block: 0.375rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+
+		color: inherit;
+		text-decoration: none;
+		/* The row draws the focus ring for its link — see `focusMode` on
+		   NavigationTreeItem — so a second one here would only double it. */
+		outline: none;
+		cursor: pointer;
+
+		&[data-disabled] {
+			cursor: default;
+		}
+	}
+
+	.chevron {
+		/* A <button> we never paint: without this it falls back to the UA's
+		   `buttonface` slab, which is grey under `color-scheme: dark`. */
+		appearance: none;
+		border: 0;
+		margin: 0;
+		padding: 0;
+		font: inherit;
+		letter-spacing: inherit;
+		color: inherit;
+		background: none;
+
+		position: relative;
+		flex: none;
+		/* The arrow is eight pixels across, which is not something to ask anyone
+		   to hit. The button is the target rather than the drawing — the row's
+		   full height and wide enough to land on — and ::after does the drawing,
+		   so turning the arrow does not turn the target with it. */
+		align-self: stretch;
+		width: 1.5rem;
+		outline: none;
+		cursor: pointer;
+
+		--lol-navigation-tree-chevron: url("../tree/tree-chevron.png");
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			/* Sized off the height so the arrow stays what it was, whatever the
+			   button around it grows to. */
+			background:
+				var(--lol-navigation-tree-chevron) no-repeat center / auto 0.75rem;
+			transition: rotate 0.15s ease;
+			/* The target is the button's box, never this one's rotated box. */
+			pointer-events: none;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			&::after {
+				transition: none;
+			}
+		}
+
+		&[data-focus-visible] {
+			outline: 1px solid var(--lol-color-gold-400);
+			outline-offset: -1px;
+		}
+	}
+
+	.chevronSpacer {
+		flex: none;
+		width: 1.5rem;
+	}
+
+	.item[data-expanded] .chevron::after {
+		rotate: 90deg;
+	}
+
+	.item[data-hovered] .chevron,
+	.chevron[data-hovered],
+	.chevron[data-focus-visible] {
+		--lol-navigation-tree-chevron: url("../tree/tree-chevron-hover.png");
+	}
+
+	.item[data-disabled] .chevron {
+		cursor: default;
+		filter: grayscale(100%);
+	}
+
+	/* The only rule in the rail, and it marks the only break the rows do not
+	   already show: rows carry their own level in their indent, but one section
+	   ending and the next beginning is nowhere in a row. */
+	.section + .section {
+		border-top: 1px solid var(--lol-color-gold-600);
+	}
+
+	.header {
+		padding: 0.75rem 0.75rem 0.25rem;
+
+		font-family: var(--lol-font-family-beaufort);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.075em;
+		line-height: 1rem;
+		text-transform: uppercase;
+		color: var(--lol-color-gold-300);
+	}
+}

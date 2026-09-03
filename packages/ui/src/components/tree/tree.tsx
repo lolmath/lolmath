@@ -84,16 +84,28 @@ export interface TreeItemContentProps extends AriaTreeItemContentProps {}
  * checkbox for trees with `selectionMode="multiple"`. Setting
  * `selectionBehavior="replace"` drops the checkbox in favour of highlighting
  * the row, like the ladder in the League client.
+ *
+ * A row in `disabledKeys` is inert whole, chevron included: React Aria's
+ * expand button checks the row's disabled state before toggling, but does not
+ * pass that state to the button, so it is handed on here — otherwise the
+ * chevron would keep lighting up under a pointer it will not answer.
  */
 export function TreeItemContent({ children }: TreeItemContentProps) {
 	return (
 		<AriaTreeItemContent>
 			{composeRenderProps(
 				children,
-				(children, { hasChildItems, selectionBehavior, selectionMode }) => (
+				(
+					children,
+					{ hasChildItems, isDisabled, selectionBehavior, selectionMode },
+				) => (
 					<>
 						{hasChildItems ? (
-							<AriaButton className={classes.chevron} slot="chevron" />
+							<AriaButton
+								className={classes.chevron}
+								isDisabled={isDisabled}
+								slot="chevron"
+							/>
 						) : (
 							/* Leaves keep the chevron's footprint so labels stay aligned. */
 							<span aria-hidden="true" className={classes.chevronSpacer} />

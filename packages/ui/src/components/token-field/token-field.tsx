@@ -17,6 +17,12 @@ import classes from "./token-field.module.css";
 // segments the field edits in place. Subclass it to tokenize as the user types
 // (see `TokenFieldValue.tokenize` in the docs), or hand it segments built
 // elsewhere — from a menu selection, say.
+//
+// The value carries the selection with it as `selectedRange`, whose `start` and
+// `end` are the same position while it is collapsed to a caret. Edit against
+// those two rather than a caret and an insertion replaces the selected text
+// when there is one; `withSelectedRange` puts a range back afterwards, which is
+// what makes undo land where the user left off.
 export { TokenFieldValue } from "react-aria-components";
 
 /**

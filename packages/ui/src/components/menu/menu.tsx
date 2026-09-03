@@ -4,6 +4,9 @@ import {
 	Header as AriaHeader,
 	Menu as AriaMenu,
 	MenuItem as AriaMenuItem,
+	MenuLoadMoreItem as AriaMenuLoadMoreItem,
+	type MenuLoadMoreItemProps as AriaMenuLoadMoreItemProps,
+	type MenuProps as AriaMenuProps,
 	MenuSection as AriaMenuSection,
 	MenuTrigger as AriaMenuTrigger,
 	Popover as AriaPopover,
@@ -13,16 +16,17 @@ import {
 	composeRenderProps,
 	ListLayout,
 	type MenuItemProps,
-	type MenuProps,
 	type MenuSectionProps,
 	type PopoverProps,
 	type SeparatorProps,
 	type VirtualizerProps,
 } from "react-aria-components";
+import { Spinner } from "../spinner/spinner";
 import { heading } from "../typography/heading";
+import { text } from "../typography/text";
 import classes from "./menu.module.css";
 
-export type { MenuItemProps, MenuProps } from "react-aria-components";
+export type { MenuItemProps } from "react-aria-components";
 
 // `trigger` decides what opens the menu: the default `"press"`, `"longPress"`,
 // or `"contextMenu"` for a right click (long press on touch, and the platform's
@@ -35,8 +39,44 @@ export type { MenuItemProps, MenuProps } from "react-aria-components";
 export const MenuTrigger = AriaMenuTrigger;
 export const SubmenuTrigger = AriaSubmenuTrigger;
 
-export function Menu<T extends object>({ className, ...props }: MenuProps<T>) {
-	return <AriaMenu<T> {...props} className={cx(classes.menu, className)} />;
+export interface MenuProps<T> extends AriaMenuProps<T> {
+	/** Rendered when the menu has no items. */
+	emptyState?: React.ReactNode;
+}
+
+/**
+ * A menu of actions or options.
+ *
+ * Items may arrive a page at a time: filter the collection down to nothing and
+ * `emptyState` takes over, and a `MenuLoadMoreItem` at the end fetches the next
+ * page as it scrolls into view.
+ */
+export function Menu<T extends object>({
+	className,
+	emptyState = "No results found",
+	renderEmptyState,
+	...props
+}: MenuProps<T>) {
+	return (
+		<AriaMenu<T>
+			{...props}
+			className={cx(classes.menu, className)}
+			renderEmptyState={
+				renderEmptyState ??
+				(() => (
+					<div
+						className={text({
+							color: "grey150",
+							preset: "base",
+							className: classes.empty,
+						})}
+					>
+						{emptyState}
+					</div>
+				))
+			}
+		/>
+	);
 }
 
 export function MenuItem<T extends object>({
@@ -50,6 +90,27 @@ export function MenuItem<T extends object>({
 				cx(classes.item, className),
 			)}
 		/>
+	);
+}
+
+export interface MenuLoadMoreItemProps extends AriaMenuLoadMoreItemProps {}
+
+/**
+ * A sentinel item at the end of a `Menu`. It calls `onLoadMore` once it scrolls
+ * into view, and shows the spinner while `isLoading` is set.
+ */
+export function MenuLoadMoreItem({
+	children,
+	className,
+	...props
+}: MenuLoadMoreItemProps) {
+	return (
+		<AriaMenuLoadMoreItem
+			{...props}
+			className={cx(classes.loadMore, className)}
+		>
+			{children ?? <Spinner className={classes.spinner} />}
+		</AriaMenuLoadMoreItem>
 	);
 }
 

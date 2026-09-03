@@ -2,12 +2,14 @@ import {
 	Autocomplete,
 	Button,
 	Checkbox,
+	Collection,
 	Dialog,
 	DialogTrigger,
 	Heading,
 	Menu,
 	MenuHeader,
 	MenuItem,
+	MenuLoadMoreItem,
 	MenuPopover,
 	MenuSection,
 	MenuSeparator,
@@ -19,6 +21,7 @@ import {
 	type Selection,
 	SubmenuTrigger,
 	Text,
+	useAsyncList,
 	useFilter,
 } from "@lolmath/ui";
 import type { Meta, StoryObj } from "@storybook/react-vite";
@@ -236,6 +239,70 @@ export const TonsOfItemsWithAutocomplete: Story = {
 		);
 	},
 };
+
+// Filter everything away and `emptyState` takes the menu's place, so a search
+// that matches nothing says so instead of collapsing to an empty box.
+export function Empty() {
+	const { contains } = useFilter({ sensitivity: "base" });
+
+	return (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				<FaHamburger />
+			</Button>
+			<MenuPopover>
+				<Autocomplete filter={contains}>
+					<SearchField aria-label="Search commands" autoFocus />
+					<Menu emptyState="No commands match">
+						<MenuItem>Create new file...</MenuItem>
+						<MenuItem>Create new folder...</MenuItem>
+						<MenuItem>Assign to me</MenuItem>
+						<MenuItem>Change status...</MenuItem>
+					</Menu>
+				</Autocomplete>
+			</MenuPopover>
+		</MenuTrigger>
+	);
+}
+
+// `MenuLoadMoreItem` is the sentinel that asks for the next page: it calls
+// `onLoadMore` once it scrolls into view and shows the spinner while the page is
+// in flight. The menu needs a height for there to be anything to scroll.
+export function LoadingMore() {
+	const list = useAsyncList<{ id: number; name: string }>({
+		async load({ cursor }) {
+			const start = cursor ? Number(cursor) : 0;
+			await new Promise((resolve) => setTimeout(resolve, 700));
+
+			return {
+				items: Array.from({ length: 15 }, (_, i) => ({
+					id: start + i,
+					name: `Item ${start + i}`,
+				})),
+				cursor: start + 15 < 90 ? String(start + 15) : undefined,
+			};
+		},
+	});
+
+	return (
+		<MenuTrigger>
+			<Button aria-label="Menu" shape="square" preset="dimmed">
+				<FaHamburger />
+			</Button>
+			<MenuPopover>
+				<Menu style={{ maxHeight: 220 }}>
+					<Collection items={list.items}>
+						{(item) => <MenuItem id={item.id}>{item.name}</MenuItem>}
+					</Collection>
+					<MenuLoadMoreItem
+						isLoading={list.loadingState === "loadingMore"}
+						onLoadMore={list.loadMore}
+					/>
+				</Menu>
+			</MenuPopover>
+		</MenuTrigger>
+	);
+}
 
 export const WithMultipleSelect: Story = {
 	args: {},
