@@ -97,12 +97,6 @@
 		}
 	}
 
-	/* Top-level items are separated by the client's faint gold hairline. The
-	   sibling combinator keeps it off the first row, whichever level follows. */
-	.item + .item[data-level="1"] {
-		border-top: 1px solid var(--lol-color-gold-600);
-	}
-
 	.link {
 		flex: 1;
 		min-width: 0;
@@ -193,8 +187,9 @@
 		filter: grayscale(100%);
 	}
 
-	/* Sections are separated by the same hairline as top-level rows, so a header
-	   and a first-level row read as one break rather than two. */
+	/* The only rule in the rail, and it marks the only break the rows do not
+	   already show: rows carry their own level in their indent, but one section
+	   ending and the next beginning is nowhere in a row. */
 	.section + .section {
 		border-top: 1px solid var(--lol-color-gold-600);
 	}
