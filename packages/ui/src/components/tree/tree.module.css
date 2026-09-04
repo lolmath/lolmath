@@ -178,4 +178,367 @@
 	.spinner {
 		width: 1.5rem;
 	}
+
+	/* ----- Presets -----
+	 *
+	 * Ten alternatives to the default row treatment above, each a single class
+	 * on the tree's root that reaches its rows by descent. They are written
+	 * that way — rather than as a class per row — because a preset is a choice
+	 * about the whole tree, and because the rows are React Aria's to render.
+	 *
+	 * Two things to know before adding one. The rows are flattened siblings, so
+	 * `--tree-item-level` and `data-level` are the only handles on depth.
+	 * And `.preset .item` and `.item[data-hovered]` weigh the same, with the
+	 * presets later in the file: anything a preset sets on its plain row rule
+	 * lands on hovered, selected and disabled rows too, so a preset that
+	 * repaints `color` has to say what every state's colour is. */
+
+	/* Guide lines down the ancestors and an elbow into each row, so depth is
+	   drawn rather than merely implied by where a label starts. */
+	.rail {
+		--lol-tree-indent: 1.25rem;
+	}
+
+	.rail .item {
+		--lol-tree-rail-line: rgb(from var(--lol-color-gold-500) r g b / 0.55);
+		/* One vertical line per ancestor, centred in that ancestor's indent
+		   step. The gradient repeats every step and the layer is only as wide
+		   as the row's own indent, which is what stops the lines at the row. */
+		--lol-tree-item-guides: repeating-linear-gradient(
+			to right,
+			transparent 0 calc(var(--lol-tree-indent) / 2 - 0.5px),
+			var(--lol-tree-rail-line) calc(var(--lol-tree-indent) / 2 - 0.5px)
+				calc(var(--lol-tree-indent) / 2 + 0.5px),
+			transparent calc(var(--lol-tree-indent) / 2 + 0.5px)
+				var(--lol-tree-indent)
+		);
+		--lol-tree-item-elbow: linear-gradient(
+			var(--lol-tree-rail-line),
+			var(--lol-tree-rail-line)
+		);
+
+		background-image:
+			var(--lol-tree-item-guides), var(--lol-tree-item-elbow),
+			var(--lol-tree-item-spine), var(--lol-tree-item-hover),
+			var(--lol-tree-item-highlight);
+		background-size:
+			calc((var(--tree-item-level) - 1) * var(--lol-tree-indent)) 100%,
+			calc(var(--lol-tree-indent) / 2) 1px,
+			auto,
+			auto,
+			auto;
+		background-position:
+			left 0.5rem top,
+			left
+			calc(0.5rem + (var(--tree-item-level) - 1.5) * var(--lol-tree-indent))
+			center,
+			0 0,
+			0 0,
+			0 0;
+		background-repeat: no-repeat;
+	}
+
+	/* A root has no ancestor to hang off, and the elbow would otherwise reach
+	   back past the tree's inline start. */
+	.rail .item[data-level="1"] {
+		--lol-tree-item-elbow: none;
+	}
+
+	/* Every row its own inset plate, the way the client racks up an inventory:
+	   separated, bordered, and lit at the edge rather than across the fill. */
+	.plate {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1875rem;
+		padding: 0.25rem;
+		border: 1px solid var(--lol-color-gold-600);
+		background-color: var(--lol-color-hextech-black);
+	}
+
+	.plate .item {
+		padding-block: 0.4375rem;
+		border: 1px solid var(--lol-color-gold-700);
+		background-color: var(--lol-color-grey-400);
+	}
+
+	/* The plates are the separation; the default hairline would double it. */
+	.plate .item + .item[data-level="1"] {
+		border-top: 1px solid var(--lol-color-gold-700);
+	}
+
+	.plate .item[data-hovered] {
+		border-color: var(--lol-color-gold-500);
+	}
+
+	.plate .item[data-selected] {
+		border-color: var(--lol-color-gold-400);
+	}
+
+	/* Ruled and striped like a stat sheet, for the trees that are really
+	   tables: as many rows on screen as will fit, and every one countable. */
+	.ledger {
+		--lol-tree-indent: 1rem;
+
+		font-size: var(--lol-font-size-xs);
+		line-height: var(--lol-line-height-xs);
+		letter-spacing: var(--lol-letter-spacing-xs);
+		border-block: 1px solid var(--lol-color-gold-600);
+	}
+
+	.ledger .item {
+		padding-block: 0.25rem;
+		border-bottom: 1px solid rgb(from var(--lol-color-gold-600) r g b / 0.5);
+	}
+
+	.ledger .item:nth-child(even) {
+		background-color: rgb(from var(--lol-color-grey-300) r g b / 0.55);
+	}
+
+	.ledger .item[data-has-child-items] {
+		font-size: 0.6875rem;
+		line-height: 0.9375rem;
+	}
+
+	/* Branches become the gilded section bars the client puts above a list,
+	   which leaves the leaves plain and lets the eye jump between sections. */
+	.banner .item[data-has-child-items] {
+		margin-block: 0.125rem;
+		padding-block: 0.3125rem;
+		color: var(--lol-color-gold-100);
+		background-color: rgb(from var(--lol-color-gold-500) r g b / 0.22);
+		box-shadow:
+			inset 0 1px 0 rgb(from var(--lol-color-gold-400) r g b / 0.45),
+			inset 0 -1px 0 rgb(from var(--lol-color-gold-600) r g b / 0.9);
+	}
+
+	/* The bar is loud enough to keep a disabled branch looking live. */
+	.banner .item[data-has-child-items][data-disabled] {
+		color: var(--lol-color-grey-150);
+		background-color: rgb(from var(--lol-color-grey-200) r g b / 0.5);
+		box-shadow: inset 0 -1px 0 var(--lol-color-grey-200);
+	}
+
+	/* The bars separate the sections; the hairline would only crowd them. */
+	.banner .item + .item[data-level="1"] {
+		border-top: 0;
+	}
+
+	/* The default at its tightest, for a rail that has to hold a whole
+	   champion pool without scrolling. */
+	.compact {
+		--lol-tree-indent: 0.875rem;
+
+		font-size: var(--lol-font-size-xs);
+		line-height: var(--lol-line-height-xs);
+		letter-spacing: var(--lol-letter-spacing-xs);
+	}
+
+	.compact .item {
+		gap: 0.25rem;
+		padding-block: 0.1875rem;
+		padding-inline-end: 0.5rem;
+	}
+
+	.compact .item[data-has-child-items] {
+		font-size: 0.6875rem;
+		line-height: 0.875rem;
+	}
+
+	/* The other end of the same dial: rows big enough to be a pointer target
+	   on a touchscreen, and set at the body size rather than below it. */
+	.spacious {
+		--lol-tree-indent: 1.5rem;
+
+		font-size: var(--lol-font-size-base);
+		line-height: var(--lol-line-height-base);
+		letter-spacing: var(--lol-letter-spacing-base);
+	}
+
+	.spacious .item {
+		gap: 0.5rem;
+		padding-block: 0.625rem;
+		padding-inline-end: 1rem;
+	}
+
+	.spacious .item[data-has-child-items] {
+		padding-block: 0.75rem;
+		font-size: 0.8125rem;
+		line-height: 1.25rem;
+	}
+
+	/* Nearly no chrome: no washes, no rules, no gilded branches. Selection is
+	   a tick and a weight. For the trees that sit next to the thing that
+	   matters rather than being it. */
+	.minimal .item {
+		--lol-tree-item-spine: none;
+		--lol-tree-item-hover: none;
+		--lol-tree-item-highlight: none;
+	}
+
+	.minimal .item[data-hovered] {
+		--lol-tree-item-hover: linear-gradient(
+			90deg,
+			rgb(from var(--lol-color-gold-100) r g b / 0.06),
+			transparent 8rem
+		);
+	}
+
+	.minimal .item[data-selected] {
+		font-weight: 700;
+		--lol-tree-item-spine: linear-gradient(
+			90deg,
+			var(--lol-color-gold-400) 0 2px,
+			transparent 2px
+		);
+	}
+
+	.minimal .item[data-has-child-items] {
+		font-family: var(--lol-font-family-spiegel);
+		font-size: inherit;
+		font-weight: 700;
+		letter-spacing: inherit;
+		line-height: inherit;
+		text-transform: none;
+	}
+
+	.minimal .item + .item[data-level="1"] {
+		border-top: 0;
+	}
+
+	/* A pane that floats over whatever it was opened on top of, so it is
+	   translucent and blurred instead of opaque, and lit teal rather than
+	   ruled gold. Wants something behind it to be worth the blur. */
+	.glass {
+		padding: 0.375rem;
+		border: 1px solid rgb(from var(--lol-color-gold-400) r g b / 0.35);
+		border-radius: 0.25rem;
+		background-color: rgb(from var(--lol-color-blue-700) r g b / 0.55);
+		backdrop-filter: blur(10px) saturate(1.2);
+		box-shadow: 0 1rem 2.5rem
+			rgb(from var(--lol-color-hextech-black) r g b / 0.65);
+	}
+
+	.glass .item {
+		border-radius: 0.1875rem;
+	}
+
+	.glass .item[data-hovered] {
+		--lol-tree-item-hover: linear-gradient(
+			90deg,
+			rgb(from var(--lol-color-gold-100) r g b / 0.14),
+			rgb(from var(--lol-color-gold-100) r g b / 0.04)
+		);
+	}
+
+	.glass .item[data-selected] {
+		box-shadow: inset 0 0 0 1px rgb(from var(--lol-color-blue-100) r g b / 0.3);
+		--lol-tree-item-spine: none;
+		--lol-tree-item-highlight: linear-gradient(
+			90deg,
+			rgb(from var(--lol-color-blue-200) r g b / 0.28),
+			rgb(from var(--lol-color-blue-200) r g b / 0.06)
+		);
+	}
+
+	.glass .item + .item[data-level="1"] {
+		border-top: 0;
+	}
+
+	/* The other material. Hextech separates metal linework that frames
+	   information from the magic that is it, and the default tree is all
+	   frame; this one is all magic. */
+	.arcane .item {
+		color: rgb(from var(--lol-color-blue-100) r g b / 0.7);
+	}
+
+	.arcane .item[data-has-child-items] {
+		color: var(--lol-color-blue-200);
+	}
+
+	.arcane .item[data-hovered] {
+		color: var(--lol-color-blue-100);
+		--lol-tree-item-hover: linear-gradient(
+			90deg,
+			rgb(from var(--lol-color-blue-200) r g b / 0.14),
+			transparent
+		);
+	}
+
+	.arcane .item[data-selected] {
+		color: var(--lol-color-blue-100);
+		text-shadow: 0 0 0.75rem rgb(from var(--lol-color-blue-200) r g b / 0.55);
+		--lol-tree-item-spine: linear-gradient(
+			90deg,
+			var(--lol-color-blue-200) 0 0.125rem,
+			transparent 0.125rem
+		);
+		--lol-tree-item-highlight: linear-gradient(
+			90deg,
+			rgb(from var(--lol-color-blue-300) r g b / 0.4),
+			transparent
+		);
+	}
+
+	.arcane .item[data-disabled] {
+		color: var(--lol-color-grey-150);
+	}
+
+	.arcane .item[data-focus-visible] {
+		outline-color: var(--lol-color-blue-200);
+	}
+
+	.arcane .item + .item[data-level="1"] {
+		border-top-color: rgb(from var(--lol-color-blue-400) r g b / 0.6);
+	}
+
+	/* The chevron is gold artwork rather than a glyph, so turning it teal is a
+	   rotation of what is there rather than a colour to set. Matched through
+	   the row so it does not undercut the chevron rules above it. */
+	.arcane .item .chevron {
+		filter: hue-rotate(140deg) saturate(1.5);
+	}
+
+	/* Which does put the tint level with the default preset's grey-out, so
+	   that one is said again here to keep a disabled chevron grey. */
+	.arcane .item[data-disabled] .chevron {
+		filter: grayscale(100%);
+	}
+
+	/* Selection as an inset pill rather than a full-bleed row, the shape a
+	   modern app sidebar uses. Reads as a control; the default reads as a
+	   list. */
+	.pill {
+		padding-block: 0.25rem;
+	}
+
+	.pill .item {
+		margin-inline: 0.25rem;
+		padding-block: 0.375rem;
+		border-radius: 999px;
+	}
+
+	.pill .item[data-hovered] {
+		--lol-tree-item-hover: linear-gradient(
+			90deg,
+			rgb(from var(--lol-color-gold-100) r g b / 0.1),
+			rgb(from var(--lol-color-gold-100) r g b / 0.1)
+		);
+	}
+
+	.pill .item[data-selected] {
+		--lol-tree-item-spine: none;
+		--lol-tree-item-highlight: linear-gradient(
+			90deg,
+			rgb(from var(--lol-color-blue-400) r g b / 0.85),
+			rgb(from var(--lol-color-blue-500) r g b / 0.85)
+		);
+	}
+
+	.pill .item[data-focus-visible] {
+		outline-offset: 1px;
+	}
+
+	.pill .item + .item[data-level="1"] {
+		border-top: 0;
+	}
 }
