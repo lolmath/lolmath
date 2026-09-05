@@ -32,6 +32,15 @@ import classes from "./tree.module.css";
  * - `glass` — a translucent, blurred pane to float over other content.
  * - `arcane` — hextech teal in place of gold: the magic, not the frame.
  * - `pill` — selection as an inset pill, the way an app sidebar does it.
+ *
+ * The last five keep the hextech wash the tables use off the selected row,
+ * and each answers "which row am I on" some other way:
+ *
+ * - `engraved` — the selected row pressed into the metal as a lit well.
+ * - `gilded` — the selected row filled with the client's gold, ink in black.
+ * - `bracket` — a bracket closed on each end of the row; nothing tinted.
+ * - `ember` — a warm bloom off the inline start, with no edge anywhere in it.
+ * - `parchment` — ink on a scroll: the one preset that is not a dark panel.
  */
 export type TreePreset =
 	| "default"
@@ -44,7 +53,12 @@ export type TreePreset =
 	| "minimal"
 	| "glass"
 	| "arcane"
-	| "pill";
+	| "pill"
+	| "engraved"
+	| "gilded"
+	| "bracket"
+	| "ember"
+	| "parchment";
 
 export const tree = cva({
 	base: classes.tree,
@@ -63,6 +77,11 @@ export const tree = cva({
 			glass: classes.glass,
 			arcane: classes.arcane,
 			pill: classes.pill,
+			engraved: classes.engraved,
+			gilded: classes.gilded,
+			bracket: classes.bracket,
+			ember: classes.ember,
+			parchment: classes.parchment,
 		},
 	},
 });

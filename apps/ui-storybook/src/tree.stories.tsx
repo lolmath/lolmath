@@ -144,6 +144,38 @@ const presets: { preset: TreePreset; blurb: string }[] = [
 		preset: "pill",
 		blurb: "Selection as an inset pill, the way an app sidebar does it.",
 	},
+	{
+		preset: "engraved",
+		blurb: "Selected row pressed into the metal as a well, lit at its edge.",
+	},
+	{
+		preset: "gilded",
+		blurb: "Selected row filled with the client's gold, ink in black.",
+	},
+	{
+		preset: "bracket",
+		blurb: "A bracket closed on each end of the row. Nothing tinted at all.",
+	},
+	{
+		preset: "ember",
+		blurb: "A warm bloom off the inline start, with no edge anywhere in it.",
+	},
+	{
+		preset: "parchment",
+		blurb: "Ink on a scroll — the one preset that is not a dark panel.",
+	},
+];
+
+/** The presets that keep the hextech wash the tables use off the selected
+ *  row. `minimal` gets there by drawing almost nothing; the last five each
+ *  answer "which row am I on" some other way. */
+const withoutBlueSelection: TreePreset[] = [
+	"minimal",
+	"engraved",
+	"gilded",
+	"bracket",
+	"ember",
+	"parchment",
 ];
 
 /**
@@ -161,6 +193,73 @@ const showcaseArgs = {
 	disabledKeys: ["fleet-footwork"],
 	defaultExpandedKeys: ["precision", "precision-keystone", "precision-heroism"],
 } as const;
+
+/**
+ * The chrome the gallery stories share: a labelled, captioned cell per preset.
+ * The tree itself stays with the story so it keeps the story's own args, which
+ * is what makes the Storybook controls drive every cell at once.
+ */
+function PresetGrid({
+	only,
+	renderTree,
+}: {
+	/** Which presets to show, in order. Defaults to all of them. */
+	only?: TreePreset[];
+	renderTree: (preset: TreePreset) => React.ReactNode;
+}) {
+	const shown = only
+		? presets.filter(({ preset }) => only.includes(preset))
+		: presets;
+
+	return (
+		<div
+			style={{
+				display: "grid",
+				gap: "1.75rem",
+				gridTemplateColumns: "repeat(auto-fill, minmax(17rem, 1fr))",
+				alignItems: "start",
+			}}
+		>
+			{shown.map(({ preset, blurb }) => (
+				<div key={preset}>
+					<div
+						style={{
+							fontFamily: "beaufort",
+							fontSize: "0.75rem",
+							fontWeight: 700,
+							letterSpacing: "0.075em",
+							textTransform: "uppercase",
+							color: "#c8aa6e",
+						}}
+					>
+						{preset}
+					</div>
+					<p
+						style={{
+							margin: "0.25rem 0 0.75rem",
+							fontFamily: "spiegel",
+							fontSize: "0.75rem",
+							lineHeight: 1.4,
+							color: "#a09b8c",
+							minHeight: "2.1rem",
+						}}
+					>
+						{blurb}
+					</p>
+					<div
+						style={
+							preset === "glass"
+								? { background: glassBackdrop, padding: "1.25rem" }
+								: undefined
+						}
+					>
+						{renderTree(preset)}
+					</div>
+				</div>
+			))}
+		</div>
+	);
+}
 
 const meta: Meta<typeof Tree> = {
 	title: "Data Display/Tree",
@@ -210,59 +309,45 @@ export const Primary: Story = { args: {} };
 export const PresetGallery: Story = {
 	name: "Preset gallery",
 	render: (args) => (
-		<div
-			style={{
-				display: "grid",
-				gap: "1.75rem",
-				gridTemplateColumns: "repeat(auto-fill, minmax(17rem, 1fr))",
-				alignItems: "start",
-			}}
-		>
-			{presets.map(({ preset, blurb }) => (
-				<div key={preset}>
-					<div
-						style={{
-							fontFamily: "beaufort",
-							fontSize: "0.75rem",
-							fontWeight: 700,
-							letterSpacing: "0.075em",
-							textTransform: "uppercase",
-							color: "#c8aa6e",
-						}}
-					>
-						{preset}
-					</div>
-					<p
-						style={{
-							margin: "0.25rem 0 0.75rem",
-							fontFamily: "spiegel",
-							fontSize: "0.75rem",
-							lineHeight: 1.4,
-							color: "#a09b8c",
-							minHeight: "2.1rem",
-						}}
-					>
-						{blurb}
-					</p>
-					<div
-						style={
-							preset === "glass"
-								? { background: glassBackdrop, padding: "1.25rem" }
-								: undefined
-						}
-					>
-						<Tree
-							{...args}
-							aria-label={`Rune paths, ${preset} preset`}
-							items={runePaths}
-							preset={preset}
-						>
-							{renderRune}
-						</Tree>
-					</div>
-				</div>
-			))}
-		</div>
+		<PresetGrid
+			renderTree={(preset) => (
+				<Tree
+					{...args}
+					aria-label={`Rune paths, ${preset} preset`}
+					items={runePaths}
+					preset={preset}
+				>
+					{renderRune}
+				</Tree>
+			)}
+		/>
+	),
+	args: showcaseArgs,
+};
+
+/**
+ * The presets that keep the hextech wash the tables use off the selected row.
+ * It is the loudest thing the default tree does, and the six here each answer
+ * "which row am I on" without reaching for it: by drawing almost nothing, by
+ * pressing the row in, by filling it with gold, by bracketing it, by blooming
+ * warm off its inline start, or by not being a dark panel in the first place.
+ */
+export const SelectionWithoutBlue: Story = {
+	name: "Selection without the blue",
+	render: (args) => (
+		<PresetGrid
+			only={withoutBlueSelection}
+			renderTree={(preset) => (
+				<Tree
+					{...args}
+					aria-label={`Rune paths, ${preset} preset`}
+					items={runePaths}
+					preset={preset}
+				>
+					{renderRune}
+				</Tree>
+			)}
+		/>
 	),
 	args: showcaseArgs,
 };
@@ -348,6 +433,41 @@ export const PresetArcane: Story = {
 export const PresetPill: Story = {
 	name: "Preset: pill",
 	args: { ...showcaseArgs, preset: "pill" },
+};
+
+/** The selected row pressed into the metal — shadowed at the top, lit along
+ *  its bottom edge, the way a stamped plate is. */
+export const PresetEngraved: Story = {
+	name: "Preset: engraved",
+	args: { ...showcaseArgs, preset: "engraved" },
+};
+
+/** The client spends its gold gradient on the control it wants pressed; this
+ *  spends it on the row you are on, and puts the ink in hextech black. */
+export const PresetGilded: Story = {
+	name: "Preset: gilded",
+	args: { ...showcaseArgs, preset: "gilded" },
+};
+
+/** Selection as a frame rather than a fill: a bracket closed on each end of
+ *  the row, and nothing tinted to compete with the label. */
+export const PresetBracket: Story = {
+	name: "Preset: bracket",
+	args: { ...showcaseArgs, preset: "bracket" },
+};
+
+/** Selection as heat rather than paint: a bloom off the inline start with no
+ *  edge anywhere in it, banked against a bright spine. */
+export const PresetEmber: Story = {
+	name: "Preset: ember",
+	args: { ...showcaseArgs, preset: "ember" },
+};
+
+/** Ink on a scroll rather than light on a screen — the one preset that is not
+ *  a dark panel, with the gold spent on the rules instead of on the type. */
+export const PresetParchment: Story = {
+	name: "Preset: parchment",
+	args: { ...showcaseArgs, preset: "parchment" },
 };
 
 /**
